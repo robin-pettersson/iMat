@@ -13,11 +13,13 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JTextField;
 
 
 public class IMatView extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField searchTextField;
 
 	/**
 	 * Launch the application.
@@ -39,6 +41,7 @@ public class IMatView extends JFrame {
 	 * Create the frame.
 	 */
 	public IMatView() {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 828, 643);
 		contentPane = new JPanel();
@@ -64,6 +67,27 @@ public class IMatView extends JFrame {
 		lblNewLabel.setBounds(12, 0, 216, 88);
 		toolBar.add(lblNewLabel);
 		
+		searchTextField = new JTextField();
+		searchTextField.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				searchTextField.selectAll();
+				
+			}
+		});
+		searchTextField.setForeground(Color.GRAY);
+		searchTextField.setFont(new Font("HelvLight", Font.PLAIN, 16));
+		searchTextField.setText("Sök produkt..");
+		searchTextField.setBounds(188, 34, 335, 32);
+		toolBar.add(searchTextField);
+		searchTextField.setColumns(10);
+		
+		JButton btnSk = new JButton("Sök");
+		btnSk.setForeground(Color.DARK_GRAY);
+		btnSk.setFont(new Font("HelvLight", Font.PLAIN, 16));
+		btnSk.setBounds(535, 35, 117, 30);
+		toolBar.add(btnSk);
+		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		mainPanel.setBounds(187, 100, 639, 514);
@@ -74,5 +98,7 @@ public class IMatView extends JFrame {
 		sidePanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		sidePanel.setBounds(0, 100, 192, 514);
 		contentPane.add(sidePanel);
+
+		searchTextField.selectAll();
 	}
 }
