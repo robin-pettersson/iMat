@@ -145,8 +145,13 @@ public class IMatView extends JFrame {
 		navigationList.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		navigationList.setRootVisible(false);
 		navigationList.setBackground(Color.LIGHT_GRAY);
-		navigationList.setBounds(10, 11, 172, 266);
+		navigationList.setBounds(10, 35, 172, 459);
 		sidePanel.add(navigationList);
+		
+		JLabel favoriteLbl = new JLabel("Favoriter");
+		favoriteLbl.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		favoriteLbl.setBounds(10, 11, 164, 20);
+		sidePanel.add(favoriteLbl);
 		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -177,6 +182,10 @@ public class IMatView extends JFrame {
 		tabs.setBackground(Color.LIGHT_GRAY);
 		tabs.setFont(new Font("HelvLight", Font.PLAIN, 15));
 		mainPanel.add(tabs, "name_4291341636438");
+		
+		JPanel reciteTab = new JPanel();
+		reciteTab.setBackground(Color.LIGHT_GRAY);
+		tabs.addTab("Kvitton", null, reciteTab, null);
 		
 		JPanel customerTab = new JPanel();
 		customerTab.setBackground(Color.LIGHT_GRAY);
@@ -554,9 +563,10 @@ public class IMatView extends JFrame {
 		label_17.setForeground(Color.DARK_GRAY);
 		label_17.setFont(new Font("HelvLight", Font.BOLD, 20));
 		
-		JPanel reciteTab = new JPanel();
-		reciteTab.setBackground(Color.LIGHT_GRAY);
-		tabs.addTab("Kvitton", null, reciteTab, null);
+		JPanel wareListPanel = new JPanel();
+		wareListPanel.setBackground(Color.LIGHT_GRAY);
+		mainPanel.add(wareListPanel, "name_1570938026365695");
+		wareListPanel.setLayout(new GridLayout(1, 0, 0, 0));
 		
 
 		searchFld.selectAll();
