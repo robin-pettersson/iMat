@@ -23,10 +23,10 @@ public class GridView extends JPanel {
 		priceLbl.setBounds(5, 140, 37, 14);
 		add(priceLbl);
 		
-		JSpinner spinner = new JSpinner();
-		spinner.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		spinner.setBounds(47, 135, 37, 20);
-		add(spinner);
+		JSpinner amountSpinner = new JSpinner();
+		amountSpinner.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		amountSpinner.setBounds(47, 135, 37, 20);
+		add(amountSpinner);
 		
 		JButton buyBtn = new JButton("L\u00E4gg till");
 		buyBtn.setFont(new Font("HelvLight", Font.PLAIN, 12));
