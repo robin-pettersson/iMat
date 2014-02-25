@@ -47,26 +47,26 @@ public class CustomerTabView extends JPanel {
 		
 		JPanel customerTab = new JPanel();
 		customerTab.setBackground(Color.LIGHT_GRAY);
-		tabPanel.addTab("Kunduppgifter", null, customerTab, null);
+		tabPanel.addTab("Personal info", null, customerTab, null);
 		customerTab.setLayout(new CardLayout(0, 0));
 		
 		JPanel infoPanel = new JPanel();
 		infoPanel.setBackground(Color.LIGHT_GRAY);
 		customerTab.add(infoPanel, "name_18669439395135");
 		
-		JLabel emailLabel = new JLabel("emailadress@email.com");
+		JLabel emailLabel = new JLabel("youemail@email.com");
 		emailLabel.setForeground(Color.DARK_GRAY);
 		emailLabel.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		
-		JLabel forenameLabel = new JLabel("Förnamn");
-		forenameLabel.setForeground(Color.DARK_GRAY);
-		forenameLabel.setFont(new Font("HelvLight", Font.PLAIN, 16));
+		JLabel firstnameLabel = new JLabel("Firstname");
+		firstnameLabel.setForeground(Color.DARK_GRAY);
+		firstnameLabel.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		
-		JLabel lastnameLabel = new JLabel("Efternamn");
+		JLabel lastnameLabel = new JLabel("Lastname");
 		lastnameLabel.setForeground(Color.DARK_GRAY);
 		lastnameLabel.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		
-		JLabel streetLabel = new JLabel("Gatunamn 9b");
+		JLabel streetLabel = new JLabel("Streetname 99");
 		streetLabel.setForeground(Color.DARK_GRAY);
 		streetLabel.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		
@@ -74,11 +74,11 @@ public class CustomerTabView extends JPanel {
 		zipLabel.setForeground(Color.DARK_GRAY);
 		zipLabel.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		
-		JLabel cityLabel = new JLabel("Ortnamn");
+		JLabel cityLabel = new JLabel("Cityname");
 		cityLabel.setForeground(Color.DARK_GRAY);
 		cityLabel.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		
-		JButton changeButton = new JButton("Ändra");
+		JButton changeButton = new JButton("Edit");
 		changeButton.setBackground(SystemColor.window);
 		changeButton.setForeground(Color.DARK_GRAY);
 		changeButton.setFont(new Font("HelvLight", Font.PLAIN, 14));
@@ -90,7 +90,7 @@ public class CustomerTabView extends JPanel {
 					.addGroup(gl_infoPanel.createParallelGroup(Alignment.LEADING)
 						.addComponent(emailLabel, GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
 						.addGroup(gl_infoPanel.createSequentialGroup()
-							.addComponent(forenameLabel, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+							.addComponent(firstnameLabel, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(lastnameLabel, GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
 						.addComponent(streetLabel, GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
@@ -106,7 +106,7 @@ public class CustomerTabView extends JPanel {
 				.addGroup(gl_infoPanel.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_infoPanel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(forenameLabel)
+						.addComponent(firstnameLabel)
 						.addComponent(lastnameLabel))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(streetLabel)
@@ -134,28 +134,28 @@ public class CustomerTabView extends JPanel {
 		settingsPanel.add(labelPanel);
 		labelPanel.setLayout(null);
 		
-		JLabel lastnameLabel2 = new JLabel("Efternamn:");
+		JLabel lastnameLabel2 = new JLabel("Lastname:");
 		lastnameLabel2.setHorizontalAlignment(SwingConstants.RIGHT);
 		lastnameLabel2.setBounds(12, 38, 127, 20);
 		labelPanel.add(lastnameLabel2);
 		lastnameLabel2.setForeground(Color.DARK_GRAY);
 		lastnameLabel2.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		
-		JLabel fornameLabel2 = new JLabel("Förnamn:");
+		JLabel fornameLabel2 = new JLabel("Firstname:");
 		fornameLabel2.setHorizontalAlignment(SwingConstants.RIGHT);
 		fornameLabel2.setBounds(12, 12, 127, 20);
 		labelPanel.add(fornameLabel2);
 		fornameLabel2.setForeground(Color.DARK_GRAY);
 		fornameLabel2.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		
-		JLabel streetLabel2 = new JLabel("Gatunamn:");
+		JLabel streetLabel2 = new JLabel("Street:");
 		streetLabel2.setHorizontalAlignment(SwingConstants.RIGHT);
 		streetLabel2.setBounds(12, 70, 127, 20);
 		labelPanel.add(streetLabel2);
 		streetLabel2.setForeground(Color.DARK_GRAY);
 		streetLabel2.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		
-		JLabel zipAndCityLabel2 = new JLabel("Postnr och ort:");
+		JLabel zipAndCityLabel2 = new JLabel("Zip-code and city:");
 		zipAndCityLabel2.setHorizontalAlignment(SwingConstants.RIGHT);
 		zipAndCityLabel2.setBounds(12, 102, 127, 20);
 		labelPanel.add(zipAndCityLabel2);
@@ -169,14 +169,14 @@ public class CustomerTabView extends JPanel {
 		emailLabel2.setForeground(Color.DARK_GRAY);
 		emailLabel2.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		
-		JLabel lblLsenord = new JLabel("Lösenord:");
+		JLabel lblLsenord = new JLabel("Password:");
 		lblLsenord.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblLsenord.setForeground(Color.DARK_GRAY);
 		lblLsenord.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		lblLsenord.setBounds(12, 182, 127, 20);
 		labelPanel.add(lblLsenord);
 		
-		JLabel lblBekrftaLsenord = new JLabel("Bekräfta lösenord:");
+		JLabel lblBekrftaLsenord = new JLabel("Verify password:");
 		lblBekrftaLsenord.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblBekrftaLsenord.setForeground(Color.DARK_GRAY);
 		lblBekrftaLsenord.setFont(new Font("HelvLight", Font.PLAIN, 14));
@@ -194,33 +194,33 @@ public class CustomerTabView extends JPanel {
 		txtFrnamn.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		txtFrnamn.setBounds(12, 12, 171, 19);
 		textPanel.add(txtFrnamn);
-		txtFrnamn.setText("Förnamn");
+		txtFrnamn.setText("Firstname");
 		txtFrnamn.setColumns(10);
 		
 		txtEfternamn = new JTextField();
 		txtEfternamn.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		txtEfternamn.setText("Efternamn");
+		txtEfternamn.setText("Lastname");
 		txtEfternamn.setColumns(10);
 		txtEfternamn.setBounds(12, 43, 171, 19);
 		textPanel.add(txtEfternamn);
 		
 		txtLngagatan = new JTextField();
 		txtLngagatan.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		txtLngagatan.setText("Långagatan 98");
+		txtLngagatan.setText("Streetname 99");
 		txtLngagatan.setColumns(10);
 		txtLngagatan.setBounds(12, 74, 171, 19);
 		textPanel.add(txtLngagatan);
 		
 		txtSderkping = new JTextField();
 		txtSderkping.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		txtSderkping.setText("Söderköping");
+		txtSderkping.setText("Cityname");
 		txtSderkping.setColumns(10);
 		txtSderkping.setBounds(78, 105, 105, 19);
 		textPanel.add(txtSderkping);
 		
 		emailTextField = new JTextField();
 		emailTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		emailTextField.setText("emaillångsomfan@gmail.com");
+		emailTextField.setText("youemail@gmail.com");
 		emailTextField.setColumns(10);
 		emailTextField.setBounds(12, 136, 171, 19);
 		textPanel.add(emailTextField);
@@ -245,21 +245,21 @@ public class CustomerTabView extends JPanel {
 		passwordField.setBounds(12, 208, 171, 19);
 		textPanel.add(passwordField);
 		
-		JLabel label = new JLabel("Postnr och ort:");
-		label.setHorizontalAlignment(SwingConstants.RIGHT);
-		label.setForeground(Color.DARK_GRAY);
-		label.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		label.setBounds(12, 226, 171, 20);
-		textPanel.add(label);
+		JLabel lblPasswordNeedsTo = new JLabel("Password needs to be at least 8 characters");
+		lblPasswordNeedsTo.setHorizontalAlignment(SwingConstants.LEFT);
+		lblPasswordNeedsTo.setForeground(Color.DARK_GRAY);
+		lblPasswordNeedsTo.setFont(new Font("HelvLight", Font.ITALIC, 12));
+		lblPasswordNeedsTo.setBounds(12, 226, 262, 20);
+		textPanel.add(lblPasswordNeedsTo);
 		
-		JButton saveButton = new JButton("Spara");
+		JButton saveButton = new JButton("Save");
 		saveButton.setBounds(545, 474, 73, 27);
 		settingsPanel.add(saveButton);
 		saveButton.setForeground(Color.DARK_GRAY);
 		saveButton.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		saveButton.setBackground(SystemColor.window);
 		
-		JButton cancelButton = new JButton("Avbryt");
+		JButton cancelButton = new JButton("Cancel");
 		cancelButton.setForeground(Color.DARK_GRAY);
 		cancelButton.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		cancelButton.setBackground(SystemColor.window);
@@ -268,16 +268,16 @@ public class CustomerTabView extends JPanel {
 		
 		JPanel favouriteTab = new JPanel();
 		favouriteTab.setBackground(Color.LIGHT_GRAY);
-		tabPanel.addTab("Favoriter", null, favouriteTab, null);
+		tabPanel.addTab("Favourites", null, favouriteTab, null);
 		
 		JPanel listTab = new JPanel();
 		listTab.setLayout(null);
 		listTab.setBackground(Color.LIGHT_GRAY);
-		tabPanel.addTab("Inköpslistor", null, listTab, null);
+		tabPanel.addTab("Lists", null, listTab, null);
 		
-		JPanel reciteTab = new JPanel();
-		reciteTab.setBackground(Color.LIGHT_GRAY);
-		tabPanel.addTab("Kvitton", null, reciteTab, null);
+		JPanel receiptTab = new JPanel();
+		receiptTab.setBackground(Color.LIGHT_GRAY);
+		tabPanel.addTab("Receipts", null, receiptTab, null);
 
 	}
 }
