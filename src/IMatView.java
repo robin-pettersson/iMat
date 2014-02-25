@@ -148,24 +148,43 @@ public class IMatView extends JFrame {
 			new DefaultMutableTreeNode("JTree") {
 				{
 					DefaultMutableTreeNode node_1;
-					add(new DefaultMutableTreeNode("Favoriter\t"));
-					node_1 = new DefaultMutableTreeNode("colors");
-						node_1.add(new DefaultMutableTreeNode("blue"));
-						node_1.add(new DefaultMutableTreeNode("violet"));
-						node_1.add(new DefaultMutableTreeNode("red"));
-						node_1.add(new DefaultMutableTreeNode("yellow"));
+					DefaultMutableTreeNode node_2;
+					add(new DefaultMutableTreeNode("Favoriter"));
+					add(new DefaultMutableTreeNode("Dairies"));
+					node_1 = new DefaultMutableTreeNode("Fruits and vegetables");
+						node_2 = new DefaultMutableTreeNode("Fruits");
+							node_2.add(new DefaultMutableTreeNode("Berry"));
+							node_2.add(new DefaultMutableTreeNode("Citrus fruits"));
+							node_2.add(new DefaultMutableTreeNode("Exotic fruits"));
+							node_2.add(new DefaultMutableTreeNode("Melons"));
+							node_2.add(new DefaultMutableTreeNode("Other fruits"));
+						node_1.add(node_2);
+						node_2 = new DefaultMutableTreeNode("Vegetables");
+							node_2.add(new DefaultMutableTreeNode("Vegetable fruits"));
+							node_2.add(new DefaultMutableTreeNode("Cabbage"));
+							node_2.add(new DefaultMutableTreeNode("Root vegetables"));
+						node_1.add(node_2);
 					add(node_1);
-					node_1 = new DefaultMutableTreeNode("sports");
-						node_1.add(new DefaultMutableTreeNode("basketball"));
-						node_1.add(new DefaultMutableTreeNode("soccer"));
-						node_1.add(new DefaultMutableTreeNode("football"));
-						node_1.add(new DefaultMutableTreeNode("hockey"));
+					node_1 = new DefaultMutableTreeNode("Meat and fish");
+						node_1.add(new DefaultMutableTreeNode("Meat"));
+						node_1.add(new DefaultMutableTreeNode("Fish"));
 					add(node_1);
-					node_1 = new DefaultMutableTreeNode("food");
-						node_1.add(new DefaultMutableTreeNode("hot dogs"));
-						node_1.add(new DefaultMutableTreeNode("pizza"));
-						node_1.add(new DefaultMutableTreeNode("ravioli"));
-						node_1.add(new DefaultMutableTreeNode("bananas"));
+					node_1 = new DefaultMutableTreeNode("Drinks");
+						node_1.add(new DefaultMutableTreeNode("Hot drinks"));
+						node_1.add(new DefaultMutableTreeNode("Cold drinks"));
+					add(node_1);
+					node_1 = new DefaultMutableTreeNode("Carbs");
+						node_1.add(new DefaultMutableTreeNode("Potatoe/Rice/Pasta"));
+					add(node_1);
+					add(new DefaultMutableTreeNode("Bread"));
+					add(new DefaultMutableTreeNode("Sweets"));
+					node_1 = new DefaultMutableTreeNode("Plants");
+						node_1.add(new DefaultMutableTreeNode("Pods"));
+						node_1.add(new DefaultMutableTreeNode("Nuts and seeds"));
+						node_1.add(new DefaultMutableTreeNode("Herbs"));
+					add(node_1);
+					node_1 = new DefaultMutableTreeNode("Spices (?)");
+						node_1.add(new DefaultMutableTreeNode("Sugar/Salt/Flour"));
 					add(node_1);
 				}
 			}
@@ -216,7 +235,7 @@ public class IMatView extends JFrame {
 		wareListPanel.add(breadcrumPanel);
 		breadcrumPanel.setLayout(null);
 		
-		JLabel gridViewLbl = new JLabel("a");
+		JLabel gridViewLbl = new JLabel("");
 		gridViewLbl.setBounds(567, 2, 21, 21);
 		breadcrumPanel.add(gridViewLbl);
 		
