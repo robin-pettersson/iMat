@@ -12,7 +12,7 @@ public class GridView extends JPanel {
 		setLayout(null);
 		
 		JLabel wareNameLbl = new JLabel("warename");
-		wareNameLbl.setFont(new Font("HelvLight", Font.PLAIN, 16));
+		wareNameLbl.setFont(new Font("HelvLight", Font.PLAIN, 18));
 		wareNameLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		wareNameLbl.setBounds(5, 5, 150, 22);
 		add(wareNameLbl);

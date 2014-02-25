@@ -236,12 +236,12 @@ public class IMatView extends JFrame {
 		breadcrumPanel.setLayout(null);
 		
 		JLabel gridViewLbl = new JLabel("");
-		gridViewLbl.setIcon(new ImageIcon("C:\\Users\\Rutanjr\\Documents\\GitHub\\iMat\\lib\\GridIcon21.png"));
-		gridViewLbl.setBounds(567, 2, 21, 21);
+		gridViewLbl.setIcon(new ImageIcon(IMatView.class.getResource("/lib/GridIcon21.png")));
+		gridViewLbl.setBounds(561, 2, 21, 21);
 		breadcrumPanel.add(gridViewLbl);
 		
 		JLabel listViewLbl = new JLabel("");
-		listViewLbl.setIcon(new ImageIcon("C:\\Users\\Rutanjr\\Documents\\GitHub\\iMat\\lib\\listIcon21.png"));
+		listViewLbl.setIcon(new ImageIcon(IMatView.class.getResource("/lib/listIcon21.png")));
 		listViewLbl.setBounds(596, 2, 21, 21);
 		breadcrumPanel.add(listViewLbl);
 		
