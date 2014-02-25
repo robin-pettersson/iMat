@@ -137,70 +137,6 @@ public class IMatView extends JFrame {
 		cartLbl.setBounds(731, 46, 74, 32);
 		toolBar.add(cartLbl);
 		
-		JPanel sidePanel = new JPanel();
-		sidePanel.setBackground(Color.LIGHT_GRAY);
-		sidePanel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		sidePanel.setBounds(0, 100, 192, 541);
-		contentPane.add(sidePanel);
-		sidePanel.setLayout(null);
-		
-		JTree navigationList = new JTree();
-		navigationList.setModel(new DefaultTreeModel(
-			new DefaultMutableTreeNode("JTree") {
-				{
-					DefaultMutableTreeNode node_1;
-					DefaultMutableTreeNode node_2;
-					getContentPane().add(new DefaultMutableTreeNode("Favoriter"));
-					getContentPane().add(new DefaultMutableTreeNode("Dairies"));
-					node_1 = new DefaultMutableTreeNode("Fruits and vegetables");
-						node_2 = new DefaultMutableTreeNode("Fruits");
-							node_2.add(new DefaultMutableTreeNode("Berry"));
-							node_2.add(new DefaultMutableTreeNode("Citrus fruits"));
-							node_2.add(new DefaultMutableTreeNode("Exotic fruits"));
-							node_2.add(new DefaultMutableTreeNode("Melons"));
-							node_2.add(new DefaultMutableTreeNode("Other fruits"));
-						node_1.add(node_2);
-						node_2 = new DefaultMutableTreeNode("Vegetables");
-							node_2.add(new DefaultMutableTreeNode("Vegetable fruits"));
-							node_2.add(new DefaultMutableTreeNode("Cabbage"));
-							node_2.add(new DefaultMutableTreeNode("Root vegetables"));
-						node_1.add(node_2);
-					getContentPane().add(node_1);
-					node_1 = new DefaultMutableTreeNode("Meat and fish");
-						node_1.add(new DefaultMutableTreeNode("Meat"));
-						node_1.add(new DefaultMutableTreeNode("Fish"));
-					getContentPane().add(node_1);
-					node_1 = new DefaultMutableTreeNode("Drinks");
-						node_1.add(new DefaultMutableTreeNode("Hot drinks"));
-						node_1.add(new DefaultMutableTreeNode("Cold drinks"));
-					getContentPane().add(node_1);
-					node_1 = new DefaultMutableTreeNode("Carbs");
-						node_1.add(new DefaultMutableTreeNode("Potatoe/Rice/Pasta"));
-					getContentPane().add(node_1);
-					getContentPane().add(new DefaultMutableTreeNode("Bread"));
-					getContentPane().add(new DefaultMutableTreeNode("Sweets"));
-					node_1 = new DefaultMutableTreeNode("Plants");
-						node_1.add(new DefaultMutableTreeNode("Pods"));
-						node_1.add(new DefaultMutableTreeNode("Nuts and seeds"));
-						node_1.add(new DefaultMutableTreeNode("Herbs"));
-					getContentPane().add(node_1);
-					node_1 = new DefaultMutableTreeNode("Spices (?)");
-						node_1.add(new DefaultMutableTreeNode("Sugar/Salt/Flour"));
-					getContentPane().add(node_1);
-				}
-			}
-		));
-		navigationList.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		navigationList.setRootVisible(false);
-		navigationList.setBackground(Color.LIGHT_GRAY);
-		navigationList.setBounds(10, 35, 172, 459);
-		sidePanel.add(navigationList);
-		
-		JLabel favoriteLbl = new JLabel("Favoriter");
-		favoriteLbl.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		favoriteLbl.setBounds(10, 11, 164, 20);
-		sidePanel.add(favoriteLbl);
-		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		mainPanel.setBounds(190, 100, 636, 541);
@@ -239,12 +175,13 @@ public class IMatView extends JFrame {
 		breadcrumPanel.setLayout(null);
 		
 		JLabel gridViewLbl = new JLabel("");
-		gridViewLbl.setBounds(603, 0, 21, 21);
+		gridViewLbl.setBounds(603, 2, 21, 21);
 		gridViewLbl.setHorizontalAlignment(SwingConstants.RIGHT);
 		breadcrumPanel.add(gridViewLbl);
 		
 		JLabel listViewLbl = new JLabel("");
-		listViewLbl.setBounds(-10199, -10128, 634, 21);
+		listViewLbl.setHorizontalAlignment(SwingConstants.RIGHT);
+		listViewLbl.setBounds(572, 2, 21, 21);
 		breadcrumPanel.add(listViewLbl);
 		
 		JPanel panel = new JPanel();
