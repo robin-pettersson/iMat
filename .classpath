@@ -2,8 +2,5 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/Robin/iMat/projectbackend.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rutanjr/Documents/GitHub/iMat/lib/listIcon21.png"/>
-	<classpathentry kind="lib" path="C:/Users/Rutanjr/Pictures/lib.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

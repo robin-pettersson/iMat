@@ -33,6 +33,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextArea;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultMutableTreeNode;
+import java.awt.Dimension;
 
 
 public class IMatView extends JFrame {
@@ -228,22 +229,26 @@ public class IMatView extends JFrame {
 		JPanel wareListPanel = new JPanel();
 		wareListPanel.setBackground(Color.LIGHT_GRAY);
 		mainPanel.add(wareListPanel, "name_1570938026365695");
-		wareListPanel.setLayout(null);
+		wareListPanel.setLayout(new BorderLayout(0, 0));
 		
 		JPanel breadcrumPanel = new JPanel();
-		breadcrumPanel.setBounds(0, 0, 624, 25);
-		wareListPanel.add(breadcrumPanel);
+		breadcrumPanel.setPreferredSize(new Dimension(10, 25));
+		breadcrumPanel.setSize(new Dimension(0, 25));
+		breadcrumPanel.setMinimumSize(new Dimension(10, 25));
+		wareListPanel.add(breadcrumPanel, BorderLayout.NORTH);
 		breadcrumPanel.setLayout(null);
 		
 		JLabel gridViewLbl = new JLabel("");
-		gridViewLbl.setIcon(new ImageIcon(IMatView.class.getResource("/lib/GridIcon21.png")));
-		gridViewLbl.setBounds(561, 2, 21, 21);
+		gridViewLbl.setBounds(603, 0, 21, 21);
+		gridViewLbl.setHorizontalAlignment(SwingConstants.RIGHT);
 		breadcrumPanel.add(gridViewLbl);
 		
 		JLabel listViewLbl = new JLabel("");
-		listViewLbl.setIcon(new ImageIcon(IMatView.class.getResource("/lib/listIcon21.png")));
-		listViewLbl.setBounds(596, 2, 21, 21);
+		listViewLbl.setBounds(-10199, -10128, 634, 21);
 		breadcrumPanel.add(listViewLbl);
+		
+		JPanel panel = new JPanel();
+		wareListPanel.add(panel, BorderLayout.CENTER);
 		
 
 		searchFld.selectAll();
