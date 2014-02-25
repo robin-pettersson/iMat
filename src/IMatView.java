@@ -31,6 +31,8 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextArea;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 
 public class IMatView extends JFrame {
@@ -142,6 +144,32 @@ public class IMatView extends JFrame {
 		sidePanel.setLayout(null);
 		
 		JTree navigationList = new JTree();
+		navigationList.setModel(new DefaultTreeModel(
+			new DefaultMutableTreeNode("JTree") {
+				{
+					DefaultMutableTreeNode node_1;
+					add(new DefaultMutableTreeNode("Favoriter\t"));
+					node_1 = new DefaultMutableTreeNode("colors");
+						node_1.add(new DefaultMutableTreeNode("blue"));
+						node_1.add(new DefaultMutableTreeNode("violet"));
+						node_1.add(new DefaultMutableTreeNode("red"));
+						node_1.add(new DefaultMutableTreeNode("yellow"));
+					add(node_1);
+					node_1 = new DefaultMutableTreeNode("sports");
+						node_1.add(new DefaultMutableTreeNode("basketball"));
+						node_1.add(new DefaultMutableTreeNode("soccer"));
+						node_1.add(new DefaultMutableTreeNode("football"));
+						node_1.add(new DefaultMutableTreeNode("hockey"));
+					add(node_1);
+					node_1 = new DefaultMutableTreeNode("food");
+						node_1.add(new DefaultMutableTreeNode("hot dogs"));
+						node_1.add(new DefaultMutableTreeNode("pizza"));
+						node_1.add(new DefaultMutableTreeNode("ravioli"));
+						node_1.add(new DefaultMutableTreeNode("bananas"));
+					add(node_1);
+				}
+			}
+		));
 		navigationList.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		navigationList.setRootVisible(false);
 		navigationList.setBackground(Color.LIGHT_GRAY);
@@ -181,7 +209,20 @@ public class IMatView extends JFrame {
 		JPanel wareListPanel = new JPanel();
 		wareListPanel.setBackground(Color.LIGHT_GRAY);
 		mainPanel.add(wareListPanel, "name_1570938026365695");
-		wareListPanel.setLayout(new GridLayout(1, 0, 0, 0));
+		wareListPanel.setLayout(null);
+		
+		JPanel breadcrumPanel = new JPanel();
+		breadcrumPanel.setBounds(0, 0, 624, 25);
+		wareListPanel.add(breadcrumPanel);
+		breadcrumPanel.setLayout(null);
+		
+		JLabel gridViewLbl = new JLabel("a");
+		gridViewLbl.setBounds(567, 2, 21, 21);
+		breadcrumPanel.add(gridViewLbl);
+		
+		JLabel listViewLbl = new JLabel("a");
+		listViewLbl.setBounds(596, 2, 21, 21);
+		breadcrumPanel.add(listViewLbl);
 		
 
 		searchFld.selectAll();

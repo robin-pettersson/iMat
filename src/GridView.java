@@ -14,18 +14,28 @@ public class GridView extends JPanel {
 		JLabel wareNameLbl = new JLabel("warename");
 		wareNameLbl.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		wareNameLbl.setHorizontalAlignment(SwingConstants.CENTER);
-		wareNameLbl.setBounds(5, 81, 113, 22);
+		wareNameLbl.setBounds(5, 5, 150, 22);
 		add(wareNameLbl);
-		
-		JLabel pictureLbl = new JLabel("pic");
-		pictureLbl.setBounds(5, 5, 110, 110);
-		add(pictureLbl);
 		
 		JLabel priceLbl = new JLabel("price");
 		priceLbl.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		priceLbl.setHorizontalAlignment(SwingConstants.CENTER);
-		priceLbl.setBounds(37, 100, 46, 14);
+		priceLbl.setBounds(5, 140, 37, 14);
 		add(priceLbl);
+		
+		JSpinner spinner = new JSpinner();
+		spinner.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		spinner.setBounds(47, 135, 37, 20);
+		add(spinner);
+		
+		JButton buyBtn = new JButton("L\u00E4gg till");
+		buyBtn.setFont(new Font("HelvLight", Font.PLAIN, 12));
+		buyBtn.setBounds(87, 135, 69, 20);
+		add(buyBtn);
+		
+		JLabel pictureLbl = new JLabel("pic");
+		pictureLbl.setBounds(5, 5, 150, 150);
+		add(pictureLbl);
 		// TODO Auto-generated constructor stub
 	}
 }
