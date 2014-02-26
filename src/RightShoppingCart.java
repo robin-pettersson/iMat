@@ -40,6 +40,12 @@ public class RightShoppingCart extends JPanel {
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
 		table = new JTable();
+		table.setShowGrid(false);
+		table.setShowVerticalLines(false);
+		table.setShowHorizontalLines(false);
+		table.setColumnSelectionAllowed(true);
+		table.setCellSelectionEnabled(true);
+		table.setBorder(null);
 		table.setForeground(Color.DARK_GRAY);
 		table.setFont(new Font("HelvLight", Font.PLAIN, 12));
 		table.setBackground(Color.LIGHT_GRAY);
@@ -63,6 +69,7 @@ public class RightShoppingCart extends JPanel {
 		panel_1.add(table);
 		
 		JLabel lblTotaly = new JLabel("Sum: 340 kr");
+		lblTotaly.setOpaque(true);
 		lblTotaly.setBackground(Color.LIGHT_GRAY);
 		lblTotaly.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTotaly.setForeground(Color.DARK_GRAY);

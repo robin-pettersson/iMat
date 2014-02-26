@@ -12,6 +12,7 @@ import javax.swing.SwingConstants;
 import java.awt.BorderLayout;
 import java.awt.Cursor;
 import javax.swing.DebugGraphics;
+import java.awt.Dimension;
 
 
 public class ShoppingListItem extends JPanel {
@@ -20,6 +21,7 @@ public class ShoppingListItem extends JPanel {
 	 * Create the panel.
 	 */
 	public ShoppingListItem() {
+		setPreferredSize(new Dimension(635, 125));
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setLayout(new BorderLayout(0, 0));
 		
