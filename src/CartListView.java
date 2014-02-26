@@ -8,12 +8,12 @@ import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
 
 import se.chalmers.ait.dat215.project.Product;
+import java.awt.Color;
 
 public class CartListView extends JPanel {
 
 	JSpinner amountSpinner;
 	JLabel priceLbl;
-	JLabel xLbl;
 	JLabel removeLbl;
 	JLabel productNameLbl;
 	JLabel pictureLbl;
@@ -34,14 +34,9 @@ public class CartListView extends JPanel {
 		priceLbl.setBounds(428, 26, 63, 20);
 		add(priceLbl);
 		
-		xLbl = new JLabel("x");
-		xLbl.setFont(new Font("HelvLight", Font.BOLD, 20));
-		xLbl.setBounds(607, 26, 18, 17);
-		add(xLbl);
-		
 		removeLbl = new JLabel("Ta bort");
 		removeLbl.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		removeLbl.setBounds(558, 28, 54, 15);
+		removeLbl.setBounds(554, 26, 54, 15);
 		add(removeLbl);
 		
 		productNameLbl = new JLabel("WareName");
@@ -52,6 +47,12 @@ public class CartListView extends JPanel {
 		pictureLbl = new JLabel("pic");
 		pictureLbl.setBounds(5, 5, 60, 60);
 		add(pictureLbl);
+		
+		JLabel label = new JLabel("X");
+		label.setForeground(Color.RED);
+		label.setFont(new Font("Dialog", Font.BOLD, 24));
+		label.setBounds(601, 20, 24, 26);
+		add(label);
 		// TODO Auto-generated constructor stub
 	}
 	
