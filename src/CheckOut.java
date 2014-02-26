@@ -14,6 +14,8 @@ import javax.swing.ButtonGroup;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import java.awt.Cursor;
+import javax.swing.JButton;
 
 
 public class CheckOut extends JPanel {
@@ -24,6 +26,8 @@ public class CheckOut extends JPanel {
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
+	private JPasswordField passwordField;
+	private JTextField textField_6;
 
 	/**
 	 * Create the panel.
@@ -122,49 +126,49 @@ public class CheckOut extends JPanel {
 		panel_5.setLayout(null);
 		panel_5.setBorder(null);
 		panel_5.setBackground(Color.LIGHT_GRAY);
-		panel_5.setBounds(0, 0, 122, 167);
+		panel_5.setBounds(12, 12, 110, 167);
 		panel_4.add(panel_5);
 		
 		JLabel label = new JLabel("Firstname:");
 		label.setHorizontalAlignment(SwingConstants.RIGHT);
 		label.setForeground(Color.DARK_GRAY);
 		label.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		label.setBounds(31, 0, 91, 17);
+		label.setBounds(12, 0, 91, 17);
 		panel_5.add(label);
 		
 		JLabel label_1 = new JLabel("Lastname:");
 		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		label_1.setForeground(Color.DARK_GRAY);
 		label_1.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		label_1.setBounds(31, 29, 91, 17);
+		label_1.setBounds(12, 29, 91, 17);
 		panel_5.add(label_1);
 		
 		JLabel label_2 = new JLabel("Street:");
 		label_2.setHorizontalAlignment(SwingConstants.RIGHT);
 		label_2.setForeground(Color.DARK_GRAY);
 		label_2.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		label_2.setBounds(0, 58, 122, 20);
+		label_2.setBounds(12, 58, 91, 20);
 		panel_5.add(label_2);
 		
 		JLabel label_3 = new JLabel("Zip and city:");
 		label_3.setHorizontalAlignment(SwingConstants.RIGHT);
 		label_3.setForeground(Color.DARK_GRAY);
 		label_3.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		label_3.setBounds(0, 90, 122, 20);
+		label_3.setBounds(12, 90, 91, 20);
 		panel_5.add(label_3);
 		
 		JLabel label_4 = new JLabel("Email:");
 		label_4.setHorizontalAlignment(SwingConstants.RIGHT);
 		label_4.setForeground(Color.DARK_GRAY);
 		label_4.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		label_4.setBounds(31, 122, 91, 17);
+		label_4.setBounds(12, 122, 91, 17);
 		panel_5.add(label_4);
 		
 		JPanel panel_6 = new JPanel();
 		panel_6.setLayout(null);
 		panel_6.setBorder(null);
 		panel_6.setBackground(Color.LIGHT_GRAY);
-		panel_6.setBounds(134, 0, 221, 167);
+		panel_6.setBounds(134, 12, 221, 215);
 		panel_4.add(panel_6);
 		
 		textField = new JTextField();
@@ -238,6 +242,88 @@ public class CheckOut extends JPanel {
 		label_11.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		label_11.setBounds(200, 93, 12, 17);
 		panel_6.add(label_11);
+		
+		JLabel label_5 = new JLabel("Register Account");
+		label_5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		label_5.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_5.setForeground(Color.WHITE);
+		label_5.setFont(new Font("HelvLight", Font.BOLD, 18));
+		label_5.setBounds(0, 155, 195, 31);
+		panel_6.add(label_5);
+		
+		JLabel lblSignIn = new JLabel("Sign in");
+		lblSignIn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblSignIn.setHorizontalTextPosition(SwingConstants.LEFT);
+		lblSignIn.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblSignIn.setForeground(Color.WHITE);
+		lblSignIn.setFont(new Font("HelvLight", Font.BOLD, 18));
+		lblSignIn.setBounds(383, 34, 64, 31);
+		panel_4.add(lblSignIn);
+		
+		JLabel lblYouAreNot = new JLabel("You are not signed in!");
+		lblYouAreNot.setHorizontalTextPosition(SwingConstants.LEFT);
+		lblYouAreNot.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblYouAreNot.setForeground(Color.DARK_GRAY);
+		lblYouAreNot.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		lblYouAreNot.setBounds(383, 12, 148, 22);
+		panel_4.add(lblYouAreNot);
+		
+		JPanel panel_7 = new JPanel();
+		panel_7.setVisible(false);
+		panel_7.setBackground(Color.LIGHT_GRAY);
+		panel_7.setBorder(null);
+		panel_7.setBounds(383, 66, 234, 102);
+		panel_4.add(panel_7);
+		panel_7.setLayout(null);
+		
+		JLabel label_6 = new JLabel("Email:");
+		label_6.setHorizontalTextPosition(SwingConstants.RIGHT);
+		label_6.setBounds(12, 12, 65, 17);
+		label_6.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_6.setForeground(Color.DARK_GRAY);
+		label_6.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		panel_7.add(label_6);
+		
+		JLabel lblPassword = new JLabel("Password:");
+		lblPassword.setHorizontalTextPosition(SwingConstants.RIGHT);
+		lblPassword.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblPassword.setForeground(Color.DARK_GRAY);
+		lblPassword.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		lblPassword.setBounds(12, 41, 67, 17);
+		panel_7.add(lblPassword);
+		
+		passwordField = new JPasswordField();
+		passwordField.setText("lösenord");
+		passwordField.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		passwordField.setBounds(84, 40, 138, 19);
+		panel_7.add(passwordField);
+		
+		textField_6 = new JTextField();
+		textField_6.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		textField_6.setColumns(10);
+		textField_6.setBounds(84, 12, 138, 19);
+		panel_7.add(textField_6);
+		
+		JButton btnLogIn = new JButton("Sign in");
+		btnLogIn.setForeground(Color.DARK_GRAY);
+		btnLogIn.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		btnLogIn.setBackground(SystemColor.window);
+		btnLogIn.setBounds(144, 71, 78, 27);
+		panel_7.add(btnLogIn);
+		
+		JButton btnPreview = new JButton("Preview");
+		btnPreview.setForeground(Color.DARK_GRAY);
+		btnPreview.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		btnPreview.setBackground(SystemColor.window);
+		btnPreview.setBounds(526, 200, 91, 27);
+		panel_4.add(btnPreview);
+		
+		JButton button = new JButton("Cancel");
+		button.setForeground(Color.DARK_GRAY);
+		button.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		button.setBackground(SystemColor.window);
+		button.setBounds(430, 200, 84, 27);
+		panel_4.add(button);
 
 	}
 }
