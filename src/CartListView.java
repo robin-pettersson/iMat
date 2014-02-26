@@ -83,4 +83,12 @@ public class CartListView extends JPanel {
 		//picLbl.setIcon(product.getImageName());
 		pictureLbl.repaint();
 	}
+	
+	public String getName () {
+		return productNameLbl.getText();
+	}
+	
+	public double getPrice() {		
+		return Double.parseDouble(priceLbl.getText());
+	}
 }
