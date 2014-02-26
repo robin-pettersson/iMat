@@ -147,7 +147,7 @@ public class CustomerTabView extends JPanel {
 		JPanel labelPanel = new JPanel();
 		labelPanel.setBorder(null);
 		labelPanel.setBackground(Color.LIGHT_GRAY);
-		labelPanel.setBounds(12, 12, 151, 258);
+		labelPanel.setBounds(12, 36, 151, 258);
 		settingsPanel.add(labelPanel);
 		labelPanel.setLayout(null);
 		
@@ -203,7 +203,7 @@ public class CustomerTabView extends JPanel {
 		JPanel textPanel = new JPanel();
 		textPanel.setBorder(null);
 		textPanel.setBackground(Color.LIGHT_GRAY);
-		textPanel.setBounds(165, 12, 453, 258);
+		textPanel.setBounds(165, 36, 453, 258);
 		settingsPanel.add(textPanel);
 		textPanel.setLayout(null);
 		
@@ -269,6 +269,13 @@ public class CustomerTabView extends JPanel {
 		lblPasswordNeedsTo.setBounds(12, 226, 262, 20);
 		textPanel.add(lblPasswordNeedsTo);
 		
+		JLabel lblReceiptsWillBe = new JLabel("Receipts will be sent to this email");
+		lblReceiptsWillBe.setHorizontalAlignment(SwingConstants.LEFT);
+		lblReceiptsWillBe.setForeground(Color.DARK_GRAY);
+		lblReceiptsWillBe.setFont(new Font("HelvLight", Font.ITALIC, 12));
+		lblReceiptsWillBe.setBounds(12, 156, 195, 17);
+		textPanel.add(lblReceiptsWillBe);
+		
 		JButton saveButton = new JButton("Save");
 		saveButton.setBounds(545, 474, 73, 27);
 		settingsPanel.add(saveButton);
@@ -282,6 +289,18 @@ public class CustomerTabView extends JPanel {
 		cancelButton.setBackground(SystemColor.window);
 		cancelButton.setBounds(445, 474, 88, 27);
 		settingsPanel.add(cancelButton);
+		
+		JPanel panel_4 = new JPanel();
+		panel_4.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_4.setBackground(Color.LIGHT_GRAY);
+		panel_4.setBounds(0, 0, 624, 38);
+		settingsPanel.add(panel_4);
+		panel_4.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblPersonalInformation_1 = new JLabel("Personal Information");
+		lblPersonalInformation_1.setForeground(Color.DARK_GRAY);
+		lblPersonalInformation_1.setFont(new Font("HelvLight", Font.PLAIN, 18));
+		panel_4.add(lblPersonalInformation_1, BorderLayout.WEST);
 		
 		JPanel favouriteTab = new JPanel();
 		favouriteTab.setBackground(Color.LIGHT_GRAY);

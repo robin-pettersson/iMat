@@ -38,7 +38,7 @@ public class ListPopUp extends JPanel {
 		
 		JLabel lblAddToCart = new JLabel("Add to cart");
 		lblAddToCart.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		lblAddToCart.setForeground(Color.DARK_GRAY);
+		lblAddToCart.setForeground(Color.WHITE);
 		lblAddToCart.setFont(new Font("HelvLight", Font.BOLD, 14));
 		panel_1.add(lblAddToCart, BorderLayout.EAST);
 
