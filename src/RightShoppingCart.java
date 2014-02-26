@@ -40,6 +40,7 @@ public class RightShoppingCart extends JPanel {
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
 		table = new JTable();
+		table.setEnabled(false);
 		table.setSelectionBackground(new Color(184, 207, 229));
 		table.setShowGrid(false);
 		table.setShowVerticalLines(false);
@@ -52,11 +53,11 @@ public class RightShoppingCart extends JPanel {
 		table.setBackground(Color.LIGHT_GRAY);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{"Banan - Dole", "Test"},
+				{"Banana - Dole", ""},
+				{"2", "16kr"},
 				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
+				{"Apple - Granny Smith", ""},
+				{"3", "8kr"},
 				{null, null},
 				{null, null},
 				{null, null},
@@ -83,6 +84,7 @@ public class RightShoppingCart extends JPanel {
 			}
 		));
 		table.getColumnModel().getColumn(1).setPreferredWidth(15);
+		table.getColumnModel().getColumn(1).setMinWidth(10);
 		panel_1.add(table);
 		
 		JLabel lblTotaly = new JLabel("Sum: 340 kr");

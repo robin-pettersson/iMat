@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Dimension;
 
 
 public class CustomerTabView extends JPanel {
@@ -37,6 +38,7 @@ public class CustomerTabView extends JPanel {
 	 * Create the panel.
 	 */
 	public CustomerTabView() {
+		setPreferredSize(new Dimension(635, 550));
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setLayout(new BorderLayout(0, 0));
 		
@@ -82,29 +84,39 @@ public class CustomerTabView extends JPanel {
 		changeButton.setBackground(SystemColor.window);
 		changeButton.setForeground(Color.DARK_GRAY);
 		changeButton.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_3.setBackground(Color.LIGHT_GRAY);
+		panel_3.setLayout(new BorderLayout(0, 0));
 		GroupLayout gl_infoPanel = new GroupLayout(infoPanel);
 		gl_infoPanel.setHorizontalGroup(
 			gl_infoPanel.createParallelGroup(Alignment.LEADING)
+				.addComponent(panel_3, GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
 				.addGroup(gl_infoPanel.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_infoPanel.createParallelGroup(Alignment.LEADING)
-						.addComponent(emailLabel, GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+						.addComponent(emailLabel, GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
 						.addGroup(gl_infoPanel.createSequentialGroup()
 							.addComponent(firstnameLabel, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lastnameLabel, GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
-						.addComponent(streetLabel, GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+							.addComponent(lastnameLabel, GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE))
+						.addComponent(streetLabel, GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
 						.addGroup(gl_infoPanel.createSequentialGroup()
 							.addComponent(zipLabel)
 							.addGap(18)
-							.addComponent(cityLabel, GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE))
-						.addComponent(changeButton, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
+							.addComponent(cityLabel, GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)))
+					.addGap(101))
+				.addGroup(gl_infoPanel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(changeButton, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(535, Short.MAX_VALUE))
 		);
 		gl_infoPanel.setVerticalGroup(
 			gl_infoPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_infoPanel.createSequentialGroup()
-					.addContainerGap()
+					.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_infoPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(firstnameLabel)
 						.addComponent(lastnameLabel))
@@ -116,10 +128,15 @@ public class CustomerTabView extends JPanel {
 						.addComponent(cityLabel))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(emailLabel)
-					.addGap(18)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(changeButton, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(365, Short.MAX_VALUE))
+					.addContainerGap(339, Short.MAX_VALUE))
 		);
+		
+		JLabel lblPersonalInformation = new JLabel(" Personal Information");
+		lblPersonalInformation.setForeground(Color.DARK_GRAY);
+		lblPersonalInformation.setFont(new Font("HelvLight", Font.PLAIN, 18));
+		panel_3.add(lblPersonalInformation, BorderLayout.WEST);
 		infoPanel.setLayout(gl_infoPanel);
 		
 		JPanel settingsPanel = new JPanel();
@@ -269,15 +286,53 @@ public class CustomerTabView extends JPanel {
 		JPanel favouriteTab = new JPanel();
 		favouriteTab.setBackground(Color.LIGHT_GRAY);
 		tabPanel.addTab("Favourites", null, favouriteTab, null);
+		favouriteTab.setLayout(null);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_2.setBackground(Color.LIGHT_GRAY);
+		panel_2.setBounds(0, 0, 624, 38);
+		favouriteTab.add(panel_2);
+		panel_2.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblFavourites = new JLabel(" Favourites");
+		lblFavourites.setForeground(Color.DARK_GRAY);
+		lblFavourites.setFont(new Font("HelvLight", Font.PLAIN, 18));
+		panel_2.add(lblFavourites, BorderLayout.WEST);
 		
 		JPanel listTab = new JPanel();
 		listTab.setLayout(null);
 		listTab.setBackground(Color.LIGHT_GRAY);
-		tabPanel.addTab("Lists", null, listTab, null);
+		tabPanel.addTab("Shopping Lists", null, listTab, null);
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel.setBackground(Color.LIGHT_GRAY);
+		panel.setBounds(0, 0, 624, 38);
+		listTab.add(panel);
+		panel.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblShoppingLists = new JLabel(" Shopping Lists");
+		panel.add(lblShoppingLists);
+		lblShoppingLists.setFont(new Font("HelvLight", Font.PLAIN, 18));
+		lblShoppingLists.setForeground(Color.DARK_GRAY);
 		
 		JPanel receiptTab = new JPanel();
 		receiptTab.setBackground(Color.LIGHT_GRAY);
 		tabPanel.addTab("Receipts", null, receiptTab, null);
+		receiptTab.setLayout(null);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_1.setBackground(Color.LIGHT_GRAY);
+		panel_1.setBounds(0, 0, 624, 38);
+		receiptTab.add(panel_1);
+		panel_1.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblReceipts = new JLabel(" Receipts");
+		lblReceipts.setForeground(Color.DARK_GRAY);
+		lblReceipts.setFont(new Font("HelvLight", Font.PLAIN, 18));
+		panel_1.add(lblReceipts, BorderLayout.WEST);
 
 	}
 }
