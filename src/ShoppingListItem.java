@@ -10,6 +10,8 @@ import java.awt.Insets;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.BorderLayout;
+import java.awt.Cursor;
+import javax.swing.DebugGraphics;
 
 
 public class ShoppingListItem extends JPanel {
@@ -29,7 +31,7 @@ public class ShoppingListItem extends JPanel {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.LIGHT_GRAY);
-		panel_1.setBounds(12, 13, 230, 94);
+		panel_1.setBounds(12, 13, 440, 94);
 		itemPanel.add(panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[]{112, 85, 0};
@@ -38,7 +40,7 @@ public class ShoppingListItem extends JPanel {
 		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
-		JLabel listNameLabel = new JLabel("Listnamn");
+		JLabel listNameLabel = new JLabel("Name of List");
 		listNameLabel.setVerticalAlignment(SwingConstants.TOP);
 		listNameLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		listNameLabel.setForeground(Color.DARK_GRAY);
@@ -50,7 +52,7 @@ public class ShoppingListItem extends JPanel {
 		gbc_listNameLabel.gridy = 0;
 		panel_1.add(listNameLabel, gbc_listNameLabel);
 		
-		JLabel numberOfWaresLabel = new JLabel("- 3 varor");
+		JLabel numberOfWaresLabel = new JLabel("- 3 products");
 		numberOfWaresLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		numberOfWaresLabel.setForeground(Color.DARK_GRAY);
 		numberOfWaresLabel.setFont(new Font("HelvLight", Font.BOLD, 20));
@@ -61,7 +63,8 @@ public class ShoppingListItem extends JPanel {
 		gbc_numberOfWaresLabel.gridy = 0;
 		panel_1.add(numberOfWaresLabel, gbc_numberOfWaresLabel);
 		
-		JLabel editListLabel = new JLabel("Visa/Ändra");
+		JLabel editListLabel = new JLabel("Show/Edit");
+		editListLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		editListLabel.setForeground(Color.GRAY);
 		editListLabel.setFont(new Font("HelvLight", Font.BOLD, 15));
 		GridBagConstraints gbc_editListLabel = new GridBagConstraints();
@@ -71,12 +74,15 @@ public class ShoppingListItem extends JPanel {
 		panel_1.add(editListLabel, gbc_editListLabel);
 		
 		JLabel closeLabel = new JLabel("X");
+		closeLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		closeLabel.setForeground(Color.RED);
 		closeLabel.setFont(new Font("gargi", Font.BOLD, 24));
 		closeLabel.setBounds(593, 13, 24, 26);
 		itemPanel.add(closeLabel);
 		
 		JLabel addToCartLabel = new JLabel("Lägg i kundkorgen");
+		addToCartLabel.setDebugGraphicsOptions(DebugGraphics.NONE_OPTION);
+		addToCartLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		addToCartLabel.setForeground(Color.GRAY);
 		addToCartLabel.setFont(new Font("HelvLight", Font.BOLD, 15));
 		addToCartLabel.setBounds(470, 80, 147, 36);
