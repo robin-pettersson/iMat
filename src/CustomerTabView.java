@@ -22,6 +22,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Dimension;
+import javax.swing.UIManager;
+import java.awt.Cursor;
 
 
 public class CustomerTabView extends JPanel {
@@ -33,6 +35,8 @@ public class CustomerTabView extends JPanel {
 	private JTextField textField;
 	private JPasswordField pwdLsenord;
 	private JPasswordField passwordField;
+	private JTable receiptTable;
+	private JTable table;
 
 	/**
 	 * Create the panel.
@@ -147,41 +151,41 @@ public class CustomerTabView extends JPanel {
 		JPanel labelPanel = new JPanel();
 		labelPanel.setBorder(null);
 		labelPanel.setBackground(Color.LIGHT_GRAY);
-		labelPanel.setBounds(12, 36, 151, 258);
+		labelPanel.setBounds(12, 43, 151, 251);
 		settingsPanel.add(labelPanel);
 		labelPanel.setLayout(null);
 		
 		JLabel lastnameLabel2 = new JLabel("Lastname:");
 		lastnameLabel2.setHorizontalAlignment(SwingConstants.RIGHT);
-		lastnameLabel2.setBounds(12, 38, 127, 20);
+		lastnameLabel2.setBounds(12, 26, 127, 20);
 		labelPanel.add(lastnameLabel2);
 		lastnameLabel2.setForeground(Color.DARK_GRAY);
 		lastnameLabel2.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		
 		JLabel fornameLabel2 = new JLabel("Firstname:");
 		fornameLabel2.setHorizontalAlignment(SwingConstants.RIGHT);
-		fornameLabel2.setBounds(12, 12, 127, 20);
+		fornameLabel2.setBounds(12, 0, 127, 20);
 		labelPanel.add(fornameLabel2);
 		fornameLabel2.setForeground(Color.DARK_GRAY);
 		fornameLabel2.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		
 		JLabel streetLabel2 = new JLabel("Street:");
 		streetLabel2.setHorizontalAlignment(SwingConstants.RIGHT);
-		streetLabel2.setBounds(12, 70, 127, 20);
+		streetLabel2.setBounds(12, 58, 127, 20);
 		labelPanel.add(streetLabel2);
 		streetLabel2.setForeground(Color.DARK_GRAY);
 		streetLabel2.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		
 		JLabel zipAndCityLabel2 = new JLabel("Zip-code and city:");
 		zipAndCityLabel2.setHorizontalAlignment(SwingConstants.RIGHT);
-		zipAndCityLabel2.setBounds(12, 102, 127, 20);
+		zipAndCityLabel2.setBounds(12, 90, 127, 20);
 		labelPanel.add(zipAndCityLabel2);
 		zipAndCityLabel2.setForeground(Color.DARK_GRAY);
 		zipAndCityLabel2.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		
 		JLabel emailLabel2 = new JLabel("Email:");
 		emailLabel2.setHorizontalAlignment(SwingConstants.RIGHT);
-		emailLabel2.setBounds(12, 134, 127, 20);
+		emailLabel2.setBounds(12, 122, 127, 20);
 		labelPanel.add(emailLabel2);
 		emailLabel2.setForeground(Color.DARK_GRAY);
 		emailLabel2.setFont(new Font("HelvLight", Font.PLAIN, 14));
@@ -190,26 +194,26 @@ public class CustomerTabView extends JPanel {
 		lblLsenord.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblLsenord.setForeground(Color.DARK_GRAY);
 		lblLsenord.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		lblLsenord.setBounds(12, 182, 127, 20);
+		lblLsenord.setBounds(12, 170, 127, 20);
 		labelPanel.add(lblLsenord);
 		
 		JLabel lblBekrftaLsenord = new JLabel("Verify password:");
 		lblBekrftaLsenord.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblBekrftaLsenord.setForeground(Color.DARK_GRAY);
 		lblBekrftaLsenord.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		lblBekrftaLsenord.setBounds(12, 209, 127, 20);
+		lblBekrftaLsenord.setBounds(12, 197, 127, 20);
 		labelPanel.add(lblBekrftaLsenord);
 		
 		JPanel textPanel = new JPanel();
 		textPanel.setBorder(null);
 		textPanel.setBackground(Color.LIGHT_GRAY);
-		textPanel.setBounds(165, 36, 453, 258);
+		textPanel.setBounds(165, 43, 453, 251);
 		settingsPanel.add(textPanel);
 		textPanel.setLayout(null);
 		
 		txtFrnamn = new JTextField();
 		txtFrnamn.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		txtFrnamn.setBounds(12, 12, 171, 19);
+		txtFrnamn.setBounds(12, 0, 171, 19);
 		textPanel.add(txtFrnamn);
 		txtFrnamn.setText("Firstname");
 		txtFrnamn.setColumns(10);
@@ -218,28 +222,28 @@ public class CustomerTabView extends JPanel {
 		txtEfternamn.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		txtEfternamn.setText("Lastname");
 		txtEfternamn.setColumns(10);
-		txtEfternamn.setBounds(12, 43, 171, 19);
+		txtEfternamn.setBounds(12, 31, 171, 19);
 		textPanel.add(txtEfternamn);
 		
 		txtLngagatan = new JTextField();
 		txtLngagatan.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		txtLngagatan.setText("Streetname 99");
 		txtLngagatan.setColumns(10);
-		txtLngagatan.setBounds(12, 74, 171, 19);
+		txtLngagatan.setBounds(12, 62, 171, 19);
 		textPanel.add(txtLngagatan);
 		
 		txtSderkping = new JTextField();
 		txtSderkping.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		txtSderkping.setText("Cityname");
 		txtSderkping.setColumns(10);
-		txtSderkping.setBounds(78, 105, 105, 19);
+		txtSderkping.setBounds(78, 93, 105, 19);
 		textPanel.add(txtSderkping);
 		
 		emailTextField = new JTextField();
 		emailTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		emailTextField.setText("youemail@gmail.com");
 		emailTextField.setColumns(10);
-		emailTextField.setBounds(12, 136, 171, 19);
+		emailTextField.setBounds(12, 124, 171, 19);
 		textPanel.add(emailTextField);
 		
 		textField = new JTextField();
@@ -247,33 +251,33 @@ public class CustomerTabView extends JPanel {
 		textField.setToolTipText("Postnummer");
 		textField.setText("682 92");
 		textField.setColumns(10);
-		textField.setBounds(12, 105, 54, 19);
+		textField.setBounds(12, 93, 54, 19);
 		textPanel.add(textField);
 		
 		pwdLsenord = new JPasswordField();
 		pwdLsenord.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		pwdLsenord.setText("lösenord");
-		pwdLsenord.setBounds(12, 185, 171, 19);
+		pwdLsenord.setBounds(12, 173, 171, 19);
 		textPanel.add(pwdLsenord);
 		
 		passwordField = new JPasswordField();
 		passwordField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		passwordField.setText("lösenord");
-		passwordField.setBounds(12, 208, 171, 19);
+		passwordField.setBounds(12, 196, 171, 19);
 		textPanel.add(passwordField);
 		
 		JLabel lblPasswordNeedsTo = new JLabel("Password needs to be at least 8 characters");
 		lblPasswordNeedsTo.setHorizontalAlignment(SwingConstants.LEFT);
 		lblPasswordNeedsTo.setForeground(Color.DARK_GRAY);
 		lblPasswordNeedsTo.setFont(new Font("HelvLight", Font.ITALIC, 12));
-		lblPasswordNeedsTo.setBounds(12, 226, 262, 20);
+		lblPasswordNeedsTo.setBounds(12, 214, 262, 20);
 		textPanel.add(lblPasswordNeedsTo);
 		
 		JLabel lblReceiptsWillBe = new JLabel("Receipts will be sent to this email");
 		lblReceiptsWillBe.setHorizontalAlignment(SwingConstants.LEFT);
 		lblReceiptsWillBe.setForeground(Color.DARK_GRAY);
 		lblReceiptsWillBe.setFont(new Font("HelvLight", Font.ITALIC, 12));
-		lblReceiptsWillBe.setBounds(12, 156, 195, 17);
+		lblReceiptsWillBe.setBounds(12, 144, 195, 17);
 		textPanel.add(lblReceiptsWillBe);
 		
 		JButton saveButton = new JButton("Save");
@@ -319,6 +323,11 @@ public class CustomerTabView extends JPanel {
 		lblFavourites.setFont(new Font("HelvLight", Font.PLAIN, 18));
 		panel_2.add(lblFavourites, BorderLayout.WEST);
 		
+		JPanel favouriteContentPanel = new JPanel();
+		favouriteContentPanel.setBackground(Color.LIGHT_GRAY);
+		favouriteContentPanel.setBounds(0, 36, 624, 477);
+		favouriteTab.add(favouriteContentPanel);
+		
 		JPanel listTab = new JPanel();
 		listTab.setLayout(null);
 		listTab.setBackground(Color.LIGHT_GRAY);
@@ -336,6 +345,11 @@ public class CustomerTabView extends JPanel {
 		lblShoppingLists.setFont(new Font("HelvLight", Font.PLAIN, 18));
 		lblShoppingLists.setForeground(Color.DARK_GRAY);
 		
+		JPanel shoppingListsContentPanel = new JPanel();
+		shoppingListsContentPanel.setBackground(Color.LIGHT_GRAY);
+		shoppingListsContentPanel.setBounds(0, 36, 624, 477);
+		listTab.add(shoppingListsContentPanel);
+		
 		JPanel receiptTab = new JPanel();
 		receiptTab.setBackground(Color.LIGHT_GRAY);
 		tabPanel.addTab("Receipts", null, receiptTab, null);
@@ -352,6 +366,181 @@ public class CustomerTabView extends JPanel {
 		lblReceipts.setForeground(Color.DARK_GRAY);
 		lblReceipts.setFont(new Font("HelvLight", Font.PLAIN, 18));
 		panel_1.add(lblReceipts, BorderLayout.WEST);
+		
+		JPanel receiptContentPanel = new JPanel();
+		receiptContentPanel.setBackground(Color.LIGHT_GRAY);
+		receiptContentPanel.setBounds(0, 36, 624, 477);
+		receiptTab.add(receiptContentPanel);
+		receiptContentPanel.setLayout(null);
+		
+		JPanel panel_5 = new JPanel();
+		panel_5.setBounds(12, 12, 248, 453);
+		receiptContentPanel.add(panel_5);
+		panel_5.setLayout(new BorderLayout(0, 0));
+		
+		receiptTable = new JTable();
+		receiptTable.setShowVerticalLines(false);
+		receiptTable.setBorder(new LineBorder(new Color(0, 0, 0)));
+		receiptTable.setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
+		receiptTable.setModel(new DefaultTableModel(
+			new Object[][] {
+				{"140217", "6 pcs", "502 kr"},
+				{"140214", "2 pcs", "1337 kr"},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+			},
+			new String[] {
+				"Date", "Amount", "Sum"
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, true, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		receiptTable.getColumnModel().getColumn(0).setResizable(false);
+		receiptTable.getColumnModel().getColumn(0).setPreferredWidth(60);
+		receiptTable.getColumnModel().getColumn(1).setResizable(false);
+		receiptTable.getColumnModel().getColumn(2).setResizable(false);
+		receiptTable.getColumnModel().getColumn(2).setPreferredWidth(50);
+		receiptTable.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		panel_5.add(receiptTable);
+		
+		JPanel selectedReceiptPanel = new JPanel();
+		selectedReceiptPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		selectedReceiptPanel.setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
+		selectedReceiptPanel.setBounds(272, 12, 340, 453);
+		receiptContentPanel.add(selectedReceiptPanel);
+		selectedReceiptPanel.setLayout(null);
+		
+		JPanel panel_7 = new JPanel();
+		panel_7.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_7.setBackground(Color.LIGHT_GRAY);
+		panel_7.setBounds(0, 0, 340, 38);
+		selectedReceiptPanel.add(panel_7);
+		panel_7.setLayout(new BorderLayout(0, 0));
+		
+		JLabel label = new JLabel("140217");
+		label.setForeground(Color.DARK_GRAY);
+		label.setFont(new Font("HelvLight", Font.PLAIN, 16));
+		panel_7.add(label);
+		
+		JLabel label_1 = new JLabel("X");
+		label_1.setToolTipText("Delete Receipt");
+		label_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		label_1.setForeground(Color.RED);
+		label_1.setFont(new Font("Dialog", Font.BOLD, 24));
+		panel_7.add(label_1, BorderLayout.EAST);
+		
+		table = new JTable();
+		table.setRowSelectionAllowed(false);
+		table.setShowVerticalLines(false);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{"Bananas - Dole", "44 pcs", "32 kr"},
+				{"Apples - Granny Smith", "5 pcs", "25 kr"},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+			},
+			new String[] {
+				"Product", "Amount", "Sum"
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		table.getColumnModel().getColumn(0).setResizable(false);
+		table.getColumnModel().getColumn(0).setPreferredWidth(125);
+		table.getColumnModel().getColumn(1).setResizable(false);
+		table.getColumnModel().getColumn(1).setPreferredWidth(15);
+		table.getColumnModel().getColumn(2).setResizable(false);
+		table.getColumnModel().getColumn(2).setPreferredWidth(25);
+		table.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		table.setBorder(new LineBorder(new Color(0, 0, 0)));
+		table.setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
+		table.setBounds(0, 36, 340, 381);
+		selectedReceiptPanel.add(table);
+		
+		JPanel panel_6 = new JPanel();
+		panel_6.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_6.setBackground(Color.LIGHT_GRAY);
+		panel_6.setBounds(0, 415, 340, 38);
+		selectedReceiptPanel.add(panel_6);
+		panel_6.setLayout(new BorderLayout(0, 0));
+		
+		JLabel label_2 = new JLabel("1/2");
+		label_2.setVerticalAlignment(SwingConstants.BOTTOM);
+		label_2.setToolTipText("Page 1 av 2");
+		label_2.setHorizontalAlignment(SwingConstants.CENTER);
+		label_2.setForeground(Color.GRAY);
+		label_2.setFont(new Font("HelvLight", Font.BOLD, 16));
+		panel_6.add(label_2, BorderLayout.CENTER);
+		
+		JLabel label_3 = new JLabel(">>");
+		label_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		label_3.setVerticalAlignment(SwingConstants.BOTTOM);
+		label_3.setToolTipText("Next");
+		label_3.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_3.setForeground(Color.DARK_GRAY);
+		label_3.setFont(new Font("HelvLight", Font.BOLD, 16));
+		panel_6.add(label_3, BorderLayout.EAST);
+		
+		JLabel label_4 = new JLabel("<<");
+		label_4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		label_4.setVerticalAlignment(SwingConstants.BOTTOM);
+		label_4.setToolTipText("Previous");
+		label_4.setHorizontalAlignment(SwingConstants.LEFT);
+		label_4.setForeground(Color.GRAY);
+		label_4.setFont(new Font("HelvLight", Font.BOLD, 16));
+		panel_6.add(label_4, BorderLayout.WEST);
 
 	}
 }
