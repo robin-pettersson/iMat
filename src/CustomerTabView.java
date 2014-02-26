@@ -327,6 +327,7 @@ public class CustomerTabView extends JPanel {
 		favouriteContentPanel.setBackground(Color.LIGHT_GRAY);
 		favouriteContentPanel.setBounds(0, 36, 624, 477);
 		favouriteTab.add(favouriteContentPanel);
+		favouriteContentPanel.setLayout(null);
 		
 		JPanel listTab = new JPanel();
 		listTab.setLayout(null);
@@ -349,6 +350,7 @@ public class CustomerTabView extends JPanel {
 		shoppingListsContentPanel.setBackground(Color.LIGHT_GRAY);
 		shoppingListsContentPanel.setBounds(0, 36, 624, 477);
 		listTab.add(shoppingListsContentPanel);
+		shoppingListsContentPanel.setLayout(null);
 		
 		JPanel receiptTab = new JPanel();
 		receiptTab.setBackground(Color.LIGHT_GRAY);
@@ -445,17 +447,17 @@ public class CustomerTabView extends JPanel {
 		selectedReceiptPanel.add(panel_7);
 		panel_7.setLayout(new BorderLayout(0, 0));
 		
-		JLabel label = new JLabel("140217");
-		label.setForeground(Color.DARK_GRAY);
-		label.setFont(new Font("HelvLight", Font.PLAIN, 16));
-		panel_7.add(label);
+		JLabel dateLabel = new JLabel("140217");
+		dateLabel.setForeground(Color.DARK_GRAY);
+		dateLabel.setFont(new Font("HelvLight", Font.PLAIN, 16));
+		panel_7.add(dateLabel);
 		
-		JLabel label_1 = new JLabel("X");
-		label_1.setToolTipText("Delete Receipt");
-		label_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		label_1.setForeground(Color.RED);
-		label_1.setFont(new Font("Dialog", Font.BOLD, 24));
-		panel_7.add(label_1, BorderLayout.EAST);
+		JLabel closeLabel = new JLabel("X");
+		closeLabel.setToolTipText("Delete Receipt");
+		closeLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		closeLabel.setForeground(Color.RED);
+		closeLabel.setFont(new Font("Dialog", Font.BOLD, 24));
+		panel_7.add(closeLabel, BorderLayout.EAST);
 		
 		table = new JTable();
 		table.setRowSelectionAllowed(false);
