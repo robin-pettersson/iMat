@@ -65,6 +65,13 @@ public class Preview extends JPanel {
 		label_2.setBounds(12, 70, 252, 17);
 		deliveryAddressPanel.add(label_2);
 		
+		JLabel lblYouremailemailcom = new JLabel("youremail@email.com");
+		lblYouremailemailcom.setHorizontalAlignment(SwingConstants.LEFT);
+		lblYouremailemailcom.setForeground(Color.DARK_GRAY);
+		lblYouremailemailcom.setFont(new Font("HelvLight", Font.PLAIN, 16));
+		lblYouremailemailcom.setBounds(12, 94, 252, 17);
+		deliveryAddressPanel.add(lblYouremailemailcom);
+		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_2.setBackground(Color.LIGHT_GRAY);

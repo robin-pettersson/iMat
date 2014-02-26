@@ -24,6 +24,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.Dimension;
 import javax.swing.UIManager;
 import java.awt.Cursor;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class CustomerTabView extends JPanel {
@@ -85,42 +87,54 @@ public class CustomerTabView extends JPanel {
 		cityLabel.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		
 		JButton changeButton = new JButton("Edit");
+		changeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		changeButton.setBackground(SystemColor.window);
 		changeButton.setForeground(Color.DARK_GRAY);
 		changeButton.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setLayout(null);
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_3.setBackground(Color.LIGHT_GRAY);
-		panel_3.setLayout(new BorderLayout(0, 0));
+		panel_3.setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
+		
+		JLabel lblPersonalInformation = new JLabel("Personal Information");
+		lblPersonalInformation.setForeground(Color.DARK_GRAY);
+		lblPersonalInformation.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		lblPersonalInformation.setBounds(12, 0, 185, 20);
+		panel_3.add(lblPersonalInformation);
 		GroupLayout gl_infoPanel = new GroupLayout(infoPanel);
 		gl_infoPanel.setHorizontalGroup(
 			gl_infoPanel.createParallelGroup(Alignment.LEADING)
-				.addComponent(panel_3, GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
 				.addGroup(gl_infoPanel.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_infoPanel.createParallelGroup(Alignment.LEADING)
-						.addComponent(emailLabel, GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
 						.addGroup(gl_infoPanel.createSequentialGroup()
-							.addComponent(firstnameLabel, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lastnameLabel, GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE))
-						.addComponent(streetLabel, GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
+							.addGroup(gl_infoPanel.createParallelGroup(Alignment.LEADING)
+								.addComponent(emailLabel, GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
+								.addGroup(gl_infoPanel.createSequentialGroup()
+									.addComponent(firstnameLabel, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(lastnameLabel, GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE))
+								.addComponent(streetLabel, GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
+								.addGroup(gl_infoPanel.createSequentialGroup()
+									.addComponent(zipLabel)
+									.addGap(18)
+									.addComponent(cityLabel, GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)))
+							.addGap(101))
 						.addGroup(gl_infoPanel.createSequentialGroup()
-							.addComponent(zipLabel)
-							.addGap(18)
-							.addComponent(cityLabel, GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)))
-					.addGap(101))
-				.addGroup(gl_infoPanel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(changeButton, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(535, Short.MAX_VALUE))
+							.addComponent(changeButton, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap(535, Short.MAX_VALUE))))
+				.addComponent(panel_3, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
 		);
 		gl_infoPanel.setVerticalGroup(
 			gl_infoPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_infoPanel.createSequentialGroup()
-					.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_infoPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(firstnameLabel)
 						.addComponent(lastnameLabel))
@@ -136,11 +150,6 @@ public class CustomerTabView extends JPanel {
 					.addComponent(changeButton, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(339, Short.MAX_VALUE))
 		);
-		
-		JLabel lblPersonalInformation = new JLabel(" Personal Information");
-		lblPersonalInformation.setForeground(Color.DARK_GRAY);
-		lblPersonalInformation.setFont(new Font("HelvLight", Font.PLAIN, 18));
-		panel_3.add(lblPersonalInformation, BorderLayout.WEST);
 		infoPanel.setLayout(gl_infoPanel);
 		
 		JPanel settingsPanel = new JPanel();
@@ -295,33 +304,22 @@ public class CustomerTabView extends JPanel {
 		settingsPanel.add(cancelButton);
 		
 		JPanel panel_4 = new JPanel();
+		panel_4.setLayout(null);
 		panel_4.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_4.setBackground(Color.LIGHT_GRAY);
-		panel_4.setBounds(0, 0, 624, 38);
+		panel_4.setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
+		panel_4.setBounds(0, 0, 624, 32);
 		settingsPanel.add(panel_4);
-		panel_4.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblPersonalInformation_1 = new JLabel("Personal Information");
-		lblPersonalInformation_1.setForeground(Color.DARK_GRAY);
-		lblPersonalInformation_1.setFont(new Font("HelvLight", Font.PLAIN, 18));
-		panel_4.add(lblPersonalInformation_1, BorderLayout.WEST);
+		JLabel label = new JLabel("Personal Information");
+		label.setForeground(Color.DARK_GRAY);
+		label.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		label.setBounds(12, 0, 185, 20);
+		panel_4.add(label);
 		
 		JPanel favouriteTab = new JPanel();
 		favouriteTab.setBackground(Color.LIGHT_GRAY);
 		tabPanel.addTab("Favourites", null, favouriteTab, null);
 		favouriteTab.setLayout(null);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2.setBackground(Color.LIGHT_GRAY);
-		panel_2.setBounds(0, 0, 624, 38);
-		favouriteTab.add(panel_2);
-		panel_2.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblFavourites = new JLabel(" Favourites");
-		lblFavourites.setForeground(Color.DARK_GRAY);
-		lblFavourites.setFont(new Font("HelvLight", Font.PLAIN, 18));
-		panel_2.add(lblFavourites, BorderLayout.WEST);
 		
 		JPanel favouriteContentPanel = new JPanel();
 		favouriteContentPanel.setBackground(Color.LIGHT_GRAY);
@@ -329,22 +327,23 @@ public class CustomerTabView extends JPanel {
 		favouriteTab.add(favouriteContentPanel);
 		favouriteContentPanel.setLayout(null);
 		
+		JPanel panel_2 = new JPanel();
+		panel_2.setLayout(null);
+		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_2.setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
+		panel_2.setBounds(0, 0, 624, 32);
+		favouriteTab.add(panel_2);
+		
+		JLabel lblFavouriteProducts = new JLabel("Favourite Products");
+		lblFavouriteProducts.setForeground(Color.DARK_GRAY);
+		lblFavouriteProducts.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		lblFavouriteProducts.setBounds(12, 0, 185, 20);
+		panel_2.add(lblFavouriteProducts);
+		
 		JPanel listTab = new JPanel();
 		listTab.setLayout(null);
 		listTab.setBackground(Color.LIGHT_GRAY);
 		tabPanel.addTab("Shopping Lists", null, listTab, null);
-		
-		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel.setBackground(Color.LIGHT_GRAY);
-		panel.setBounds(0, 0, 624, 38);
-		listTab.add(panel);
-		panel.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblShoppingLists = new JLabel(" Shopping Lists");
-		panel.add(lblShoppingLists);
-		lblShoppingLists.setFont(new Font("HelvLight", Font.PLAIN, 18));
-		lblShoppingLists.setForeground(Color.DARK_GRAY);
 		
 		JPanel shoppingListsContentPanel = new JPanel();
 		shoppingListsContentPanel.setBackground(Color.LIGHT_GRAY);
@@ -352,22 +351,23 @@ public class CustomerTabView extends JPanel {
 		listTab.add(shoppingListsContentPanel);
 		shoppingListsContentPanel.setLayout(null);
 		
+		JPanel panel = new JPanel();
+		panel.setLayout(null);
+		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel.setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
+		panel.setBounds(0, 0, 624, 32);
+		listTab.add(panel);
+		
+		JLabel lblShoppingLists = new JLabel("Shopping Lists");
+		lblShoppingLists.setForeground(Color.DARK_GRAY);
+		lblShoppingLists.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		lblShoppingLists.setBounds(12, 0, 185, 20);
+		panel.add(lblShoppingLists);
+		
 		JPanel receiptTab = new JPanel();
 		receiptTab.setBackground(Color.LIGHT_GRAY);
 		tabPanel.addTab("Receipts", null, receiptTab, null);
 		receiptTab.setLayout(null);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_1.setBackground(Color.LIGHT_GRAY);
-		panel_1.setBounds(0, 0, 624, 38);
-		receiptTab.add(panel_1);
-		panel_1.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblReceipts = new JLabel(" Receipts");
-		lblReceipts.setForeground(Color.DARK_GRAY);
-		lblReceipts.setFont(new Font("HelvLight", Font.PLAIN, 18));
-		panel_1.add(lblReceipts, BorderLayout.WEST);
 		
 		JPanel receiptContentPanel = new JPanel();
 		receiptContentPanel.setBackground(Color.LIGHT_GRAY);
@@ -543,6 +543,19 @@ public class CustomerTabView extends JPanel {
 		label_4.setForeground(Color.GRAY);
 		label_4.setFont(new Font("HelvLight", Font.BOLD, 16));
 		panel_6.add(label_4, BorderLayout.WEST);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setLayout(null);
+		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_1.setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
+		panel_1.setBounds(0, 0, 624, 32);
+		receiptTab.add(panel_1);
+		
+		JLabel lblReceipts = new JLabel("Receipts");
+		lblReceipts.setForeground(Color.DARK_GRAY);
+		lblReceipts.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		lblReceipts.setBounds(12, 0, 185, 20);
+		panel_1.add(lblReceipts);
 
 	}
 }
