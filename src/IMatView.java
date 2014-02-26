@@ -199,12 +199,12 @@ public class IMatView extends JFrame {
 				{
 					DefaultMutableTreeNode node_1;
 					DefaultMutableTreeNode node_2;
-					add(new DefaultMutableTreeNode("Favourites"));
-					add(new DefaultMutableTreeNode("Dairies"));
+					getContentPane().add(new DefaultMutableTreeNode("Favourites"));
+					getContentPane().add(new DefaultMutableTreeNode("Dairies"));
 					node_1 = new DefaultMutableTreeNode("Meat and Fish");
 						node_1.add(new DefaultMutableTreeNode("Meat"));
 						node_1.add(new DefaultMutableTreeNode("Fish"));
-					add(node_1);
+					getContentPane().add(node_1);
 					node_1 = new DefaultMutableTreeNode("Fruits and Vegetables");
 						node_2 = new DefaultMutableTreeNode("Fruits");
 							node_2.add(new DefaultMutableTreeNode("Berry"));
@@ -218,23 +218,23 @@ public class IMatView extends JFrame {
 							node_2.add(new DefaultMutableTreeNode("Vegetable Fruit"));
 							node_2.add(new DefaultMutableTreeNode("Cabbage"));
 						node_1.add(node_2);
-					add(node_1);
-					add(new DefaultMutableTreeNode("Bread"));
+					getContentPane().add(node_1);
+					getContentPane().add(new DefaultMutableTreeNode("Bread"));
 					node_1 = new DefaultMutableTreeNode("Drinks");
 						node_1.add(new DefaultMutableTreeNode("Hot Drinks"));
 						node_1.add(new DefaultMutableTreeNode("Cold Drinks"));
-					add(node_1);
+					getContentPane().add(node_1);
 					node_1 = new DefaultMutableTreeNode("Carbs");
 						node_1.add(new DefaultMutableTreeNode("Pasta"));
 						node_1.add(new DefaultMutableTreeNode("Potato Rice"));
-					add(node_1);
-					add(new DefaultMutableTreeNode("Sweet"));
+					getContentPane().add(node_1);
+					getContentPane().add(new DefaultMutableTreeNode("Sweet"));
 					node_1 = new DefaultMutableTreeNode("Plants");
 						node_1.add(new DefaultMutableTreeNode("Pod"));
 						node_1.add(new DefaultMutableTreeNode("Nuts and Seeds"));
-					add(node_1);
-					add(new DefaultMutableTreeNode("Herb"));
-					add(new DefaultMutableTreeNode("Fluor Sugar Salt"));
+					getContentPane().add(node_1);
+					getContentPane().add(new DefaultMutableTreeNode("Herb"));
+					getContentPane().add(new DefaultMutableTreeNode("Fluor Sugar Salt"));
 				}
 			}
 		));

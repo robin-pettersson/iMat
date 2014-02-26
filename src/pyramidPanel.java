@@ -9,6 +9,7 @@ import java.awt.Insets;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 
 
 public class pyramidPanel extends JPanel {
@@ -17,10 +18,12 @@ public class pyramidPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public pyramidPanel() {
+		setPreferredSize(new Dimension(635, 35));
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setPreferredSize(new Dimension(635, 35));
 		panel.setBackground(Color.LIGHT_GRAY);
 		add(panel);
 		GridBagLayout gbl_panel = new GridBagLayout();
