@@ -66,6 +66,7 @@ public class iMatNavController implements TreeSelectionListener {
 	}
 	
 	public void listItems(String type, JPanel panel){
+		panel.removeAll();
 		ProductCategory category = null;
 		for (ProductCategory cat : ProductCategory.values()) {
 			String name = cat.name();
@@ -75,13 +76,12 @@ public class iMatNavController implements TreeSelectionListener {
 			}
 		}
 		
-		List<Product> productList = iMat.getProducts();
-		System.out.println(productList);
+		List<Product> productList = iMat.getProducts(category);
 		for (int i = 0; i < 9 || i < iMat.getProducts(category).size() ; i++) {
 			Product pro = productList.get(i);
 			GridView card = new GridView(pro.getName(), pro.getPrice());
 			panel.add(card);
-			panel.repaint();
+			panel.revalidate();
 		}
 		
 	}

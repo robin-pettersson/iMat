@@ -28,7 +28,7 @@ public class GridView extends JPanel {
 		productNameLbl.setBounds(5, 5, 150, 22);
 		add(productNameLbl);
 		
-		priceLbl = new JLabel(pris + "");
+		priceLbl = new JLabel(pris + "kr");
 		priceLbl.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		priceLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		priceLbl.setBounds(5, 140, 37, 14);
