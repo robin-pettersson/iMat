@@ -25,7 +25,8 @@ public class RegisterPopUp extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public RegisterPopUp() {
+	public RegisterPopUp(String fName, String lName, String address, String zip, String city, String email) {
+		
 		setBackground(Color.LIGHT_GRAY);
 		setPreferredSize(new Dimension(408, 356));
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
@@ -98,18 +99,21 @@ public class RegisterPopUp extends JPanel {
 		firstnameTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		firstnameTextField.setColumns(10);
 		firstnameTextField.setBounds(0, 0, 195, 19);
+		firstnameTextField.setText(fName);
 		panel_1.add(firstnameTextField);
 		
 		lastnameTextField = new JTextField();
 		lastnameTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		lastnameTextField.setColumns(10);
 		lastnameTextField.setBounds(0, 31, 195, 19);
+		lastnameTextField.setText(lName);
 		panel_1.add(lastnameTextField);
 		
 		streetTextField = new JTextField();
 		streetTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		streetTextField.setColumns(10);
 		streetTextField.setBounds(0, 62, 195, 19);
+		streetTextField.setText(address);
 		panel_1.add(streetTextField);
 		
 		zipTextField = new JTextField();
@@ -117,18 +121,21 @@ public class RegisterPopUp extends JPanel {
 		zipTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		zipTextField.setColumns(10);
 		zipTextField.setBounds(0, 93, 54, 19);
+		zipTextField.setText(zip);
 		panel_1.add(zipTextField);
 		
 		cityTextField = new JTextField();
 		cityTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		cityTextField.setColumns(10);
 		cityTextField.setBounds(66, 93, 129, 19);
+		cityTextField.setText(city);
 		panel_1.add(cityTextField);
 		
 		emailTextField = new JTextField();
 		emailTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		emailTextField.setColumns(10);
 		emailTextField.setBounds(0, 124, 195, 19);
+		emailTextField.setText(email);
 		panel_1.add(emailTextField);
 		
 		JLabel label_5 = new JLabel("Receipt will be sent to this email");

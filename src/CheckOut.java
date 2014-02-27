@@ -16,18 +16,24 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import java.awt.Cursor;
 import javax.swing.JButton;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class CheckOut extends JPanel {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
+	private JTextField fNameTextField;
+	private JTextField lNameTextField;
+	private JTextField addressTextField;
+	private JTextField zipTextField;
+	private JTextField cityTextField;
+	private JTextField emailTextField;
 	private JPasswordField passwordField;
 	private JTextField textField_6;
+	
+	private RegisterController reg = RegisterController.getInstance();
 
 	/**
 	 * Create the panel.
@@ -171,42 +177,43 @@ public class CheckOut extends JPanel {
 		panel_6.setBounds(120, 12, 221, 188);
 		panel_4.add(panel_6);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		textField.setColumns(10);
-		textField.setBounds(0, 0, 195, 19);
-		panel_6.add(textField);
+		fNameTextField = new JTextField();
+		fNameTextField.addFocusListener(reg);
+		fNameTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		fNameTextField.setColumns(10);
+		fNameTextField.setBounds(0, 0, 195, 19);
+		panel_6.add(fNameTextField);
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		textField_1.setColumns(10);
-		textField_1.setBounds(0, 31, 195, 19);
-		panel_6.add(textField_1);
+		lNameTextField = new JTextField();
+		lNameTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		lNameTextField.setColumns(10);
+		lNameTextField.setBounds(0, 31, 195, 19);
+		panel_6.add(lNameTextField);
 		
-		textField_2 = new JTextField();
-		textField_2.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		textField_2.setColumns(10);
-		textField_2.setBounds(0, 62, 195, 19);
-		panel_6.add(textField_2);
+		addressTextField = new JTextField();
+		addressTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		addressTextField.setColumns(10);
+		addressTextField.setBounds(0, 62, 195, 19);
+		panel_6.add(addressTextField);
 		
-		textField_3 = new JTextField();
-		textField_3.setToolTipText("Postnummer");
-		textField_3.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		textField_3.setColumns(10);
-		textField_3.setBounds(0, 93, 54, 19);
-		panel_6.add(textField_3);
+		zipTextField = new JTextField();
+		zipTextField.setToolTipText("Postnummer");
+		zipTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		zipTextField.setColumns(10);
+		zipTextField.setBounds(0, 93, 54, 19);
+		panel_6.add(zipTextField);
 		
-		textField_4 = new JTextField();
-		textField_4.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		textField_4.setColumns(10);
-		textField_4.setBounds(66, 93, 129, 19);
-		panel_6.add(textField_4);
+		cityTextField = new JTextField();
+		cityTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		cityTextField.setColumns(10);
+		cityTextField.setBounds(66, 93, 129, 19);
+		panel_6.add(cityTextField);
 		
-		textField_5 = new JTextField();
-		textField_5.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		textField_5.setColumns(10);
-		textField_5.setBounds(0, 124, 195, 19);
-		panel_6.add(textField_5);
+		emailTextField = new JTextField();
+		emailTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		emailTextField.setColumns(10);
+		emailTextField.setBounds(0, 124, 195, 19);
+		panel_6.add(emailTextField);
 		
 		JLabel label_7 = new JLabel("Receipt will be sent to this email");
 		label_7.setHorizontalAlignment(SwingConstants.LEFT);
@@ -247,13 +254,14 @@ public class CheckOut extends JPanel {
 		label_11.setBounds(200, 93, 12, 17);
 		panel_6.add(label_11);
 		
-		JLabel label_5 = new JLabel("Register Account");
-		label_5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		label_5.setHorizontalAlignment(SwingConstants.RIGHT);
-		label_5.setForeground(Color.WHITE);
-		label_5.setFont(new Font("HelvLight", Font.BOLD, 18));
-		label_5.setBounds(0, 155, 195, 31);
-		panel_6.add(label_5);
+		JLabel registerLabel = new JLabel("Register Account");
+		registerLabel.addMouseListener(reg);
+		registerLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		registerLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		registerLabel.setForeground(Color.WHITE);
+		registerLabel.setFont(new Font("HelvLight", Font.BOLD, 18));
+		registerLabel.setBounds(0, 155, 195, 31);
+		panel_6.add(registerLabel);
 		
 		JLabel lblSignIn = new JLabel("Sign in");
 		lblSignIn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
