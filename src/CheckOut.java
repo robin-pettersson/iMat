@@ -179,24 +179,31 @@ public class CheckOut extends JPanel {
 		
 		fNameTextField = new JTextField();
 		fNameTextField.addFocusListener(reg);
+		fNameTextField.setName("fNameTextField");
 		fNameTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		fNameTextField.setColumns(10);
 		fNameTextField.setBounds(0, 0, 195, 19);
 		panel_6.add(fNameTextField);
 		
 		lNameTextField = new JTextField();
+		lNameTextField.addFocusListener(reg);
+		lNameTextField.setName("lNameTextField");
 		lNameTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		lNameTextField.setColumns(10);
 		lNameTextField.setBounds(0, 31, 195, 19);
 		panel_6.add(lNameTextField);
 		
 		addressTextField = new JTextField();
+		addressTextField.addFocusListener(reg);
+		addressTextField.setName("addressTextField");
 		addressTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		addressTextField.setColumns(10);
 		addressTextField.setBounds(0, 62, 195, 19);
 		panel_6.add(addressTextField);
 		
 		zipTextField = new JTextField();
+		zipTextField.addFocusListener(reg);
+		zipTextField.setName("zipTextField");
 		zipTextField.setToolTipText("Postnummer");
 		zipTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		zipTextField.setColumns(10);
@@ -204,12 +211,16 @@ public class CheckOut extends JPanel {
 		panel_6.add(zipTextField);
 		
 		cityTextField = new JTextField();
+		cityTextField.addFocusListener(reg);
+		cityTextField.setName("cityTextField");
 		cityTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		cityTextField.setColumns(10);
 		cityTextField.setBounds(66, 93, 129, 19);
 		panel_6.add(cityTextField);
 		
 		emailTextField = new JTextField();
+		emailTextField.addFocusListener(reg);
+		emailTextField.setName("emailTextField");
 		emailTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		emailTextField.setColumns(10);
 		emailTextField.setBounds(0, 124, 195, 19);
@@ -254,23 +265,6 @@ public class CheckOut extends JPanel {
 		label_11.setBounds(200, 93, 12, 17);
 		panel_6.add(label_11);
 		
-		JLabel registerLabel = new JLabel("Register Account");
-		registerLabel.addMouseListener(reg);
-		registerLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		registerLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		registerLabel.setForeground(Color.WHITE);
-		registerLabel.setFont(new Font("HelvLight", Font.BOLD, 18));
-		registerLabel.setBounds(0, 155, 195, 31);
-		panel_6.add(registerLabel);
-		
-		JLabel lblSignIn = new JLabel("Sign in");
-		lblSignIn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		lblSignIn.setHorizontalTextPosition(SwingConstants.LEFT);
-		lblSignIn.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblSignIn.setForeground(Color.WHITE);
-		lblSignIn.setFont(new Font("HelvLight", Font.BOLD, 18));
-		lblSignIn.setBounds(553, 12, 64, 31);
-		panel_4.add(lblSignIn);
 		
 		JLabel lblYouAreNot = new JLabel("You are not signed in!");
 		lblYouAreNot.setHorizontalTextPosition(SwingConstants.LEFT);
@@ -280,13 +274,47 @@ public class CheckOut extends JPanel {
 		lblYouAreNot.setBounds(359, 12, 148, 22);
 		panel_4.add(lblYouAreNot);
 		
-		JPanel panel_7 = new JPanel();
+		final JPanel panel_7 = new JPanel();
 		panel_7.setVisible(false);
 		panel_7.setBackground(Color.LIGHT_GRAY);
 		panel_7.setBorder(null);
 		panel_7.setBounds(383, 41, 234, 102);
 		panel_4.add(panel_7);
 		panel_7.setLayout(null);
+		
+		JLabel registerLabel = new JLabel("Register Account");
+		registerLabel.addMouseListener(reg);
+		registerLabel.setName("registerLabel");
+		registerLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		registerLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		registerLabel.setForeground(Color.WHITE);
+		registerLabel.setFont(new Font("HelvLight", Font.BOLD, 18));
+		registerLabel.setBounds(0, 155, 195, 31);
+		panel_6.add(registerLabel);
+		
+		JLabel lblSignIn = new JLabel("Sign in");
+		lblSignIn.setName("lblSignIn");
+		lblSignIn.addMouseListener(reg);
+		/*lblSignIn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(panel_7.isVisible()){
+					panel_7.setVisible(false);
+				}
+				else {
+					panel_7.setVisible(true);
+				}
+			}
+		});*/
+		
+		lblSignIn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblSignIn.setHorizontalTextPosition(SwingConstants.LEFT);
+		lblSignIn.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblSignIn.setForeground(Color.WHITE);
+		lblSignIn.setFont(new Font("HelvLight", Font.BOLD, 18));
+		lblSignIn.setBounds(553, 12, 64, 31);
+		panel_4.add(lblSignIn);
+		
 		
 		JLabel label_6 = new JLabel("Email:");
 		label_6.setHorizontalTextPosition(SwingConstants.RIGHT);
@@ -306,6 +334,7 @@ public class CheckOut extends JPanel {
 		
 		passwordField = new JPasswordField();
 		passwordField.addFocusListener(reg);
+		passwordField.setName("passwordField");
 		passwordField.setText("lösenord");
 		passwordField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		passwordField.setBounds(84, 40, 138, 19);
@@ -313,6 +342,7 @@ public class CheckOut extends JPanel {
 		
 		signEmailTextField = new JTextField();
 		signEmailTextField.addFocusListener(reg);
+		signEmailTextField.setName("signEmailTextField");
 		signEmailTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		signEmailTextField.setColumns(10);
 		signEmailTextField.setBounds(84, 12, 138, 19);
@@ -320,6 +350,7 @@ public class CheckOut extends JPanel {
 		
 		JButton btnLogIn = new JButton("Sign in");
 		btnLogIn.addMouseListener(reg);
+		btnLogIn.setName("btnLogIn");
 		btnLogIn.setForeground(Color.DARK_GRAY);
 		btnLogIn.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		btnLogIn.setBackground(SystemColor.window);

@@ -19,7 +19,7 @@ import java.awt.event.FocusEvent;
 public class RegisterPopUp extends JPanel {
 	private JTextField fNameTextField;
 	private JTextField lNameTextField;
-	private JTextField addressTextField_1;
+	private JTextField addressTextField;
 	private JTextField zipTextField;
 	private JTextField cityTextField;
 	private JTextField emailTextField;
@@ -103,6 +103,7 @@ public class RegisterPopUp extends JPanel {
 		
 		fNameTextField = new JTextField();
 		fNameTextField.addFocusListener(reg);
+		fNameTextField.setName("fNameTextField");
 		fNameTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		fNameTextField.setColumns(10);
 		fNameTextField.setBounds(0, 0, 195, 19);
@@ -111,21 +112,25 @@ public class RegisterPopUp extends JPanel {
 		
 		lNameTextField = new JTextField();
 		lNameTextField.addFocusListener(reg);
+		lNameTextField.setName("lNameTextField");
 		lNameTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		lNameTextField.setColumns(10);
 		lNameTextField.setBounds(0, 31, 195, 19);
 		lNameTextField.setText(lName);
 		panel_1.add(lNameTextField);
 		
-		addressTextField_1 = new JTextField();
-		addressTextField_1.addFocusListener(reg);
-		addressTextField_1.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		addressTextField_1.setColumns(10);
-		addressTextField_1.setBounds(0, 62, 195, 19);
-		addressTextField_1.setText(address);
-		panel_1.add(addressTextField_1);
+		addressTextField = new JTextField();
+		addressTextField.addFocusListener(reg);
+		addressTextField.setName("addressTextField");
+		addressTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		addressTextField.setColumns(10);
+		addressTextField.setBounds(0, 62, 195, 19);
+		addressTextField.setText(address);
+		panel_1.add(addressTextField);
 		
 		zipTextField = new JTextField();
+		zipTextField.addFocusListener(reg);
+		zipTextField.setName("zipTextField");
 		zipTextField.setToolTipText("Postnummer");
 		zipTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		zipTextField.setColumns(10);
@@ -135,6 +140,7 @@ public class RegisterPopUp extends JPanel {
 		
 		cityTextField = new JTextField();
 		cityTextField.addFocusListener(reg);
+		cityTextField.setName("cityTextField");
 		cityTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		cityTextField.setColumns(10);
 		cityTextField.setBounds(66, 93, 129, 19);
@@ -143,6 +149,7 @@ public class RegisterPopUp extends JPanel {
 		
 		emailTextField = new JTextField();
 		emailTextField.addFocusListener(reg);
+		emailTextField.setName("emailTextField");
 		emailTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		emailTextField.setColumns(10);
 		emailTextField.setBounds(0, 124, 195, 19);
@@ -186,6 +193,7 @@ public class RegisterPopUp extends JPanel {
 		
 		passwordTextField = new JPasswordField();
 		passwordTextField.addFocusListener(reg);
+		passwordTextField.setName("passwordTextField");
 		passwordTextField.setText("lösenord");
 		passwordTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		passwordTextField.setBounds(0, 165, 195, 19);
@@ -193,6 +201,7 @@ public class RegisterPopUp extends JPanel {
 		
 		verifyPasswordTextField = new JPasswordField();
 		verifyPasswordTextField.addFocusListener(reg);
+		verifyPasswordTextField.setName("verifyPasswordTextField");
 		verifyPasswordTextField.setText("lösenord");
 		verifyPasswordTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		verifyPasswordTextField.setBounds(0, 188, 195, 19);
@@ -221,6 +230,7 @@ public class RegisterPopUp extends JPanel {
 		
 		JButton registerButton = new JButton("Register");
 		registerButton.addMouseListener(reg);
+		registerButton.setName("registerButton");
 		registerButton.setForeground(Color.DARK_GRAY);
 		registerButton.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		registerButton.setBackground(SystemColor.window);
@@ -229,6 +239,7 @@ public class RegisterPopUp extends JPanel {
 		
 		JButton cancelButton = new JButton("Cancel");
 		cancelButton.addMouseListener(reg);
+		cancelButton.setName("cancelButton");
 		cancelButton.setForeground(Color.DARK_GRAY);
 		cancelButton.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		cancelButton.setBackground(SystemColor.window);

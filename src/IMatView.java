@@ -4,7 +4,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.CardLayout;
+
 import javax.swing.JButton;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
@@ -12,10 +14,13 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 
 import java.awt.Color;
+
 import javax.swing.JLabel;
+
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import javax.swing.JTextField;
 import javax.swing.JTree;
 import javax.swing.ImageIcon;
@@ -23,13 +28,17 @@ import javax.swing.SwingConstants;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
 import java.awt.GridLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+
 import javax.swing.BoxLayout;
+
 import java.awt.FlowLayout;
 import java.awt.SystemColor;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -39,6 +48,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
 
 import java.awt.Dimension;
+
 import javax.swing.JScrollPane;
 
 
@@ -47,6 +57,8 @@ public class IMatView extends JFrame {
 	private JPanel contentPane;
 	private JTextField searchFld;
 	private iMatNavController navController = iMatNavController.getInstance();
+	private CardLayout cardLayout;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -169,6 +181,7 @@ public class IMatView extends JFrame {
 		mainPanel.setBounds(190, 100, 636, 541);
 		contentPane.add(mainPanel);
 		mainPanel.setLayout(new CardLayout(0, 0));
+		cardLayout =(CardLayout) mainPanel.getLayout();
 		
 		JPanel startPanel = new JPanel();
 		startPanel.setBackground(Color.LIGHT_GRAY);
@@ -212,12 +225,10 @@ public class IMatView extends JFrame {
 		listViewLbl.setBounds(572, 2, 21, 21);
 		breadcrumPanel.add(listViewLbl);
 		
-		JScrollPane wareContainerScroll = new JScrollPane();
+		JPanel wareContainerScroll = new JPanel();
 		wareContainerScroll.setBackground(Color.LIGHT_GRAY);
 		wareListPanel.add(wareContainerScroll, BorderLayout.CENTER);
-		
-		
-		//TODO Här har vi search listor, varu listor & kategorilistor.
+
 		JPanel shoppingListPanel = new JPanel();
 		shoppingListPanel.setBackground(Color.LIGHT_GRAY);
 		mainPanel.add(shoppingListPanel, "name_176541927032183");
@@ -275,6 +286,10 @@ public class IMatView extends JFrame {
 				sidePanel.add(navigationTree);
 				navigationTree.setRootVisible(false);
 				navigationTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
-				navigationTree.addTreeSelectionListener(navController); 
+				navigationTree.addTreeSelectionListener(navController);
+		
+		
 	}
+	
+	
 }

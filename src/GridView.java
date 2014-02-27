@@ -1,10 +1,10 @@
-
 import javax.swing.*;
 import java.awt.Font;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
 import java.awt.Dimension;
 import se.chalmers.ait.dat215.project.Product;
+import java.awt.Color;
 
 
 public class GridView extends JPanel {
@@ -15,18 +15,20 @@ public class GridView extends JPanel {
 	private JButton buyBtn;
 	private JLabel pictureLbl;
 	
-	public GridView() {
+	public GridView(String name, double pris) {
+		
+		setBackground(Color.PINK);
 		setPreferredSize(new Dimension(160, 160));
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setLayout(null);
 		
-		productNameLbl = new JLabel("warename");
+		productNameLbl = new JLabel(name);
 		productNameLbl.setFont(new Font("HelvLight", Font.PLAIN, 18));
 		productNameLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		productNameLbl.setBounds(5, 5, 150, 22);
 		add(productNameLbl);
 		
-		priceLbl = new JLabel("price");
+		priceLbl = new JLabel(pris + "");
 		priceLbl.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		priceLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		priceLbl.setBounds(5, 140, 37, 14);
@@ -43,6 +45,7 @@ public class GridView extends JPanel {
 		add(buyBtn);
 		
 		pictureLbl = new JLabel("pic");
+		pictureLbl.setBackground(Color.PINK);
 		pictureLbl.setBounds(5, 5, 150, 150);
 		add(pictureLbl);
 		
@@ -54,7 +57,7 @@ public class GridView extends JPanel {
 	 */
 	public void setName (Product product) {
 		productNameLbl.setText(product.getName());
-		productNameLbl.repaint();
+		//productNameLbl.repaint();
 	}
 	
 	/**
@@ -63,7 +66,7 @@ public class GridView extends JPanel {
 	 */
 	public void setPrice (Product product) {
 		priceLbl.setText(product.getPrice() + "");
-		priceLbl.repaint();
+		//priceLbl.repaint();
 	}
 	
 	/**

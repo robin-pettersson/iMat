@@ -109,6 +109,9 @@ public class RegisterController implements FocusListener, MouseListener {
 		if(me.getComponent().getName() == "btnLogIn"){
 			//Databas stödjer inte detta
 		}
+		if(me.getComponent().getName() == "lblSignIn"){
+			//Todo hide/show function here instead of in view class
+		}
 		
 	}
 

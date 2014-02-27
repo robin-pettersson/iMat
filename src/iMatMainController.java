@@ -16,7 +16,7 @@ public class iMatMainController {
 	}
 	
 	public void listItems(JScrollPane scroll){
-		scroll.add(new GridView());
+		//scroll.add(new GridView());
 		
 	}
 	
