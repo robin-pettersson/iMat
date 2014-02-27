@@ -195,7 +195,7 @@ public class Preview extends JPanel {
 		JLabel lblPreview = new JLabel("> Preview");
 		lblPreview.setCursor(Cursor.getPredefinedCursor(Cursor.SW_RESIZE_CURSOR));
 		lblPreview.setToolTipText("You are here");
-		lblPreview.setForeground(Color.WHITE);
+		lblPreview.setForeground(Color.DARK_GRAY);
 		lblPreview.setFont(new Font("HelvLight", Font.BOLD, 14));
 		lblPreview.setBounds(142, 36, 96, 20);
 		panel.add(lblPreview);

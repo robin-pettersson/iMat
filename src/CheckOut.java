@@ -348,8 +348,9 @@ public class CheckOut extends JPanel {
 		panel.add(lblCart);
 		
 		JLabel lblCheckOut_1 = new JLabel("> Check out");
+		lblCheckOut_1.setBackground(Color.DARK_GRAY);
 		lblCheckOut_1.setToolTipText("You are here!");
-		lblCheckOut_1.setForeground(SystemColor.text);
+		lblCheckOut_1.setForeground(Color.DARK_GRAY);
 		lblCheckOut_1.setFont(new Font("HelvLight", Font.BOLD, 14));
 		lblCheckOut_1.setBounds(47, 38, 96, 20);
 		panel.add(lblCheckOut_1);
