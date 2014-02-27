@@ -8,37 +8,48 @@ import javax.swing.border.BevelBorder;
 
 import se.chalmers.ait.dat215.project.Product;
 import java.awt.Dimension;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.SystemColor;
 
 public class ListView extends JPanel {
 	private JLabel productNameLbl;
 	private JLabel priceLbl;
 	private JSpinner amountSpinner;
-	private JButton addBtn;
 	
 	public ListView() {
+		setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
 		setPreferredSize(new Dimension(635, 50));
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setLayout(null);
 		
 		productNameLbl = new JLabel("WareName");
-		productNameLbl.setFont(new Font("HelvLight", Font.PLAIN, 18));
+		productNameLbl.setToolTipText("Show additional information");
+		productNameLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		productNameLbl.setForeground(Color.WHITE);
+		productNameLbl.setFont(new Font("HelvLight", Font.BOLD, 18));
 		productNameLbl.setBounds(10, 11, 198, 26);
 		add(productNameLbl);
 		
-		priceLbl = new JLabel("price lbl");
+		priceLbl = new JLabel("337 kr");
 		priceLbl.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		priceLbl.setBounds(580, 18, 46, 14);
+		priceLbl.setBounds(577, 12, 46, 26);
 		add(priceLbl);
 		
 		amountSpinner = new JSpinner();
+		amountSpinner.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
+		amountSpinner.setToolTipText("Set amount");
 		amountSpinner.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		amountSpinner.setBounds(439, 17, 37, 20);
+		amountSpinner.setBounds(373, 13, 55, 26);
 		add(amountSpinner);
 		
-		addBtn = new JButton("L\u00E4gg till");
-		addBtn.setFont(new Font("HelvLight", Font.PLAIN, 12));
-		addBtn.setBounds(479, 17, 91, 20);
-		add(addBtn);
+		JButton addToCartButton = new JButton("Add to cart");
+		addToCartButton.setToolTipText("Add this item to cart");
+		addToCartButton.setForeground(Color.DARK_GRAY);
+		addToCartButton.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		addToCartButton.setBackground(SystemColor.window);
+		addToCartButton.setBounds(440, 11, 122, 27);
+		add(addToCartButton);
 		
 	}
 	

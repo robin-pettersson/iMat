@@ -40,6 +40,7 @@ public class RightShoppingCart extends JPanel {
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
 		table = new JTable();
+		table.setEnabled(false);
 		table.setSelectionBackground(new Color(184, 207, 229));
 		table.setShowGrid(false);
 		table.setShowVerticalLines(false);
@@ -52,11 +53,11 @@ public class RightShoppingCart extends JPanel {
 		table.setBackground(Color.LIGHT_GRAY);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{"Banan - Dole", "Test"},
+				{"Banana - Dole", ""},
+				{"2 pcs", "16kr"},
 				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
+				{"Apple - Granny Smith", ""},
+				{"3 pcs", "8kr"},
 				{null, null},
 				{null, null},
 				{null, null},
@@ -81,8 +82,19 @@ public class RightShoppingCart extends JPanel {
 			new String[] {
 				"New column", "New column"
 			}
-		));
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		table.getColumnModel().getColumn(0).setResizable(false);
+		table.getColumnModel().getColumn(0).setPreferredWidth(95);
+		table.getColumnModel().getColumn(1).setResizable(false);
 		table.getColumnModel().getColumn(1).setPreferredWidth(15);
+		table.getColumnModel().getColumn(1).setMinWidth(10);
 		panel_1.add(table);
 		
 		JLabel lblTotaly = new JLabel("Sum: 340 kr");
@@ -94,7 +106,7 @@ public class RightShoppingCart extends JPanel {
 		panel_1.add(lblTotaly, BorderLayout.SOUTH);
 		
 		JButton btnCheckOut = new JButton("Check out");
-		btnCheckOut.setToolTipText("Sök Produkt");
+		btnCheckOut.setToolTipText("Proceed to check out");
 		btnCheckOut.setForeground(Color.DARK_GRAY);
 		btnCheckOut.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		btnCheckOut.setBackground(SystemColor.window);
@@ -102,7 +114,7 @@ public class RightShoppingCart extends JPanel {
 		panel.add(btnCheckOut);
 		
 		JButton btnEdit = new JButton("Edit");
-		btnEdit.setToolTipText("Sök Produkt");
+		btnEdit.setToolTipText("Edit shopping cart");
 		btnEdit.setForeground(Color.DARK_GRAY);
 		btnEdit.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		btnEdit.setBackground(SystemColor.window);

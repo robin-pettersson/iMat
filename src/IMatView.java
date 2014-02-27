@@ -192,68 +192,67 @@ public class IMatView extends JFrame {
 		JPanel panel = new JPanel();
 		wareListPanel.add(panel, BorderLayout.CENTER);
 		
-		final JTree navigationTree = new JTree();
+		//Code for creating the the layout of the navigationTree which is created later
+		DefaultMutableTreeNode root = new DefaultMutableTreeNode("root");
+		DefaultMutableTreeNode node_1;
+		DefaultMutableTreeNode node_2;
+		root.add(new DefaultMutableTreeNode("Favourites"));
+		root.add(new DefaultMutableTreeNode("Dairies"));
+		node_1 = new DefaultMutableTreeNode("Meat and Fish");
+		node_1.add(new DefaultMutableTreeNode("Meat"));
+		node_1.add(new DefaultMutableTreeNode("Fish"));
+		root.add(node_1);
+		node_1 = new DefaultMutableTreeNode("Fruits and Vegetables");
+		node_2 = new DefaultMutableTreeNode("Fruits");
+		node_2.add(new DefaultMutableTreeNode("Berry"));
+		node_2.add(new DefaultMutableTreeNode("Citrus Fruit"));
+		node_2.add(new DefaultMutableTreeNode("Exotic Fruit"));
+		node_2.add(new DefaultMutableTreeNode("Melons"));
+		node_2.add(new DefaultMutableTreeNode("Fruit"));
+		node_1.add(node_2);
+		node_2 = new DefaultMutableTreeNode("Vegetables");
+		node_2.add(new DefaultMutableTreeNode("Root Vegetable"));
+		node_2.add(new DefaultMutableTreeNode("Vegetable Fruit"));
+		node_2.add(new DefaultMutableTreeNode("Cabbage"));
+		node_1.add(node_2);
+		root.add(node_1);
+		root.add(new DefaultMutableTreeNode("Bread"));
+		node_1 = new DefaultMutableTreeNode("Drinks");
+		node_1.add(new DefaultMutableTreeNode("Hot Drinks"));
+		node_1.add(new DefaultMutableTreeNode("Cold Drinks"));
+		root.add(node_1);
+		node_1 = new DefaultMutableTreeNode("Carbs");
+		node_1.add(new DefaultMutableTreeNode("Pasta"));
+		node_1.add(new DefaultMutableTreeNode("Potato Rice"));
+		root.add(node_1);
+		root.add(new DefaultMutableTreeNode("Sweet"));
+		node_1 = new DefaultMutableTreeNode("Plants");
+		node_1.add(new DefaultMutableTreeNode("Pod"));
+		node_1.add(new DefaultMutableTreeNode("Nuts and Seeds"));
+		root.add(node_1);
+		root.add(new DefaultMutableTreeNode("Herb"));
+		root.add(new DefaultMutableTreeNode("Fluor Sugar Salt"));
+
+		//Navigation tree created using the root system established above
+		final JTree navigationTree = new JTree(root);
 		navigationTree.setRootVisible(false);
-		navigationTree.setModel(new DefaultTreeModel(
-			new DefaultMutableTreeNode("JTree") {
-				{
-					DefaultMutableTreeNode node_1;
-					DefaultMutableTreeNode node_2;
-					getContentPane().add(new DefaultMutableTreeNode("Favourites"));
-					getContentPane().add(new DefaultMutableTreeNode("Dairies"));
-					node_1 = new DefaultMutableTreeNode("Meat and Fish");
-						node_1.add(new DefaultMutableTreeNode("Meat"));
-						node_1.add(new DefaultMutableTreeNode("Fish"));
-					getContentPane().add(node_1);
-					node_1 = new DefaultMutableTreeNode("Fruits and Vegetables");
-						node_2 = new DefaultMutableTreeNode("Fruits");
-							node_2.add(new DefaultMutableTreeNode("Berry"));
-							node_2.add(new DefaultMutableTreeNode("Citrus Fruit"));
-							node_2.add(new DefaultMutableTreeNode("Exotic Fruit"));
-							node_2.add(new DefaultMutableTreeNode("Melons"));
-							node_2.add(new DefaultMutableTreeNode("Fruit"));
-						node_1.add(node_2);
-						node_2 = new DefaultMutableTreeNode("Vegetables");
-							node_2.add(new DefaultMutableTreeNode("Root Vegetable"));
-							node_2.add(new DefaultMutableTreeNode("Vegetable Fruit"));
-							node_2.add(new DefaultMutableTreeNode("Cabbage"));
-						node_1.add(node_2);
-					getContentPane().add(node_1);
-					getContentPane().add(new DefaultMutableTreeNode("Bread"));
-					node_1 = new DefaultMutableTreeNode("Drinks");
-						node_1.add(new DefaultMutableTreeNode("Hot Drinks"));
-						node_1.add(new DefaultMutableTreeNode("Cold Drinks"));
-					getContentPane().add(node_1);
-					node_1 = new DefaultMutableTreeNode("Carbs");
-						node_1.add(new DefaultMutableTreeNode("Pasta"));
-						node_1.add(new DefaultMutableTreeNode("Potato Rice"));
-					getContentPane().add(node_1);
-					getContentPane().add(new DefaultMutableTreeNode("Sweet"));
-					node_1 = new DefaultMutableTreeNode("Plants");
-						node_1.add(new DefaultMutableTreeNode("Pod"));
-						node_1.add(new DefaultMutableTreeNode("Nuts and Seeds"));
-					getContentPane().add(node_1);
-					getContentPane().add(new DefaultMutableTreeNode("Herb"));
-					getContentPane().add(new DefaultMutableTreeNode("Fluor Sugar Salt"));
-				}
-			}
-		));
 		navigationTree.setBounds(10, 106, 170, 266);
 		navigationTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		navigationTree.addTreeSelectionListener(new TreeSelectionListener() {
-		    public void valueChanged(TreeSelectionEvent e) {
-		        DefaultMutableTreeNode node = (DefaultMutableTreeNode)
-		                           navigationTree.getLastSelectedPathComponent();
+			public void valueChanged(TreeSelectionEvent e) {
+				DefaultMutableTreeNode node = (DefaultMutableTreeNode)
+						navigationTree.getLastSelectedPathComponent();
 
-		        if (node == null) return;
+				if (node == null) return;
 
-		        Object nodeInfo = node.getUserObject();
-		        String type = nodeInfo.toString().replace(' ', '_');
-		        type = type.toUpperCase();
-		        System.out.print(type);
+				Object nodeInfo = node.getUserObject();
+				String type = nodeInfo.toString().replace(' ', '_');
+				type = type.toUpperCase();
+				System.out.print(type);
 
-		    }
-		});
+			}
+		});		
+		
 		contentPane.add(navigationTree);
 		
 
