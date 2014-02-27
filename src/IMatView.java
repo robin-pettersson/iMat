@@ -46,7 +46,7 @@ public class IMatView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField searchFld;
-
+	private iMatNavController navController = iMatNavController.getInstance();
 	/**
 	 * Launch the application.
 	 */
@@ -273,19 +273,6 @@ public class IMatView extends JFrame {
 				sidePanel.add(navigationTree);
 				navigationTree.setRootVisible(false);
 				navigationTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
-				navigationTree.addTreeSelectionListener(new TreeSelectionListener() {
-					public void valueChanged(TreeSelectionEvent e) {
-						DefaultMutableTreeNode node = (DefaultMutableTreeNode)
-								navigationTree.getLastSelectedPathComponent();
-
-						if (node == null) return;
-
-						Object nodeInfo = node.getUserObject();
-						String type = nodeInfo.toString().replace(' ', '_');
-						type = type.toUpperCase();
-						System.out.print(type);
-
-					}
-				});		
+				navigationTree.addTreeSelectionListener(navController); 
 	}
 }
