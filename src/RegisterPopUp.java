@@ -10,18 +10,24 @@ import java.awt.Dimension;
 import javax.swing.JButton;
 import java.awt.SystemColor;
 import javax.swing.JPasswordField;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 
 public class RegisterPopUp extends JPanel {
-	private JTextField firstnameTextField;
-	private JTextField lastnameTextField;
-	private JTextField streetTextField;
+	private JTextField fNameTextField;
+	private JTextField lNameTextField;
+	private JTextField addressTextField_1;
 	private JTextField zipTextField;
 	private JTextField cityTextField;
 	private JTextField emailTextField;
 	private JPasswordField passwordTextField;
 	private JPasswordField verifyPasswordTextField;
 
+	private RegisterController reg = RegisterController.getInstance();
+	
 	/**
 	 * Create the panel.
 	 */
@@ -95,26 +101,29 @@ public class RegisterPopUp extends JPanel {
 		panel_1.setBounds(146, 39, 250, 251);
 		add(panel_1);
 		
-		firstnameTextField = new JTextField();
-		firstnameTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		firstnameTextField.setColumns(10);
-		firstnameTextField.setBounds(0, 0, 195, 19);
-		firstnameTextField.setText(fName);
-		panel_1.add(firstnameTextField);
+		fNameTextField = new JTextField();
+		fNameTextField.addFocusListener(reg);
+		fNameTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		fNameTextField.setColumns(10);
+		fNameTextField.setBounds(0, 0, 195, 19);
+		fNameTextField.setText(fName);
+		panel_1.add(fNameTextField);
 		
-		lastnameTextField = new JTextField();
-		lastnameTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		lastnameTextField.setColumns(10);
-		lastnameTextField.setBounds(0, 31, 195, 19);
-		lastnameTextField.setText(lName);
-		panel_1.add(lastnameTextField);
+		lNameTextField = new JTextField();
+		lNameTextField.addFocusListener(reg);
+		lNameTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		lNameTextField.setColumns(10);
+		lNameTextField.setBounds(0, 31, 195, 19);
+		lNameTextField.setText(lName);
+		panel_1.add(lNameTextField);
 		
-		streetTextField = new JTextField();
-		streetTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		streetTextField.setColumns(10);
-		streetTextField.setBounds(0, 62, 195, 19);
-		streetTextField.setText(address);
-		panel_1.add(streetTextField);
+		addressTextField_1 = new JTextField();
+		addressTextField_1.addFocusListener(reg);
+		addressTextField_1.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		addressTextField_1.setColumns(10);
+		addressTextField_1.setBounds(0, 62, 195, 19);
+		addressTextField_1.setText(address);
+		panel_1.add(addressTextField_1);
 		
 		zipTextField = new JTextField();
 		zipTextField.setToolTipText("Postnummer");
@@ -125,6 +134,7 @@ public class RegisterPopUp extends JPanel {
 		panel_1.add(zipTextField);
 		
 		cityTextField = new JTextField();
+		cityTextField.addFocusListener(reg);
 		cityTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		cityTextField.setColumns(10);
 		cityTextField.setBounds(66, 93, 129, 19);
@@ -132,6 +142,7 @@ public class RegisterPopUp extends JPanel {
 		panel_1.add(cityTextField);
 		
 		emailTextField = new JTextField();
+		emailTextField.addFocusListener(reg);
 		emailTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		emailTextField.setColumns(10);
 		emailTextField.setBounds(0, 124, 195, 19);
@@ -174,12 +185,14 @@ public class RegisterPopUp extends JPanel {
 		panel_1.add(label_9);
 		
 		passwordTextField = new JPasswordField();
+		passwordTextField.addFocusListener(reg);
 		passwordTextField.setText("lösenord");
 		passwordTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		passwordTextField.setBounds(0, 165, 195, 19);
 		panel_1.add(passwordTextField);
 		
 		verifyPasswordTextField = new JPasswordField();
+		verifyPasswordTextField.addFocusListener(reg);
 		verifyPasswordTextField.setText("lösenord");
 		verifyPasswordTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		verifyPasswordTextField.setBounds(0, 188, 195, 19);
@@ -207,6 +220,7 @@ public class RegisterPopUp extends JPanel {
 		panel_1.add(label_14);
 		
 		JButton registerButton = new JButton("Register");
+		registerButton.addMouseListener(reg);
 		registerButton.setForeground(Color.DARK_GRAY);
 		registerButton.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		registerButton.setBackground(SystemColor.window);
@@ -214,6 +228,7 @@ public class RegisterPopUp extends JPanel {
 		add(registerButton);
 		
 		JButton cancelButton = new JButton("Cancel");
+		cancelButton.addMouseListener(reg);
 		cancelButton.setForeground(Color.DARK_GRAY);
 		cancelButton.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		cancelButton.setBackground(SystemColor.window);

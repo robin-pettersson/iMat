@@ -5,6 +5,7 @@ import java.awt.event.MouseListener;
 
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.User;
 
 
 public class RegisterController implements FocusListener, MouseListener {
@@ -18,8 +19,13 @@ public class RegisterController implements FocusListener, MouseListener {
 	private String zip = "";
 	private String city = "";
 	private String email = "";
+	private String signEmail = "";
+	private String password = "";
+	private String verifyPassword = "";
 	
 	private Customer customer;
+	
+	private RegisterPopUp regPop = null;
 	
 	protected RegisterController(){
 		
@@ -62,7 +68,15 @@ public class RegisterController implements FocusListener, MouseListener {
 			case "emailTextField": email = fe.getComponent().getInputContext().toString();
 				customer.setEmail(email);
 				break;
-		
+			case "passwordTextField": password = fe.getComponent().getInputContext().toString();
+				break;
+			case "verifyPasswordTextField": verifyPassword = fe.getComponent().getInputContext().toString();
+				break;
+			case "signEmailTextField": signEmail = fe.getComponent().getInputContext().toString();
+				break;
+			case "passwordField": password = fe.getComponent().getInputContext().toString();
+				break;
+				
 		}
 		
 	}
@@ -71,9 +85,31 @@ public class RegisterController implements FocusListener, MouseListener {
 	public void mouseClicked(MouseEvent me) {
 		
 		if(me.getComponent().getName() == "registerLabel"){
-			RegisterPopUp regPop = new RegisterPopUp(fName,lName,address,city,zip,email);
+			regPop = new RegisterPopUp(fName,lName,address,city,zip,email);
 			regPop.validate();
 		}
+		
+		if(me.getComponent().getName() == "registerButton"){
+			User user = new User();
+			
+			if(password != verifyPassword){
+				//Todo Load a passwords dont match window
+			}
+			else {
+				user.setPassword(password);
+				user.setUserName(email);
+				regPop.invalidate();
+			}
+		}
+		
+		if(me.getComponent().getName() == "cancelButton"){
+			regPop.invalidate();
+		}
+		
+		if(me.getComponent().getName() == "btnLogIn"){
+			//Databas stödjer inte detta
+		}
+		
 	}
 
 	@Override

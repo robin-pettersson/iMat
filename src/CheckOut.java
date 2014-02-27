@@ -31,7 +31,7 @@ public class CheckOut extends JPanel {
 	private JTextField cityTextField;
 	private JTextField emailTextField;
 	private JPasswordField passwordField;
-	private JTextField textField_6;
+	private JTextField signEmailTextField;
 	
 	private RegisterController reg = RegisterController.getInstance();
 
@@ -305,18 +305,21 @@ public class CheckOut extends JPanel {
 		panel_7.add(lblPassword);
 		
 		passwordField = new JPasswordField();
+		passwordField.addFocusListener(reg);
 		passwordField.setText("lösenord");
 		passwordField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		passwordField.setBounds(84, 40, 138, 19);
 		panel_7.add(passwordField);
 		
-		textField_6 = new JTextField();
-		textField_6.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		textField_6.setColumns(10);
-		textField_6.setBounds(84, 12, 138, 19);
-		panel_7.add(textField_6);
+		signEmailTextField = new JTextField();
+		signEmailTextField.addFocusListener(reg);
+		signEmailTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		signEmailTextField.setColumns(10);
+		signEmailTextField.setBounds(84, 12, 138, 19);
+		panel_7.add(signEmailTextField);
 		
 		JButton btnLogIn = new JButton("Sign in");
+		btnLogIn.addMouseListener(reg);
 		btnLogIn.setForeground(Color.DARK_GRAY);
 		btnLogIn.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		btnLogIn.setBackground(SystemColor.window);
