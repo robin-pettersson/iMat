@@ -216,6 +216,8 @@ public class IMatView extends JFrame {
 		wareContainerScroll.setBackground(Color.LIGHT_GRAY);
 		wareListPanel.add(wareContainerScroll, BorderLayout.CENTER);
 		
+		
+		//TODO Här har vi search listor, varu listor & kategorilistor.
 		JPanel shoppingListPanel = new JPanel();
 		shoppingListPanel.setBackground(Color.LIGHT_GRAY);
 		mainPanel.add(shoppingListPanel, "name_176541927032183");
