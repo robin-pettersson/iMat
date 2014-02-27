@@ -39,7 +39,7 @@ public class Confirmation extends JPanel {
 		JPanel deliveryAddressPanel = new JPanel();
 		deliveryAddressPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		deliveryAddressPanel.setBackground(Color.LIGHT_GRAY);
-		deliveryAddressPanel.setBounds(0, 64, 629, 480);
+		deliveryAddressPanel.setBounds(0, 90, 629, 454);
 		panel.add(deliveryAddressPanel);
 		deliveryAddressPanel.setLayout(null);
 		
@@ -75,7 +75,7 @@ public class Confirmation extends JPanel {
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_3.setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
-		panel_3.setBounds(0, 35, 629, 28);
+		panel_3.setBounds(0, 60, 629, 28);
 		panel.add(panel_3);
 		panel_3.setLayout(null);
 		
@@ -84,6 +84,34 @@ public class Confirmation extends JPanel {
 		panel_3.add(lblPayingMethod);
 		lblPayingMethod.setForeground(Color.DARK_GRAY);
 		lblPayingMethod.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		
+		JLabel label = new JLabel("> Preview");
+		label.setToolTipText("Can't back to preview");
+		label.setForeground(Color.GRAY);
+		label.setFont(new Font("HelvLight", Font.BOLD, 14));
+		label.setBounds(142, 36, 81, 20);
+		panel.add(label);
+		
+		JLabel label_1 = new JLabel("> Check out");
+		label_1.setToolTipText("Can't back to check out");
+		label_1.setForeground(Color.GRAY);
+		label_1.setFont(new Font("HelvLight", Font.BOLD, 14));
+		label_1.setBounds(47, 36, 96, 20);
+		panel.add(label_1);
+		
+		JLabel label_2 = new JLabel("Cart");
+		label_2.setToolTipText("Can't back to cart");
+		label_2.setForeground(Color.GRAY);
+		label_2.setFont(new Font("HelvLight", Font.BOLD, 14));
+		label_2.setBounds(10, 36, 35, 20);
+		panel.add(label_2);
+		
+		JLabel lblConfirmation = new JLabel("> Confirmation");
+		lblConfirmation.setToolTipText("You are here");
+		lblConfirmation.setForeground(Color.DARK_GRAY);
+		lblConfirmation.setFont(new Font("HelvLight", Font.BOLD, 14));
+		lblConfirmation.setBounds(223, 36, 136, 20);
+		panel.add(lblConfirmation);
 
 	}
 }

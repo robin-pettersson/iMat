@@ -45,7 +45,7 @@ public class CheckOut extends JPanel {
 		JPanel payMethodPanel = new JPanel();
 		payMethodPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		payMethodPanel.setBackground(Color.LIGHT_GRAY);
-		payMethodPanel.setBounds(0, 64, 629, 212);
+		payMethodPanel.setBounds(0, 90, 629, 212);
 		panel.add(payMethodPanel);
 		payMethodPanel.setLayout(null);
 		
@@ -92,7 +92,7 @@ public class CheckOut extends JPanel {
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_3.setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
-		panel_3.setBounds(0, 35, 629, 28);
+		panel_3.setBounds(0, 61, 629, 28);
 		panel.add(panel_3);
 		panel_3.setLayout(null);
 		
@@ -106,7 +106,7 @@ public class CheckOut extends JPanel {
 		panel_1.setLayout(null);
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_1.setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
-		panel_1.setBounds(0, 276, 629, 28);
+		panel_1.setBounds(0, 303, 629, 28);
 		panel.add(panel_1);
 		
 		JLabel lblDeliveryInformaiton = new JLabel("Delivery Address");
@@ -119,14 +119,14 @@ public class CheckOut extends JPanel {
 		panel_4.setLayout(null);
 		panel_4.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_4.setBackground(Color.LIGHT_GRAY);
-		panel_4.setBounds(0, 305, 629, 239);
+		panel_4.setBounds(0, 332, 629, 212);
 		panel.add(panel_4);
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setLayout(null);
 		panel_5.setBorder(null);
 		panel_5.setBackground(Color.LIGHT_GRAY);
-		panel_5.setBounds(12, 12, 110, 167);
+		panel_5.setBounds(12, 12, 110, 145);
 		panel_4.add(panel_5);
 		
 		JLabel label = new JLabel("Firstname:");
@@ -168,7 +168,7 @@ public class CheckOut extends JPanel {
 		panel_6.setLayout(null);
 		panel_6.setBorder(null);
 		panel_6.setBackground(Color.LIGHT_GRAY);
-		panel_6.setBounds(134, 12, 221, 215);
+		panel_6.setBounds(120, 12, 221, 188);
 		panel_4.add(panel_6);
 		
 		textField = new JTextField();
@@ -216,6 +216,7 @@ public class CheckOut extends JPanel {
 		panel_6.add(label_7);
 		
 		JLabel label_8 = new JLabel("*");
+		label_8.setToolTipText("Mandatory field");
 		label_8.setHorizontalAlignment(SwingConstants.LEFT);
 		label_8.setForeground(Color.DARK_GRAY);
 		label_8.setFont(new Font("HelvLight", Font.PLAIN, 16));
@@ -223,6 +224,7 @@ public class CheckOut extends JPanel {
 		panel_6.add(label_8);
 		
 		JLabel label_9 = new JLabel("*");
+		label_9.setToolTipText("Mandatory field");
 		label_9.setHorizontalAlignment(SwingConstants.LEFT);
 		label_9.setForeground(Color.DARK_GRAY);
 		label_9.setFont(new Font("HelvLight", Font.PLAIN, 16));
@@ -230,6 +232,7 @@ public class CheckOut extends JPanel {
 		panel_6.add(label_9);
 		
 		JLabel label_10 = new JLabel("*");
+		label_10.setToolTipText("Mandatory field");
 		label_10.setHorizontalAlignment(SwingConstants.LEFT);
 		label_10.setForeground(Color.DARK_GRAY);
 		label_10.setFont(new Font("HelvLight", Font.PLAIN, 16));
@@ -237,6 +240,7 @@ public class CheckOut extends JPanel {
 		panel_6.add(label_10);
 		
 		JLabel label_11 = new JLabel("*");
+		label_11.setToolTipText("Mandatory field");
 		label_11.setHorizontalAlignment(SwingConstants.LEFT);
 		label_11.setForeground(Color.DARK_GRAY);
 		label_11.setFont(new Font("HelvLight", Font.PLAIN, 16));
@@ -257,7 +261,7 @@ public class CheckOut extends JPanel {
 		lblSignIn.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSignIn.setForeground(Color.WHITE);
 		lblSignIn.setFont(new Font("HelvLight", Font.BOLD, 18));
-		lblSignIn.setBounds(383, 34, 64, 31);
+		lblSignIn.setBounds(553, 12, 64, 31);
 		panel_4.add(lblSignIn);
 		
 		JLabel lblYouAreNot = new JLabel("You are not signed in!");
@@ -265,14 +269,14 @@ public class CheckOut extends JPanel {
 		lblYouAreNot.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblYouAreNot.setForeground(Color.DARK_GRAY);
 		lblYouAreNot.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		lblYouAreNot.setBounds(383, 12, 148, 22);
+		lblYouAreNot.setBounds(359, 12, 148, 22);
 		panel_4.add(lblYouAreNot);
 		
 		JPanel panel_7 = new JPanel();
 		panel_7.setVisible(false);
 		panel_7.setBackground(Color.LIGHT_GRAY);
 		panel_7.setBorder(null);
-		panel_7.setBounds(383, 66, 234, 102);
+		panel_7.setBounds(383, 41, 234, 102);
 		panel_4.add(panel_7);
 		panel_7.setLayout(null);
 		
@@ -312,18 +316,43 @@ public class CheckOut extends JPanel {
 		panel_7.add(btnLogIn);
 		
 		JButton btnPreview = new JButton("Preview");
+		btnPreview.setToolTipText("Preview purchase");
 		btnPreview.setForeground(Color.DARK_GRAY);
 		btnPreview.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		btnPreview.setBackground(SystemColor.window);
-		btnPreview.setBounds(526, 200, 91, 27);
+		btnPreview.setBounds(526, 169, 91, 27);
 		panel_4.add(btnPreview);
 		
 		JButton button = new JButton("Cancel");
+		button.setToolTipText("Cancel purchase");
 		button.setForeground(Color.DARK_GRAY);
 		button.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		button.setBackground(SystemColor.window);
-		button.setBounds(430, 200, 84, 27);
+		button.setBounds(430, 169, 84, 27);
 		panel_4.add(button);
+		
+		JButton button_1 = new JButton("Back");
+		button_1.setToolTipText("Return to shopping cart");
+		button_1.setForeground(Color.DARK_GRAY);
+		button_1.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		button_1.setBackground(SystemColor.window);
+		button_1.setBounds(12, 169, 84, 27);
+		panel_4.add(button_1);
+		
+		JLabel lblCart = new JLabel("Cart");
+		lblCart.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblCart.setToolTipText("Return to shopping cart");
+		lblCart.setForeground(Color.WHITE);
+		lblCart.setFont(new Font("HelvLight", Font.BOLD, 14));
+		lblCart.setBounds(10, 38, 35, 20);
+		panel.add(lblCart);
+		
+		JLabel lblCheckOut_1 = new JLabel("> Check out");
+		lblCheckOut_1.setToolTipText("You are here!");
+		lblCheckOut_1.setForeground(SystemColor.text);
+		lblCheckOut_1.setFont(new Font("HelvLight", Font.BOLD, 14));
+		lblCheckOut_1.setBounds(47, 38, 96, 20);
+		panel.add(lblCheckOut_1);
 
 	}
 }

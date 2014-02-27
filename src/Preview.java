@@ -40,7 +40,7 @@ public class Preview extends JPanel {
 		JPanel deliveryAddressPanel = new JPanel();
 		deliveryAddressPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		deliveryAddressPanel.setBackground(Color.LIGHT_GRAY);
-		deliveryAddressPanel.setBounds(0, 64, 629, 123);
+		deliveryAddressPanel.setBounds(0, 90, 629, 123);
 		panel.add(deliveryAddressPanel);
 		deliveryAddressPanel.setLayout(null);
 		
@@ -88,7 +88,7 @@ public class Preview extends JPanel {
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_3.setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
-		panel_3.setBounds(0, 35, 629, 28);
+		panel_3.setBounds(0, 60, 629, 28);
 		panel.add(panel_3);
 		panel_3.setLayout(null);
 		
@@ -102,7 +102,7 @@ public class Preview extends JPanel {
 		panel_1.setLayout(null);
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_1.setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
-		panel_1.setBounds(0, 186, 629, 28);
+		panel_1.setBounds(0, 215, 629, 28);
 		panel.add(panel_1);
 		
 		JLabel lblDeliveryInformaiton = new JLabel("Products");
@@ -115,28 +115,28 @@ public class Preview extends JPanel {
 		productsPanel.setLayout(null);
 		productsPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		productsPanel.setBackground(Color.LIGHT_GRAY);
-		productsPanel.setBounds(0, 215, 629, 329);
+		productsPanel.setBounds(0, 245, 629, 299);
 		panel.add(productsPanel);
 		
 		JButton button = new JButton("Cancel");
 		button.setForeground(Color.DARK_GRAY);
 		button.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		button.setBackground(SystemColor.window);
-		button.setBounds(430, 290, 84, 27);
+		button.setBounds(430, 258, 84, 27);
 		productsPanel.add(button);
 		
 		JButton button_1 = new JButton("Confirm");
 		button_1.setForeground(Color.DARK_GRAY);
 		button_1.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		button_1.setBackground(SystemColor.window);
-		button_1.setBounds(526, 290, 91, 27);
+		button_1.setBounds(526, 258, 91, 27);
 		productsPanel.add(button_1);
 		
 		JLabel lblSumKr = new JLabel("Sum: 283 kr");
 		lblSumKr.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSumKr.setForeground(Color.DARK_GRAY);
 		lblSumKr.setFont(new Font("HelvLight", Font.PLAIN, 18));
-		lblSumKr.setBounds(430, 261, 187, 17);
+		lblSumKr.setBounds(430, 224, 187, 17);
 		productsPanel.add(lblSumKr);
 		
 		table = new JTable();
@@ -145,8 +145,6 @@ public class Preview extends JPanel {
 				{"Apples - Granny Smith", "5 pcs", "45 kr"},
 				{"Apples - Granny Smith", "12 pcs", "34 kr"},
 				{"Apples - Granny Smith", "2 pcs", "99 kr"},
-				{null, null, null},
-				{null, null, null},
 				{null, null, null},
 				{null, null, null},
 				{null, null, null},
@@ -168,8 +166,39 @@ public class Preview extends JPanel {
 		table.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		table.setBorder(new LineBorder(new Color(0, 0, 0)));
 		table.setBackground(Color.LIGHT_GRAY);
-		table.setBounds(12, 12, 605, 237);
+		table.setBounds(12, 12, 605, 200);
 		productsPanel.add(table);
+		
+		JButton btnBack = new JButton("Back to check out");
+		btnBack.setToolTipText("Return to check out");
+		btnBack.setForeground(Color.DARK_GRAY);
+		btnBack.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		btnBack.setBackground(SystemColor.window);
+		btnBack.setBounds(12, 260, 149, 27);
+		productsPanel.add(btnBack);
+		
+		JLabel label_3 = new JLabel("> Check out");
+		label_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		label_3.setToolTipText("Back to check out");
+		label_3.setForeground(Color.WHITE);
+		label_3.setFont(new Font("HelvLight", Font.BOLD, 14));
+		label_3.setBounds(47, 36, 96, 20);
+		panel.add(label_3);
+		
+		JLabel label_4 = new JLabel("Cart");
+		label_4.setToolTipText("Return to shopping cart");
+		label_4.setForeground(Color.WHITE);
+		label_4.setFont(new Font("HelvLight", Font.BOLD, 14));
+		label_4.setBounds(10, 36, 35, 20);
+		panel.add(label_4);
+		
+		JLabel lblPreview = new JLabel("> Preview");
+		lblPreview.setCursor(Cursor.getPredefinedCursor(Cursor.SW_RESIZE_CURSOR));
+		lblPreview.setToolTipText("You are here");
+		lblPreview.setForeground(Color.WHITE);
+		lblPreview.setFont(new Font("HelvLight", Font.BOLD, 14));
+		lblPreview.setBounds(142, 36, 96, 20);
+		panel.add(lblPreview);
 
 	}
 }
