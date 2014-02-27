@@ -39,6 +39,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
 
 import java.awt.Dimension;
+import javax.swing.JScrollPane;
 
 
 public class IMatView extends JFrame {
@@ -93,9 +94,16 @@ public class IMatView extends JFrame {
 		iMatLbl.setFont(new Font("HelvLight", Font.PLAIN, 85));
 		toolBar.add(iMatLbl);
 		
+		JPanel searchPanel = new JPanel();
+		searchPanel.setBackground(Color.LIGHT_GRAY);
+		searchPanel.setBounds(188, 34, 393, 32);
+		toolBar.add(searchPanel);
+		searchPanel.setLayout(null);
+		
 		searchFld = new JTextField();
+		searchFld.setBounds(0, 0, 264, 32);
+		searchPanel.add(searchFld);
 		searchFld.setToolTipText("Sök Produkt");
-		searchFld.setBounds(188, 34, 264, 32);
 		searchFld.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -106,41 +114,55 @@ public class IMatView extends JFrame {
 		searchFld.setForeground(Color.GRAY);
 		searchFld.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		searchFld.setText("Sök produkt..");
-		toolBar.add(searchFld);
 		searchFld.setColumns(10);
 		
 		JButton searchBtn = new JButton("Sök");
+		searchBtn.setBounds(276, 1, 117, 30);
+		searchPanel.add(searchBtn);
 		searchBtn.setBackground(SystemColor.window);
 		searchBtn.setToolTipText("Sök Produkt");
-		searchBtn.setBounds(464, 35, 117, 30);
 		searchBtn.setForeground(Color.DARK_GRAY);
 		searchBtn.setFont(new Font("HelvLight", Font.PLAIN, 16));
-		toolBar.add(searchBtn);
+		
+
+		searchFld.selectAll();
+		
+		JPanel accountPanel = new JPanel();
+		accountPanel.setBackground(Color.LIGHT_GRAY);
+		accountPanel.setBounds(640, 7, 165, 27);
+		toolBar.add(accountPanel);
+		accountPanel.setLayout(null);
 		
 		JLabel logInLbl = new JLabel("Logga in");
+		logInLbl.setBounds(91, 0, 74, 27);
+		accountPanel.add(logInLbl);
 		logInLbl.setFont(new Font("HelvLight", Font.PLAIN, 16));
-		logInLbl.setBounds(731, 7, 74, 27);
-		toolBar.add(logInLbl);
 		
 		JLabel registerLbl = new JLabel("Registrera");
+		registerLbl.setBounds(0, 0, 79, 27);
+		accountPanel.add(registerLbl);
 		registerLbl.setFont(new Font("HelvLight", Font.PLAIN, 16));
-		registerLbl.setBounds(640, 7, 79, 27);
-		toolBar.add(registerLbl);
 		
 		JLabel seperatorLbl = new JLabel("|");
+		seperatorLbl.setBounds(82, 7, 16, 14);
+		accountPanel.add(seperatorLbl);
 		seperatorLbl.setFont(new Font("HelvLight", Font.PLAIN, 16));
-		seperatorLbl.setBounds(722, 14, 16, 14);
-		toolBar.add(seperatorLbl);
+		
+		JPanel cashierPanel = new JPanel();
+		cashierPanel.setBackground(Color.LIGHT_GRAY);
+		cashierPanel.setBounds(731, 46, 74, 42);
+		toolBar.add(cashierPanel);
+		cashierPanel.setLayout(null);
 		
 		JLabel checkOutLbl = new JLabel("Kassa");
+		checkOutLbl.setBounds(0, 28, 74, 14);
+		cashierPanel.add(checkOutLbl);
 		checkOutLbl.setFont(new Font("HelvLight", Font.PLAIN, 16));
-		checkOutLbl.setBounds(731, 74, 74, 14);
-		toolBar.add(checkOutLbl);
 		
 		JLabel cartLbl = new JLabel("Kundkorg");
+		cartLbl.setBounds(0, 0, 74, 32);
+		cashierPanel.add(cartLbl);
 		cartLbl.setFont(new Font("HelvLight", Font.PLAIN, 16));
-		cartLbl.setBounds(731, 46, 74, 32);
-		toolBar.add(cartLbl);
 		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -173,6 +195,7 @@ public class IMatView extends JFrame {
 		wareListPanel.setLayout(new BorderLayout(0, 0));
 		
 		JPanel breadcrumPanel = new JPanel();
+		breadcrumPanel.setBackground(new Color(200, 200, 200));
 		breadcrumPanel.setPreferredSize(new Dimension(10, 25));
 		breadcrumPanel.setSize(new Dimension(0, 25));
 		breadcrumPanel.setMinimumSize(new Dimension(10, 25));
@@ -189,8 +212,13 @@ public class IMatView extends JFrame {
 		listViewLbl.setBounds(572, 2, 21, 21);
 		breadcrumPanel.add(listViewLbl);
 		
-		JPanel panel = new JPanel();
-		wareListPanel.add(panel, BorderLayout.CENTER);
+		JScrollPane wareContainerScroll = new JScrollPane();
+		wareContainerScroll.setBackground(Color.LIGHT_GRAY);
+		wareListPanel.add(wareContainerScroll, BorderLayout.CENTER);
+		
+		JPanel shoppingListPanel = new JPanel();
+		shoppingListPanel.setBackground(Color.LIGHT_GRAY);
+		mainPanel.add(shoppingListPanel, "name_176541927032183");
 		
 		//Code for creating the the layout of the navigationTree which is created later
 		DefaultMutableTreeNode root = new DefaultMutableTreeNode("root");
@@ -232,30 +260,32 @@ public class IMatView extends JFrame {
 		root.add(node_1);
 		root.add(new DefaultMutableTreeNode("Herb"));
 		root.add(new DefaultMutableTreeNode("Fluor Sugar Salt"));
-
-		//Navigation tree created using the root system established above
-		final JTree navigationTree = new JTree(root);
-		navigationTree.setRootVisible(false);
-		navigationTree.setBounds(10, 106, 170, 266);
-		navigationTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
-		navigationTree.addTreeSelectionListener(new TreeSelectionListener() {
-			public void valueChanged(TreeSelectionEvent e) {
-				DefaultMutableTreeNode node = (DefaultMutableTreeNode)
-						navigationTree.getLastSelectedPathComponent();
-
-				if (node == null) return;
-
-				Object nodeInfo = node.getUserObject();
-				String type = nodeInfo.toString().replace(' ', '_');
-				type = type.toUpperCase();
-				System.out.print(type);
-
-			}
-		});		
 		
-		contentPane.add(navigationTree);
+		JPanel sidePanel = new JPanel();
+		sidePanel.setBackground(Color.LIGHT_GRAY);
+		sidePanel.setBounds(0, 100, 191, 535);
+		contentPane.add(sidePanel);
+		sidePanel.setLayout(null);
 		
+				//Navigation tree created using the root system established above
+				final JTree navigationTree = new JTree(root);
+				navigationTree.setBounds(10, 11, 170, 266);
+				sidePanel.add(navigationTree);
+				navigationTree.setRootVisible(false);
+				navigationTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+				navigationTree.addTreeSelectionListener(new TreeSelectionListener() {
+					public void valueChanged(TreeSelectionEvent e) {
+						DefaultMutableTreeNode node = (DefaultMutableTreeNode)
+								navigationTree.getLastSelectedPathComponent();
 
-		searchFld.selectAll();
+						if (node == null) return;
+
+						Object nodeInfo = node.getUserObject();
+						String type = nodeInfo.toString().replace(' ', '_');
+						type = type.toUpperCase();
+						System.out.print(type);
+
+					}
+				});		
 	}
 }
