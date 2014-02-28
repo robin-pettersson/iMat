@@ -20,6 +20,7 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JComboBox;
 
 
 public class CheckOut extends JPanel {
@@ -138,37 +139,45 @@ public class CheckOut extends JPanel {
 		JLabel label = new JLabel("Firstname:");
 		label.setHorizontalAlignment(SwingConstants.RIGHT);
 		label.setForeground(Color.DARK_GRAY);
-		label.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		label.setFont(new Font("HelvLight", Font.PLAIN, 12));
 		label.setBounds(12, 0, 91, 17);
 		panel_5.add(label);
 		
 		JLabel label_1 = new JLabel("Lastname:");
 		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		label_1.setForeground(Color.DARK_GRAY);
-		label_1.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		label_1.setBounds(12, 29, 91, 17);
+		label_1.setFont(new Font("HelvLight", Font.PLAIN, 12));
+		label_1.setBounds(12, 24, 91, 17);
 		panel_5.add(label_1);
 		
 		JLabel label_2 = new JLabel("Street:");
 		label_2.setHorizontalAlignment(SwingConstants.RIGHT);
 		label_2.setForeground(Color.DARK_GRAY);
-		label_2.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		label_2.setBounds(12, 58, 91, 20);
+		label_2.setFont(new Font("HelvLight", Font.PLAIN, 12));
+		label_2.setBounds(11, 46, 91, 20);
 		panel_5.add(label_2);
 		
 		JLabel label_3 = new JLabel("Zip and city:");
 		label_3.setHorizontalAlignment(SwingConstants.RIGHT);
 		label_3.setForeground(Color.DARK_GRAY);
-		label_3.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		label_3.setBounds(12, 90, 91, 20);
+		label_3.setFont(new Font("HelvLight", Font.PLAIN, 12));
+		label_3.setBounds(12, 73, 91, 20);
 		panel_5.add(label_3);
 		
 		JLabel label_4 = new JLabel("Email:");
 		label_4.setHorizontalAlignment(SwingConstants.RIGHT);
 		label_4.setForeground(Color.DARK_GRAY);
-		label_4.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		label_4.setFont(new Font("HelvLight", Font.PLAIN, 12));
 		label_4.setBounds(12, 122, 91, 17);
 		panel_5.add(label_4);
+		
+		JLabel lblDeliveryDate = new JLabel("Delivery date:");
+		lblDeliveryDate.setToolTipText("Enter date for delivery ");
+		lblDeliveryDate.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblDeliveryDate.setForeground(Color.DARK_GRAY);
+		lblDeliveryDate.setFont(new Font("HelvLight", Font.PLAIN, 12));
+		lblDeliveryDate.setBounds(9, 96, 91, 20);
+		panel_5.add(lblDeliveryDate);
 		
 		JPanel panel_6 = new JPanel();
 		panel_6.setLayout(null);
@@ -180,7 +189,7 @@ public class CheckOut extends JPanel {
 		fNameTextField = new JTextField();
 		fNameTextField.addFocusListener(reg);
 		fNameTextField.setName("fNameTextField");
-		fNameTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		fNameTextField.setFont(new Font("HelvLight", Font.PLAIN, 12));
 		fNameTextField.setColumns(10);
 		fNameTextField.setBounds(0, 0, 195, 19);
 		panel_6.add(fNameTextField);
@@ -188,49 +197,49 @@ public class CheckOut extends JPanel {
 		lNameTextField = new JTextField();
 		lNameTextField.addFocusListener(reg);
 		lNameTextField.setName("lNameTextField");
-		lNameTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		lNameTextField.setFont(new Font("HelvLight", Font.PLAIN, 12));
 		lNameTextField.setColumns(10);
-		lNameTextField.setBounds(0, 31, 195, 19);
+		lNameTextField.setBounds(0, 26, 195, 19);
 		panel_6.add(lNameTextField);
 		
 		addressTextField = new JTextField();
 		addressTextField.addFocusListener(reg);
 		addressTextField.setName("addressTextField");
-		addressTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		addressTextField.setFont(new Font("HelvLight", Font.PLAIN, 12));
 		addressTextField.setColumns(10);
-		addressTextField.setBounds(0, 62, 195, 19);
+		addressTextField.setBounds(0, 50, 195, 19);
 		panel_6.add(addressTextField);
 		
 		zipTextField = new JTextField();
 		zipTextField.addFocusListener(reg);
 		zipTextField.setName("zipTextField");
 		zipTextField.setToolTipText("Postnummer");
-		zipTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		zipTextField.setFont(new Font("HelvLight", Font.PLAIN, 12));
 		zipTextField.setColumns(10);
-		zipTextField.setBounds(0, 93, 54, 19);
+		zipTextField.setBounds(0, 75, 54, 19);
 		panel_6.add(zipTextField);
 		
 		cityTextField = new JTextField();
 		cityTextField.addFocusListener(reg);
 		cityTextField.setName("cityTextField");
-		cityTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		cityTextField.setFont(new Font("HelvLight", Font.PLAIN, 12));
 		cityTextField.setColumns(10);
-		cityTextField.setBounds(66, 93, 129, 19);
+		cityTextField.setBounds(66, 75, 129, 19);
 		panel_6.add(cityTextField);
 		
 		emailTextField = new JTextField();
 		emailTextField.addFocusListener(reg);
 		emailTextField.setName("emailTextField");
-		emailTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		emailTextField.setFont(new Font("HelvLight", Font.PLAIN, 12));
 		emailTextField.setColumns(10);
-		emailTextField.setBounds(0, 124, 195, 19);
+		emailTextField.setBounds(2, 123, 195, 19);
 		panel_6.add(emailTextField);
 		
 		JLabel label_7 = new JLabel("Receipt will be sent to this email");
 		label_7.setHorizontalAlignment(SwingConstants.LEFT);
 		label_7.setForeground(Color.DARK_GRAY);
 		label_7.setFont(new Font("HelvLight", Font.ITALIC, 12));
-		label_7.setBounds(0, 140, 195, 17);
+		label_7.setBounds(3, 142, 195, 17);
 		panel_6.add(label_7);
 		
 		JLabel label_8 = new JLabel("*");
@@ -238,7 +247,7 @@ public class CheckOut extends JPanel {
 		label_8.setHorizontalAlignment(SwingConstants.LEFT);
 		label_8.setForeground(Color.DARK_GRAY);
 		label_8.setFont(new Font("HelvLight", Font.PLAIN, 16));
-		label_8.setBounds(200, 3, 12, 17);
+		label_8.setBounds(200, 0, 12, 17);
 		panel_6.add(label_8);
 		
 		JLabel label_9 = new JLabel("*");
@@ -246,7 +255,7 @@ public class CheckOut extends JPanel {
 		label_9.setHorizontalAlignment(SwingConstants.LEFT);
 		label_9.setForeground(Color.DARK_GRAY);
 		label_9.setFont(new Font("HelvLight", Font.PLAIN, 16));
-		label_9.setBounds(200, 34, 12, 17);
+		label_9.setBounds(200, 26, 12, 17);
 		panel_6.add(label_9);
 		
 		JLabel label_10 = new JLabel("*");
@@ -254,7 +263,7 @@ public class CheckOut extends JPanel {
 		label_10.setHorizontalAlignment(SwingConstants.LEFT);
 		label_10.setForeground(Color.DARK_GRAY);
 		label_10.setFont(new Font("HelvLight", Font.PLAIN, 16));
-		label_10.setBounds(200, 65, 12, 17);
+		label_10.setBounds(200, 50, 12, 17);
 		panel_6.add(label_10);
 		
 		JLabel label_11 = new JLabel("*");
@@ -262,7 +271,7 @@ public class CheckOut extends JPanel {
 		label_11.setHorizontalAlignment(SwingConstants.LEFT);
 		label_11.setForeground(Color.DARK_GRAY);
 		label_11.setFont(new Font("HelvLight", Font.PLAIN, 16));
-		label_11.setBounds(200, 93, 12, 17);
+		label_11.setBounds(200, 75, 12, 17);
 		panel_6.add(label_11);
 		
 		
@@ -289,8 +298,23 @@ public class CheckOut extends JPanel {
 		registerLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		registerLabel.setForeground(Color.WHITE);
 		registerLabel.setFont(new Font("HelvLight", Font.BOLD, 18));
-		registerLabel.setBounds(0, 155, 195, 31);
+		registerLabel.setBounds(0, 157, 195, 31);
 		panel_6.add(registerLabel);
+		
+		JComboBox dayComboBox = new JComboBox();
+		dayComboBox.setFont(new Font("HelvLight", Font.PLAIN, 12));
+		dayComboBox.setBounds(0, 98, 54, 20);
+		panel_6.add(dayComboBox);
+		
+		JComboBox monthComboBox = new JComboBox();
+		monthComboBox.setFont(new Font("HelvLight", Font.PLAIN, 12));
+		monthComboBox.setBounds(66, 98, 54, 20);
+		panel_6.add(monthComboBox);
+		
+		JComboBox yearComboBox = new JComboBox();
+		yearComboBox.setFont(new Font("HelvLight", Font.PLAIN, 12));
+		yearComboBox.setBounds(132, 98, 63, 20);
+		panel_6.add(yearComboBox);
 		
 		JLabel lblSignIn = new JLabel("Sign in");
 		lblSignIn.setName("lblSignIn");
