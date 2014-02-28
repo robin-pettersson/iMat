@@ -15,6 +15,8 @@ public class GridView extends JPanel {
 	private JButton buyBtn;
 	private JLabel pictureLbl;
 	
+	private RegisterController reg = RegisterController.getInstance();
+	
 	public GridView(String name, double pris) {
 		
 		setBackground(Color.PINK);
@@ -23,6 +25,7 @@ public class GridView extends JPanel {
 		setLayout(null);
 		
 		productNameLbl = new JLabel(name);
+		productNameLbl.setName("productNameLbl");
 		productNameLbl.setFont(new Font("HelvLight", Font.PLAIN, 18));
 		productNameLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		productNameLbl.setBounds(5, 5, 150, 22);
@@ -35,11 +38,14 @@ public class GridView extends JPanel {
 		add(priceLbl);
 		
 		amountSpinner = new JSpinner();
+		amountSpinner.setName("amountSpinner");
 		amountSpinner.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		amountSpinner.setBounds(47, 135, 37, 20);
 		add(amountSpinner);
 		
 		buyBtn = new JButton("L\u00E4gg till");
+		buyBtn.addMouseListener(reg);
+		buyBtn.setName("buyBtn");
 		buyBtn.setFont(new Font("HelvLight", Font.PLAIN, 12));
 		buyBtn.setBounds(87, 135, 69, 20);
 		add(buyBtn);

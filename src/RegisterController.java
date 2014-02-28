@@ -1,10 +1,17 @@
+import java.awt.Component;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.List;
+
+import javax.swing.JLabel;
+import javax.swing.JSpinner;
 
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 import se.chalmers.ait.dat215.project.User;
 
 
@@ -111,6 +118,43 @@ public class RegisterController implements FocusListener, MouseListener {
 		}
 		if(me.getComponent().getName() == "lblSignIn"){
 			//Todo hide/show function here instead of in view class
+		}
+		if(me.getComponent().getName() == "buyBtn"){
+			Component[] comp = me.getComponent().getParent().getComponents();
+			addToCart(comp);
+		}
+		
+	}
+	
+	public void addToCart(Component[] comp){
+		
+		String prod = "";
+		int number = 0;
+		List<Product> products = iMat.getProducts();
+
+		for(int i = 0; i < comp.length; i++ ){
+			String temp = comp[i].getName();
+			if(temp == "productNameLbl"){
+				JLabel lbl = (JLabel) comp[i];
+				prod = lbl.getText();
+			}
+			if(temp == "amountSpinner"){
+				JSpinner spinner = (JSpinner) comp[i];
+				number = (int) spinner.getValue();
+				
+			}
+		}
+		for(int i = 0; i < products.size(); i++){
+			String temp =products.get(i).getName();
+			Product product = products.get(i);
+			if(temp.equals(prod)){
+				double price = products.get(i).getPrice();
+				for (int x = 0; x < number; x++){
+					iMat.getShoppingCart().addProduct(product, price);
+					System.out.println(price);
+					
+				}
+			}
 		}
 		
 	}
