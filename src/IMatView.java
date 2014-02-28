@@ -87,7 +87,7 @@ public class IMatView extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel toolBar = new JPanel();
+		final JPanel toolBar = new JPanel();
 		toolBar.setBackground(Color.LIGHT_GRAY);
 		toolBar.setBorder(new LineBorder(new Color(0, 0, 0)));
 		toolBar.setBounds(0, 0, 826, 100);
@@ -95,9 +95,14 @@ public class IMatView extends JFrame {
 		
 		JLabel iMatLbl = new JLabel("iMat");
 		iMatLbl.setBounds(12, 0, 216, 88);
-		iMatLbl.addMouseListener(new MouseAdapter() {
+		iMatLbl.addMouseListener(new MouseAdapter() 
+		{
 			@Override
 			public void mouseEntered(MouseEvent e) {
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cardLayout.first((JPanel)toolBar.getParent().getComponent(1));
 			}
 		});
 		toolBar.setLayout(null);
@@ -233,6 +238,10 @@ public class IMatView extends JFrame {
 		shoppingListPanel.setBackground(Color.LIGHT_GRAY);
 		mainPanel.add(shoppingListPanel, "name_176541927032183");
 		
+		JPanel customerPanel = new JPanel();
+		customerPanel.setBackground(Color.LIGHT_GRAY);
+		mainPanel.add(customerPanel, "name_2172640791470");
+		
 		//Code for creating the the layout of the navigationTree which is created later
 		DefaultMutableTreeNode root = new DefaultMutableTreeNode("root");
 		DefaultMutableTreeNode node_1;
@@ -291,6 +300,4 @@ public class IMatView extends JFrame {
 		
 		
 	}
-	
-	
 }
