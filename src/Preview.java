@@ -47,30 +47,37 @@ public class Preview extends JPanel {
 		JLabel label = new JLabel("Firstname Lastname");
 		label.setHorizontalAlignment(SwingConstants.LEFT);
 		label.setForeground(Color.DARK_GRAY);
-		label.setFont(new Font("HelvLight", Font.PLAIN, 16));
-		label.setBounds(12, 12, 252, 17);
+		label.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		label.setBounds(12, 8, 252, 17);
 		deliveryAddressPanel.add(label);
 		
 		JLabel label_1 = new JLabel("Streetaddress 88");
 		label_1.setHorizontalAlignment(SwingConstants.LEFT);
 		label_1.setForeground(Color.DARK_GRAY);
-		label_1.setFont(new Font("HelvLight", Font.PLAIN, 16));
-		label_1.setBounds(12, 41, 252, 17);
+		label_1.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		label_1.setBounds(12, 30, 252, 17);
 		deliveryAddressPanel.add(label_1);
 		
 		JLabel label_2 = new JLabel("928 82 Towncity");
 		label_2.setHorizontalAlignment(SwingConstants.LEFT);
 		label_2.setForeground(Color.DARK_GRAY);
-		label_2.setFont(new Font("HelvLight", Font.PLAIN, 16));
-		label_2.setBounds(12, 70, 252, 17);
+		label_2.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		label_2.setBounds(12, 50, 252, 17);
 		deliveryAddressPanel.add(label_2);
 		
-		JLabel lblYouremailemailcom = new JLabel("youremail@email.com");
-		lblYouremailemailcom.setHorizontalAlignment(SwingConstants.LEFT);
-		lblYouremailemailcom.setForeground(Color.DARK_GRAY);
-		lblYouremailemailcom.setFont(new Font("HelvLight", Font.PLAIN, 16));
-		lblYouremailemailcom.setBounds(12, 94, 252, 17);
-		deliveryAddressPanel.add(lblYouremailemailcom);
+		JLabel label_5 = new JLabel("youremail@email.com");
+		label_5.setHorizontalAlignment(SwingConstants.LEFT);
+		label_5.setForeground(Color.DARK_GRAY);
+		label_5.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		label_5.setBounds(12, 65, 252, 17);
+		deliveryAddressPanel.add(label_5);
+		
+		JLabel deliveryLabel = new JLabel("Delivery: 28/10/2014");
+		deliveryLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		deliveryLabel.setForeground(Color.DARK_GRAY);
+		deliveryLabel.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		deliveryLabel.setBounds(12, 86, 252, 17);
+		deliveryAddressPanel.add(deliveryLabel);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
