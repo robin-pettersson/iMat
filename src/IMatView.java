@@ -283,7 +283,7 @@ public class IMatView extends JFrame {
 				//Navigation tree created using the root system established above
 				final JTree navigationTree = new JTree(root);
 				navigationTree.setBackground(Color.LIGHT_GRAY);
-				navigationTree.setBounds(10, 11, 170, 266);
+				navigationTree.setBounds(10, 11, 170, 513);
 				sidePanel.add(navigationTree);
 				navigationTree.setRootVisible(false);
 				navigationTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
