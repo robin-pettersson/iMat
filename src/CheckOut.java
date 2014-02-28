@@ -316,6 +316,14 @@ public class CheckOut extends JPanel {
 		yearComboBox.setBounds(132, 98, 63, 20);
 		panel_6.add(yearComboBox);
 		
+		JLabel label_5 = new JLabel("*");
+		label_5.setToolTipText("Mandatory field");
+		label_5.setHorizontalAlignment(SwingConstants.LEFT);
+		label_5.setForeground(Color.DARK_GRAY);
+		label_5.setFont(new Font("HelvLight", Font.PLAIN, 16));
+		label_5.setBounds(200, 98, 12, 17);
+		panel_6.add(label_5);
+		
 		JLabel lblSignIn = new JLabel("Sign in");
 		lblSignIn.setName("lblSignIn");
 		lblSignIn.addMouseListener(reg);
