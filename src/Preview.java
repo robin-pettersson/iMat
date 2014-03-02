@@ -40,43 +40,6 @@ public class Preview extends JPanel {
 		add(panel);
 		panel.setLayout(null);
 		
-		JPanel deliveryAddressPanel = new JPanel();
-		deliveryAddressPanel.setBorder(null);
-		deliveryAddressPanel.setBackground(Color.LIGHT_GRAY);
-		deliveryAddressPanel.setBounds(10, 90, 213, 123);
-		panel.add(deliveryAddressPanel);
-		deliveryAddressPanel.setLayout(new GridLayout(0, 1, 0, 0));
-		
-		JLabel fullNameLabel = new JLabel("Firstname Lastname");
-		fullNameLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		fullNameLabel.setForeground(Color.DARK_GRAY);
-		fullNameLabel.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		deliveryAddressPanel.add(fullNameLabel);
-		
-		JLabel streetLabel = new JLabel("Streetaddress 88");
-		deliveryAddressPanel.add(streetLabel);
-		streetLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		streetLabel.setForeground(Color.DARK_GRAY);
-		streetLabel.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		
-		JLabel zipTownLabel = new JLabel("928 82 Towncity");
-		deliveryAddressPanel.add(zipTownLabel);
-		zipTownLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		zipTownLabel.setForeground(Color.DARK_GRAY);
-		zipTownLabel.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		
-		JLabel emailLabel = new JLabel("youremail@email.com");
-		deliveryAddressPanel.add(emailLabel);
-		emailLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		emailLabel.setForeground(Color.DARK_GRAY);
-		emailLabel.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		
-		JLabel deliveryLabel = new JLabel("Delivery: 28/10/2014");
-		deliveryAddressPanel.add(deliveryLabel);
-		deliveryLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		deliveryLabel.setForeground(Color.DARK_GRAY);
-		deliveryLabel.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_2.setBackground(Color.LIGHT_GRAY);
@@ -204,6 +167,50 @@ public class Preview extends JPanel {
 		lblPreview.setFont(new Font("HelvLight", Font.BOLD, 14));
 		lblPreview.setBounds(142, 36, 96, 20);
 		panel.add(lblPreview);
+		
+		JPanel panel_4 = new JPanel();
+		panel_4.setBackground(Color.LIGHT_GRAY);
+		panel_4.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_4.setBounds(0, 90, 629, 123);
+		panel.add(panel_4);
+		panel_4.setLayout(null);
+		
+		JPanel panel_5 = new JPanel();
+		panel_5.setBounds(12, 12, 605, 99);
+		panel_5.setBorder(null);
+		panel_5.setBackground(Color.LIGHT_GRAY);
+		panel_4.add(panel_5);
+		panel_5.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		JLabel label = new JLabel("Firstname Lastname");
+		label.setHorizontalAlignment(SwingConstants.LEFT);
+		label.setForeground(Color.DARK_GRAY);
+		label.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		panel_5.add(label);
+		
+		JLabel label_1 = new JLabel("Streetaddress 88");
+		label_1.setHorizontalAlignment(SwingConstants.LEFT);
+		label_1.setForeground(Color.DARK_GRAY);
+		label_1.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		panel_5.add(label_1);
+		
+		JLabel label_2 = new JLabel("928 82 Towncity");
+		label_2.setHorizontalAlignment(SwingConstants.LEFT);
+		label_2.setForeground(Color.DARK_GRAY);
+		label_2.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		panel_5.add(label_2);
+		
+		JLabel label_5 = new JLabel("youremail@email.com");
+		label_5.setHorizontalAlignment(SwingConstants.LEFT);
+		label_5.setForeground(Color.DARK_GRAY);
+		label_5.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		panel_5.add(label_5);
+		
+		JLabel label_6 = new JLabel("Delivery: 28/10/2014");
+		label_6.setHorizontalAlignment(SwingConstants.LEFT);
+		label_6.setForeground(Color.DARK_GRAY);
+		label_6.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		panel_5.add(label_6);
 
 	}
 }
