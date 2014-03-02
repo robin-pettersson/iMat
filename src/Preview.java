@@ -18,11 +18,14 @@ import java.awt.Cursor;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.FlowLayout;
+import javax.swing.BoxLayout;
+import java.awt.GridLayout;
 
 
 public class Preview extends JPanel {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private JTable table;
+	private JTable productsTable;
 
 	/**
 	 * Create the panel.
@@ -38,46 +41,41 @@ public class Preview extends JPanel {
 		panel.setLayout(null);
 		
 		JPanel deliveryAddressPanel = new JPanel();
-		deliveryAddressPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		deliveryAddressPanel.setBorder(null);
 		deliveryAddressPanel.setBackground(Color.LIGHT_GRAY);
-		deliveryAddressPanel.setBounds(0, 90, 629, 123);
+		deliveryAddressPanel.setBounds(10, 90, 213, 123);
 		panel.add(deliveryAddressPanel);
-		deliveryAddressPanel.setLayout(null);
+		deliveryAddressPanel.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JLabel label = new JLabel("Firstname Lastname");
-		label.setHorizontalAlignment(SwingConstants.LEFT);
-		label.setForeground(Color.DARK_GRAY);
-		label.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		label.setBounds(12, 8, 252, 17);
-		deliveryAddressPanel.add(label);
+		JLabel fullNameLabel = new JLabel("Firstname Lastname");
+		fullNameLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		fullNameLabel.setForeground(Color.DARK_GRAY);
+		fullNameLabel.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		deliveryAddressPanel.add(fullNameLabel);
 		
-		JLabel label_1 = new JLabel("Streetaddress 88");
-		label_1.setHorizontalAlignment(SwingConstants.LEFT);
-		label_1.setForeground(Color.DARK_GRAY);
-		label_1.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		label_1.setBounds(12, 30, 252, 17);
-		deliveryAddressPanel.add(label_1);
+		JLabel streetLabel = new JLabel("Streetaddress 88");
+		deliveryAddressPanel.add(streetLabel);
+		streetLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		streetLabel.setForeground(Color.DARK_GRAY);
+		streetLabel.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		
-		JLabel label_2 = new JLabel("928 82 Towncity");
-		label_2.setHorizontalAlignment(SwingConstants.LEFT);
-		label_2.setForeground(Color.DARK_GRAY);
-		label_2.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		label_2.setBounds(12, 50, 252, 17);
-		deliveryAddressPanel.add(label_2);
+		JLabel zipTownLabel = new JLabel("928 82 Towncity");
+		deliveryAddressPanel.add(zipTownLabel);
+		zipTownLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		zipTownLabel.setForeground(Color.DARK_GRAY);
+		zipTownLabel.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		
-		JLabel label_5 = new JLabel("youremail@email.com");
-		label_5.setHorizontalAlignment(SwingConstants.LEFT);
-		label_5.setForeground(Color.DARK_GRAY);
-		label_5.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		label_5.setBounds(12, 65, 252, 17);
-		deliveryAddressPanel.add(label_5);
+		JLabel emailLabel = new JLabel("youremail@email.com");
+		deliveryAddressPanel.add(emailLabel);
+		emailLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		emailLabel.setForeground(Color.DARK_GRAY);
+		emailLabel.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		
 		JLabel deliveryLabel = new JLabel("Delivery: 28/10/2014");
+		deliveryAddressPanel.add(deliveryLabel);
 		deliveryLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		deliveryLabel.setForeground(Color.DARK_GRAY);
 		deliveryLabel.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		deliveryLabel.setBounds(12, 86, 252, 17);
-		deliveryAddressPanel.add(deliveryLabel);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -125,19 +123,19 @@ public class Preview extends JPanel {
 		productsPanel.setBounds(0, 245, 629, 299);
 		panel.add(productsPanel);
 		
-		JButton button = new JButton("Cancel");
-		button.setForeground(Color.DARK_GRAY);
-		button.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		button.setBackground(SystemColor.window);
-		button.setBounds(430, 258, 84, 27);
-		productsPanel.add(button);
+		JButton cancelButton = new JButton("Cancel");
+		cancelButton.setForeground(Color.DARK_GRAY);
+		cancelButton.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		cancelButton.setBackground(SystemColor.window);
+		cancelButton.setBounds(430, 258, 84, 27);
+		productsPanel.add(cancelButton);
 		
-		JButton button_1 = new JButton("Confirm");
-		button_1.setForeground(Color.DARK_GRAY);
-		button_1.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		button_1.setBackground(SystemColor.window);
-		button_1.setBounds(526, 258, 91, 27);
-		productsPanel.add(button_1);
+		JButton confirmButton = new JButton("Confirm");
+		confirmButton.setForeground(Color.DARK_GRAY);
+		confirmButton.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		confirmButton.setBackground(SystemColor.window);
+		confirmButton.setBounds(526, 258, 91, 27);
+		productsPanel.add(confirmButton);
 		
 		JLabel lblSumKr = new JLabel("Sum: 283 kr");
 		lblSumKr.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -146,8 +144,8 @@ public class Preview extends JPanel {
 		lblSumKr.setBounds(430, 224, 187, 17);
 		productsPanel.add(lblSumKr);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
+		productsTable = new JTable();
+		productsTable.setModel(new DefaultTableModel(
 			new Object[][] {
 				{"Apples - Granny Smith", "5 pcs", "45 kr"},
 				{"Apples - Granny Smith", "12 pcs", "34 kr"},
@@ -166,23 +164,23 @@ public class Preview extends JPanel {
 				"New column", "New column", "New column"
 			}
 		));
-		table.getColumnModel().getColumn(0).setPreferredWidth(400);
-		table.getColumnModel().getColumn(1).setPreferredWidth(15);
-		table.getColumnModel().getColumn(2).setPreferredWidth(15);
-		table.setRowSelectionAllowed(false);
-		table.setFont(new Font("HelvLight", Font.PLAIN, 16));
-		table.setBorder(new LineBorder(new Color(0, 0, 0)));
-		table.setBackground(Color.LIGHT_GRAY);
-		table.setBounds(12, 12, 605, 200);
-		productsPanel.add(table);
+		productsTable.getColumnModel().getColumn(0).setPreferredWidth(400);
+		productsTable.getColumnModel().getColumn(1).setPreferredWidth(15);
+		productsTable.getColumnModel().getColumn(2).setPreferredWidth(15);
+		productsTable.setRowSelectionAllowed(false);
+		productsTable.setFont(new Font("HelvLight", Font.PLAIN, 16));
+		productsTable.setBorder(new LineBorder(new Color(0, 0, 0)));
+		productsTable.setBackground(Color.LIGHT_GRAY);
+		productsTable.setBounds(12, 12, 605, 200);
+		productsPanel.add(productsTable);
 		
-		JButton btnBack = new JButton("Back to check out");
-		btnBack.setToolTipText("Return to check out");
-		btnBack.setForeground(Color.DARK_GRAY);
-		btnBack.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		btnBack.setBackground(SystemColor.window);
-		btnBack.setBounds(12, 260, 149, 27);
-		productsPanel.add(btnBack);
+		JButton backButton = new JButton("Back to check out");
+		backButton.setToolTipText("Return to check out");
+		backButton.setForeground(Color.DARK_GRAY);
+		backButton.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		backButton.setBackground(SystemColor.window);
+		backButton.setBounds(12, 260, 149, 27);
+		productsPanel.add(backButton);
 		
 		JLabel label_3 = new JLabel("> Check out");
 		label_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
