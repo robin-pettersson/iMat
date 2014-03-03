@@ -5,6 +5,7 @@ import se.chalmers.ait.dat215.project.Product;
 
 import java.awt.Font;
 import java.awt.Dimension;
+import java.awt.Color;
 
 public class ProductView extends JPanel{
 
@@ -21,6 +22,7 @@ public class ProductView extends JPanel{
 	 * Creating the panel.
 	 */
 	public ProductView(Product product) {
+		setBackground(Color.LIGHT_GRAY);
 		setPreferredSize(new Dimension(635, 300));
 		this.product = product;
 		
@@ -36,13 +38,14 @@ public class ProductView extends JPanel{
 		add(favoriteLbl);
 		
 		amountSpinner = new JSpinner();
+		amountSpinner.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		amountSpinner.setVerifyInputWhenFocusTarget(false);
 		amountSpinner.setRequestFocusEnabled(false);
 		amountSpinner.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		amountSpinner.setBounds(494, 273, 37, 20);
 		add(amountSpinner);
 		
-		buyBtn = new JButton("L\u00E4gg till");
+		buyBtn = new JButton("Add");
 		buyBtn.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		buyBtn.setBounds(534, 273, 91, 20);
 		add(buyBtn);

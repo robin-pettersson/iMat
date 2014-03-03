@@ -20,11 +20,13 @@ public class CartListView extends JPanel {
 	
 	
 	public CartListView() {
+		setBackground(Color.LIGHT_GRAY);
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setPreferredSize(new Dimension(635, 70));
 		setLayout(null);
 		
 		amountSpinner = new JSpinner();
+		amountSpinner.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		amountSpinner.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		amountSpinner.setBounds(491, 26, 57, 20);
 		add(amountSpinner);
@@ -34,13 +36,15 @@ public class CartListView extends JPanel {
 		priceLbl.setBounds(428, 26, 63, 20);
 		add(priceLbl);
 		
-		removeLbl = new JLabel("Ta bort");
-		removeLbl.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		removeLbl.setBounds(554, 26, 54, 15);
+		removeLbl = new JLabel("Remove");
+		removeLbl.setForeground(Color.WHITE);
+		removeLbl.setFont(new Font("HelvLight", Font.BOLD, 14));
+		removeLbl.setBounds(554, 26, 71, 15);
 		add(removeLbl);
 		
 		productNameLbl = new JLabel("WareName");
-		productNameLbl.setFont(new Font("HelvLight", Font.PLAIN, 18));
+		productNameLbl.setForeground(Color.WHITE);
+		productNameLbl.setFont(new Font("HelvLight", Font.BOLD, 18));
 		productNameLbl.setBounds(75, 22, 198, 26);
 		add(productNameLbl);
 		
@@ -51,7 +55,7 @@ public class CartListView extends JPanel {
 		JLabel label = new JLabel("X");
 		label.setForeground(Color.RED);
 		label.setFont(new Font("Dialog", Font.BOLD, 24));
-		label.setBounds(601, 20, 24, 26);
+		label.setBounds(613, 20, 24, 26);
 		add(label);
 		// TODO Auto-generated constructor stub
 	}

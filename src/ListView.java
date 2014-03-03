@@ -18,7 +18,7 @@ public class ListView extends JPanel {
 	private JSpinner amountSpinner;
 	
 	public ListView() {
-		setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
+		setBackground(Color.LIGHT_GRAY);
 		setPreferredSize(new Dimension(635, 50));
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setLayout(null);

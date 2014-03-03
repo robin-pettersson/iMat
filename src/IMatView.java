@@ -50,6 +50,7 @@ import javax.swing.tree.TreeSelectionModel;
 import java.awt.Dimension;
 
 import javax.swing.JScrollPane;
+import java.awt.Window.Type;
 
 
 public class IMatView extends JFrame {
@@ -79,6 +80,7 @@ public class IMatView extends JFrame {
 	 * Create the frame.
 	 */
 	public IMatView() {
+		setTitle("iMat");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 830, 670);
@@ -120,7 +122,7 @@ public class IMatView extends JFrame {
 		searchFld = new JTextField();
 		searchFld.setBounds(0, 0, 264, 32);
 		searchPanel.add(searchFld);
-		searchFld.setToolTipText("Sök Produkt");
+		searchFld.setToolTipText("Search product...");
 		searchFld.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -130,14 +132,14 @@ public class IMatView extends JFrame {
 		});
 		searchFld.setForeground(Color.GRAY);
 		searchFld.setFont(new Font("HelvLight", Font.PLAIN, 16));
-		searchFld.setText("Sök produkt..");
+		searchFld.setText("Search product...");
 		searchFld.setColumns(10);
 		
-		JButton searchBtn = new JButton("Sök");
+		JButton searchBtn = new JButton("Search");
 		searchBtn.setBounds(276, 1, 117, 30);
 		searchPanel.add(searchBtn);
 		searchBtn.setBackground(SystemColor.window);
-		searchBtn.setToolTipText("Sök Produkt");
+		searchBtn.setToolTipText("Search product");
 		searchBtn.setForeground(Color.DARK_GRAY);
 		searchBtn.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		
@@ -150,36 +152,44 @@ public class IMatView extends JFrame {
 		toolBar.add(accountPanel);
 		accountPanel.setLayout(null);
 		
-		JLabel logInLbl = new JLabel("Logga in");
+		JLabel logInLbl = new JLabel("Log in");
+		logInLbl.setForeground(Color.WHITE);
 		logInLbl.setBounds(91, 0, 74, 27);
 		accountPanel.add(logInLbl);
-		logInLbl.setFont(new Font("HelvLight", Font.PLAIN, 16));
+		logInLbl.setFont(new Font("HelvLight", Font.BOLD, 16));
 		
-		JLabel registerLbl = new JLabel("Registrera");
+		JLabel registerLbl = new JLabel("Sign up");
+		registerLbl.setForeground(Color.WHITE);
+		registerLbl.setHorizontalAlignment(SwingConstants.RIGHT);
 		registerLbl.setBounds(0, 0, 79, 27);
 		accountPanel.add(registerLbl);
-		registerLbl.setFont(new Font("HelvLight", Font.PLAIN, 16));
+		registerLbl.setFont(new Font("HelvLight", Font.BOLD, 16));
 		
 		JLabel seperatorLbl = new JLabel("|");
+		seperatorLbl.setForeground(Color.WHITE);
 		seperatorLbl.setBounds(82, 7, 16, 14);
 		accountPanel.add(seperatorLbl);
 		seperatorLbl.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		
 		JPanel cashierPanel = new JPanel();
 		cashierPanel.setBackground(Color.LIGHT_GRAY);
-		cashierPanel.setBounds(731, 46, 74, 42);
+		cashierPanel.setBounds(721, 46, 84, 42);
 		toolBar.add(cashierPanel);
 		cashierPanel.setLayout(null);
 		
-		JLabel checkOutLbl = new JLabel("Kassa");
-		checkOutLbl.setBounds(0, 28, 74, 14);
+		JLabel checkOutLbl = new JLabel("Check-out");
+		checkOutLbl.setHorizontalAlignment(SwingConstants.RIGHT);
+		checkOutLbl.setForeground(Color.WHITE);
+		checkOutLbl.setBounds(0, 28, 84, 14);
 		cashierPanel.add(checkOutLbl);
-		checkOutLbl.setFont(new Font("HelvLight", Font.PLAIN, 16));
+		checkOutLbl.setFont(new Font("HelvLight", Font.BOLD, 16));
 		
-		JLabel cartLbl = new JLabel("Kundkorg");
-		cartLbl.setBounds(0, 0, 74, 32);
+		JLabel cartLbl = new JLabel("Cart");
+		cartLbl.setHorizontalAlignment(SwingConstants.RIGHT);
+		cartLbl.setForeground(Color.WHITE);
+		cartLbl.setBounds(0, 0, 84, 32);
 		cashierPanel.add(cartLbl);
-		cartLbl.setFont(new Font("HelvLight", Font.PLAIN, 16));
+		cartLbl.setFont(new Font("HelvLight", Font.BOLD, 16));
 		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -193,19 +203,23 @@ public class IMatView extends JFrame {
 		mainPanel.add(startPanel, "name_1276016334013");
 		startPanel.setLayout(null);
 		
-		JLabel lblBannerHr = new JLabel("");
-		lblBannerHr.setIcon(new ImageIcon("/home/micke/Documents/LP3/Grafiska Gränssnitt/banner.png"));
-		lblBannerHr.setBounds(12, 12, 610, 127);
-		startPanel.add(lblBannerHr);
+		JTextArea welcomeTxt = new JTextArea();
+		welcomeTxt.setWrapStyleWord(true);
+		welcomeTxt.setLineWrap(true);
+		welcomeTxt.setFont(new Font("HelvLight", Font.PLAIN, 16));
+		welcomeTxt.setColumns(1);
+		welcomeTxt.setBackground(Color.LIGHT_GRAY);
+		welcomeTxt.setText("Welcome to iMat!" + "\n" +
+				"This is an application for you who doesnt have time to go to the shopping mall, " +
+				"who want to do the shopping comfortably from home." + "\n"
+				+  "You order, we deliver!");
+		welcomeTxt.setBounds(21, 11, 587, 93);
+		startPanel.add(welcomeTxt);
 		
-		JTextArea txtrVlkommen = new JTextArea();
-		txtrVlkommen.setLineWrap(true);
-		txtrVlkommen.setFont(new Font("HelvLight", Font.PLAIN, 16));
-		txtrVlkommen.setColumns(1);
-		txtrVlkommen.setBackground(Color.LIGHT_GRAY);
-		txtrVlkommen.setText("Välkommen till iMat!\nDet här är en applikation för dig som inte hinner handla din mat i affären, utan vill \ngöra det i bekvämligheten av ditt eget hem. \n\nDu beställer, vi levererar!");
-		txtrVlkommen.setBounds(22, 151, 587, 165);
-		startPanel.add(txtrVlkommen);
+		JPanel startShoppingPanel = new JPanel();
+		startShoppingPanel.setBackground(Color.LIGHT_GRAY);
+		startShoppingPanel.setBounds(21, 113, 587, 415);
+		startPanel.add(startShoppingPanel);
 		
 		JPanel wareListPanel = new JPanel();
 		wareListPanel.setBackground(Color.LIGHT_GRAY);
