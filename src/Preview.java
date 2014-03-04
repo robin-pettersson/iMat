@@ -30,7 +30,7 @@ public class Preview extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public Preview() {
+	public Preview(String fName, String lName, String address, String zip, String city, String email, String date, JTable table) {
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setPreferredSize(new Dimension(635, 550));
 		setLayout(new BorderLayout(0, 0));
@@ -182,31 +182,31 @@ public class Preview extends JPanel {
 		panel_4.add(panel_5);
 		panel_5.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JLabel label = new JLabel("Firstname Lastname");
+		JLabel label = new JLabel(fName + " " + lName);
 		label.setHorizontalAlignment(SwingConstants.LEFT);
 		label.setForeground(Color.DARK_GRAY);
 		label.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		panel_5.add(label);
 		
-		JLabel label_1 = new JLabel("Streetaddress 88");
+		JLabel label_1 = new JLabel(address);
 		label_1.setHorizontalAlignment(SwingConstants.LEFT);
 		label_1.setForeground(Color.DARK_GRAY);
 		label_1.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		panel_5.add(label_1);
 		
-		JLabel label_2 = new JLabel("928 82 Towncity");
+		JLabel label_2 = new JLabel(zip + "" + city);
 		label_2.setHorizontalAlignment(SwingConstants.LEFT);
 		label_2.setForeground(Color.DARK_GRAY);
 		label_2.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		panel_5.add(label_2);
 		
-		JLabel label_5 = new JLabel("youremail@email.com");
+		JLabel label_5 = new JLabel(email);
 		label_5.setHorizontalAlignment(SwingConstants.LEFT);
 		label_5.setForeground(Color.DARK_GRAY);
 		label_5.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		panel_5.add(label_5);
 		
-		JLabel label_6 = new JLabel("Delivery: 28/10/2014");
+		JLabel label_6 = new JLabel("Delivery: " + date );
 		label_6.setHorizontalAlignment(SwingConstants.LEFT);
 		label_6.setForeground(Color.DARK_GRAY);
 		label_6.setFont(new Font("HelvLight", Font.PLAIN, 14));

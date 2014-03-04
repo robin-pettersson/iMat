@@ -302,16 +302,22 @@ public class CheckOut extends JPanel {
 		panel_6.add(registerLabel);
 		
 		JComboBox dayComboBox = new JComboBox();
+		dayComboBox.addFocusListener(reg);
+		dayComboBox.setName("day");
 		dayComboBox.setFont(new Font("HelvLight", Font.PLAIN, 12));
 		dayComboBox.setBounds(0, 98, 54, 20);
 		panel_6.add(dayComboBox);
 		
 		JComboBox monthComboBox = new JComboBox();
+		monthComboBox.addFocusListener(reg);
+		monthComboBox.setName("month");
 		monthComboBox.setFont(new Font("HelvLight", Font.PLAIN, 12));
 		monthComboBox.setBounds(66, 98, 54, 20);
 		panel_6.add(monthComboBox);
 		
 		JComboBox yearComboBox = new JComboBox();
+		yearComboBox.addFocusListener(reg);
+		yearComboBox.setName("year");
 		yearComboBox.setFont(new Font("HelvLight", Font.PLAIN, 12));
 		yearComboBox.setBounds(132, 98, 63, 20);
 		panel_6.add(yearComboBox);
@@ -327,7 +333,7 @@ public class CheckOut extends JPanel {
 		JLabel lblSignIn = new JLabel("Sign in");
 		lblSignIn.setName("lblSignIn");
 		lblSignIn.addMouseListener(reg);
-		/*lblSignIn.addMouseListener(new MouseAdapter() {
+		lblSignIn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(panel_7.isVisible()){
@@ -337,7 +343,7 @@ public class CheckOut extends JPanel {
 					panel_7.setVisible(true);
 				}
 			}
-		});*/
+		});
 		
 		lblSignIn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblSignIn.setHorizontalTextPosition(SwingConstants.LEFT);
@@ -390,6 +396,8 @@ public class CheckOut extends JPanel {
 		panel_7.add(btnLogIn);
 		
 		JButton btnPreview = new JButton("Preview");
+		btnPreview.setName("btnPreview");
+		btnPreview.addMouseListener(reg);
 		btnPreview.setToolTipText("Preview purchase");
 		btnPreview.setForeground(Color.DARK_GRAY);
 		btnPreview.setFont(new Font("HelvLight", Font.PLAIN, 14));

@@ -5,12 +5,14 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
 
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -35,7 +37,11 @@ public class RegisterController implements FocusListener, MouseListener {
 	private Customer customer;
 	private int row = 0;
 	private int currentItem = 0;
+	private int day;
+	private int month;
+	private int year;
 	
+	JTable table;
 	List<ShoppingItem> items;
 
 	IMatDataHandler iMat = IMatDataHandler.getInstance();
@@ -102,6 +108,16 @@ public class RegisterController implements FocusListener, MouseListener {
 			case "passwordField": JTextField text10 = (JTextField) fe.getComponent();
 				password = text10.getText();
 				break;
+			case "day": JComboBox<Integer> box1 = (JComboBox<Integer>) fe.getComponent();
+				day = (int) box1.getSelectedItem();
+				break;
+			case "month": JComboBox<Integer> box2 = (JComboBox<Integer>) fe.getComponent();
+				month = (int) box2.getSelectedItem();
+				break;
+			case "year": JComboBox<Integer> box3 = (JComboBox<Integer>) fe.getComponent();
+				year = (int) box3.getSelectedItem();
+				break;
+							
 				
 		}
 		
@@ -151,7 +167,36 @@ public class RegisterController implements FocusListener, MouseListener {
 			Component[] comp = me.getComponent().getParent().getComponents();
 			addToCart(comp);
 		}
+		if(me.getComponent().getName() == "btnPreview"){
+			previewPrep();
+		}
 		
+	}
+	
+	public void previewPrep(){
+		String date = day + "/" + month + "-" + year;
+		Preview preview = new Preview(fName, lName, address, zip, city, email, date, table);
+		JTable previewTable = new JTable();
+		previewTable.setModel(new DefaultTableModel(
+				new Object[][] {
+					{"Apples - Granny Smith", "5 pcs", "45 kr"},
+					{"Apples - Granny Smith", "12 pcs", "34 kr"},
+					{"Apples - Granny Smith", "2 pcs", "99 kr"},
+					{null, null, null},
+					{null, null, null},
+					{null, null, null},
+					{null, null, null},
+					{null, null, null},
+					{null, null, null},
+					{null, null, null},
+					{null, null, null},
+					{null, null, null},
+				},
+				new String[] {
+					"New column", "New column", "New column"
+				}
+			));
+		reformTable(previewTable);
 	}
 	
 	public void addToCart(Component[] comp){
@@ -160,7 +205,6 @@ public class RegisterController implements FocusListener, MouseListener {
 		int amount = 0;
 		double price = 0;
 		
-		JTable table;
 		
 		List<Product> products = iMat.getProducts();
 
@@ -223,6 +267,17 @@ public class RegisterController implements FocusListener, MouseListener {
 		row++;
 		System.out.println(items.get(currentItem).getProduct().getName());
 		currentItem++;
+	}
+	
+	private void reformTable(JTable previewTable){
+		items = iMat.getShoppingCart().getItems();
+		int currentRow = 0;
+		for (ShoppingItem item : items) {
+				previewTable.getModel().setValueAt(item.getProduct().getName(), currentRow, 0);
+				previewTable.getModel().setValueAt(item.getAmount() + " pcs", currentRow, 1);
+				previewTable.getModel().setValueAt(item.getProduct().getPrice() + " sek", currentRow, 2);
+				currentRow++;
+		}
 	}
 
 	@Override

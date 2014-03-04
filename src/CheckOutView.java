@@ -22,8 +22,8 @@ public class CheckOutView extends JPanel {
 		CheckOut checkOutPanel = new CheckOut();
 		add(checkOutPanel, "checkOutPanel");
 		
-		Preview previewPanel = new Preview();
-		add(previewPanel, "previewPanel");
+		//Preview previewPanel = new Preview();
+		//add(previewPanel, "previewPanel");
 		
 		Confirmation confirmationPanel = new Confirmation();
 		add(confirmationPanel, "confirmationPanel");
