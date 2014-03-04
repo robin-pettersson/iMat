@@ -5,9 +5,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
 
+import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -30,7 +33,6 @@ public class RegisterController implements FocusListener, MouseListener {
 	private String verifyPassword = "";
 	
 	private Customer customer;
-	
 	private int row = 0;
 	private int currentItem = 0;
 	
@@ -56,7 +58,6 @@ public class RegisterController implements FocusListener, MouseListener {
 	@Override
 	public void focusGained(FocusEvent fe) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -64,31 +65,42 @@ public class RegisterController implements FocusListener, MouseListener {
 		
 		switch(fe.getComponent().getName()){
 		
-			case "fNameTextField": fName = fe.getComponent().getInputContext().toString();
-				customer.setFirstName(fName);
+			case "fNameTextField": JTextField text1 = (JTextField) fe.getComponent();
+				fName = text1.getText();
+				System.out.println(fName);
+				//customer.setFirstName(fName);
 				break;
-			case "lNameTextField": lName = fe.getComponent().getInputContext().toString();
-				customer.setLastName(lName);
+			case "lNameTextField": JTextField text2 = (JTextField) fe.getComponent();
+				lName = text2.getText();
+				//customer.setLastName(lName);
 				break;
-			case "addressTextField": address = fe.getComponent().getInputContext().toString();
-				customer.setAddress(address);
+			case "addressTextField": JTextField text3 = (JTextField) fe.getComponent();
+				address = text3.getText();
+				//customer.setAddress(address);
 				break;
-			case "zipTextField": zip = fe.getComponent().getInputContext().toString();
-				customer.setPostCode(zip);
+			case "zipTextField": JTextField text4 = (JTextField) fe.getComponent();
+				zip = text4.getText();
+				//customer.setPostCode(zip);
 				break;
-			case "cityTextField": city = fe.getComponent().getInputContext().toString();
-				customer.setPostAddress(city);
+			case "cityTextField": JTextField text5 = (JTextField) fe.getComponent();
+				city = text5.getText();
+				//customer.setPostAddress(city);
 				break;
-			case "emailTextField": email = fe.getComponent().getInputContext().toString();
-				customer.setEmail(email);
+			case "emailTextField": JTextField text6 = (JTextField) fe.getComponent();
+				email = text6.getText();
+				//customer.setEmail(email);
 				break;
-			case "passwordTextField": password = fe.getComponent().getInputContext().toString();
+			case "passwordTextField": JTextField text7 = (JTextField) fe.getComponent();
+				password = text7.getText();
 				break;
-			case "verifyPasswordTextField": verifyPassword = fe.getComponent().getInputContext().toString();
+			case "verifyPasswordTextField": JTextField text8 = (JTextField) fe.getComponent();
+				verifyPassword = text8.getText();
 				break;
-			case "signEmailTextField": signEmail = fe.getComponent().getInputContext().toString();
+			case "signEmailTextField": JTextField text9 = (JTextField) fe.getComponent();
+				signEmail = text9.getText();
 				break;
-			case "passwordField": password = fe.getComponent().getInputContext().toString();
+			case "passwordField": JTextField text10 = (JTextField) fe.getComponent();
+				password = text10.getText();
 				break;
 				
 		}
@@ -99,12 +111,20 @@ public class RegisterController implements FocusListener, MouseListener {
 	public void mouseClicked(MouseEvent me) {
 		
 		if(me.getComponent().getName() == "registerLabel"){
+			System.out.println("hej");
 			regPop = new RegisterPopUp(fName,lName,address,city,zip,email);
-			regPop.validate();
 		}
 		
 		if(me.getComponent().getName() == "registerButton"){
 			User user = new User();
+			customer = iMat.getCustomer();
+			
+			customer.setAddress(address);
+			customer.setEmail(email);
+			customer.setFirstName(fName);
+			customer.setLastName(lName);
+			customer.setPostAddress(city);
+			customer.setPostCode(zip);
 			
 			if(password != verifyPassword){
 				//Todo Load a passwords dont match window
@@ -112,12 +132,13 @@ public class RegisterController implements FocusListener, MouseListener {
 			else {
 				user.setPassword(password);
 				user.setUserName(email);
-				regPop.invalidate();
 			}
+			
+			regPop.close(regPop);
 		}
 		
 		if(me.getComponent().getName() == "cancelButton"){
-			regPop.invalidate();
+			regPop.close(regPop);
 		}
 		
 		if(me.getComponent().getName() == "btnLogIn"){

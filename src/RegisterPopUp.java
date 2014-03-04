@@ -4,6 +4,8 @@ import javax.swing.border.BevelBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+
+import javax.swing.JDialog;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import java.awt.Dimension;
@@ -25,6 +27,8 @@ public class RegisterPopUp extends JPanel {
 	private JTextField emailTextField;
 	private JPasswordField passwordTextField;
 	private JPasswordField verifyPasswordTextField;
+	
+	public JDialog dialog;
 
 	private RegisterController reg = RegisterController.getInstance();
 	
@@ -33,17 +37,20 @@ public class RegisterPopUp extends JPanel {
 	 */
 	public RegisterPopUp(String fName, String lName, String address, String zip, String city, String email) {
 		
-		setBackground(Color.LIGHT_GRAY);
-		setPreferredSize(new Dimension(408, 356));
-		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
-		setLayout(null);
-		
+		dialog = new JDialog();
+		dialog.setPreferredSize(new Dimension(408, 374));
+		dialog.setBackground(Color.LIGHT_GRAY);
+		dialog.setSize(new Dimension(408, 374));
+		dialog.setName("dialog");
+		dialog.getContentPane().setLayout(null);
+		dialog.setVisible(true);
+
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBorder(null);
 		panel.setBackground(Color.LIGHT_GRAY);
 		panel.setBounds(12, 39, 122, 251);
-		add(panel);
+		dialog.getContentPane().add(panel);
 		
 		JLabel label = new JLabel("Firstname:");
 		label.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -99,7 +106,7 @@ public class RegisterPopUp extends JPanel {
 		panel_1.setBorder(null);
 		panel_1.setBackground(Color.LIGHT_GRAY);
 		panel_1.setBounds(146, 39, 250, 251);
-		add(panel_1);
+		dialog.getContentPane().add(panel_1);
 		
 		fNameTextField = new JTextField();
 		fNameTextField.addFocusListener(reg);
@@ -234,8 +241,8 @@ public class RegisterPopUp extends JPanel {
 		registerButton.setForeground(Color.DARK_GRAY);
 		registerButton.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		registerButton.setBackground(SystemColor.window);
-		registerButton.setBounds(290, 316, 106, 27);
-		add(registerButton);
+		registerButton.setBounds(271, 301, 106, 27);
+		dialog.getContentPane().add(registerButton);
 		
 		JButton cancelButton = new JButton("Cancel");
 		cancelButton.addMouseListener(reg);
@@ -243,15 +250,20 @@ public class RegisterPopUp extends JPanel {
 		cancelButton.setForeground(Color.DARK_GRAY);
 		cancelButton.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		cancelButton.setBackground(SystemColor.window);
-		cancelButton.setBounds(194, 317, 84, 27);
-		add(cancelButton);
+		cancelButton.setBounds(177, 301, 84, 27);
+		dialog.getContentPane().add(cancelButton);
 		
 		JLabel lblAccountInformation = new JLabel("Account Information");
 		lblAccountInformation.setForeground(Color.DARK_GRAY);
 		lblAccountInformation.setFont(new Font("HelvLight", Font.PLAIN, 18));
 		lblAccountInformation.setBounds(12, 12, 281, 20);
-		add(lblAccountInformation);
+		dialog.getContentPane().add(lblAccountInformation);
+		dialog.pack();
 
+	}
+	
+	public void close(RegisterPopUp regPop){
+		regPop.dialog.dispose();
 	}
 
 }
