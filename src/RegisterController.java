@@ -1,3 +1,4 @@
+import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -9,6 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -44,6 +46,8 @@ public class RegisterController implements FocusListener, MouseListener {
 	JTable table;
 	List<ShoppingItem> items;
 
+
+	CheckOutController checkOutController = CheckOutController.getInstance();
 	IMatDataHandler iMat = IMatDataHandler.getInstance();
 	RightShoppingCart rCart = RightShoppingCart.getInstance();
 	RegisterPopUp regPop = null;
@@ -174,14 +178,16 @@ public class RegisterController implements FocusListener, MouseListener {
 	}
 	
 	public void previewPrep(){
+		
+		Preview preview;
 		String date = day + "/" + month + "-" + year;
-		Preview preview = new Preview(fName, lName, address, zip, city, email, date, table);
+		
 		JTable previewTable = new JTable();
 		previewTable.setModel(new DefaultTableModel(
 				new Object[][] {
-					{"Apples - Granny Smith", "5 pcs", "45 kr"},
-					{"Apples - Granny Smith", "12 pcs", "34 kr"},
-					{"Apples - Granny Smith", "2 pcs", "99 kr"},
+					{null, null, null},
+					{null, null, null},
+					{null, null, null},
 					{null, null, null},
 					{null, null, null},
 					{null, null, null},
@@ -197,6 +203,12 @@ public class RegisterController implements FocusListener, MouseListener {
 				}
 			));
 		reformTable(previewTable);
+		preview = new Preview(fName, lName, address, zip, city, email, date, previewTable);
+		CheckOutView.previewPanel.add(preview);
+		
+		JPanel p = (JPanel) CheckOutView.previewPanel.getParent();
+		CardLayout card = (CardLayout) p.getLayout();
+		checkOutController.gotoCard(p, "previewPanel");
 	}
 	
 	public void addToCart(Component[] comp){
@@ -269,7 +281,7 @@ public class RegisterController implements FocusListener, MouseListener {
 		currentItem++;
 	}
 	
-	private void reformTable(JTable previewTable){
+	private JTable reformTable(JTable previewTable){
 		items = iMat.getShoppingCart().getItems();
 		int currentRow = 0;
 		for (ShoppingItem item : items) {
@@ -278,6 +290,7 @@ public class RegisterController implements FocusListener, MouseListener {
 				previewTable.getModel().setValueAt(item.getProduct().getPrice() + " sek", currentRow, 2);
 				currentRow++;
 		}
+		return previewTable;
 	}
 
 	@Override

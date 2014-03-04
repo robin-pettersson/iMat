@@ -7,6 +7,7 @@ import java.awt.CardLayout;
 public class CheckOutView extends JPanel {
 	
 	private CheckOutController checkOutController = CheckOutController.getInstance();
+	public static JPanel previewPanel;
 	
 	
 	
@@ -22,8 +23,8 @@ public class CheckOutView extends JPanel {
 		CheckOut checkOutPanel = new CheckOut();
 		add(checkOutPanel, "checkOutPanel");
 		
-		//Preview previewPanel = new Preview();
-		//add(previewPanel, "previewPanel");
+		previewPanel = new JPanel();
+		add(previewPanel, "previewPanel");
 		
 		Confirmation confirmationPanel = new Confirmation();
 		add(confirmationPanel, "confirmationPanel");
