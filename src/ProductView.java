@@ -9,7 +9,7 @@ import java.awt.Color;
 
 public class ProductView extends JPanel{
 
-	private JLabel picLbl;
+	JLabel picLbl;
 	private JLabel favoriteLbl;
 	private JSpinner amountSpinner;
 	private JButton buyBtn;

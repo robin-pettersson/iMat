@@ -13,7 +13,7 @@ public class GridView extends JPanel {
 	private JLabel priceLbl;
 	private JSpinner amountSpinner;
 	private JButton buyBtn;
-	private JLabel pictureLbl;
+	JLabel pictureLbl;
 	
 	private RegisterController reg = RegisterController.getInstance();
 	
