@@ -15,7 +15,7 @@ public class CheckOutView extends JPanel {
 		setPreferredSize(new Dimension(635, 550));
 		setLayout(new CardLayout(0, 0));
 		
-		JPanel cartPanel = new JPanel();
+		CartView cartPanel = new CartView();
 		cartPanel.setBackground(Color.LIGHT_GRAY);
 		add(cartPanel, "cartPanel");
 		
