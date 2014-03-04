@@ -10,14 +10,11 @@ import java.awt.Color;
 
 
 public class CategoryCardsView extends JPanel {
-
-	
-	JLabel pictureLbl;
 	JLabel categoryNameLbl;
 	
 	public CategoryCardsView() {
 		setBackground(Color.LIGHT_GRAY);
-		setPreferredSize(new Dimension(160, 170));
+		setPreferredSize(new Dimension(121, 121));
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setLayout(null);
 		
@@ -25,33 +22,10 @@ public class CategoryCardsView extends JPanel {
 		categoryNameLbl.setForeground(Color.WHITE);
 		categoryNameLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		categoryNameLbl.setFont(new Font("HelvLight", Font.BOLD, 18));
-		categoryNameLbl.setBounds(5, 11, 150, 18);
+		categoryNameLbl.setBounds(10, 11, 101, 99);
 		add(categoryNameLbl);
-		
-		pictureLbl = new JLabel("pic");
-		pictureLbl.setBounds(5, 40, 150, 125);
-		add(pictureLbl);
 	}
 	
-	/**
-	 * sets the name of the category.
-	 * @param product
-	 */
 	
-	//TODO hitta kategorinamnen!
-	public void setName (Product product) {
-		categoryNameLbl.setText(product.getName());
-		categoryNameLbl.repaint();
-	}
-	
-	/**
-	 * Sets the price of the product (in the view).
-	 * @param the product
-	 */
-	public void setImage (Product product) {
-		//TODO behöver hjälp. hur sätter jag mha referens till objektet bilden?
-		pictureLbl.setText("");
-		//picLbl.setIcon(product.getImageName());
-		pictureLbl.repaint();
-	}
+
 }

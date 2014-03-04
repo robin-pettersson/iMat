@@ -77,7 +77,7 @@ public class iMatNavController implements TreeSelectionListener {
 		}
 		
 		List<Product> productList = iMat.getProducts(category);
-		for (int i = 0; i < 9 || i < iMat.getProducts(category).size() ; i++) {
+		for (int i = 0; i < 12 || i < iMat.getProducts(category).size() ; i++) {
 			Product pro = productList.get(i);
 			GridView card = new GridView(pro.getName(), pro.getPrice());
 			panel.add(card);
