@@ -33,7 +33,7 @@ public class CardInfo extends JPanel {
 		
 		JPanel labelPanel = new JPanel();
 		labelPanel.setBackground(Color.LIGHT_GRAY);
-		labelPanel.setBounds(0, 44, 120, 142);
+		labelPanel.setBounds(8, 33, 113, 130);
 		panel.add(labelPanel);
 		labelPanel.setLayout(null);
 		
@@ -60,7 +60,7 @@ public class CardInfo extends JPanel {
 		
 		JPanel textFieldPanel = new JPanel();
 		textFieldPanel.setBackground(Color.LIGHT_GRAY);
-		textFieldPanel.setBounds(121, 44, 338, 142);
+		textFieldPanel.setBounds(122, 33, 326, 130);
 		panel.add(textFieldPanel);
 		textFieldPanel.setLayout(null);
 		
@@ -107,7 +107,7 @@ public class CardInfo extends JPanel {
 		JLabel lblCreditCardInformation = new JLabel("Credit Card Information");
 		lblCreditCardInformation.setForeground(Color.DARK_GRAY);
 		lblCreditCardInformation.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		lblCreditCardInformation.setBounds(12, 12, 281, 20);
+		lblCreditCardInformation.setBounds(13, 1, 281, 20);
 		panel.add(lblCreditCardInformation);
 
 	}

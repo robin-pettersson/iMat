@@ -21,6 +21,9 @@ import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.DefaultComboBoxModel;
 
 
 public class CheckOut extends JPanel {
@@ -57,6 +60,7 @@ public class CheckOut extends JPanel {
 		payMethodPanel.setLayout(null);
 		
 		JRadioButton rdbtnCreditCard = new JRadioButton("Credit Card");
+
 		buttonGroup.add(rdbtnCreditCard);
 		rdbtnCreditCard.setBackground(Color.LIGHT_GRAY);
 		rdbtnCreditCard.setFont(new Font("HelvLight", Font.PLAIN, 14));
@@ -64,6 +68,7 @@ public class CheckOut extends JPanel {
 		payMethodPanel.add(rdbtnCreditCard);
 		
 		JRadioButton rdbtnInvoice = new JRadioButton("Invoice");
+
 		buttonGroup.add(rdbtnInvoice);
 		rdbtnInvoice.setBackground(Color.LIGHT_GRAY);
 		rdbtnInvoice.setFont(new Font("HelvLight", Font.PLAIN, 14));
@@ -71,17 +76,60 @@ public class CheckOut extends JPanel {
 		payMethodPanel.add(rdbtnInvoice);
 		
 		JRadioButton rdbtnPayAtThe = new JRadioButton("At the door");
+
 		buttonGroup.add(rdbtnPayAtThe);
 		rdbtnPayAtThe.setBackground(Color.LIGHT_GRAY);
 		rdbtnPayAtThe.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		rdbtnPayAtThe.setBounds(22, 62, 105, 23);
 		payMethodPanel.add(rdbtnPayAtThe);
+
+		final InvoiceInfo invoiceInfoPnl = new InvoiceInfo();
+		final JPanel cardInfoPanel = new JPanel();
+		cardInfoPanel.setBorder(null);
+		final CardInfo cardInfoPnl = new CardInfo();
 		
-		JPanel cardInfoPanel = new JPanel();
 		cardInfoPanel.setBackground(Color.LIGHT_GRAY);
-		cardInfoPanel.setBounds(158, 8, 459, 186);
+		cardInfoPanel.setBounds(264, 8, 353, 186);
 		payMethodPanel.add(cardInfoPanel);
-		cardInfoPanel.setLayout(new BorderLayout(0, 0));
+		cardInfoPanel.setLayout(null);
+
+		// When Credit card is chosen
+		rdbtnCreditCard.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cardInfoPanel.removeAll();
+				cardInfoPanel.getParent().revalidate();
+				cardInfoPanel.getParent().repaint();
+				
+				cardInfoPanel.add(cardInfoPnl);
+				cardInfoPanel.getParent().revalidate();
+				cardInfoPanel.getParent().repaint();
+			}
+		});
+		
+		// When Invoice is chosen
+		rdbtnInvoice.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cardInfoPanel.removeAll();
+				cardInfoPanel.getParent().revalidate();
+				cardInfoPanel.getParent().repaint();
+				
+				cardInfoPanel.add(invoiceInfoPnl);
+				cardInfoPanel.getParent().revalidate();
+				cardInfoPanel.getParent().repaint();
+			}
+		});
+
+		// When At the door is chosen
+		rdbtnPayAtThe.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cardInfoPanel.removeAll();
+				cardInfoPanel.getParent().revalidate();
+				cardInfoPanel.getParent().repaint();
+			}
+		});
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -302,6 +350,7 @@ public class CheckOut extends JPanel {
 		panel_6.add(registerLabel);
 		
 		JComboBox dayComboBox = new JComboBox();
+		dayComboBox.setModel(new DefaultComboBoxModel(new String[] {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
 		dayComboBox.addFocusListener(reg);
 		dayComboBox.setName("day");
 		dayComboBox.setFont(new Font("HelvLight", Font.PLAIN, 12));
@@ -309,6 +358,7 @@ public class CheckOut extends JPanel {
 		panel_6.add(dayComboBox);
 		
 		JComboBox monthComboBox = new JComboBox();
+		monthComboBox.setModel(new DefaultComboBoxModel(new String[] {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"}));
 		monthComboBox.addFocusListener(reg);
 		monthComboBox.setName("month");
 		monthComboBox.setFont(new Font("HelvLight", Font.PLAIN, 12));
@@ -316,6 +366,7 @@ public class CheckOut extends JPanel {
 		panel_6.add(monthComboBox);
 		
 		JComboBox yearComboBox = new JComboBox();
+		yearComboBox.setModel(new DefaultComboBoxModel(new String[] {"14", "15", "16", "17", "18", "19", "20"}));
 		yearComboBox.addFocusListener(reg);
 		yearComboBox.setName("year");
 		yearComboBox.setFont(new Font("HelvLight", Font.PLAIN, 12));
@@ -373,7 +424,6 @@ public class CheckOut extends JPanel {
 		passwordField = new JPasswordField();
 		passwordField.addFocusListener(reg);
 		passwordField.setName("passwordField");
-		passwordField.setText("lösenord");
 		passwordField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		passwordField.setBounds(84, 40, 138, 19);
 		panel_7.add(passwordField);
@@ -387,6 +437,10 @@ public class CheckOut extends JPanel {
 		panel_7.add(signEmailTextField);
 		
 		JButton btnLogIn = new JButton("Sign in");
+		btnLogIn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnLogIn.addMouseListener(reg);
 		btnLogIn.setName("btnLogIn");
 		btnLogIn.setForeground(Color.DARK_GRAY);

@@ -10,6 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 
 
 public class InvoiceInfo extends JPanel {
@@ -24,10 +25,11 @@ public class InvoiceInfo extends JPanel {
 	 */
 	public InvoiceInfo() {
 		setSize(new Dimension(459, 186));
-		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+		setBorder(null);
 		setLayout(null);
 		
 		JPanel panel = new JPanel();
+		panel.setBorder(null);
 		panel.setBackground(Color.LIGHT_GRAY);
 		panel.setBounds(0, 0, 459, 186);
 		add(panel);
@@ -35,7 +37,7 @@ public class InvoiceInfo extends JPanel {
 		
 		JPanel labelPanel = new JPanel();
 		labelPanel.setBackground(Color.LIGHT_GRAY);
-		labelPanel.setBounds(0, 44, 120, 142);
+		labelPanel.setBounds(4, 30, 114, 136);
 		panel.add(labelPanel);
 		labelPanel.setLayout(null);
 		
@@ -69,7 +71,7 @@ public class InvoiceInfo extends JPanel {
 		
 		JPanel textFieldPanel = new JPanel();
 		textFieldPanel.setBackground(Color.LIGHT_GRAY);
-		textFieldPanel.setBounds(121, 44, 338, 142);
+		textFieldPanel.setBounds(119, 30, 326, 136);
 		panel.add(textFieldPanel);
 		textFieldPanel.setLayout(null);
 		
@@ -107,7 +109,7 @@ public class InvoiceInfo extends JPanel {
 		JLabel lblInvoiceInformation = new JLabel("Invoice Information");
 		lblInvoiceInformation.setForeground(Color.DARK_GRAY);
 		lblInvoiceInformation.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		lblInvoiceInformation.setBounds(12, 12, 281, 20);
+		lblInvoiceInformation.setBounds(11, -2, 281, 20);
 		panel.add(lblInvoiceInformation);
 
 	}
