@@ -9,6 +9,7 @@ import javax.swing.border.BevelBorder;
 
 import se.chalmers.ait.dat215.project.Product;
 import java.awt.Color;
+import java.awt.Cursor;
 
 public class CartListView extends JPanel {
 
@@ -37,22 +38,26 @@ public class CartListView extends JPanel {
 		add(priceLbl);
 		
 		removeLbl = new JLabel("Remove");
+		removeLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		removeLbl.setForeground(Color.WHITE);
 		removeLbl.setFont(new Font("HelvLight", Font.BOLD, 14));
 		removeLbl.setBounds(554, 26, 71, 15);
 		add(removeLbl);
 		
 		productNameLbl = new JLabel("WareName");
+		productNameLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		productNameLbl.setForeground(Color.WHITE);
 		productNameLbl.setFont(new Font("HelvLight", Font.BOLD, 18));
 		productNameLbl.setBounds(75, 22, 198, 26);
 		add(productNameLbl);
 		
 		pictureLbl = new JLabel("pic");
+		pictureLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		pictureLbl.setBounds(5, 5, 60, 60);
 		add(pictureLbl);
 		
 		JLabel label = new JLabel("X");
+		label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		label.setForeground(Color.RED);
 		label.setFont(new Font("Dialog", Font.BOLD, 24));
 		label.setBounds(613, 20, 24, 26);
