@@ -29,7 +29,7 @@ public class ProductView extends JPanel{
 		setLayout(null);
 		
 		picLbl = new JLabel("150x150 pixlar...");
-		picLbl.setBounds(5, 5, 101, 20);
+		picLbl.setBounds(5, 5, 150, 150);
 		add(picLbl);
 		
 		
@@ -52,7 +52,7 @@ public class ProductView extends JPanel{
 		
 		priceLbl = new JLabel("price");
 		priceLbl.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		priceLbl.setBounds(558, 248, 46, 14);
+		priceLbl.setBounds(549, 242, 55, 20);
 		add(priceLbl);
 		
 		productNameLbl = new JLabel("Productname");

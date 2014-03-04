@@ -32,24 +32,24 @@ public class GridView extends JPanel {
 		productNameLbl.setBounds(5, 5, 150, 22);
 		add(productNameLbl);
 		
-		priceLbl = new JLabel(pris + "kr");
+		priceLbl = new JLabel("00.00kr");
 		priceLbl.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		priceLbl.setHorizontalAlignment(SwingConstants.CENTER);
-		priceLbl.setBounds(5, 150, 37, 14);
+		priceLbl.setBounds(5, 147, 63, 17);
 		add(priceLbl);
 		
 		amountSpinner = new JSpinner();
 		amountSpinner.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		amountSpinner.setName("amountSpinner");
 		amountSpinner.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		amountSpinner.setBounds(47, 145, 37, 20);
+		amountSpinner.setBounds(70, 145, 37, 20);
 		add(amountSpinner);
 		
 		buyBtn = new JButton("Add");
 		buyBtn.addMouseListener(reg);
 		buyBtn.setName("buyBtn");
 		buyBtn.setFont(new Font("HelvLight", Font.PLAIN, 12));
-		buyBtn.setBounds(92, 145, 74, 20);
+		buyBtn.setBounds(111, 145, 55, 20);
 		add(buyBtn);
 		
 		pictureLbl = new JLabel("pic");
