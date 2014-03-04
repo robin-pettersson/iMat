@@ -51,15 +51,19 @@ import java.awt.Dimension;
 
 import javax.swing.JScrollPane;
 import java.awt.Window.Type;
+import java.awt.Component;
 
 
 public class IMatView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField searchFld;
-	private iMatNavController navController = iMatNavController.getInstance();
+	private iMatNavController     navController      = iMatNavController.getInstance();
+	private iMatToolbarController toolBarController  = iMatToolbarController.getInstance();
+	private iMatMainController    mainController     = iMatMainController.getInstance();
+	private CheckOutController    checkOutController = CheckOutController.getInstance();
 	private CardLayout cardLayout;
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -81,20 +85,20 @@ public class IMatView extends JFrame {
 	 */
 	public IMatView() {
 		setTitle("iMat");
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 830, 670);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		final JPanel toolBar = new JPanel();
 		toolBar.setBackground(Color.LIGHT_GRAY);
 		toolBar.setBorder(new LineBorder(new Color(0, 0, 0)));
 		toolBar.setBounds(0, 0, 826, 100);
 		contentPane.add(toolBar);
-		
+
 		JLabel iMatLbl = new JLabel("iMat");
 		iMatLbl.setBounds(12, 0, 216, 88);
 		iMatLbl.addMouseListener(new MouseAdapter() 
@@ -112,13 +116,13 @@ public class IMatView extends JFrame {
 		iMatLbl.setForeground(Color.WHITE);
 		iMatLbl.setFont(new Font("HelvLight", Font.PLAIN, 85));
 		toolBar.add(iMatLbl);
-		
+
 		JPanel searchPanel = new JPanel();
 		searchPanel.setBackground(Color.LIGHT_GRAY);
 		searchPanel.setBounds(188, 34, 393, 32);
 		toolBar.add(searchPanel);
 		searchPanel.setLayout(null);
-		
+
 		searchFld = new JTextField();
 		searchFld.setBounds(0, 0, 264, 32);
 		searchPanel.add(searchFld);
@@ -127,14 +131,14 @@ public class IMatView extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				searchFld.selectAll();
-				
+
 			}
 		});
 		searchFld.setForeground(Color.GRAY);
 		searchFld.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		searchFld.setText("Search product...");
 		searchFld.setColumns(10);
-		
+
 		JButton searchBtn = new JButton("Search");
 		searchBtn.setBounds(276, 1, 117, 30);
 		searchPanel.add(searchBtn);
@@ -142,67 +146,82 @@ public class IMatView extends JFrame {
 		searchBtn.setToolTipText("Search product");
 		searchBtn.setForeground(Color.DARK_GRAY);
 		searchBtn.setFont(new Font("HelvLight", Font.PLAIN, 16));
-		
+
 
 		searchFld.selectAll();
-		
+
 		JPanel accountPanel = new JPanel();
 		accountPanel.setBackground(Color.LIGHT_GRAY);
 		accountPanel.setBounds(640, 7, 165, 27);
 		toolBar.add(accountPanel);
 		accountPanel.setLayout(null);
-		
+
 		JLabel logInLbl = new JLabel("Log in");
 		logInLbl.setForeground(Color.WHITE);
 		logInLbl.setBounds(91, 0, 74, 27);
 		accountPanel.add(logInLbl);
 		logInLbl.setFont(new Font("HelvLight", Font.BOLD, 16));
-		
+
 		JLabel registerLbl = new JLabel("Sign up");
 		registerLbl.setForeground(Color.WHITE);
 		registerLbl.setHorizontalAlignment(SwingConstants.RIGHT);
 		registerLbl.setBounds(0, 0, 79, 27);
 		accountPanel.add(registerLbl);
 		registerLbl.setFont(new Font("HelvLight", Font.BOLD, 16));
-		
+
 		JLabel seperatorLbl = new JLabel("|");
 		seperatorLbl.setForeground(Color.WHITE);
 		seperatorLbl.setBounds(82, 7, 16, 14);
 		accountPanel.add(seperatorLbl);
 		seperatorLbl.setFont(new Font("HelvLight", Font.PLAIN, 16));
-		
+
 		JPanel cashierPanel = new JPanel();
 		cashierPanel.setBackground(Color.LIGHT_GRAY);
 		cashierPanel.setBounds(721, 46, 84, 42);
 		toolBar.add(cashierPanel);
 		cashierPanel.setLayout(null);
-		
+
 		JLabel checkOutLbl = new JLabel("Check-out");
+		checkOutLbl.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel p = (JPanel) toolBar.getParent().getComponent(1);
+				mainController.gotoCard(p , "checkOutPanel");
+				checkOutController.gotoCheckOut(p);
+			}
+		});
 		checkOutLbl.setHorizontalAlignment(SwingConstants.RIGHT);
 		checkOutLbl.setForeground(Color.WHITE);
 		checkOutLbl.setBounds(0, 28, 84, 14);
 		cashierPanel.add(checkOutLbl);
 		checkOutLbl.setFont(new Font("HelvLight", Font.BOLD, 16));
-		
+
 		JLabel cartLbl = new JLabel("Cart");
+		cartLbl.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel p = (JPanel) toolBar.getParent().getComponent(1);
+				checkOutController.gotoCart(p);
+			}
+		});
 		cartLbl.setHorizontalAlignment(SwingConstants.RIGHT);
 		cartLbl.setForeground(Color.WHITE);
 		cartLbl.setBounds(0, 0, 84, 32);
 		cashierPanel.add(cartLbl);
 		cartLbl.setFont(new Font("HelvLight", Font.BOLD, 16));
-		
+
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		mainPanel.setBounds(190, 100, 636, 541);
 		contentPane.add(mainPanel);
 		mainPanel.setLayout(new CardLayout(0, 0));
 		cardLayout =(CardLayout) mainPanel.getLayout();
-		
+
 		JPanel startPanel = new JPanel();
 		startPanel.setBackground(Color.LIGHT_GRAY);
-		mainPanel.add(startPanel, "name_1276016334013");
+		mainPanel.add(startPanel, "startPanel");
 		startPanel.setLayout(null);
-		
+
 		JTextArea welcomeTxt = new JTextArea();
 		welcomeTxt.setWrapStyleWord(true);
 		welcomeTxt.setLineWrap(true);
@@ -215,17 +234,17 @@ public class IMatView extends JFrame {
 				+  "You order, we deliver!");
 		welcomeTxt.setBounds(21, 11, 587, 93);
 		startPanel.add(welcomeTxt);
-		
+
 		JPanel startShoppingPanel = new JPanel();
 		startShoppingPanel.setBackground(Color.LIGHT_GRAY);
 		startShoppingPanel.setBounds(21, 113, 587, 415);
 		startPanel.add(startShoppingPanel);
-		
+
 		JPanel wareListPanel = new JPanel();
 		wareListPanel.setBackground(Color.LIGHT_GRAY);
-		mainPanel.add(wareListPanel, "name_1570938026365695");
+		mainPanel.add(wareListPanel, "wareListPanel");
 		wareListPanel.setLayout(new BorderLayout(0, 0));
-		
+
 		JPanel breadcrumPanel = new JPanel();
 		breadcrumPanel.setBackground(new Color(200, 200, 200));
 		breadcrumPanel.setPreferredSize(new Dimension(10, 25));
@@ -233,29 +252,33 @@ public class IMatView extends JFrame {
 		breadcrumPanel.setMinimumSize(new Dimension(10, 25));
 		wareListPanel.add(breadcrumPanel, BorderLayout.NORTH);
 		breadcrumPanel.setLayout(null);
-		
+
 		JLabel gridViewLbl = new JLabel("");
 		gridViewLbl.setBounds(603, 2, 21, 21);
 		gridViewLbl.setHorizontalAlignment(SwingConstants.RIGHT);
 		breadcrumPanel.add(gridViewLbl);
-		
+
 		JLabel listViewLbl = new JLabel("");
 		listViewLbl.setHorizontalAlignment(SwingConstants.RIGHT);
 		listViewLbl.setBounds(572, 2, 21, 21);
 		breadcrumPanel.add(listViewLbl);
-		
+
 		JPanel wareContainerScroll = new JPanel();
 		wareContainerScroll.setBackground(Color.LIGHT_GRAY);
 		wareListPanel.add(wareContainerScroll, BorderLayout.CENTER);
 
 		JPanel shoppingListPanel = new JPanel();
 		shoppingListPanel.setBackground(Color.LIGHT_GRAY);
-		mainPanel.add(shoppingListPanel, "name_176541927032183");
-		
+		mainPanel.add(shoppingListPanel, "shoppingListPanel");
+
 		JPanel customerPanel = new JPanel();
 		customerPanel.setBackground(Color.LIGHT_GRAY);
-		mainPanel.add(customerPanel, "name_2172640791470");
-		
+		mainPanel.add(customerPanel, "customerPanel");
+
+		CheckOutView checkOutPanel = new CheckOutView();
+		checkOutPanel.setBackground(Color.LIGHT_GRAY);
+		mainPanel.add(checkOutPanel, "checkOutPanel");
+
 		//Code for creating the the layout of the navigationTree which is created later
 		DefaultMutableTreeNode root = new DefaultMutableTreeNode("root");
 		DefaultMutableTreeNode node_1;
@@ -296,22 +319,20 @@ public class IMatView extends JFrame {
 		root.add(node_1);
 		root.add(new DefaultMutableTreeNode("Herb"));
 		root.add(new DefaultMutableTreeNode("Fluor Sugar Salt"));
-		
+
 		JPanel sidePanel = new JPanel();
 		sidePanel.setBackground(Color.LIGHT_GRAY);
 		sidePanel.setBounds(0, 100, 191, 535);
 		contentPane.add(sidePanel);
 		sidePanel.setLayout(null);
-		
-				//Navigation tree created using the root system established above
-				final JTree navigationTree = new JTree(root);
-				navigationTree.setBackground(Color.LIGHT_GRAY);
-				navigationTree.setBounds(10, 11, 170, 513);
-				sidePanel.add(navigationTree);
-				navigationTree.setRootVisible(false);
-				navigationTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
-				navigationTree.addTreeSelectionListener(navController);
-		
-		
+
+		//Navigation tree created using the root system established above
+		final JTree navigationTree = new JTree(root);
+		navigationTree.setBackground(Color.LIGHT_GRAY);
+		navigationTree.setBounds(10, 11, 170, 513);
+		sidePanel.add(navigationTree);
+		navigationTree.setRootVisible(false);
+		navigationTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+		navigationTree.addTreeSelectionListener(navController);
 	}
 }

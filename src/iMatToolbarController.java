@@ -1,3 +1,4 @@
+import java.awt.CardLayout;
 import java.util.List;
 
 import javax.swing.JPanel;
@@ -9,19 +10,21 @@ import se.chalmers.ait.dat215.project.Product;
 
 public class iMatToolbarController {
 	
-	IMatDataHandler iMat;
+	private IMatDataHandler iMat;
+	private static iMatToolbarController toolBarController = null;
 	
 	public iMatToolbarController(){
 		iMat = IMatDataHandler.getInstance();
-		
-		
 	}
+
 	
-	public List<Product> search(String s, JTable t)
-	{
-		return iMat.findProducts(s);
-		
-		
+	public static iMatToolbarController getInstance() {
+		if(toolBarController != null)
+			return toolBarController;
+		else{
+			toolBarController = new iMatToolbarController();
+			return toolBarController;
+		}
 	}
 	
 	
