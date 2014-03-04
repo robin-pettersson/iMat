@@ -65,6 +65,7 @@ public class IMatView extends JFrame {
 	private CheckOutController    checkOutController = CheckOutController.getInstance();
 	private CardLayout cardLayout;
 
+
 	/**
 	 * Launch the application.
 	 */
@@ -105,9 +106,6 @@ public class IMatView extends JFrame {
 		iMatLbl.setBounds(12, 0, 176, 88);
 		iMatLbl.addMouseListener(new MouseAdapter() 
 		{
-			@Override
-			public void mouseEntered(MouseEvent e) {
-			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				cardLayout.first((JPanel)toolBar.getParent().getComponent(1));
@@ -158,14 +156,43 @@ public class IMatView extends JFrame {
 		toolBar.add(accountPanel);
 		accountPanel.setLayout(null);
 
-		JLabel logInLbl = new JLabel("Log in");
+		final JLabel logInLbl = new JLabel("Log in");
+		logInLbl.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JLabel l = (JLabel) ((JPanel) toolBar.getComponents()[2]).getComponent(1);
+				JPanel p = (JPanel)toolBar.getParent().getComponent(1);
+				CardLayout layout = (CardLayout) p.getLayout();
+				if(logInLbl.getText() == "Log in"){
+					logInLbl.setText("Log out");
+					l.setText("Stefan");
+				}
+				else{
+					logInLbl.setText("Log in");
+					l.setText("Sign up");
+					layout.first(p);
+				}
+			}
+		});
 		logInLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		logInLbl.setForeground(Color.WHITE);
 		logInLbl.setBounds(91, 0, 74, 27);
 		accountPanel.add(logInLbl);
 		logInLbl.setFont(new Font("HelvLight", Font.BOLD, 16));
 
-		JLabel registerLbl = new JLabel("Sign up");
+		final JLabel registerLbl = new JLabel("Sign up");
+		registerLbl.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel p = (JPanel)toolBar.getParent().getComponent(1);
+				CardLayout layout = (CardLayout) p.getLayout();
+				if(registerLbl.getText() == "Stefan"){
+					layout.show(p, "customerPanel");
+					((JTabbedPane) ((JPanel)p.getComponent(3)).getComponent(0)).setSelectedIndex(0);
+				}
+
+			}
+		});
 		registerLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		registerLbl.setForeground(Color.WHITE);
 		registerLbl.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -208,6 +235,7 @@ public class IMatView extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				JPanel p = (JPanel) toolBar.getParent().getComponent(1);
 				checkOutController.gotoCart(p);
+				mainController.gotoCard(p , "checkOutPanel");
 			}
 		});
 		cartLbl.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -279,7 +307,7 @@ public class IMatView extends JFrame {
 		shoppingListPanel.setBackground(Color.LIGHT_GRAY);
 		mainPanel.add(shoppingListPanel, "shoppingListPanel");
 
-		JPanel customerPanel = new JPanel();
+		CustomerTabView customerPanel = new CustomerTabView();
 		customerPanel.setBackground(Color.LIGHT_GRAY);
 		mainPanel.add(customerPanel, "customerPanel");
 
