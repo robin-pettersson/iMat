@@ -86,10 +86,11 @@ public class IMatView extends JFrame {
 	 * Create the frame.
 	 */
 	public IMatView() {
+		setBackground(Color.LIGHT_GRAY);
 		setTitle("iMat");
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 830, 670);
+		setBounds(100, 100, 1026, 691);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -98,7 +99,7 @@ public class IMatView extends JFrame {
 		final JPanel toolBar = new JPanel();
 		toolBar.setBackground(Color.LIGHT_GRAY);
 		toolBar.setBorder(new LineBorder(new Color(0, 0, 0)));
-		toolBar.setBounds(0, 0, 826, 100);
+		toolBar.setBounds(0, 0, 1025, 100);
 		contentPane.add(toolBar);
 
 		JLabel iMatLbl = new JLabel("iMat");
@@ -119,12 +120,12 @@ public class IMatView extends JFrame {
 
 		JPanel searchPanel = new JPanel();
 		searchPanel.setBackground(Color.LIGHT_GRAY);
-		searchPanel.setBounds(188, 34, 393, 32);
+		searchPanel.setBounds(188, 34, 636, 32);
 		toolBar.add(searchPanel);
 		searchPanel.setLayout(null);
 
 		searchFld = new JTextField();
-		searchFld.setBounds(0, 0, 264, 32);
+		searchFld.setBounds(0, 0, 507, 32);
 		searchPanel.add(searchFld);
 		searchFld.setToolTipText("Search product...");
 		searchFld.addMouseListener(new MouseAdapter() {
@@ -140,7 +141,7 @@ public class IMatView extends JFrame {
 		searchFld.setColumns(10);
 
 		JButton searchBtn = new JButton("Search");
-		searchBtn.setBounds(276, 1, 117, 30);
+		searchBtn.setBounds(519, 1, 117, 30);
 		searchPanel.add(searchBtn);
 		searchBtn.setBackground(SystemColor.window);
 		searchBtn.setToolTipText("Search product");
@@ -152,7 +153,7 @@ public class IMatView extends JFrame {
 
 		JPanel accountPanel = new JPanel();
 		accountPanel.setBackground(Color.LIGHT_GRAY);
-		accountPanel.setBounds(640, 7, 165, 27);
+		accountPanel.setBounds(848, 7, 165, 27);
 		toolBar.add(accountPanel);
 		accountPanel.setLayout(null);
 
@@ -208,7 +209,7 @@ public class IMatView extends JFrame {
 
 		JPanel cashierPanel = new JPanel();
 		cashierPanel.setBackground(Color.LIGHT_GRAY);
-		cashierPanel.setBounds(721, 46, 84, 42);
+		cashierPanel.setBounds(906, 46, 107, 42);
 		toolBar.add(cashierPanel);
 		cashierPanel.setLayout(null);
 
@@ -246,7 +247,7 @@ public class IMatView extends JFrame {
 
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		mainPanel.setBounds(190, 100, 636, 541);
+		mainPanel.setBounds(190, 100, 636, 563);
 		contentPane.add(mainPanel);
 		mainPanel.setLayout(new CardLayout(0, 0));
 		cardLayout =(CardLayout) mainPanel.getLayout();
@@ -273,7 +274,7 @@ public class IMatView extends JFrame {
 
 		JPanel startShoppingPanel = new JPanel();
 		startShoppingPanel.setBackground(Color.LIGHT_GRAY);
-		startShoppingPanel.setBounds(21, 113, 587, 415);
+		startShoppingPanel.setBounds(21, 113, 587, 442);
 		startPanel.add(startShoppingPanel);
 
 		JPanel wareListPanel = new JPanel();
@@ -358,7 +359,7 @@ public class IMatView extends JFrame {
 
 		JPanel sidePanel = new JPanel();
 		sidePanel.setBackground(Color.LIGHT_GRAY);
-		sidePanel.setBounds(0, 100, 191, 535);
+		sidePanel.setBounds(0, 100, 191, 563);
 		contentPane.add(sidePanel);
 		sidePanel.setLayout(null);
 
@@ -368,6 +369,12 @@ public class IMatView extends JFrame {
 		navigationTree.setBounds(10, 11, 170, 513);
 		sidePanel.add(navigationTree);
 		navigationTree.setRootVisible(false);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.LIGHT_GRAY);
+		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel.setBounds(825, 96, 200, 567);
+		contentPane.add(panel);
 		navigationTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		navigationTree.addTreeSelectionListener(navController);
 	}
