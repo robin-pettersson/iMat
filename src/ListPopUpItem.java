@@ -15,6 +15,7 @@ import java.awt.FlowLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SpinnerNumberModel;
 
 
 public class ListPopUpItem extends JPanel {
@@ -41,14 +42,16 @@ public class ListPopUpItem extends JPanel {
 		lblKr.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		
 		JSpinner spinner = new JSpinner();
+		spinner.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		spinner.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		
 		JLabel label = new JLabel("X");
+		label.setToolTipText("Remove this item from list");
 		label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		label.setForeground(Color.RED);
 		label.setFont(new Font("Dialog", Font.BOLD, 24));
 		
-		JLabel lblTotKr = new JLabel("Tot: 982 kr");
+		JLabel lblTotKr = new JLabel("Tot: 89 kr");
 		lblTotKr.setForeground(Color.DARK_GRAY);
 		lblTotKr.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		GroupLayout gl_panel = new GroupLayout(panel);
