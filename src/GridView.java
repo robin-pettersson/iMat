@@ -20,7 +20,7 @@ public class GridView extends JPanel {
 	public GridView(String name, double pris) {
 		
 		setBackground(Color.GRAY);
-		setPreferredSize(new Dimension(170, 170));
+		setPreferredSize(new Dimension(150, 150));
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setLayout(null);
 		
@@ -29,32 +29,32 @@ public class GridView extends JPanel {
 		productNameLbl.setName("productNameLbl");
 		productNameLbl.setFont(new Font("HelvLight", Font.BOLD, 18));
 		productNameLbl.setHorizontalAlignment(SwingConstants.CENTER);
-		productNameLbl.setBounds(5, 5, 150, 22);
+		productNameLbl.setBounds(5, 5, 144, 22);
 		add(productNameLbl);
 		
 		priceLbl = new JLabel(pris + " kr");
-		priceLbl.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		priceLbl.setFont(new Font("HelvLight", Font.PLAIN, 13));
 		priceLbl.setHorizontalAlignment(SwingConstants.CENTER);
-		priceLbl.setBounds(5, 147, 63, 17);
+		priceLbl.setBounds(0, 121, 51, 17);
 		add(priceLbl);
 		
 		amountSpinner = new JSpinner();
 		amountSpinner.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		amountSpinner.setName("amountSpinner");
-		amountSpinner.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		amountSpinner.setBounds(67, 145, 37, 20);
+		amountSpinner.setFont(new Font("HelvLight", Font.PLAIN, 13));
+		amountSpinner.setBounds(47, 119, 34, 20);
 		add(amountSpinner);
 		
 		buyBtn = new JButton("Add");
 		buyBtn.addMouseListener(reg);
 		buyBtn.setName("buyBtn");
 		buyBtn.setFont(new Font("HelvLight", Font.PLAIN, 12));
-		buyBtn.setBounds(108, 145, 58, 20);
+		buyBtn.setBounds(87, 119, 58, 20);
 		add(buyBtn);
 		
 		pictureLbl = new JLabel("pic");
 		pictureLbl.setBackground(Color.PINK);
-		pictureLbl.setBounds(5, 5, 160, 160);
+		pictureLbl.setBounds(5, 5, 140, 140);
 		add(pictureLbl);
 		
 	}
