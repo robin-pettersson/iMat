@@ -52,6 +52,7 @@ import java.awt.Dimension;
 import javax.swing.JScrollPane;
 import java.awt.Window.Type;
 import java.awt.Component;
+import java.awt.Cursor;
 
 
 public class IMatView extends JFrame {
@@ -100,7 +101,8 @@ public class IMatView extends JFrame {
 		contentPane.add(toolBar);
 
 		JLabel iMatLbl = new JLabel("iMat");
-		iMatLbl.setBounds(12, 0, 216, 88);
+		iMatLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		iMatLbl.setBounds(12, 0, 176, 88);
 		iMatLbl.addMouseListener(new MouseAdapter() 
 		{
 			@Override
@@ -157,12 +159,14 @@ public class IMatView extends JFrame {
 		accountPanel.setLayout(null);
 
 		JLabel logInLbl = new JLabel("Log in");
+		logInLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		logInLbl.setForeground(Color.WHITE);
 		logInLbl.setBounds(91, 0, 74, 27);
 		accountPanel.add(logInLbl);
 		logInLbl.setFont(new Font("HelvLight", Font.BOLD, 16));
 
 		JLabel registerLbl = new JLabel("Sign up");
+		registerLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		registerLbl.setForeground(Color.WHITE);
 		registerLbl.setHorizontalAlignment(SwingConstants.RIGHT);
 		registerLbl.setBounds(0, 0, 79, 27);
@@ -182,6 +186,7 @@ public class IMatView extends JFrame {
 		cashierPanel.setLayout(null);
 
 		JLabel checkOutLbl = new JLabel("Check-out");
+		checkOutLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		checkOutLbl.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -197,6 +202,7 @@ public class IMatView extends JFrame {
 		checkOutLbl.setFont(new Font("HelvLight", Font.BOLD, 16));
 
 		JLabel cartLbl = new JLabel("Cart");
+		cartLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		cartLbl.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -223,6 +229,8 @@ public class IMatView extends JFrame {
 		startPanel.setLayout(null);
 
 		JTextArea welcomeTxt = new JTextArea();
+		welcomeTxt.setEditable(false);
+		welcomeTxt.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		welcomeTxt.setWrapStyleWord(true);
 		welcomeTxt.setLineWrap(true);
 		welcomeTxt.setFont(new Font("HelvLight", Font.PLAIN, 16));
