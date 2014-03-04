@@ -13,7 +13,9 @@ import javax.swing.SwingConstants;
 
 
 public class RightShoppingCart extends JPanel {
-	private JTable table;
+	public JTable table;
+	private static RightShoppingCart rCart = null;
+	
 
 	/**
 	 * Create the panel.
@@ -41,6 +43,7 @@ public class RightShoppingCart extends JPanel {
 		
 		table = new JTable();
 		table.setEnabled(false);
+		table.setName("table");
 		table.setSelectionBackground(new Color(184, 207, 229));
 		table.setShowGrid(false);
 		table.setShowVerticalLines(false);
@@ -121,5 +124,12 @@ public class RightShoppingCart extends JPanel {
 		btnEdit.setBounds(12, 494, 59, 35);
 		panel.add(btnEdit);
 
+	}
+	
+	public static RightShoppingCart getInstance(){
+		if(rCart == null){
+			rCart = new RightShoppingCart();
+		}
+		return rCart;
 	}
 }

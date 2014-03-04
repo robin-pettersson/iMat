@@ -7,18 +7,18 @@ import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
+import javax.swing.JTable;
 
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 import se.chalmers.ait.dat215.project.User;
 
 
 public class RegisterController implements FocusListener, MouseListener {
 
 	private static RegisterController regController = null;
-	IMatDataHandler iMat = IMatDataHandler.getInstance();
-	
 	private String fName = "";
 	private String lName = "";
 	private String address = "";
@@ -31,9 +31,17 @@ public class RegisterController implements FocusListener, MouseListener {
 	
 	private Customer customer;
 	
-	private RegisterPopUp regPop = null;
+	private int row = 0;
+	private int currentItem = 0;
+	
+	List<ShoppingItem> items;
+
+	IMatDataHandler iMat = IMatDataHandler.getInstance();
+	RightShoppingCart rCart = RightShoppingCart.getInstance();
+	RegisterPopUp regPop = null;
 	
 	protected RegisterController(){
+		
 		
 	}
 	
@@ -128,9 +136,14 @@ public class RegisterController implements FocusListener, MouseListener {
 	public void addToCart(Component[] comp){
 		
 		String prod = "";
-		int number = 0;
+		int amount = 0;
+		double price = 0;
+		
+		JTable table;
+		
 		List<Product> products = iMat.getProducts();
 
+		
 		for(int i = 0; i < comp.length; i++ ){
 			String temp = comp[i].getName();
 			if(temp == "productNameLbl"){
@@ -139,23 +152,56 @@ public class RegisterController implements FocusListener, MouseListener {
 			}
 			if(temp == "amountSpinner"){
 				JSpinner spinner = (JSpinner) comp[i];
-				number = (int) spinner.getValue();
+				amount = (int) spinner.getValue();
 				
 			}
 		}
 		for(int i = 0; i < products.size(); i++){
-			String temp =products.get(i).getName();
+			String temp = products.get(i).getName();
 			Product product = products.get(i);
 			if(temp.equals(prod)){
-				double price = products.get(i).getPrice();
-				for (int x = 0; x < number; x++){
-					iMat.getShoppingCart().addProduct(product, price);
-					System.out.println(price);
-					
-				}
+				price = products.get(i).getPrice();	
+				itemToAdd(product, amount);
+				
 			}
 		}
+		table = rCart.table;
+		items = iMat.getShoppingCart().getItems();
+		addToTable(table, items, price);
 		
+	}
+	
+	private void itemToAdd(Product product, double amount){
+		ShoppingItem item = new ShoppingItem(product, amount);
+		items = iMat.getShoppingCart().getItems();
+		//loop for making sure the same product isnt added twice or more
+		/*for (ShoppingItem itm : items) {
+			if(item.getProduct() == itm.getProduct()){
+				double x = item.getAmount();
+				double y = itm.getAmount();
+				double newAmount = x + y;
+				itm.setAmount(newAmount);
+			}
+			else{
+				iMat.getShoppingCart().addItem(item);
+			}
+		}*/
+		iMat.getShoppingCart().addItem(item);
+	}
+	
+	private void addToTable(JTable table , List<ShoppingItem> items, double price){
+		
+		table.getModel().setValueAt(items.get(currentItem).getProduct().getName(), row, 0);
+		table.getModel().setValueAt("", row, 1);
+		row++;
+		table.getModel().setValueAt(items.get(currentItem).getAmount() + "pcs", row, 0);
+		table.getModel().setValueAt(price + "sek", row, 1);
+		row++;
+		table.getModel().setValueAt("", row, 0);
+		table.getModel().setValueAt("", row, 1);
+		row++;
+		System.out.println(items.get(currentItem).getProduct().getName());
+		currentItem++;
 	}
 
 	@Override
