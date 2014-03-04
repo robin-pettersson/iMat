@@ -65,7 +65,7 @@ public class ProductView extends JPanel{
 		addToListCombo.setBounds(5, 273, 121, 20);
 		add(addToListCombo);
 		
-		addToListBtn = new JButton("OK");
+		addToListBtn = new JButton("Add to list");
 		addToListBtn.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		addToListBtn.setBounds(130, 273, 101, 20);
 		add(addToListBtn);
