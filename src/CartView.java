@@ -10,9 +10,11 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class CartView extends JPanel {
-
+	
 	public CartView() {
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setPreferredSize(new Dimension(635, 550));
@@ -100,6 +102,7 @@ public class CartView extends JPanel {
 		buttonPanel.add(btnKeepShopping);
 		
 		JButton btnCheckOut = new JButton("Check out");
+
 		btnCheckOut.setToolTipText("Cancel purchase");
 		btnCheckOut.setForeground(Color.DARK_GRAY);
 		btnCheckOut.setFont(new Font("HelvLight", Font.PLAIN, 14));

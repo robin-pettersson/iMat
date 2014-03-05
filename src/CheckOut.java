@@ -39,7 +39,7 @@ public class CheckOut extends JPanel {
 	private JTextField signEmailTextField;
 	
 	private RegisterController reg = RegisterController.getInstance();
-
+	
 	/**
 	 * Create the panel.
 	 */
@@ -450,7 +450,10 @@ public class CheckOut extends JPanel {
 		btnLogIn.setBounds(144, 71, 78, 27);
 		panel_7.add(btnLogIn);
 		
+		
+		
 		JButton btnPreview = new JButton("Preview");
+
 		btnPreview.setName("btnPreview");
 		btnPreview.addMouseListener(reg);
 		btnPreview.setToolTipText("Preview purchase");
