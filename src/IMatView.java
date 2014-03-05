@@ -114,7 +114,7 @@ public class IMatView extends JFrame {
 			}
 		});
 		toolBar.setLayout(null);
-		iMatLbl.setToolTipText("iMat");
+		iMatLbl.setToolTipText("Back to startpage");
 		iMatLbl.setForeground(Color.WHITE);
 		iMatLbl.setFont(new Font("HelvLight", Font.PLAIN, 85));
 		toolBar.add(iMatLbl);
@@ -332,6 +332,7 @@ public class IMatView extends JFrame {
 		breadcrumPanel.setLayout(null);
 
 		JLabel gridViewLbl = new JLabel("");
+		gridViewLbl.setToolTipText("Change to grid-view");
 		gridViewLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		gridViewLbl.setIcon(new ImageIcon(IMatView.class.getResource("/iconz/thumbnail-view.png")));
 		gridViewLbl.setBounds(603, 2, 31, 31);
@@ -339,6 +340,7 @@ public class IMatView extends JFrame {
 		breadcrumPanel.add(gridViewLbl);
 
 		JLabel listViewLbl = new JLabel("");
+		listViewLbl.setToolTipText("Change to list-view");
 		listViewLbl.setIcon(new ImageIcon(IMatView.class.getResource("/iconz/list-view-icon.png")));
 		listViewLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		listViewLbl.setHorizontalAlignment(SwingConstants.RIGHT);
