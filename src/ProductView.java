@@ -21,7 +21,7 @@ public class ProductView extends JPanel{
 	/*
 	 * Creating the panel.
 	 */
-	public ProductView(Product product) {
+	public ProductView(Product product, Icon icon) {
 		setBackground(Color.LIGHT_GRAY);
 		setPreferredSize(new Dimension(635, 300));
 		this.product = product;
@@ -30,11 +30,13 @@ public class ProductView extends JPanel{
 		
 		picLbl = new JLabel("150x150 pixlar...");
 		picLbl.setBounds(5, 5, 150, 150);
+		setImage(icon);
 		add(picLbl);
 		
 		
-		favoriteLbl = new JLabel("star");
-		favoriteLbl.setBounds(595, 17, 30, 31);
+		favoriteLbl = new JLabel("");
+		favoriteLbl.setIcon(new ImageIcon(ProductView.class.getResource("/iconz/omarkerad45.png")));
+		favoriteLbl.setBounds(577, 11, 48, 42);
 		add(favoriteLbl);
 		
 		amountSpinner = new JSpinner();
@@ -52,13 +54,16 @@ public class ProductView extends JPanel{
 		
 		priceLbl = new JLabel("price");
 		priceLbl.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		priceLbl.setBounds(549, 242, 55, 20);
+		priceLbl.setBounds(549, 242, 76, 20);
+		setPrice(product);
 		add(priceLbl);
 		
 		productNameLbl = new JLabel("Productname");
 		productNameLbl.setFont(new Font("HelvLight", Font.PLAIN, 18));
 		productNameLbl.setBounds(173, 11, 203, 20);
+		setName(product);
 		add(productNameLbl);
+		
 		
 		addToListCombo = new JComboBox();
 		addToListCombo.setFont(new Font("HelvLight", Font.PLAIN, 14));
@@ -85,18 +90,18 @@ public class ProductView extends JPanel{
 	 * @param the product
 	 */
 	public void setPrice (Product product) {
-		priceLbl.setText(product.getPrice() + "");
+		priceLbl.setText(product.getPrice() + " kr");
 		priceLbl.repaint();
 	}
 	
 	/**
 	 * Sets the price of the product (in the view).
-	 * @param the product
+	 * @param the icon
 	 */
-	public void setImage (Product product) {
-		//TODO behöver hjälp. hur sätter jag mha referens till objektet bilden?
+	public void setImage (Icon pic) {
+		
 		picLbl.setText("");
-		//picLbl.setIcon(product.getImageName());
+		picLbl.setIcon(pic);
 		picLbl.repaint();
 	}
 	
