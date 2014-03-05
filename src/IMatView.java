@@ -245,6 +245,10 @@ public class IMatView extends JFrame {
 		cartLbl.setBounds(0, 0, 84, 32);
 		cashierPanel.add(cartLbl);
 		cartLbl.setFont(new Font("HelvLight", Font.BOLD, 16));
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(744, 19, 70, 15);
+		toolBar.add(lblNewLabel);
 
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
