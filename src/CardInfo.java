@@ -38,24 +38,24 @@ public class CardInfo extends JPanel {
 		labelPanel.setLayout(null);
 		
 		JLabel lblCardNumber = new JLabel("Card Number:");
-		lblCardNumber.setBounds(12, 12, 100, 17);
+		lblCardNumber.setBounds(0, 12, 112, 17);
 		lblCardNumber.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCardNumber.setForeground(Color.DARK_GRAY);
 		lblCardNumber.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		labelPanel.add(lblCardNumber);
 		
 		JLabel lblC = new JLabel("Card Owner:");
-		lblC.setBounds(12, 41, 100, 17);
+		lblC.setBounds(0, 41, 112, 17);
 		lblC.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblC.setForeground(Color.DARK_GRAY);
 		lblC.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		labelPanel.add(lblC);
 		
-		JLabel lblCvvDate = new JLabel("CVV, Date");
+		JLabel lblCvvDate = new JLabel("CVV, Date:");
 		lblCvvDate.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCvvDate.setForeground(Color.DARK_GRAY);
 		lblCvvDate.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		lblCvvDate.setBounds(12, 70, 100, 17);
+		lblCvvDate.setBounds(0, 73, 112, 17);
 		labelPanel.add(lblCvvDate);
 		
 		JPanel textFieldPanel = new JPanel();
@@ -65,29 +65,28 @@ public class CardInfo extends JPanel {
 		textFieldPanel.setLayout(null);
 		
 		textField = new JTextField();
-		textField.setText("987 987 987 987");
 		textField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		textField.setColumns(10);
 		textField.setBounds(0, 12, 195, 19);
 		textFieldPanel.add(textField);
 		
 		txtCardOwner = new JTextField();
-		txtCardOwner.setText("Card Owner");
 		txtCardOwner.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		txtCardOwner.setColumns(10);
 		txtCardOwner.setBounds(0, 43, 195, 19);
 		textFieldPanel.add(txtCardOwner);
 		
 		txtCvv = new JTextField();
+		txtCvv.setToolTipText("CVV is often located at the back of your credit card!");
 		txtCvv.setBounds(0, 74, 41, 21);
 		textFieldPanel.add(txtCvv);
-		txtCvv.setText("CVV");
 		txtCvv.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		txtCvv.setColumns(10);
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setFont(new Font("HelvLight", Font.PLAIN, 12));
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"}));
+		comboBox.setSelectedIndex(2);
 		comboBox.setBounds(53, 74, 59, 21);
 		textFieldPanel.add(comboBox);
 		

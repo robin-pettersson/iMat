@@ -87,6 +87,7 @@ public class CustomerTabView extends JPanel {
 		cityLabel.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		
 		JButton changeButton = new JButton("Edit");
+		changeButton.setToolTipText("Edit your credentials");
 		changeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -265,13 +266,11 @@ public class CustomerTabView extends JPanel {
 		
 		pwdLsenord = new JPasswordField();
 		pwdLsenord.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		pwdLsenord.setText("lösenord");
 		pwdLsenord.setBounds(12, 173, 171, 19);
 		textPanel.add(pwdLsenord);
 		
 		passwordField = new JPasswordField();
 		passwordField.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		passwordField.setText("lösenord");
 		passwordField.setBounds(12, 196, 171, 19);
 		textPanel.add(passwordField);
 		

@@ -15,7 +15,6 @@ public class CartListView extends JPanel {
 
 	JSpinner amountSpinner;
 	JLabel priceLbl;
-	JLabel removeLbl;
 	JLabel productNameLbl;
 	JLabel pictureLbl;
 	
@@ -27,22 +26,16 @@ public class CartListView extends JPanel {
 		setLayout(null);
 		
 		amountSpinner = new JSpinner();
+		amountSpinner.setToolTipText("Pieces of this product");
 		amountSpinner.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		amountSpinner.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		amountSpinner.setBounds(491, 26, 57, 20);
+		amountSpinner.setBounds(464, 26, 57, 20);
 		add(amountSpinner);
 		
-		priceLbl = new JLabel("price");
+		priceLbl = new JLabel("Ã¡ 746 kr");
 		priceLbl.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		priceLbl.setBounds(428, 26, 63, 20);
+		priceLbl.setBounds(539, 26, 63, 20);
 		add(priceLbl);
-		
-		removeLbl = new JLabel("Remove");
-		removeLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		removeLbl.setForeground(Color.WHITE);
-		removeLbl.setFont(new Font("HelvLight", Font.BOLD, 14));
-		removeLbl.setBounds(554, 26, 71, 15);
-		add(removeLbl);
 		
 		productNameLbl = new JLabel("WareName");
 		productNameLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -57,10 +50,11 @@ public class CartListView extends JPanel {
 		add(pictureLbl);
 		
 		JLabel label = new JLabel("X");
+		label.setToolTipText("Remove from cart");
 		label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		label.setForeground(Color.RED);
 		label.setFont(new Font("Dialog", Font.BOLD, 24));
-		label.setBounds(613, 20, 24, 26);
+		label.setBounds(611, 20, 24, 26);
 		add(label);
 		// TODO Auto-generated constructor stub
 	}
@@ -88,7 +82,7 @@ public class CartListView extends JPanel {
 	 * @param the product
 	 */
 	public void setImage (Product product) {
-		//TODO behöver hjälp. hur sätter jag mha referens till objektet bilden?
+		//TODO behï¿½ver hjï¿½lp. hur sï¿½tter jag mha referens till objektet bilden?
 		pictureLbl.setText("");
 		//picLbl.setIcon(product.getImageName());
 		pictureLbl.repaint();
