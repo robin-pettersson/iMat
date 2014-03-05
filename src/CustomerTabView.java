@@ -52,15 +52,15 @@ public class CustomerTabView extends JPanel {
 		tabPanel.setFont(new Font("HelvLight", Font.PLAIN, 15));
 		tabPanel.setBackground(Color.LIGHT_GRAY);
 		add(tabPanel);
-		
-		JPanel customerTab = new JPanel();
+				
+		final JPanel customerTab = new JPanel();
 		customerTab.setBackground(Color.LIGHT_GRAY);
 		tabPanel.addTab("Personal info", null, customerTab, null);
 		customerTab.setLayout(new CardLayout(0, 0));
 		
 		JPanel infoPanel = new JPanel();
 		infoPanel.setBackground(Color.LIGHT_GRAY);
-		customerTab.add(infoPanel, "name_18669439395135");
+		customerTab.add(infoPanel, "name_65905466650689");
 		
 		JLabel emailLabel = new JLabel("youemail@email.com");
 		emailLabel.setForeground(Color.DARK_GRAY);
@@ -88,9 +88,12 @@ public class CustomerTabView extends JPanel {
 		
 		JButton changeButton = new JButton("Edit");
 		changeButton.setToolTipText("Edit your credentials");
+		
+		// if edit is clicked
 		changeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				CardLayout cl = (CardLayout)(customerTab.getLayout());
+			    cl.last(customerTab);
 			}
 		});
 		changeButton.setBackground(SystemColor.window);
@@ -155,7 +158,7 @@ public class CustomerTabView extends JPanel {
 		
 		JPanel settingsPanel = new JPanel();
 		settingsPanel.setBackground(new Color(192, 192, 192));
-		customerTab.add(settingsPanel, "name_18680627031416");
+		customerTab.add(settingsPanel, "name_65905662501577");
 		settingsPanel.setLayout(null);
 		
 		JPanel labelPanel = new JPanel();
@@ -289,6 +292,12 @@ public class CustomerTabView extends JPanel {
 		textPanel.add(lblReceiptsWillBe);
 		
 		JButton saveButton = new JButton("Save");
+		saveButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CardLayout cl = (CardLayout)(customerTab.getLayout());
+			    cl.first(customerTab);
+			}
+		});
 		saveButton.setBounds(545, 474, 73, 27);
 		settingsPanel.add(saveButton);
 		saveButton.setForeground(Color.DARK_GRAY);
@@ -296,6 +305,12 @@ public class CustomerTabView extends JPanel {
 		saveButton.setBackground(SystemColor.window);
 		
 		JButton cancelButton = new JButton("Cancel");
+		cancelButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CardLayout cl = (CardLayout)(customerTab.getLayout());
+			    cl.first(customerTab);
+			}
+		});
 		cancelButton.setForeground(Color.DARK_GRAY);
 		cancelButton.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		cancelButton.setBackground(SystemColor.window);
