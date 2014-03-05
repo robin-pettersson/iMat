@@ -322,20 +322,24 @@ public class IMatView extends JFrame {
 
 		JPanel breadcrumPanel = new JPanel();
 		breadcrumPanel.setBackground(new Color(200, 200, 200));
-		breadcrumPanel.setPreferredSize(new Dimension(10, 25));
+		breadcrumPanel.setPreferredSize(new Dimension(10, 33));
 		breadcrumPanel.setSize(new Dimension(0, 25));
 		breadcrumPanel.setMinimumSize(new Dimension(10, 25));
 		wareListPanel.add(breadcrumPanel, BorderLayout.NORTH);
 		breadcrumPanel.setLayout(null);
 
 		JLabel gridViewLbl = new JLabel("");
-		gridViewLbl.setBounds(603, 2, 21, 21);
+		gridViewLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		gridViewLbl.setIcon(new ImageIcon(IMatView.class.getResource("/iconz/thumbnail-view.png")));
+		gridViewLbl.setBounds(603, 2, 31, 31);
 		gridViewLbl.setHorizontalAlignment(SwingConstants.RIGHT);
 		breadcrumPanel.add(gridViewLbl);
 
 		JLabel listViewLbl = new JLabel("");
+		listViewLbl.setIcon(new ImageIcon(IMatView.class.getResource("/iconz/list-view-icon.png")));
+		listViewLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		listViewLbl.setHorizontalAlignment(SwingConstants.RIGHT);
-		listViewLbl.setBounds(572, 2, 21, 21);
+		listViewLbl.setBounds(570, 2, 31, 31);
 		breadcrumPanel.add(listViewLbl);
 
 		JPanel wareContainerScroll = new JPanel();
