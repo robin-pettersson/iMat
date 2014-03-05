@@ -44,6 +44,7 @@ public class RegisterController implements FocusListener, MouseListener {
 	private int year;
 	
 	JTable table;
+	JTable previewTable;
 	List<ShoppingItem> items;
 
 
@@ -182,7 +183,7 @@ public class RegisterController implements FocusListener, MouseListener {
 		Preview preview;
 		String date = day + "/" + month + "-" + year;
 		
-		JTable previewTable = new JTable();
+		previewTable = new JTable();
 		previewTable.setModel(new DefaultTableModel(
 				new Object[][] {
 					{null, null, null},
@@ -203,7 +204,11 @@ public class RegisterController implements FocusListener, MouseListener {
 				}
 			));
 		reformTable(previewTable);
-		preview = new Preview(fName, lName, address, zip, city, email, date, previewTable);
+		String total = iMat.getShoppingCart().getTotal() + "";
+		preview = new Preview(fName, lName, address, zip, city, email, date, total, previewTable);
+		if (CheckOutView.previewPanel.getComponentCount() > 0){
+			CheckOutView.previewPanel.remove(0);
+		}
 		CheckOutView.previewPanel.add(preview);
 		
 		JPanel p = (JPanel) CheckOutView.previewPanel.getParent();
@@ -271,8 +276,9 @@ public class RegisterController implements FocusListener, MouseListener {
 		table.getModel().setValueAt(items.get(currentItem).getProduct().getName(), row, 0);
 		table.getModel().setValueAt("", row, 1);
 		row++;
-		table.getModel().setValueAt(items.get(currentItem).getAmount() + "pcs", row, 0);
-		table.getModel().setValueAt(price + "sek", row, 1);
+		table.getModel().setValueAt(items.get(currentItem).getAmount() + " pcs", row, 0);
+		price = price * items.get(currentItem).getAmount();
+		table.getModel().setValueAt(price + " sek", row, 1);
 		row++;
 		table.getModel().setValueAt("", row, 0);
 		table.getModel().setValueAt("", row, 1);
@@ -282,7 +288,7 @@ public class RegisterController implements FocusListener, MouseListener {
 		rCart.lblTotaly.setText(iMat.getShoppingCart().getTotal()+ " sek");
 	}
 	
-	private JTable reformTable(JTable previewTable){
+	private void reformTable(JTable previewTable){
 		items = iMat.getShoppingCart().getItems();
 		int currentRow = 0;
 		for (ShoppingItem item : items) {
@@ -291,7 +297,6 @@ public class RegisterController implements FocusListener, MouseListener {
 				previewTable.getModel().setValueAt(item.getProduct().getPrice() + " sek", currentRow, 2);
 				currentRow++;
 		}
-		return previewTable;
 	}
 
 	@Override

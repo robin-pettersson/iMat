@@ -30,7 +30,7 @@ public class Preview extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public Preview(String fName, String lName, String address, String zip, String city, String email, String date, JTable table) {
+	public Preview(String fName, String lName, String address, String zip, String city, String email, String date, String total, JTable table) {
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setPreferredSize(new Dimension(635, 550));
 		setLayout(new BorderLayout(0, 0));
@@ -100,42 +100,22 @@ public class Preview extends JPanel {
 		confirmButton.setBounds(526, 258, 91, 27);
 		productsPanel.add(confirmButton);
 		
-		JLabel lblSumKr = new JLabel("Sum: 283 kr");
+		JLabel lblSumKr = new JLabel(total + " sek");
 		lblSumKr.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSumKr.setForeground(Color.DARK_GRAY);
 		lblSumKr.setFont(new Font("HelvLight", Font.PLAIN, 18));
 		lblSumKr.setBounds(430, 224, 187, 17);
 		productsPanel.add(lblSumKr);
 		
-		productsTable = new JTable();
-		productsTable.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"Apples - Granny Smith", "5 pcs", "45 kr"},
-				{"Apples - Granny Smith", "12 pcs", "34 kr"},
-				{"Apples - Granny Smith", "2 pcs", "99 kr"},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-			},
-			new String[] {
-				"New column", "New column", "New column"
-			}
-		));
-		productsTable.getColumnModel().getColumn(0).setPreferredWidth(400);
-		productsTable.getColumnModel().getColumn(1).setPreferredWidth(15);
-		productsTable.getColumnModel().getColumn(2).setPreferredWidth(15);
-		productsTable.setRowSelectionAllowed(false);
-		productsTable.setFont(new Font("HelvLight", Font.PLAIN, 16));
-		productsTable.setBorder(new LineBorder(new Color(0, 0, 0)));
-		productsTable.setBackground(Color.LIGHT_GRAY);
-		productsTable.setBounds(12, 12, 605, 200);
-		productsPanel.add(productsTable);
+		table.getColumnModel().getColumn(0).setPreferredWidth(400);
+		table.getColumnModel().getColumn(1).setPreferredWidth(15);
+		table.getColumnModel().getColumn(2).setPreferredWidth(15);
+		table.setRowSelectionAllowed(false);
+		table.setFont(new Font("HelvLight", Font.PLAIN, 16));
+		table.setBorder(new LineBorder(new Color(0, 0, 0)));
+		table.setBackground(Color.LIGHT_GRAY);
+		table.setBounds(12, 12, 605, 200);
+		productsPanel.add(table);
 		
 		JButton backButton = new JButton("Back to check out");
 		backButton.setToolTipText("Return to check out");

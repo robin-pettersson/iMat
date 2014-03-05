@@ -19,7 +19,7 @@ public class RightShoppingCart extends JPanel {
 	public JLabel lblTotaly; 
 	private static RightShoppingCart rCart = null;
 	
-	//RegisterController reg = RegisterController.getInstance();
+	CartController cartController = CartController.getInstance();
 
 	/**
 	 * Create the panel.
@@ -59,11 +59,11 @@ public class RightShoppingCart extends JPanel {
 		table.setBackground(Color.LIGHT_GRAY);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{"Banana - Dole", ""},
-				{"2 pcs", "16kr"},
 				{null, null},
-				{"Apple - Granny Smith", ""},
-				{"3 pcs", "8kr"},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
 				{null, null},
 				{null, null},
 				{null, null},
@@ -103,7 +103,7 @@ public class RightShoppingCart extends JPanel {
 		table.getColumnModel().getColumn(1).setMinWidth(25);
 		panel_1.add(table);
 		
-		lblTotaly = new JLabel("Sum: 340 kr");
+		lblTotaly = new JLabel("");
 		lblTotaly.setOpaque(true);
 		lblTotaly.setBackground(Color.LIGHT_GRAY);
 		lblTotaly.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -113,22 +113,22 @@ public class RightShoppingCart extends JPanel {
 		
 		JButton btnCheckOut = new JButton("Check out");
 		btnCheckOut.setName("btnCheckOut");
-		//btnCheckOut.addMouseListener(reg);
+		btnCheckOut.addMouseListener(cartController);
 		btnCheckOut.setToolTipText("Proceed to check out");
 		btnCheckOut.setForeground(Color.DARK_GRAY);
 		btnCheckOut.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		btnCheckOut.setBackground(SystemColor.window);
-		btnCheckOut.setBounds(75, 494, 105, 35);
+		btnCheckOut.setBounds(75, 494, 105, 27);
 		panel.add(btnCheckOut);
 		
 		JButton btnEdit = new JButton("Edit");
 		btnEdit.setName("btnEdit");
-		//btnEdit.addMouseListener(reg);
+		btnEdit.addMouseListener(cartController);
 		btnEdit.setToolTipText("Edit shopping cart");
 		btnEdit.setForeground(Color.DARK_GRAY);
 		btnEdit.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		btnEdit.setBackground(SystemColor.window);
-		btnEdit.setBounds(12, 494, 59, 35);
+		btnEdit.setBounds(12, 494, 59, 27);
 		panel.add(btnEdit);
 
 	}
