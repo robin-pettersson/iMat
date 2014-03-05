@@ -154,7 +154,7 @@ public class IMatView extends JFrame {
 
 		JPanel accountPanel = new JPanel();
 		accountPanel.setBackground(Color.LIGHT_GRAY);
-		accountPanel.setBounds(848, 7, 165, 32);
+		accountPanel.setBounds(848, 7, 177, 32);
 		toolBar.add(accountPanel);
 		accountPanel.setLayout(null);
 
@@ -179,7 +179,7 @@ public class IMatView extends JFrame {
 		});
 		logInLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		logInLbl.setForeground(Color.WHITE);
-		logInLbl.setBounds(91, 5, 73, 19);
+		logInLbl.setBounds(100, 5, 73, 19);
 		accountPanel.add(logInLbl);
 		logInLbl.setFont(new Font("HelvLight", Font.BOLD, 16));
 
@@ -200,19 +200,19 @@ public class IMatView extends JFrame {
 		registerLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		registerLbl.setForeground(Color.WHITE);
 		registerLbl.setHorizontalAlignment(SwingConstants.RIGHT);
-		registerLbl.setBounds(4, 4, 75, 20);
+		registerLbl.setBounds(13, 4, 75, 20);
 		accountPanel.add(registerLbl);
 		registerLbl.setFont(new Font("HelvLight", Font.BOLD, 16));
 
 		JLabel seperatorLbl = new JLabel("|");
 		seperatorLbl.setForeground(Color.WHITE);
-		seperatorLbl.setBounds(82, 7, 16, 14);
+		seperatorLbl.setBounds(91, 7, 16, 14);
 		accountPanel.add(seperatorLbl);
 		seperatorLbl.setFont(new Font("HelvLight", Font.PLAIN, 16));
 
 		JPanel cashierPanel = new JPanel();
 		cashierPanel.setBackground(Color.LIGHT_GRAY);
-		cashierPanel.setBounds(906, 46, 107, 42);
+		cashierPanel.setBounds(906, 46, 119, 42);
 		toolBar.add(cashierPanel);
 		cashierPanel.setLayout(null);
 
@@ -229,7 +229,7 @@ public class IMatView extends JFrame {
 		});
 		checkOutLbl.setHorizontalAlignment(SwingConstants.RIGHT);
 		checkOutLbl.setForeground(Color.WHITE);
-		checkOutLbl.setBounds(0, 28, 84, 14);
+		checkOutLbl.setBounds(12, 25, 84, 14);
 		cashierPanel.add(checkOutLbl);
 		checkOutLbl.setFont(new Font("HelvLight", Font.BOLD, 16));
 
@@ -246,7 +246,7 @@ public class IMatView extends JFrame {
 		});
 		cartLbl.setHorizontalAlignment(SwingConstants.RIGHT);
 		cartLbl.setForeground(Color.WHITE);
-		cartLbl.setBounds(50, 3, 34, 15);
+		cartLbl.setBounds(62, 0, 34, 15);
 		cashierPanel.add(cartLbl);
 		cartLbl.setFont(new Font("HelvLight", Font.BOLD, 16));
 		
@@ -270,6 +270,14 @@ public class IMatView extends JFrame {
 		favouriteButcon.setToolTipText("Favourite items");
 		favouriteButcon.setBounds(42, 0, 32, 32);
 		butconPanel.add(favouriteButcon);
+		
+		JLabel lblDesignedByDat = new JLabel("Designed by dat215 in Gothenburg.");
+		lblDesignedByDat.setToolTipText("");
+		lblDesignedByDat.setHorizontalAlignment(SwingConstants.LEFT);
+		lblDesignedByDat.setForeground(Color.WHITE);
+		lblDesignedByDat.setFont(new Font("HelvLight", Font.PLAIN, 12));
+		lblDesignedByDat.setBounds(188, 24, 215, 14);
+		toolBar.add(lblDesignedByDat);
 
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -297,11 +305,15 @@ public class IMatView extends JFrame {
 				+  "You order, we deliver!");
 		welcomeTxt.setBounds(21, 11, 587, 93);
 		startPanel.add(welcomeTxt);
-
-		JPanel startShoppingPanel = new JPanel();
-		startShoppingPanel.setBackground(Color.LIGHT_GRAY);
-		startShoppingPanel.setBounds(21, 113, 587, 442);
-		startPanel.add(startShoppingPanel);
+		
+		JLabel label = new JLabel("");
+		label.setBackground(Color.BLACK);
+		label.setBorder(new LineBorder(new Color(0, 0, 0)));
+		label.setIcon(new ImageIcon(IMatView.class.getResource("/Pics/banner-smaller.png")));
+		label.setForeground(Color.DARK_GRAY);
+		label.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		label.setBounds(21, 116, 537, 400);
+		startPanel.add(label);
 
 		JPanel wareListPanel = new JPanel();
 		wareListPanel.setBackground(Color.LIGHT_GRAY);

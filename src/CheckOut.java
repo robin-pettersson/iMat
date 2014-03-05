@@ -24,6 +24,7 @@ import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 
 
 public class CheckOut extends JPanel {
