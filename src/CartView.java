@@ -8,14 +8,17 @@ import javax.swing.border.LineBorder;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.util.List;
+
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.FlowLayout;
 
 public class CartView extends JPanel {
 	
-	public CartView() {
+	//private static CartView cartView = null;
+
+	public CartView(List<CartListView> view) {
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setPreferredSize(new Dimension(635, 550));
 		setBackground(Color.LIGHT_GRAY);
@@ -42,12 +45,23 @@ public class CartView extends JPanel {
 		cartLabel.setBounds(12, 0, 230, 37);
 		headerPanel.add(cartLabel);
 		
+		//CartListView view = new CartListView("hej", "hopp", 2);
+		
 		JPanel container = new JPanel();
-		container.setLayout(null);
+		container.setName("container");
 		container.setBorder(new LineBorder(new Color(0, 0, 0)));
 		container.setBackground(Color.LIGHT_GRAY);
 		container.setBounds(3, 61, 629, 408);
+		
+		if(view != null){
+			for (CartListView clw : view) {
+				container.add(clw);
+				System.out.println("its added");
+			}
+		}
+		
 		add(container);
+		container.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JPanel pyramidPanel = new JPanel();
 		pyramidPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -102,7 +116,6 @@ public class CartView extends JPanel {
 		buttonPanel.add(btnKeepShopping);
 		
 		JButton btnCheckOut = new JButton("Check out");
-
 		btnCheckOut.setToolTipText("Cancel purchase");
 		btnCheckOut.setForeground(Color.DARK_GRAY);
 		btnCheckOut.setFont(new Font("HelvLight", Font.PLAIN, 14));
@@ -111,4 +124,11 @@ public class CartView extends JPanel {
 		buttonPanel.add(btnCheckOut);
 		// TODO Auto-generated constructor stub
 	}
+	
+	/*public static CartView getInstance(){
+		if(cartView == null){
+			cartView = new CartView();
+		}
+		return cartView;
+	}*/
 }

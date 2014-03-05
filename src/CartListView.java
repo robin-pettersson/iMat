@@ -10,6 +10,7 @@ import javax.swing.border.BevelBorder;
 import se.chalmers.ait.dat215.project.Product;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Rectangle;
 
 public class CartListView extends JPanel {
 
@@ -19,25 +20,29 @@ public class CartListView extends JPanel {
 	JLabel pictureLbl;
 	
 	
-	public CartListView() {
+	public CartListView(String product, String price, double amount) {
+		setBounds(new Rectangle(0, 0, 630, 50));
+		setSize(new Dimension(630, 50));
+		
 		setBackground(Color.LIGHT_GRAY);
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
-		setPreferredSize(new Dimension(635, 70));
+		setPreferredSize(new Dimension(630, 50));
 		setLayout(null);
 		
 		amountSpinner = new JSpinner();
+		amountSpinner.setValue(amount);
 		amountSpinner.setToolTipText("Number of pieces");
 		amountSpinner.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		amountSpinner.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		amountSpinner.setBounds(464, 26, 57, 20);
 		add(amountSpinner);
 		
-		priceLbl = new JLabel("á 746 kr");
+		priceLbl = new JLabel(price + " sek");
 		priceLbl.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		priceLbl.setBounds(539, 26, 63, 20);
 		add(priceLbl);
 		
-		productNameLbl = new JLabel("WareName");
+		productNameLbl = new JLabel(product);
 		productNameLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		productNameLbl.setForeground(Color.WHITE);
 		productNameLbl.setFont(new Font("HelvLight", Font.BOLD, 18));

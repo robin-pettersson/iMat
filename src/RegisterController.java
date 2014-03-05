@@ -4,6 +4,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JComboBox;
@@ -46,11 +47,14 @@ public class RegisterController implements FocusListener, MouseListener {
 	JTable table;
 	JTable previewTable;
 	List<ShoppingItem> items;
+	List<CartListView> cartItems = new ArrayList<CartListView>();
 
+	CartView cart;
 
 	CheckOutController checkOutController = CheckOutController.getInstance();
 	IMatDataHandler iMat = IMatDataHandler.getInstance();
 	RightShoppingCart rCart = RightShoppingCart.getInstance();
+	//CartView cartView = CartView.getInstance();
 	RegisterPopUp regPop = null;
 	
 	protected RegisterController(){
@@ -269,6 +273,21 @@ public class RegisterController implements FocusListener, MouseListener {
 			}
 		}*/
 		iMat.getShoppingCart().addItem(item);
+		String cost = product.getPrice() * amount + "";
+		
+		CartListView view = new CartListView(product.getName(), cost, amount);
+		cartItems.add(view);
+		
+		System.out.println(CheckOutView.cartPanel.getComponentCount());
+		System.out.println(cartItems.size());
+		if(CheckOutView.cartPanel.getComponentCount() > 0){
+			CheckOutView.cartPanel.removeAll();
+			System.out.println(CheckOutView.cartPanel.getComponentCount());
+		}
+		cart = new CartView(cartItems);
+		CheckOutView.cartPanel.add(cart);
+		cart = null;
+		
 	}
 	
 	private void addToTable(JTable table , List<ShoppingItem> items, double price){
