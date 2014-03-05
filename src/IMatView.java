@@ -121,14 +121,14 @@ public class IMatView extends JFrame {
 
 		JPanel searchPanel = new JPanel();
 		searchPanel.setBackground(Color.LIGHT_GRAY);
-		searchPanel.setBounds(188, 34, 636, 32);
+		searchPanel.setBounds(188, 50, 636, 32);
 		toolBar.add(searchPanel);
 		searchPanel.setLayout(null);
 
 		searchFld = new JTextField();
 		searchFld.setBounds(0, 0, 507, 32);
 		searchPanel.add(searchFld);
-		searchFld.setToolTipText("Search product...");
+		searchFld.setToolTipText("");
 		searchFld.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -145,7 +145,7 @@ public class IMatView extends JFrame {
 		searchBtn.setBounds(519, 1, 117, 30);
 		searchPanel.add(searchBtn);
 		searchBtn.setBackground(SystemColor.window);
-		searchBtn.setToolTipText("Search product");
+		searchBtn.setToolTipText("");
 		searchBtn.setForeground(Color.DARK_GRAY);
 		searchBtn.setFont(new Font("HelvLight", Font.PLAIN, 16));
 
@@ -154,23 +154,24 @@ public class IMatView extends JFrame {
 
 		JPanel accountPanel = new JPanel();
 		accountPanel.setBackground(Color.LIGHT_GRAY);
-		accountPanel.setBounds(848, 7, 165, 27);
+		accountPanel.setBounds(848, 7, 165, 32);
 		toolBar.add(accountPanel);
 		accountPanel.setLayout(null);
 
-		final JLabel logInLbl = new JLabel("Log in");
+		final JLabel logInLbl = new JLabel("Sign in");
+		logInLbl.setToolTipText("");
 		logInLbl.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				JLabel l = (JLabel) ((JPanel) toolBar.getComponents()[2]).getComponent(1);
 				JPanel p = (JPanel)toolBar.getParent().getComponent(1);
 				CardLayout layout = (CardLayout) p.getLayout();
-				if(logInLbl.getText() == "Log in"){
-					logInLbl.setText("Log out");
+				if(logInLbl.getText() == "Sign in"){
+					logInLbl.setText("Sign out");
 					l.setText("Stefan");
 				}
 				else{
-					logInLbl.setText("Log in");
+					logInLbl.setText("Sign in");
 					l.setText("Sign up");
 					layout.first(p);
 				}
@@ -178,11 +179,12 @@ public class IMatView extends JFrame {
 		});
 		logInLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		logInLbl.setForeground(Color.WHITE);
-		logInLbl.setBounds(91, 0, 74, 27);
+		logInLbl.setBounds(91, 5, 73, 19);
 		accountPanel.add(logInLbl);
 		logInLbl.setFont(new Font("HelvLight", Font.BOLD, 16));
 
 		final JLabel registerLbl = new JLabel("Sign up");
+		registerLbl.setToolTipText("");
 		registerLbl.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -198,7 +200,7 @@ public class IMatView extends JFrame {
 		registerLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		registerLbl.setForeground(Color.WHITE);
 		registerLbl.setHorizontalAlignment(SwingConstants.RIGHT);
-		registerLbl.setBounds(0, 0, 79, 27);
+		registerLbl.setBounds(4, 4, 75, 20);
 		accountPanel.add(registerLbl);
 		registerLbl.setFont(new Font("HelvLight", Font.BOLD, 16));
 
@@ -215,6 +217,7 @@ public class IMatView extends JFrame {
 		cashierPanel.setLayout(null);
 
 		JLabel checkOutLbl = new JLabel("Check-out");
+		checkOutLbl.setToolTipText("Go to check out");
 		checkOutLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		checkOutLbl.addMouseListener(new MouseAdapter() {
 			@Override
@@ -231,6 +234,7 @@ public class IMatView extends JFrame {
 		checkOutLbl.setFont(new Font("HelvLight", Font.BOLD, 16));
 
 		JLabel cartLbl = new JLabel("Cart");
+		cartLbl.setToolTipText("Go to shopping cart");
 		cartLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		cartLbl.addMouseListener(new MouseAdapter() {
 			@Override
@@ -242,13 +246,30 @@ public class IMatView extends JFrame {
 		});
 		cartLbl.setHorizontalAlignment(SwingConstants.RIGHT);
 		cartLbl.setForeground(Color.WHITE);
-		cartLbl.setBounds(0, 0, 84, 32);
+		cartLbl.setBounds(50, 3, 34, 15);
 		cashierPanel.add(cartLbl);
 		cartLbl.setFont(new Font("HelvLight", Font.BOLD, 16));
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(744, 19, 70, 15);
-		toolBar.add(lblNewLabel);
+		JPanel butconPanel = new JPanel();
+		butconPanel.setBorder(null);
+		butconPanel.setBackground(Color.LIGHT_GRAY);
+		butconPanel.setBounds(752, 7, 95, 32);
+		toolBar.add(butconPanel);
+		butconPanel.setLayout(null);
+		
+		JLabel shoppingListButcon = new JLabel("");
+		shoppingListButcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		shoppingListButcon.setToolTipText("Shopping Lists");
+		shoppingListButcon.setBounds(0, 0, 32, 32);
+		butconPanel.add(shoppingListButcon);
+		shoppingListButcon.setIcon(new ImageIcon(IMatView.class.getResource("/iconz/list-icon2.png")));
+		
+		JLabel favouriteButcon = new JLabel("");
+		favouriteButcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		favouriteButcon.setIcon(new ImageIcon(IMatView.class.getResource("/iconz/star-icon.png")));
+		favouriteButcon.setToolTipText("Favourite items");
+		favouriteButcon.setBounds(42, 0, 32, 32);
+		butconPanel.add(favouriteButcon);
 
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
