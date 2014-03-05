@@ -10,6 +10,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Cursor;
 
 
 public class pyramidPanel extends JPanel {
@@ -34,8 +35,9 @@ public class pyramidPanel extends JPanel {
 		panel.setLayout(gbl_panel);
 		
 		JLabel backLabel = new JLabel("<<");
+		backLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		backLabel.setVerticalAlignment(SwingConstants.BOTTOM);
-		backLabel.setToolTipText("Föregående");
+		backLabel.setToolTipText("Back");
 		backLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		backLabel.setForeground(Color.GRAY);
 		backLabel.setFont(new Font("HelvLight", Font.BOLD, 20));
@@ -46,9 +48,10 @@ public class pyramidPanel extends JPanel {
 		gbc_backLabel.gridy = 0;
 		panel.add(backLabel, gbc_backLabel);
 		
-		JLabel pagesLabel = new JLabel("1/2");
+		JLabel pagesLabel = new JLabel("1/1");
+		pagesLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		pagesLabel.setVerticalAlignment(SwingConstants.BOTTOM);
-		pagesLabel.setToolTipText("Sida 1 av 2");
+		pagesLabel.setToolTipText("Current page");
 		pagesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		pagesLabel.setForeground(Color.GRAY);
 		pagesLabel.setFont(new Font("HelvLight", Font.BOLD, 20));
@@ -60,8 +63,9 @@ public class pyramidPanel extends JPanel {
 		panel.add(pagesLabel, gbc_pagesLabel);
 		
 		JLabel nextLabel = new JLabel(">>");
+		nextLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		nextLabel.setVerticalAlignment(SwingConstants.BOTTOM);
-		nextLabel.setToolTipText("Nästa");
+		nextLabel.setToolTipText("Next");
 		nextLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		nextLabel.setForeground(Color.DARK_GRAY);
 		nextLabel.setFont(new Font("HelvLight", Font.BOLD, 20));

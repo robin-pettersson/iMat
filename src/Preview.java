@@ -21,6 +21,9 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
 import java.awt.GridLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 
 public class Preview extends JPanel {
@@ -104,7 +107,7 @@ public class Preview extends JPanel {
 		lblSumKr.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSumKr.setForeground(Color.DARK_GRAY);
 		lblSumKr.setFont(new Font("HelvLight", Font.PLAIN, 18));
-		lblSumKr.setBounds(430, 224, 187, 17);
+		lblSumKr.setBounds(430, 229, 187, 17);
 		productsPanel.add(lblSumKr);
 		
 		table.getColumnModel().getColumn(0).setPreferredWidth(400);
@@ -124,6 +127,42 @@ public class Preview extends JPanel {
 		backButton.setBackground(SystemColor.window);
 		backButton.setBounds(12, 260, 149, 27);
 		productsPanel.add(backButton);
+		
+		JPanel panel_6 = new JPanel();
+		panel_6.setPreferredSize(new Dimension(635, 35));
+		panel_6.setBackground(Color.LIGHT_GRAY);
+		panel_6.setBounds(12, 217, 149, 29);
+		productsPanel.add(panel_6);
+		panel_6.setLayout(null);
+		
+		JLabel label_7 = new JLabel("<<");
+		label_7.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		label_7.setBounds(6, 4, 20, 18);
+		label_7.setVerticalAlignment(SwingConstants.BOTTOM);
+		label_7.setToolTipText("Back");
+		label_7.setHorizontalAlignment(SwingConstants.LEFT);
+		label_7.setForeground(Color.GRAY);
+		label_7.setFont(new Font("HelvLight", Font.BOLD, 14));
+		panel_6.add(label_7);
+		
+		JLabel label_8 = new JLabel("1/1");
+		label_8.setBounds(61, 4, 23, 18);
+		label_8.setVerticalAlignment(SwingConstants.BOTTOM);
+		label_8.setToolTipText("Current page");
+		label_8.setHorizontalAlignment(SwingConstants.CENTER);
+		label_8.setForeground(Color.GRAY);
+		label_8.setFont(new Font("HelvLight", Font.BOLD, 14));
+		panel_6.add(label_8);
+		
+		JLabel label_9 = new JLabel(">>");
+		label_9.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		label_9.setBounds(119, 4, 20, 18);
+		label_9.setVerticalAlignment(SwingConstants.BOTTOM);
+		label_9.setToolTipText("Next");
+		label_9.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_9.setForeground(Color.DARK_GRAY);
+		label_9.setFont(new Font("HelvLight", Font.BOLD, 14));
+		panel_6.add(label_9);
 		
 		JLabel label_3 = new JLabel("> Check out");
 		label_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

@@ -321,14 +321,15 @@ public class IMatView extends JFrame {
 		JPanel wareListPanel = new JPanel();
 		wareListPanel.setBackground(Color.LIGHT_GRAY);
 		mainPanel.add(wareListPanel, "wareListPanel");
-		wareListPanel.setLayout(new BorderLayout(0, 0));
+		wareListPanel.setLayout(null);
 
 		JPanel breadcrumPanel = new JPanel();
+		breadcrumPanel.setLocation(0, 0);
 		breadcrumPanel.setBackground(new Color(200, 200, 200));
 		breadcrumPanel.setPreferredSize(new Dimension(10, 33));
-		breadcrumPanel.setSize(new Dimension(0, 25));
+		breadcrumPanel.setSize(new Dimension(634, 33));
 		breadcrumPanel.setMinimumSize(new Dimension(10, 25));
-		wareListPanel.add(breadcrumPanel, BorderLayout.NORTH);
+		wareListPanel.add(breadcrumPanel);
 		breadcrumPanel.setLayout(null);
 
 		JLabel gridViewLbl = new JLabel("");
@@ -348,8 +349,45 @@ public class IMatView extends JFrame {
 		breadcrumPanel.add(listViewLbl);
 
 		JPanel wareContainerScroll = new JPanel();
+		wareContainerScroll.setBounds(0, 33, 634, 482);
 		wareContainerScroll.setBackground(Color.LIGHT_GRAY);
-		wareListPanel.add(wareContainerScroll, BorderLayout.CENTER);
+		wareListPanel.add(wareContainerScroll);
+		
+		JPanel pyramidePanel = new JPanel();
+		pyramidePanel.setPreferredSize(new Dimension(635, 35));
+		pyramidePanel.setBackground(Color.LIGHT_GRAY);
+		pyramidePanel.setBounds(-1, 514, 635, 35);
+		wareListPanel.add(pyramidePanel);
+		pyramidePanel.setLayout(null);
+		
+		JLabel label_1 = new JLabel("<<");
+		label_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		label_1.setBounds(11, 0, 28, 26);
+		label_1.setVerticalAlignment(SwingConstants.BOTTOM);
+		label_1.setToolTipText("Back");
+		label_1.setHorizontalAlignment(SwingConstants.LEFT);
+		label_1.setForeground(Color.GRAY);
+		label_1.setFont(new Font("HelvLight", Font.BOLD, 20));
+		pyramidePanel.add(label_1);
+		
+		JLabel label_2 = new JLabel("1/1");
+		label_2.setBounds(315, 0, 31, 26);
+		label_2.setVerticalAlignment(SwingConstants.BOTTOM);
+		label_2.setToolTipText("Current page");
+		label_2.setHorizontalAlignment(SwingConstants.CENTER);
+		label_2.setForeground(Color.GRAY);
+		label_2.setFont(new Font("HelvLight", Font.BOLD, 20));
+		pyramidePanel.add(label_2);
+		
+		JLabel label_3 = new JLabel(">>");
+		label_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		label_3.setBounds(591, 0, 28, 26);
+		label_3.setVerticalAlignment(SwingConstants.BOTTOM);
+		label_3.setToolTipText("Next");
+		label_3.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_3.setForeground(Color.DARK_GRAY);
+		label_3.setFont(new Font("HelvLight", Font.BOLD, 20));
+		pyramidePanel.add(label_3);
 
 		JPanel shoppingListPanel = new JPanel();
 		shoppingListPanel.setBackground(Color.LIGHT_GRAY);

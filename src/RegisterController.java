@@ -95,7 +95,7 @@ public class RegisterController implements FocusListener, MouseListener {
 				//customer.setAddress(address);
 				break;
 			case "zipTextField": JTextField text4 = (JTextField) fe.getComponent();
-				zip = text4.getText();
+				zip = text4.getText() + " ";
 				//customer.setPostCode(zip);
 				break;
 			case "cityTextField": JTextField text5 = (JTextField) fe.getComponent();
@@ -127,10 +127,9 @@ public class RegisterController implements FocusListener, MouseListener {
 			case "year": JComboBox<Integer> box3 = (JComboBox<Integer>) fe.getComponent();
 				year = (int) box3.getSelectedItem();
 				break;
-							
+			
 				
 		}
-		
 	}
 
 	@Override
@@ -168,7 +167,7 @@ public class RegisterController implements FocusListener, MouseListener {
 		}
 		
 		if(me.getComponent().getName() == "btnLogIn"){
-			//Databas stödjer inte detta
+			//Databas stï¿½djer inte detta
 		}
 		if(me.getComponent().getName() == "lblSignIn"){
 			//Todo hide/show function here instead of in view class
@@ -329,6 +328,7 @@ public class RegisterController implements FocusListener, MouseListener {
 				previewTable.getModel().setValueAt(item.getProduct().getPrice() + " sek", currentRow, 2);
 				currentRow++;
 		}
+		previewTable.enable(false);
 	}
 
 	@Override
