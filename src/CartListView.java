@@ -26,7 +26,7 @@ public class CartListView extends JPanel {
 		setLayout(null);
 		
 		amountSpinner = new JSpinner();
-		amountSpinner.setToolTipText("Pieces of this product");
+		amountSpinner.setToolTipText("Number of pieces");
 		amountSpinner.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		amountSpinner.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		amountSpinner.setBounds(464, 26, 57, 20);

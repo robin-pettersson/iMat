@@ -38,8 +38,9 @@ public class RegisterPopUp extends JPanel {
 	public RegisterPopUp(String fName, String lName, String address, String zip, String city, String email) {
 		
 		dialog = new JDialog();
+		dialog.getContentPane().setBackground(SystemColor.controlHighlight);
 		dialog.setPreferredSize(new Dimension(408, 374));
-		dialog.setBackground(Color.LIGHT_GRAY);
+		dialog.setBackground(SystemColor.controlHighlight);
 		dialog.setSize(new Dimension(408, 374));
 		dialog.setName("dialog");
 		dialog.getContentPane().setLayout(null);
@@ -48,7 +49,7 @@ public class RegisterPopUp extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBorder(null);
-		panel.setBackground(Color.LIGHT_GRAY);
+		panel.setBackground(SystemColor.controlHighlight);
 		panel.setBounds(12, 39, 122, 251);
 		dialog.getContentPane().add(panel);
 		
@@ -104,7 +105,7 @@ public class RegisterPopUp extends JPanel {
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
 		panel_1.setBorder(null);
-		panel_1.setBackground(Color.LIGHT_GRAY);
+		panel_1.setBackground(SystemColor.controlHighlight);
 		panel_1.setBounds(146, 39, 250, 251);
 		dialog.getContentPane().add(panel_1);
 		
@@ -201,7 +202,6 @@ public class RegisterPopUp extends JPanel {
 		passwordTextField = new JPasswordField();
 		passwordTextField.addFocusListener(reg);
 		passwordTextField.setName("passwordTextField");
-		passwordTextField.setText("lösenord");
 		passwordTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		passwordTextField.setBounds(0, 165, 195, 19);
 		panel_1.add(passwordTextField);
@@ -209,7 +209,6 @@ public class RegisterPopUp extends JPanel {
 		verifyPasswordTextField = new JPasswordField();
 		verifyPasswordTextField.addFocusListener(reg);
 		verifyPasswordTextField.setName("verifyPasswordTextField");
-		verifyPasswordTextField.setText("lösenord");
 		verifyPasswordTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		verifyPasswordTextField.setBounds(0, 188, 195, 19);
 		panel_1.add(verifyPasswordTextField);

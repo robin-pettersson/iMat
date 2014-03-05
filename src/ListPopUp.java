@@ -13,6 +13,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.SwingConstants;
+import javax.swing.JButton;
 
 
 public class ListPopUp extends JPanel {
@@ -32,7 +33,7 @@ public class ListPopUp extends JPanel {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_1.setBackground(Color.LIGHT_GRAY);
-		panel_1.setBounds(0, 35, 461, 307);
+		panel_1.setBounds(0, 35, 461, 270);
 		panel.add(panel_1);
 		
 		JPanel topPanel = new JPanel();
@@ -48,6 +49,7 @@ public class ListPopUp extends JPanel {
 		lblListname.setFont(new Font("HelvLight", Font.PLAIN, 20));
 		
 		JLabel lblAddToCart = new JLabel("Add to cart");
+		lblAddToCart.setToolTipText("Add whole list to cart");
 		lblAddToCart.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblAddToCart.setForeground(Color.WHITE);
 		lblAddToCart.setFont(new Font("HelvLight", Font.BOLD, 14));
@@ -57,7 +59,7 @@ public class ListPopUp extends JPanel {
 		pyramidePanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		pyramidePanel.setPreferredSize(new Dimension(635, 35));
 		pyramidePanel.setBackground(Color.LIGHT_GRAY);
-		pyramidePanel.setBounds(0, 346, 461, 29);
+		pyramidePanel.setBounds(0, 307, 461, 29);
 		panel.add(pyramidePanel);
 		GridBagLayout gbl_pyramidePanel = new GridBagLayout();
 		gbl_pyramidePanel.columnWidths = new int[]{28, 28, 31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -79,9 +81,9 @@ public class ListPopUp extends JPanel {
 		gbc_label.gridy = 0;
 		pyramidePanel.add(label, gbc_label);
 		
-		JLabel label_1 = new JLabel("1/2");
+		JLabel label_1 = new JLabel("1/1");
 		label_1.setVerticalAlignment(SwingConstants.BOTTOM);
-		label_1.setToolTipText("Sida 1 av 2");
+		label_1.setToolTipText("Current page");
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setForeground(Color.GRAY);
 		label_1.setFont(new Font("HelvLight", Font.BOLD, 20));
@@ -104,6 +106,31 @@ public class ListPopUp extends JPanel {
 		gbc_label_2.gridx = 18;
 		gbc_label_2.gridy = 0;
 		pyramidePanel.add(label_2, gbc_label_2);
+		
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setPreferredSize(new Dimension(635, 35));
+		buttonPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		buttonPanel.setBackground(Color.LIGHT_GRAY);
+		buttonPanel.setBounds(0, 339, 461, 36);
+		panel.add(buttonPanel);
+		buttonPanel.setLayout(null);
+		
+		JButton btnSaveChangesTo = new JButton("Save");
+		btnSaveChangesTo.setToolTipText("Save changes to list");
+		btnSaveChangesTo.setName("btnPreview");
+		btnSaveChangesTo.setForeground(Color.DARK_GRAY);
+		btnSaveChangesTo.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		btnSaveChangesTo.setBackground(SystemColor.window);
+		btnSaveChangesTo.setBounds(366, 4, 91, 27);
+		buttonPanel.add(btnSaveChangesTo);
+		
+		JButton button_1 = new JButton("Cancel");
+		button_1.setToolTipText("Cancel purchase");
+		button_1.setForeground(Color.DARK_GRAY);
+		button_1.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		button_1.setBackground(SystemColor.window);
+		button_1.setBounds(270, 4, 84, 27);
+		buttonPanel.add(button_1);
 
 	}
 }

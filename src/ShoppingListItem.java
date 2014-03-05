@@ -82,7 +82,7 @@ public class ShoppingListItem extends JPanel {
 		panel_1.add(editListLabel, gbc_editListLabel);
 		
 		JLabel closeLabel = new JLabel("X");
-		closeLabel.setToolTipText("Delete this list");
+		closeLabel.setToolTipText("Remove this list");
 		closeLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		closeLabel.setForeground(Color.RED);
 		closeLabel.setFont(new Font("gargi", Font.BOLD, 24));
