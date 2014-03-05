@@ -48,6 +48,7 @@ public class RegisterController implements FocusListener, MouseListener {
 	JTable previewTable;
 	List<ShoppingItem> items;
 	List<CartListView> cartItems = new ArrayList<CartListView>();
+	public static List<JTable> tablesList = new ArrayList<JTable>();
 
 	CartView cart;
 
@@ -251,8 +252,21 @@ public class RegisterController implements FocusListener, MouseListener {
 				
 			}
 		}
-		table = rCart.table;
+		
+		
+		if(row == 0) {
+			table = rCart.table;
+			tablesList.add(table);
+			
+		}else if(row == 24){
+			table = rCart.makeTable();
+			tablesList.add(table);
+			System.out.println("hej");
+			rCart.pageLabel.setText("1" + "/" + tablesList.size());
+			row = 0;
+		}
 		items = iMat.getShoppingCart().getItems();
+		
 		addToTable(table, items, price);
 		
 	}
@@ -289,6 +303,7 @@ public class RegisterController implements FocusListener, MouseListener {
 	
 	private void addToTable(JTable table , List<ShoppingItem> items, double price){
 		
+		
 		table.getModel().setValueAt(items.get(currentItem).getProduct().getName(), row, 0);
 		table.getModel().setValueAt("", row, 1);
 		row++;
@@ -302,6 +317,7 @@ public class RegisterController implements FocusListener, MouseListener {
 		System.out.println(items.get(currentItem).getProduct().getName());
 		currentItem++;
 		rCart.lblTotaly.setText(iMat.getShoppingCart().getTotal()+ " sek");
+		
 	}
 	
 	private void reformTable(JTable previewTable){
