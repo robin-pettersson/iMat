@@ -14,6 +14,8 @@ import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class RightShoppingCart extends JPanel {
@@ -24,6 +26,9 @@ public class RightShoppingCart extends JPanel {
 	private static RightShoppingCart rCart = null;
 	
 	CartController cartController = CartController.getInstance();
+	iMatMainController mainController = iMatMainController.getInstance();
+	CheckOutController checkOutController = CheckOutController.getInstance();
+	
 
 	/**
 	 * Create the panel.
@@ -115,8 +120,14 @@ public class RightShoppingCart extends JPanel {
 		panel_1.add(lblTotaly, BorderLayout.SOUTH);
 		
 		JButton btnCheckOut = new JButton("Check out");
-		btnCheckOut.setName("btnCheckOut");
-		btnCheckOut.addMouseListener(cartController);
+		btnCheckOut.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel p = (JPanel) panel.getParent().getParent().getComponent(1);
+				mainController.gotoCard(p , "checkOutPanel");
+				checkOutController.gotoCheckOut(p);
+			}
+		});		btnCheckOut.setName("btnCheckOut");
 		btnCheckOut.setToolTipText("Proceed to check out");
 		btnCheckOut.setForeground(Color.DARK_GRAY);
 		btnCheckOut.setFont(new Font("HelvLight", Font.PLAIN, 14));
@@ -126,7 +137,14 @@ public class RightShoppingCart extends JPanel {
 		
 		JButton btnEdit = new JButton("Edit");
 		btnEdit.setName("btnEdit");
-		btnEdit.addMouseListener(cartController);
+		btnEdit.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JPanel p = (JPanel) panel.getParent().getParent().getComponent(1);
+				checkOutController.gotoCart(p);
+				mainController.gotoCard(p , "checkOutPanel");
+			}
+		});
 		btnEdit.setToolTipText("Edit shopping cart");
 		btnEdit.setForeground(Color.DARK_GRAY);
 		btnEdit.setFont(new Font("HelvLight", Font.PLAIN, 14));
