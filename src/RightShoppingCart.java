@@ -13,9 +13,13 @@ import javax.swing.SwingConstants;
 
 
 public class RightShoppingCart extends JPanel {
+	
 	public JTable table;
+	public JPanel panel;
+	public JLabel lblTotaly; 
 	private static RightShoppingCart rCart = null;
 	
+	//RegisterController reg = RegisterController.getInstance();
 
 	/**
 	 * Create the panel.
@@ -24,10 +28,9 @@ public class RightShoppingCart extends JPanel {
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setLayout(null);
 		
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		panel.setBackground(new Color(192, 192, 192));
 		panel.setBounds(0, 0, 192, 541);
-		add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblShoppingCart = new JLabel("Shopping Cart");
@@ -94,13 +97,13 @@ public class RightShoppingCart extends JPanel {
 			}
 		});
 		table.getColumnModel().getColumn(0).setResizable(false);
-		table.getColumnModel().getColumn(0).setPreferredWidth(95);
+		table.getColumnModel().getColumn(0).setPreferredWidth(80);
 		table.getColumnModel().getColumn(1).setResizable(false);
-		table.getColumnModel().getColumn(1).setPreferredWidth(15);
-		table.getColumnModel().getColumn(1).setMinWidth(10);
+		table.getColumnModel().getColumn(1).setPreferredWidth(30);
+		table.getColumnModel().getColumn(1).setMinWidth(25);
 		panel_1.add(table);
 		
-		JLabel lblTotaly = new JLabel("Sum: 340 kr");
+		lblTotaly = new JLabel("Sum: 340 kr");
 		lblTotaly.setOpaque(true);
 		lblTotaly.setBackground(Color.LIGHT_GRAY);
 		lblTotaly.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -109,6 +112,8 @@ public class RightShoppingCart extends JPanel {
 		panel_1.add(lblTotaly, BorderLayout.SOUTH);
 		
 		JButton btnCheckOut = new JButton("Check out");
+		btnCheckOut.setName("btnCheckOut");
+		//btnCheckOut.addMouseListener(reg);
 		btnCheckOut.setToolTipText("Proceed to check out");
 		btnCheckOut.setForeground(Color.DARK_GRAY);
 		btnCheckOut.setFont(new Font("HelvLight", Font.PLAIN, 14));
@@ -117,6 +122,8 @@ public class RightShoppingCart extends JPanel {
 		panel.add(btnCheckOut);
 		
 		JButton btnEdit = new JButton("Edit");
+		btnEdit.setName("btnEdit");
+		//btnEdit.addMouseListener(reg);
 		btnEdit.setToolTipText("Edit shopping cart");
 		btnEdit.setForeground(Color.DARK_GRAY);
 		btnEdit.setFont(new Font("HelvLight", Font.PLAIN, 14));
@@ -132,4 +139,5 @@ public class RightShoppingCart extends JPanel {
 		}
 		return rCart;
 	}
+	
 }

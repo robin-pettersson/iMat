@@ -279,6 +279,7 @@ public class RegisterController implements FocusListener, MouseListener {
 		row++;
 		System.out.println(items.get(currentItem).getProduct().getName());
 		currentItem++;
+		rCart.lblTotaly.setText(iMat.getShoppingCart().getTotal()+ " sek");
 	}
 	
 	private JTable reformTable(JTable previewTable){

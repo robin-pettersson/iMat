@@ -64,6 +64,7 @@ public class IMatView extends JFrame {
 	private iMatMainController    mainController     = iMatMainController.getInstance();
 	private CheckOutController    checkOutController = CheckOutController.getInstance();
 	private CardLayout cardLayout;
+	
 
 
 	/**
@@ -369,13 +370,20 @@ public class IMatView extends JFrame {
 		navigationTree.setBounds(10, 11, 170, 513);
 		sidePanel.add(navigationTree);
 		navigationTree.setRootVisible(false);
-		
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.LIGHT_GRAY);
-		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel.setBounds(825, 96, 200, 567);
-		contentPane.add(panel);
 		navigationTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		navigationTree.addTreeSelectionListener(navController);
+		
+		RightShoppingCart rCart = RightShoppingCart.getInstance();
+		JPanel rCartPanel = rCart.panel;
+		
+		JPanel cartPanel = new JPanel();
+		cartPanel.setName("cartPanel");
+		cartPanel.setLayout(null);
+		cartPanel.setBackground(Color.LIGHT_GRAY);
+		cartPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		cartPanel.setBounds(825, 100, 200, 563);
+		cartPanel.add(new RightShoppingCart());
+		cartPanel.add(rCartPanel);
+		contentPane.add(cartPanel);
 	}
 }
