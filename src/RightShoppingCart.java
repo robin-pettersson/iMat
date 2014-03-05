@@ -10,6 +10,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import java.awt.SystemColor;
 import javax.swing.SwingConstants;
+import java.awt.Dimension;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 
 public class RightShoppingCart extends JPanel {
@@ -40,7 +44,7 @@ public class RightShoppingCart extends JPanel {
 		panel.add(lblShoppingCart);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(12, 44, 168, 438);
+		panel_1.setBounds(12, 44, 168, 411);
 		panel.add(panel_1);
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
@@ -59,7 +63,6 @@ public class RightShoppingCart extends JPanel {
 		table.setBackground(Color.LIGHT_GRAY);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null},
 				{null, null},
 				{null, null},
 				{null, null},
@@ -130,6 +133,40 @@ public class RightShoppingCart extends JPanel {
 		btnEdit.setBackground(SystemColor.window);
 		btnEdit.setBounds(12, 494, 59, 27);
 		panel.add(btnEdit);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setPreferredSize(new Dimension(635, 35));
+		panel_2.setBackground(Color.LIGHT_GRAY);
+		panel_2.setBounds(12, 460, 168, 25);
+		panel.add(panel_2);
+		panel_2.setLayout(null);
+		
+		JLabel label = new JLabel("<<");
+		label.setBounds(15, 0, 28, 21);
+		label.setVerticalAlignment(SwingConstants.BOTTOM);
+		label.setToolTipText("F\u00C3\u00B6reg\u00C3\u00A5ende");
+		label.setHorizontalAlignment(SwingConstants.LEFT);
+		label.setForeground(Color.GRAY);
+		label.setFont(new Font("HelvLight", Font.BOLD, 14));
+		panel_2.add(label);
+		
+		JLabel label_1 = new JLabel("1/1");
+		label_1.setBounds(68, 0, 32, 21);
+		label_1.setVerticalAlignment(SwingConstants.BOTTOM);
+		label_1.setToolTipText("Current page");
+		label_1.setHorizontalAlignment(SwingConstants.CENTER);
+		label_1.setForeground(Color.GRAY);
+		label_1.setFont(new Font("HelvLight", Font.BOLD, 14));
+		panel_2.add(label_1);
+		
+		JLabel label_2 = new JLabel(">>");
+		label_2.setBounds(125, 0, 28, 21);
+		label_2.setVerticalAlignment(SwingConstants.BOTTOM);
+		label_2.setToolTipText("N\u00C3\u00A4sta");
+		label_2.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_2.setForeground(Color.GRAY);
+		label_2.setFont(new Font("HelvLight", Font.BOLD, 14));
+		panel_2.add(label_2);
 
 	}
 	
@@ -139,5 +176,4 @@ public class RightShoppingCart extends JPanel {
 		}
 		return rCart;
 	}
-	
 }
