@@ -10,7 +10,11 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="iMat/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/micke/GitHub/iMat/lib/Pics.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Rutanjr/Documents/GitHub/iMat/lib/Pics.jar" sourcepath="lib/Pics.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="iMat/lib"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="lib"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
