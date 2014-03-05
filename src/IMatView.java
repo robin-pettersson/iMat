@@ -193,6 +193,9 @@ public class IMatView extends JFrame {
 				if(registerLbl.getText() == "Stefan"){
 					layout.show(p, "customerPanel");
 					((JTabbedPane) ((JPanel)p.getComponent(3)).getComponent(0)).setSelectedIndex(0);
+				} else {
+					
+					RegisterPopUp regPop = new RegisterPopUp("","","","","","");
 				}
 
 			}
