@@ -278,11 +278,8 @@ public class RegisterController implements FocusListener, MouseListener {
 		CartListView view = new CartListView(product.getName(), cost, amount);
 		cartItems.add(view);
 		
-		System.out.println(CheckOutView.cartPanel.getComponentCount());
-		System.out.println(cartItems.size());
 		if(CheckOutView.cartPanel.getComponentCount() > 0){
 			CheckOutView.cartPanel.removeAll();
-			System.out.println(CheckOutView.cartPanel.getComponentCount());
 		}
 		cart = new CartView(cartItems);
 		CheckOutView.cartPanel.add(cart);

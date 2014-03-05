@@ -56,7 +56,6 @@ public class CartView extends JPanel {
 		if(view != null){
 			for (CartListView clw : view) {
 				container.add(clw);
-				System.out.println("its added");
 			}
 		}
 		
