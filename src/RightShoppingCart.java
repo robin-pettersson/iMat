@@ -135,12 +135,15 @@ public class RightShoppingCart extends JPanel {
 					System.out.println(index);
 					
 					
+					
 					JTable newTable = RegisterController.tablesList.get(index);
 					panel_1.remove(table);
 					table = newTable;
 					panel_1.add(table);
 					panel_1.revalidate();
 					panel_1.repaint();
+					
+					pageLabel.setText(index + 1 + "/" + tableSize);
 					
 					if(index == tableSize){
 						forwardLabel.setEnabled(false);
@@ -172,6 +175,7 @@ public class RightShoppingCart extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(index > 0){
+					int tableSize = RegisterController.tablesList.size();
 					index --;
 					
 					System.out.println(index);
@@ -181,6 +185,8 @@ public class RightShoppingCart extends JPanel {
 					panel_1.add(table);
 					panel_1.revalidate();
 					panel_1.repaint();
+
+					pageLabel.setText(index + 1 + "/" + tableSize);
 					
 					if(index == 0){
 						backLabel.setEnabled(false);
