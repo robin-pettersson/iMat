@@ -1,10 +1,14 @@
 
 import javax.swing.*;
+
+import java.awt.CardLayout;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
+
 import javax.swing.border.LineBorder;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -12,6 +16,7 @@ import java.util.List;
 
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
+
 import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -22,6 +27,7 @@ public class CartView extends JPanel {
 	private int pages = 0;
 	private int index = 0;
 	private CartListView view;
+	private JPanel thisPanel = this;
 
 	public CartView(final List<CartListView> views) {
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
@@ -168,6 +174,13 @@ public class CartView extends JPanel {
 		buttonPanel.setLayout(null);
 		
 		JButton btnKeepShopping = new JButton("Keep shopping");
+		btnKeepShopping.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				CardLayout layout = (CardLayout) thisPanel.getParent().getParent().getParent().getLayout();
+				layout.first(thisPanel.getParent().getParent().getParent());
+			}
+		});
 		btnKeepShopping.setToolTipText("Cancel purchase");
 		btnKeepShopping.setForeground(Color.DARK_GRAY);
 		btnKeepShopping.setFont(new Font("HelvLight", Font.PLAIN, 14));
@@ -176,6 +189,13 @@ public class CartView extends JPanel {
 		buttonPanel.add(btnKeepShopping);
 		
 		JButton btnCheckOut = new JButton("Check out");
+		btnCheckOut.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				CardLayout layout = (CardLayout) thisPanel.getParent().getParent().getLayout();
+				layout.next(thisPanel.getParent().getParent());
+			}
+		});
 		btnCheckOut.setToolTipText("Cancel purchase");
 		btnCheckOut.setForeground(Color.DARK_GRAY);
 		btnCheckOut.setFont(new Font("HelvLight", Font.PLAIN, 14));

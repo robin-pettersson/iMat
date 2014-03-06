@@ -1,12 +1,19 @@
 import javax.swing.JPanel;
+
 import java.awt.Dimension;
+
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
+
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.SystemColor;
+
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 import javax.swing.JRadioButton;
@@ -14,15 +21,21 @@ import javax.swing.ButtonGroup;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+
 import java.awt.Cursor;
+
 import javax.swing.JButton;
+
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import javax.swing.JComboBox;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 
@@ -42,10 +55,8 @@ public class CheckOut extends JPanel {
 	
 	private RegisterController reg = RegisterController.getInstance();
 	private IMatDataHandler iMat = IMatDataHandler.getInstance();
+	private JPanel thisPanel = this;
 	
-	/**
-	 * Create the panel.
-	 */
 	public CheckOut() {
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setPreferredSize(new Dimension(635, 550));
@@ -466,15 +477,14 @@ public class CheckOut extends JPanel {
 		btnPreview.setBounds(526, 169, 91, 27);
 		panel_4.add(btnPreview);
 		
-		JButton button = new JButton("Cancel");
-		button.setToolTipText("Cancel purchase");
-		button.setForeground(Color.DARK_GRAY);
-		button.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		button.setBackground(SystemColor.window);
-		button.setBounds(430, 169, 84, 27);
-		panel_4.add(button);
-		
 		JButton button_1 = new JButton("Back");
+		button_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				CardLayout layout = (CardLayout) thisPanel.getParent().getLayout();
+				layout.previous(thisPanel.getParent());
+			}
+		});
 		button_1.setToolTipText("Return to shopping cart");
 		button_1.setForeground(Color.DARK_GRAY);
 		button_1.setFont(new Font("HelvLight", Font.PLAIN, 14));
