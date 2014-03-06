@@ -1,23 +1,11 @@
 import java.awt.CardLayout;
-import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
-
-
-
-
-
-
-import javax.swing.tree.MutableTreeNode;
-
-import com.sun.org.apache.xalan.internal.lib.NodeInfo;
 
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
@@ -25,16 +13,14 @@ import se.chalmers.ait.dat215.project.ProductCategory;
 
 
 public class iMatNavController implements TreeSelectionListener {
-
 	IMatDataHandler iMat = IMatDataHandler.getInstance();
-	private DefaultMutableTreeNode node;
 	private static iMatNavController navController = null;
 
-	private int currentPage = 0;
-	private int currentIndex = 0;
-	private ProductCategory[] categorys;
+	private DefaultMutableTreeNode node;
 	private JPanel wareContainer;
 	private List<Product> products;
+	public boolean gridView = true;
+	public int currentPage = 0;
 
 	public iMatNavController(){
 		products = new ArrayList<>();
@@ -63,21 +49,35 @@ public class iMatNavController implements TreeSelectionListener {
 		layout.next(parent);
 
 		setCategorys(type);
-		listItems();
+		if(gridView)
+			loadGridItems();
+		else
+			loadListItems();
 	}
 
-
-	public void listItems(){
+	public void loadListItems(){
+		wareContainer.removeAll();
+		wareContainer.validate();
+		for (int i = (6*currentPage); i < (7) && i < products.size(); i++){
+			Product pro = products.get(i);
+			ListView item = new ListView(pro.getName(), pro.getPrice());
+			wareContainer.add(item);
+		}
+		wareContainer.validate();
+	}
+	
+	public void loadGridItems(){
 		wareContainer.removeAll();
 		for (int i = (12*currentPage) ; i < (12*currentPage + 12) && i < products.size() ; i++) {
 			Product pro = products.get(i);
-			GridView card = new GridView(pro.getName(), pro.getPrice());
+			GridView card = new GridView(pro.getName(), pro.getPrice(), iMat.getImageIcon(pro));
 			wareContainer.add(card);
-			wareContainer.revalidate();
 		}
+		wareContainer.validate();
 	}
 
 	private  void setCategorys(String type) {
+		products.clear();
 		ProductCategory[] cats = new ProductCategory[20];
 		DefaultMutableTreeNode currentNode = node;
 		DefaultMutableTreeNode lastNode = null;
@@ -89,9 +89,8 @@ public class iMatNavController implements TreeSelectionListener {
 			cats[0] = getCategory(type);
 			size++;
 			combineList(cats);
+			return;
 		}
-
-
 		for(int i = 0; i < currentNode.getChildCount(); i++){
 			DefaultMutableTreeNode subNode = (DefaultMutableTreeNode) currentNode.getChildAt(i);
 
@@ -133,8 +132,8 @@ public class iMatNavController implements TreeSelectionListener {
 	}
 
 	private void combineList(ProductCategory[] cats) {
-		for(ProductCategory cat : cats){
-			for(Product prod : iMat.getProducts(cat)){
+		for(int i = 0; i < cats.length; i++){
+			for(Product prod : iMat.getProducts(cats[i])){
 				products.add(prod);
 			}
 		}

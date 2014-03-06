@@ -1,9 +1,14 @@
 import javax.swing.*;
+
 import java.awt.Font;
+
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
+
 import java.awt.Dimension;
+
 import se.chalmers.ait.dat215.project.Product;
+
 import java.awt.Color;
 
 
@@ -17,7 +22,7 @@ public class GridView extends JPanel {
 	
 	private RegisterController reg = RegisterController.getInstance();
 	
-	public GridView(String name, double pris) {
+	public GridView(String name, double pris, ImageIcon image) {
 		
 		setBackground(Color.GRAY);
 		setPreferredSize(new Dimension(150, 150));

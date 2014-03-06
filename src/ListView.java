@@ -7,6 +7,7 @@ import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
 
 import se.chalmers.ait.dat215.project.Product;
+
 import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -17,13 +18,13 @@ public class ListView extends JPanel {
 	private JLabel priceLbl;
 	private JSpinner amountSpinner;
 	
-	public ListView() {
+	public ListView(String name, double price) {
 		setBackground(Color.LIGHT_GRAY);
 		setPreferredSize(new Dimension(635, 50));
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setLayout(null);
 		
-		productNameLbl = new JLabel("WareName");
+		productNameLbl = new JLabel(name);
 		productNameLbl.setToolTipText("Show additional information");
 		productNameLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		productNameLbl.setForeground(Color.WHITE);
@@ -31,7 +32,7 @@ public class ListView extends JPanel {
 		productNameLbl.setBounds(10, 11, 198, 26);
 		add(productNameLbl);
 		
-		priceLbl = new JLabel("337 sek");
+		priceLbl = new JLabel(price + " kr");
 		priceLbl.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		priceLbl.setBounds(556, 12, 67, 26);
 		add(priceLbl);
