@@ -31,6 +31,8 @@ import java.awt.FlowLayout;
 
 import javax.swing.BoxLayout;
 
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+
 import java.awt.CardLayout;
 import java.awt.GridLayout;
 import java.awt.GridBagLayout;
@@ -41,12 +43,8 @@ import java.awt.event.MouseEvent;
 
 
 public class Preview extends JPanel {
-	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private JTable productsTable;
-
-	private CheckOutController checkOutController = CheckOutController.getInstance();
+	IMatDataHandler iMat = IMatDataHandler.getInstance();
 	private JPanel thisPanel = this;
-
 	
 	public Preview(String fName, String lName, String address, String zip, String city, String email, String date, String total, JTable table) {
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
@@ -105,6 +103,13 @@ public class Preview extends JPanel {
 		panel.add(productsPanel);
 		
 		JButton cancelButton = new JButton("Cancel");
+		cancelButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				CardLayout layout = (CardLayout) thisPanel.getParent().getParent().getParent().getLayout();
+				layout.first(thisPanel.getParent().getParent().getParent());
+			}
+		});
 		cancelButton.setForeground(Color.DARK_GRAY);
 		cancelButton.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		cancelButton.setBackground(SystemColor.window);
@@ -117,6 +122,7 @@ public class Preview extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				CardLayout layout = (CardLayout) thisPanel.getParent().getParent().getLayout();
 				layout.next(thisPanel.getParent().getParent());
+				iMat.shutDown();
 			}
 		});
 		confirmButton.setForeground(Color.DARK_GRAY);
@@ -143,6 +149,13 @@ public class Preview extends JPanel {
 		productsPanel.add(table);
 		
 		JButton backButton = new JButton("Back to check out");
+		backButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				CardLayout layout = (CardLayout) thisPanel.getParent().getParent().getLayout();
+				layout.previous(thisPanel.getParent().getParent());
+			}
+		});
 		backButton.setToolTipText("Return to check out");
 		backButton.setForeground(Color.DARK_GRAY);
 		backButton.setFont(new Font("HelvLight", Font.PLAIN, 14));
@@ -187,6 +200,13 @@ public class Preview extends JPanel {
 		panel_6.add(label_9);
 		
 		JLabel label_3 = new JLabel("> Check out");
+		label_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				CardLayout layout = (CardLayout) thisPanel.getParent().getParent().getLayout();
+				layout.previous(thisPanel.getParent().getParent());
+			}
+		});
 		label_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		label_3.setToolTipText("Back to check out");
 		label_3.setForeground(Color.WHITE);
@@ -195,6 +215,14 @@ public class Preview extends JPanel {
 		panel.add(label_3);
 		
 		JLabel label_4 = new JLabel("Cart");
+		label_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				CardLayout layout = (CardLayout) thisPanel.getParent().getParent().getLayout();
+				layout.previous(thisPanel.getParent().getParent());
+				layout.previous(thisPanel.getParent().getParent());
+			}
+		});
 		label_4.setToolTipText("Return to shopping cart");
 		label_4.setForeground(Color.WHITE);
 		label_4.setFont(new Font("HelvLight", Font.BOLD, 14));

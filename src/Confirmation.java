@@ -23,9 +23,6 @@ import javax.swing.table.DefaultTableModel;
 public class Confirmation extends JPanel {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 
-	/**
-	 * Create the panel.
-	 */
 	public Confirmation() {
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setPreferredSize(new Dimension(635, 550));
