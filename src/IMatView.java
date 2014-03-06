@@ -66,7 +66,7 @@ public class IMatView extends JFrame {
 	private iMatMainController    mainController     = iMatMainController.getInstance();
 	private CheckOutController    checkOutController = CheckOutController.getInstance();
 	private CardLayout cardLayout;
-	
+
 
 
 	/**
@@ -196,7 +196,7 @@ public class IMatView extends JFrame {
 					layout.show(p, "customerPanel");
 					((JTabbedPane) ((JPanel)p.getComponent(3)).getComponent(0)).setSelectedIndex(0);
 				} else {
-					
+
 					RegisterPopUp regPop = new RegisterPopUp("","","","","","");
 				}
 
@@ -254,28 +254,28 @@ public class IMatView extends JFrame {
 		cartLbl.setBounds(62, 0, 34, 15);
 		cashierPanel.add(cartLbl);
 		cartLbl.setFont(new Font("HelvLight", Font.BOLD, 16));
-		
+
 		JPanel butconPanel = new JPanel();
 		butconPanel.setBorder(null);
 		butconPanel.setBackground(Color.LIGHT_GRAY);
 		butconPanel.setBounds(752, 7, 95, 32);
 		toolBar.add(butconPanel);
 		butconPanel.setLayout(null);
-		
+
 		JLabel shoppingListButcon = new JLabel("");
 		shoppingListButcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		shoppingListButcon.setToolTipText("Shopping Lists");
 		shoppingListButcon.setBounds(0, 0, 32, 32);
 		butconPanel.add(shoppingListButcon);
 		shoppingListButcon.setIcon(new ImageIcon(IMatView.class.getResource("/iconz/list-icon2.png")));
-		
+
 		JLabel favouriteButcon = new JLabel("");
 		favouriteButcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		favouriteButcon.setIcon(new ImageIcon(IMatView.class.getResource("/iconz/star-icon.png")));
 		favouriteButcon.setToolTipText("Favourite items");
 		favouriteButcon.setBounds(42, 0, 32, 32);
 		butconPanel.add(favouriteButcon);
-		
+
 		JLabel lblDesignedByDat = new JLabel("Designed by dat215 in Gothenburg.");
 		lblDesignedByDat.setToolTipText("");
 		lblDesignedByDat.setHorizontalAlignment(SwingConstants.LEFT);
@@ -310,7 +310,7 @@ public class IMatView extends JFrame {
 				+  "You order, we deliver!");
 		welcomeTxt.setBounds(21, 11, 587, 93);
 		startPanel.add(welcomeTxt);
-		
+
 		JLabel label = new JLabel("");
 		label.setBackground(Color.BLACK);
 		label.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -341,6 +341,7 @@ public class IMatView extends JFrame {
 				navController.gridView = true;
 				navController.currentPage = 0;
 				navController.listItems();
+				navController.updatePageLabel();
 			}
 		});
 		gridViewLbl.setToolTipText("Change to grid-view");
@@ -357,6 +358,7 @@ public class IMatView extends JFrame {
 				navController.gridView = false;
 				navController.currentPage = 0;
 				navController.listItems();
+				navController.updatePageLabel();
 			}
 		});
 		listViewLbl.setToolTipText("Change to list-view");
@@ -370,20 +372,23 @@ public class IMatView extends JFrame {
 		wareContainerScroll.setBounds(0, 33, 634, 482);
 		wareContainerScroll.setBackground(Color.LIGHT_GRAY);
 		wareListPanel.add(wareContainerScroll);
-		
+
 		JPanel pyramidePanel = new JPanel();
 		pyramidePanel.setPreferredSize(new Dimension(635, 35));
 		pyramidePanel.setBackground(Color.LIGHT_GRAY);
 		pyramidePanel.setBounds(-1, 514, 635, 35);
 		wareListPanel.add(pyramidePanel);
 		pyramidePanel.setLayout(null);
-		
+
 		JLabel warePrevPageLabel = new JLabel("<<");
 		warePrevPageLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				navController.currentPage--;
-				navController.listItems();
+				if(navController.currentPage > 0){
+					navController.currentPage--;
+					navController.listItems();
+					navController.updatePageLabel();
+				}
 			}
 		});
 		warePrevPageLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -394,7 +399,7 @@ public class IMatView extends JFrame {
 		warePrevPageLabel.setForeground(Color.GRAY);
 		warePrevPageLabel.setFont(new Font("HelvLight", Font.BOLD, 20));
 		pyramidePanel.add(warePrevPageLabel);
-		
+
 		JLabel warePyramidLabel = new JLabel("1/1");
 		warePyramidLabel.setBounds(315, 0, 31, 26);
 		warePyramidLabel.setVerticalAlignment(SwingConstants.BOTTOM);
@@ -403,13 +408,16 @@ public class IMatView extends JFrame {
 		warePyramidLabel.setForeground(Color.GRAY);
 		warePyramidLabel.setFont(new Font("HelvLight", Font.BOLD, 20));
 		pyramidePanel.add(warePyramidLabel);
-		
+
 		JLabel wareNextPageLabel = new JLabel(">>");
 		wareNextPageLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				navController.currentPage++;
-				navController.listItems();
+				if(navController.currentPage < navController.maxPage){
+					navController.currentPage++;
+					navController.listItems();
+					navController.updatePageLabel();
+				}
 			}
 		});
 		wareNextPageLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -488,10 +496,10 @@ public class IMatView extends JFrame {
 		navigationTree.setRootVisible(false);
 		navigationTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		navigationTree.addTreeSelectionListener(navController);
-		
+
 		RightShoppingCart rCart = RightShoppingCart.getInstance();
 		JPanel rCartPanel = rCart.panel;
-		
+
 		JPanel cartPanel = new JPanel();
 		cartPanel.setName("cartPanel");
 		cartPanel.setLayout(null);

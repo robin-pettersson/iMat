@@ -1,6 +1,8 @@
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTree;
 import javax.swing.event.TreeSelectionEvent;
@@ -11,7 +13,6 @@ import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ProductCategory;
 
-
 public class iMatNavController implements TreeSelectionListener {
 	IMatDataHandler iMat = IMatDataHandler.getInstance();
 	private static iMatNavController navController = null;
@@ -20,6 +21,7 @@ public class iMatNavController implements TreeSelectionListener {
 	private JPanel wareContainer;
 	private List<Product> products;
 	public boolean gridView = true;
+	public JLabel warePageLabel;
 	public int currentPage = 0;
 	public int maxPage = 1;
 
@@ -46,11 +48,14 @@ public class iMatNavController implements TreeSelectionListener {
 		JPanel parent = (JPanel) navigationTree.getParent().getParent().getComponent(1);
 		CardLayout layout = (CardLayout) parent.getLayout();
 		wareContainer = (JPanel) ((JPanel) parent.getComponent(1)).getComponent(1);
+		warePageLabel = (JLabel)((JPanel)(wareContainer.getParent().getComponent(2))).getComponent(1);
 		layout.first(parent);
 		layout.next(parent);
-
+		
+		currentPage = 0;
 		setCategorys(type);
 		listItems();
+		warePageLabel.setText(1 + "/" + (maxPage + 1));
 	}
 
 	public void listItems(){
@@ -140,6 +145,10 @@ public class iMatNavController implements TreeSelectionListener {
 
 	private String toCategoryString(String s) {
 		return s.replace(' ', '_').toUpperCase();
+	}
+
+	public void updatePageLabel() {
+		warePageLabel.setText((currentPage + 1) + "/" + (maxPage + 1));
 	}
 
 }
