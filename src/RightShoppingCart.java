@@ -110,43 +110,6 @@ public class RightShoppingCart extends JPanel {
 		panel.add(panel_2);
 		panel_2.setLayout(null);
 		
-		final JLabel backLabel = new JLabel("<<");
-		backLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		backLabel.setEnabled(false);
-		
-		if(index > 0){
-			backLabel.setEnabled(true);
-		}
-		
-		backLabel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(index > 0){
-					index --;
-					
-					System.out.println(index);
-					JTable oldTable = RegisterController.tablesList.get(index);
-					panel_1.remove(table);
-					table = oldTable;
-					panel_1.add(table);
-					panel_1.validate();
-					
-					if(index == 0){
-						backLabel.setEnabled(false);
-						panel_2.validate();
-					}
-					
-				}
-			}
-		});
-		backLabel.setBounds(15, 0, 28, 21);
-		backLabel.setVerticalAlignment(SwingConstants.BOTTOM);
-		backLabel.setToolTipText("F\u00C3\u00B6reg\u00C3\u00A5ende");
-		backLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		backLabel.setForeground(Color.GRAY);
-		backLabel.setFont(new Font("HelvLight", Font.BOLD, 14));
-		panel_2.add(backLabel);
-		
 		pageLabel = new JLabel("1/1");
 		pageLabel.setBounds(68, 0, 32, 21);
 		pageLabel.setVerticalAlignment(SwingConstants.BOTTOM);
@@ -171,15 +134,17 @@ public class RightShoppingCart extends JPanel {
 					index ++;
 					System.out.println(index);
 					
+					
 					JTable newTable = RegisterController.tablesList.get(index);
 					panel_1.remove(table);
 					table = newTable;
 					panel_1.add(table);
-					panel_1.validate();
+					panel_1.revalidate();
+					panel_1.repaint();
 					
 					if(index == tableSize){
 						forwardLabel.setEnabled(false);
-						panel_2.validate();
+						panel_2.revalidate();
 					}
 					
 				}
@@ -193,6 +158,47 @@ public class RightShoppingCart extends JPanel {
 		forwardLabel.setForeground(Color.GRAY);
 		forwardLabel.setFont(new Font("HelvLight", Font.BOLD, 14));
 		panel_2.add(forwardLabel);
+		
+		
+		final JLabel backLabel = new JLabel("<<");
+		backLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		backLabel.setEnabled(false);
+		
+		if(index > 0){
+			backLabel.setEnabled(true);
+		}
+		
+		backLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(index > 0){
+					index --;
+					
+					System.out.println(index);
+					JTable oldTable = RegisterController.tablesList.get(index);
+					panel_1.remove(table);
+					table = oldTable;
+					panel_1.add(table);
+					panel_1.revalidate();
+					panel_1.repaint();
+					
+					if(index == 0){
+						backLabel.setEnabled(false);
+						panel_2.revalidate();
+					}
+					
+				}
+			}
+		});
+		
+		backLabel.setBounds(15, 0, 28, 21);
+		backLabel.setVerticalAlignment(SwingConstants.BOTTOM);
+		backLabel.setToolTipText("F\u00C3\u00B6reg\u00C3\u00A5ende");
+		backLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		backLabel.setForeground(Color.GRAY);
+		backLabel.setFont(new Font("HelvLight", Font.BOLD, 14));
+		panel_2.add(backLabel);
+		
 
 	}
 	
