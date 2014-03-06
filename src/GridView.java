@@ -57,10 +57,11 @@ public class GridView extends JPanel {
 		buyBtn.setBounds(87, 119, 58, 20);
 		add(buyBtn);
 		
-		pictureLbl = new JLabel("pic");
-		pictureLbl.setBackground(Color.PINK);
+		pictureLbl = new JLabel(image);
+		pictureLbl.setBackground(Color.WHITE);
 		pictureLbl.setBounds(5, 5, 140, 140);
 		add(pictureLbl);
+		repaint();
 		
 	}
 	
