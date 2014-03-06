@@ -24,15 +24,18 @@ import java.awt.GridLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class Preview extends JPanel {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JTable productsTable;
 
-	/**
-	 * Create the panel.
-	 */
+	private CheckOutController checkOutController = CheckOutController.getInstance();
+	private JPanel thisPanel = this;
+	private JPanel parentPanel = (JPanel) this.getParent();
+	
 	public Preview(String fName, String lName, String address, String zip, String city, String email, String date, String total, JTable table) {
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setPreferredSize(new Dimension(635, 550));
@@ -97,6 +100,12 @@ public class Preview extends JPanel {
 		productsPanel.add(cancelButton);
 		
 		JButton confirmButton = new JButton("Confirm");
+		confirmButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				checkOutController.gotoCard((JPanel) parentPanel.getParent(), "confirmationPanel");
+			}
+		});
 		confirmButton.setForeground(Color.DARK_GRAY);
 		confirmButton.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		confirmButton.setBackground(SystemColor.window);
