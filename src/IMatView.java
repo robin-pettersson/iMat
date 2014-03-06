@@ -21,6 +21,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JTextField;
 import javax.swing.JTree;
@@ -52,6 +54,8 @@ import java.awt.Dimension;
 
 import javax.swing.JScrollPane;
 
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+
 import java.awt.Window.Type;
 import java.awt.Component;
 import java.awt.Cursor;
@@ -67,6 +71,7 @@ public class IMatView extends JFrame {
 	private CheckOutController    checkOutController = CheckOutController.getInstance();
 	private CardLayout cardLayout;
 
+	private IMatDataHandler iMat = IMatDataHandler.getInstance();
 
 
 	/**
@@ -89,6 +94,17 @@ public class IMatView extends JFrame {
 	 * Create the frame.
 	 */
 	public IMatView() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				System.out.println("shutdown");
+				iMat.getShoppingCart().clear();
+				iMat.shutDown();
+				JFrame frame = (JFrame) e.getWindow();
+				frame.dispose();
+			}
+		});
+		
 		setBackground(Color.LIGHT_GRAY);
 		setTitle("iMat");
 
