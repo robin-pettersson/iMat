@@ -1,12 +1,18 @@
 import javax.swing.JPanel;
+
 import java.awt.Dimension;
+
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.SystemColor;
+
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 import javax.swing.JRadioButton;
@@ -14,12 +20,18 @@ import javax.swing.ButtonGroup;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+
 import java.awt.Cursor;
+
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
 import java.awt.FlowLayout;
+
 import javax.swing.BoxLayout;
+
+import java.awt.CardLayout;
 import java.awt.GridLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -34,7 +46,7 @@ public class Preview extends JPanel {
 
 	private CheckOutController checkOutController = CheckOutController.getInstance();
 	private JPanel thisPanel = this;
-	private JPanel parentPanel = (JPanel) this.getParent();
+
 	
 	public Preview(String fName, String lName, String address, String zip, String city, String email, String date, String total, JTable table) {
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
@@ -103,7 +115,8 @@ public class Preview extends JPanel {
 		confirmButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				checkOutController.gotoCard((JPanel) parentPanel.getParent(), "confirmationPanel");
+				CardLayout layout = (CardLayout) thisPanel.getParent().getParent().getLayout();
+				layout.next(thisPanel.getParent().getParent());
 			}
 		});
 		confirmButton.setForeground(Color.DARK_GRAY);
