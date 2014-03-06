@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.imageio.spi.ImageReaderSpi;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -50,6 +51,7 @@ import javax.swing.tree.TreeSelectionModel;
 import java.awt.Dimension;
 
 import javax.swing.JScrollPane;
+
 import java.awt.Window.Type;
 import java.awt.Component;
 import java.awt.Cursor;
@@ -333,6 +335,14 @@ public class IMatView extends JFrame {
 		breadcrumPanel.setLayout(null);
 
 		JLabel gridViewLbl = new JLabel("");
+		gridViewLbl.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				navController.gridView = true;
+				navController.currentPage = 0;
+				navController.listItems();
+			}
+		});
 		gridViewLbl.setToolTipText("Change to grid-view");
 		gridViewLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		gridViewLbl.setIcon(new ImageIcon(IMatView.class.getResource("/iconz/thumbnail-view.png")));
@@ -341,6 +351,14 @@ public class IMatView extends JFrame {
 		breadcrumPanel.add(gridViewLbl);
 
 		JLabel listViewLbl = new JLabel("");
+		listViewLbl.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				navController.gridView = false;
+				navController.currentPage = 0;
+				navController.listItems();
+			}
+		});
 		listViewLbl.setToolTipText("Change to list-view");
 		listViewLbl.setIcon(new ImageIcon(IMatView.class.getResource("/iconz/list-view-icon.png")));
 		listViewLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -360,34 +378,48 @@ public class IMatView extends JFrame {
 		wareListPanel.add(pyramidePanel);
 		pyramidePanel.setLayout(null);
 		
-		JLabel label_1 = new JLabel("<<");
-		label_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		label_1.setBounds(11, 0, 28, 26);
-		label_1.setVerticalAlignment(SwingConstants.BOTTOM);
-		label_1.setToolTipText("Back");
-		label_1.setHorizontalAlignment(SwingConstants.LEFT);
-		label_1.setForeground(Color.GRAY);
-		label_1.setFont(new Font("HelvLight", Font.BOLD, 20));
-		pyramidePanel.add(label_1);
+		JLabel warePrevPageLabel = new JLabel("<<");
+		warePrevPageLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				navController.currentPage--;
+				navController.listItems();
+			}
+		});
+		warePrevPageLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		warePrevPageLabel.setBounds(11, 0, 28, 26);
+		warePrevPageLabel.setVerticalAlignment(SwingConstants.BOTTOM);
+		warePrevPageLabel.setToolTipText("Back");
+		warePrevPageLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		warePrevPageLabel.setForeground(Color.GRAY);
+		warePrevPageLabel.setFont(new Font("HelvLight", Font.BOLD, 20));
+		pyramidePanel.add(warePrevPageLabel);
 		
-		JLabel label_2 = new JLabel("1/1");
-		label_2.setBounds(315, 0, 31, 26);
-		label_2.setVerticalAlignment(SwingConstants.BOTTOM);
-		label_2.setToolTipText("Current page");
-		label_2.setHorizontalAlignment(SwingConstants.CENTER);
-		label_2.setForeground(Color.GRAY);
-		label_2.setFont(new Font("HelvLight", Font.BOLD, 20));
-		pyramidePanel.add(label_2);
+		JLabel warePyramidLabel = new JLabel("1/1");
+		warePyramidLabel.setBounds(315, 0, 31, 26);
+		warePyramidLabel.setVerticalAlignment(SwingConstants.BOTTOM);
+		warePyramidLabel.setToolTipText("Current page");
+		warePyramidLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		warePyramidLabel.setForeground(Color.GRAY);
+		warePyramidLabel.setFont(new Font("HelvLight", Font.BOLD, 20));
+		pyramidePanel.add(warePyramidLabel);
 		
-		JLabel label_3 = new JLabel(">>");
-		label_3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		label_3.setBounds(591, 0, 28, 26);
-		label_3.setVerticalAlignment(SwingConstants.BOTTOM);
-		label_3.setToolTipText("Next");
-		label_3.setHorizontalAlignment(SwingConstants.RIGHT);
-		label_3.setForeground(Color.DARK_GRAY);
-		label_3.setFont(new Font("HelvLight", Font.BOLD, 20));
-		pyramidePanel.add(label_3);
+		JLabel wareNextPageLabel = new JLabel(">>");
+		wareNextPageLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				navController.currentPage++;
+				navController.listItems();
+			}
+		});
+		wareNextPageLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		wareNextPageLabel.setBounds(591, 0, 28, 26);
+		wareNextPageLabel.setVerticalAlignment(SwingConstants.BOTTOM);
+		wareNextPageLabel.setToolTipText("Next");
+		wareNextPageLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		wareNextPageLabel.setForeground(Color.DARK_GRAY);
+		wareNextPageLabel.setFont(new Font("HelvLight", Font.BOLD, 20));
+		pyramidePanel.add(wareNextPageLabel);
 
 		JPanel shoppingListPanel = new JPanel();
 		shoppingListPanel.setBackground(Color.LIGHT_GRAY);
@@ -440,7 +472,7 @@ public class IMatView extends JFrame {
 		node_1.add(new DefaultMutableTreeNode("Nuts and Seeds"));
 		root.add(node_1);
 		root.add(new DefaultMutableTreeNode("Herb"));
-		root.add(new DefaultMutableTreeNode("Fluor Sugar Salt"));
+		root.add(new DefaultMutableTreeNode("Flour Sugar Salt"));
 
 		JPanel sidePanel = new JPanel();
 		sidePanel.setBackground(Color.LIGHT_GRAY);

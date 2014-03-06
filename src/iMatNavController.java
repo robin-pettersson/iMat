@@ -21,6 +21,7 @@ public class iMatNavController implements TreeSelectionListener {
 	private List<Product> products;
 	public boolean gridView = true;
 	public int currentPage = 0;
+	public int maxPage = 1;
 
 	public iMatNavController(){
 		products = new ArrayList<>();
@@ -49,30 +50,28 @@ public class iMatNavController implements TreeSelectionListener {
 		layout.next(parent);
 
 		setCategorys(type);
-		if(gridView)
-			loadGridItems();
-		else
-			loadListItems();
+		listItems();
 	}
 
-	public void loadListItems(){
+	public void listItems(){
 		wareContainer.removeAll();
-		wareContainer.validate();
-		for (int i = (6*currentPage); i < (7) && i < products.size(); i++){
-			Product pro = products.get(i);
-			ListView item = new ListView(pro.getName(), pro.getPrice());
-			wareContainer.add(item);
+		if(gridView){
+			maxPage = products.size() / 12;
+			for (int i = (12*currentPage) ; i < (12*currentPage + 12) && i < products.size() ; i++) {
+				Product pro = products.get(i);
+				GridView card = new GridView(pro.getName(), pro.getPrice(), iMat.getImageIcon(pro));
+				wareContainer.add(card);
+			}
 		}
-		wareContainer.validate();
-	}
-	
-	public void loadGridItems(){
-		wareContainer.removeAll();
-		for (int i = (12*currentPage) ; i < (12*currentPage + 12) && i < products.size() ; i++) {
-			Product pro = products.get(i);
-			GridView card = new GridView(pro.getName(), pro.getPrice(), iMat.getImageIcon(pro));
-			wareContainer.add(card);
+		else{
+			maxPage = products.size() / 9;
+			for (int i = (9*currentPage); i < (9*currentPage + 9) && i < products.size(); i++){
+				Product pro = products.get(i);
+				ListView item = new ListView(pro.getName(), pro.getPrice());
+				wareContainer.add(item);
+			}
 		}
+		wareContainer.repaint();
 		wareContainer.validate();
 	}
 

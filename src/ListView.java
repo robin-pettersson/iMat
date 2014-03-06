@@ -20,7 +20,7 @@ public class ListView extends JPanel {
 	
 	public ListView(String name, double price) {
 		setBackground(Color.LIGHT_GRAY);
-		setPreferredSize(new Dimension(635, 50));
+		setPreferredSize(new Dimension(635, 45));
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setLayout(null);
 		
@@ -34,14 +34,14 @@ public class ListView extends JPanel {
 		
 		priceLbl = new JLabel(price + " kr");
 		priceLbl.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		priceLbl.setBounds(556, 12, 67, 26);
+		priceLbl.setBounds(556, 11, 67, 26);
 		add(priceLbl);
 		
 		amountSpinner = new JSpinner();
 		amountSpinner.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		amountSpinner.setToolTipText("Number of pieces");
 		amountSpinner.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		amountSpinner.setBounds(349, 14, 55, 26);
+		amountSpinner.setBounds(347, 11, 55, 26);
 		add(amountSpinner);
 		
 		JButton addToCartButton = new JButton("Add to cart");
@@ -49,7 +49,7 @@ public class ListView extends JPanel {
 		addToCartButton.setForeground(Color.DARK_GRAY);
 		addToCartButton.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		addToCartButton.setBackground(SystemColor.window);
-		addToCartButton.setBounds(416, 12, 122, 27);
+		addToCartButton.setBounds(424, 11, 122, 27);
 		add(addToCartButton);
 		
 	}
