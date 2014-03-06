@@ -16,12 +16,16 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+
 
 public class TabView extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
+	IMatDataHandler iMat = IMatDataHandler.getInstance();
+	
 	public TabView() {
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setLayout(new BorderLayout(0, 0));
@@ -54,31 +58,31 @@ public class TabView extends JPanel {
 		panel_13.setBounds(12, 12, 344, 174);
 		customerTab.add(panel_13);
 		
-		JLabel label_23 = new JLabel("emailadress@email.com");
+		JLabel label_23 = new JLabel(iMat.getCustomer().getEmail());
 		label_23.setForeground(Color.DARK_GRAY);
 		label_23.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		
-		JLabel label_24 = new JLabel("Förnamn");
+		JLabel label_24 = new JLabel(iMat.getCustomer().getFirstName());
 		label_24.setForeground(Color.DARK_GRAY);
 		label_24.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		
-		JLabel label_25 = new JLabel("Efternamn");
+		JLabel label_25 = new JLabel(iMat.getCustomer().getLastName());
 		label_25.setForeground(Color.DARK_GRAY);
 		label_25.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		
-		JLabel label_26 = new JLabel("Gatunamn 9b");
+		JLabel label_26 = new JLabel(iMat.getCustomer().getAddress());
 		label_26.setForeground(Color.DARK_GRAY);
 		label_26.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		
-		JLabel label_27 = new JLabel("682 58");
+		JLabel label_27 = new JLabel(iMat.getCustomer().getPostCode());
 		label_27.setForeground(Color.DARK_GRAY);
 		label_27.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		
-		JLabel label_28 = new JLabel("Ortnamn");
+		JLabel label_28 = new JLabel(iMat.getCustomer().getPostAddress());
 		label_28.setForeground(Color.DARK_GRAY);
 		label_28.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		
-		JButton button = new JButton("Ändra");
+		JButton button = new JButton("Edit");
 		button.setForeground(Color.DARK_GRAY);
 		button.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		GroupLayout gl_panel_13 = new GroupLayout(panel_13);

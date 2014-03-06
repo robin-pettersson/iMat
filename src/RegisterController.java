@@ -53,6 +53,7 @@ public class RegisterController implements FocusListener, MouseListener {
 	public static List<JTable> tablesList = new ArrayList<JTable>();
 
 	CartView cart;
+	JPanel tempPanel;
 
 	CheckOutController checkOutController = CheckOutController.getInstance();
 	RightShoppingCart rCart = RightShoppingCart.getInstance();
@@ -138,6 +139,7 @@ public class RegisterController implements FocusListener, MouseListener {
 		
 		if(me.getComponent().getName() == "registerLabel"){
 			System.out.println("hej");
+			tempPanel = (JPanel) me.getComponent().getParent();
 			regPop = new RegisterPopUp(fName,lName,address,zip,city,email);
 		}
 		
@@ -161,6 +163,7 @@ public class RegisterController implements FocusListener, MouseListener {
 			}
 			
 			regPop.close(regPop);
+			
 		}
 		
 		if(me.getComponent().getName() == "cancelButton"){

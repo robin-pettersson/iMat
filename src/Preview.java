@@ -32,6 +32,7 @@ import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
 
 import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Order;
 
 import java.awt.CardLayout;
 import java.awt.GridLayout;
@@ -40,6 +41,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 
 public class Preview extends JPanel {
@@ -122,6 +124,7 @@ public class Preview extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				CardLayout layout = (CardLayout) thisPanel.getParent().getParent().getLayout();
 				layout.next(thisPanel.getParent().getParent());
+				iMat.placeOrder();
 				iMat.shutDown();
 			}
 		});

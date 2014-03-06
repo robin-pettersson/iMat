@@ -6,10 +6,10 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.BorderLayout;
 import javax.swing.border.LineBorder;
-import java.awt.GridBagLayout;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.JLabel;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -23,12 +23,21 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Dimension;
 import javax.swing.UIManager;
+
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Order;
+import se.chalmers.ait.dat215.project.ShoppingItem;
+
 import java.awt.Cursor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 
 public class CustomerTabView extends JPanel {
+	
 	private JTextField txtFrnamn;
 	private JTextField txtEfternamn;
 	private JTextField txtLngagatan;
@@ -38,8 +47,17 @@ public class CustomerTabView extends JPanel {
 	private JPasswordField pwdLsenord;
 	private JPasswordField passwordField;
 	private JTable receiptTable;
-	private JTable table;
+	private JTable itemsTable;
+	
+	private JPanel selectedReceiptPanel;
+	
+	private int orderRow = 0;
+	private int itemsRow = 0;
+	
+	private List<JTable> tableList = new ArrayList<JTable>();
 
+	IMatDataHandler iMat = IMatDataHandler.getInstance();
+	
 	/**
 	 * Create the panel.
 	 */
@@ -58,31 +76,31 @@ public class CustomerTabView extends JPanel {
 		tabPanel.addTab("Personal info", null, customerTab, null);
 		customerTab.setLayout(new CardLayout(0, 0));
 		
-		JPanel infoPanel = new JPanel();
+		final JPanel infoPanel = new JPanel();
 		infoPanel.setBackground(Color.LIGHT_GRAY);
 		customerTab.add(infoPanel, "name_65905466650689");
 		
-		JLabel emailLabel = new JLabel("youemail@email.com");
+		final JLabel emailLabel = new JLabel(iMat.getCustomer().getEmail());
 		emailLabel.setForeground(Color.DARK_GRAY);
 		emailLabel.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		
-		JLabel firstnameLabel = new JLabel("Firstname");
+		final JLabel firstnameLabel = new JLabel(iMat.getCustomer().getFirstName());
 		firstnameLabel.setForeground(Color.DARK_GRAY);
 		firstnameLabel.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		
-		JLabel lastnameLabel = new JLabel("Lastname");
+		final JLabel lastnameLabel = new JLabel(iMat.getCustomer().getLastName());
 		lastnameLabel.setForeground(Color.DARK_GRAY);
 		lastnameLabel.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		
-		JLabel streetLabel = new JLabel("Streetname 99");
+		final JLabel streetLabel = new JLabel(iMat.getCustomer().getAddress());
 		streetLabel.setForeground(Color.DARK_GRAY);
 		streetLabel.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		
-		JLabel zipLabel = new JLabel("682 58");
+		final JLabel zipLabel = new JLabel(iMat.getCustomer().getPostCode());
 		zipLabel.setForeground(Color.DARK_GRAY);
 		zipLabel.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		
-		JLabel cityLabel = new JLabel("Cityname");
+		final JLabel cityLabel = new JLabel(iMat.getCustomer().getPostAddress());
 		cityLabel.setForeground(Color.DARK_GRAY);
 		cityLabel.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		
@@ -228,33 +246,33 @@ public class CustomerTabView extends JPanel {
 		txtFrnamn.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		txtFrnamn.setBounds(12, 0, 171, 19);
 		textPanel.add(txtFrnamn);
-		txtFrnamn.setText("Firstname");
+		txtFrnamn.setText(iMat.getCustomer().getFirstName());
 		txtFrnamn.setColumns(10);
 		
 		txtEfternamn = new JTextField();
 		txtEfternamn.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		txtEfternamn.setText("Lastname");
+		txtEfternamn.setText(iMat.getCustomer().getLastName());
 		txtEfternamn.setColumns(10);
 		txtEfternamn.setBounds(12, 31, 171, 19);
 		textPanel.add(txtEfternamn);
 		
 		txtLngagatan = new JTextField();
 		txtLngagatan.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		txtLngagatan.setText("Streetname 99");
+		txtLngagatan.setText(iMat.getCustomer().getAddress());
 		txtLngagatan.setColumns(10);
 		txtLngagatan.setBounds(12, 62, 171, 19);
 		textPanel.add(txtLngagatan);
 		
 		txtSderkping = new JTextField();
 		txtSderkping.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		txtSderkping.setText("Cityname");
+		txtSderkping.setText(iMat.getCustomer().getPostAddress());
 		txtSderkping.setColumns(10);
 		txtSderkping.setBounds(78, 93, 105, 19);
 		textPanel.add(txtSderkping);
 		
 		emailTextField = new JTextField();
 		emailTextField.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		emailTextField.setText("youemail@gmail.com");
+		emailTextField.setText(iMat.getCustomer().getEmail());
 		emailTextField.setColumns(10);
 		emailTextField.setBounds(12, 124, 171, 19);
 		textPanel.add(emailTextField);
@@ -262,7 +280,7 @@ public class CustomerTabView extends JPanel {
 		textField = new JTextField();
 		textField.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		textField.setToolTipText("Postnummer");
-		textField.setText("682 92");
+		textField.setText(iMat.getCustomer().getPostCode());
 		textField.setColumns(10);
 		textField.setBounds(12, 93, 54, 19);
 		textPanel.add(textField);
@@ -294,6 +312,27 @@ public class CustomerTabView extends JPanel {
 		JButton saveButton = new JButton("Save");
 		saveButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				iMat.getCustomer().setAddress(txtLngagatan.getText());
+				iMat.getCustomer().setFirstName(txtFrnamn.getText());
+				iMat.getCustomer().setLastName(txtEfternamn.getText());
+				iMat.getCustomer().setPostAddress(txtSderkping.getText());
+				iMat.getCustomer().setPostCode(textField.getText());
+				iMat.getCustomer().setEmail(emailTextField.getText());
+				
+				firstnameLabel.setText(iMat.getCustomer().getFirstName());
+				firstnameLabel.repaint();
+				lastnameLabel.setText(iMat.getCustomer().getLastName());
+				lastnameLabel.repaint();
+				streetLabel.setText(iMat.getCustomer().getAddress());
+				streetLabel.repaint();
+				zipLabel.setText(iMat.getCustomer().getPostCode());
+				zipLabel.repaint();
+				cityLabel.setText(iMat.getCustomer().getPostAddress());
+				cityLabel.repaint();
+				emailLabel.setText(iMat.getCustomer().getEmail());
+				emailLabel.repaint();
+				
+				infoPanel.repaint();
 				CardLayout cl = (CardLayout)(customerTab.getLayout());
 			    cl.first(customerTab);
 			}
@@ -394,60 +433,10 @@ public class CustomerTabView extends JPanel {
 		receiptContentPanel.add(panel_5);
 		panel_5.setLayout(new BorderLayout(0, 0));
 		
-		receiptTable = new JTable();
-		receiptTable.setShowVerticalLines(false);
-		receiptTable.setBorder(new LineBorder(new Color(0, 0, 0)));
-		receiptTable.setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
-		receiptTable.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"140217", "6 pcs", "502 kr"},
-				{"140214", "2 pcs", "1337 kr"},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-			},
-			new String[] {
-				"Date", "Amount", "Sum"
-			}
-		) {
-			boolean[] columnEditables = new boolean[] {
-				false, true, false
-			};
-			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
-			}
-		});
-		receiptTable.getColumnModel().getColumn(0).setResizable(false);
-		receiptTable.getColumnModel().getColumn(0).setPreferredWidth(60);
-		receiptTable.getColumnModel().getColumn(1).setResizable(false);
-		receiptTable.getColumnModel().getColumn(2).setResizable(false);
-		receiptTable.getColumnModel().getColumn(2).setPreferredWidth(50);
-		receiptTable.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		receiptTable = makeReceiptTable();
 		panel_5.add(receiptTable);
 		
-		JPanel selectedReceiptPanel = new JPanel();
+		selectedReceiptPanel = new JPanel();
 		selectedReceiptPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		selectedReceiptPanel.setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
 		selectedReceiptPanel.setBounds(272, 12, 340, 453);
@@ -473,57 +462,6 @@ public class CustomerTabView extends JPanel {
 		closeLabel.setFont(new Font("Dialog", Font.BOLD, 24));
 		panel_7.add(closeLabel, BorderLayout.EAST);
 		
-		table = new JTable();
-		table.setRowSelectionAllowed(false);
-		table.setShowVerticalLines(false);
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"Bananas - Dole", "44 pcs", "32 kr"},
-				{"Apples - Granny Smith", "5 pcs", "25 kr"},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-			},
-			new String[] {
-				"Product", "Amount", "Sum"
-			}
-		) {
-			boolean[] columnEditables = new boolean[] {
-				false, false, false
-			};
-			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
-			}
-		});
-		table.getColumnModel().getColumn(0).setResizable(false);
-		table.getColumnModel().getColumn(0).setPreferredWidth(125);
-		table.getColumnModel().getColumn(1).setResizable(false);
-		table.getColumnModel().getColumn(1).setPreferredWidth(15);
-		table.getColumnModel().getColumn(2).setResizable(false);
-		table.getColumnModel().getColumn(2).setPreferredWidth(25);
-		table.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		table.setBorder(new LineBorder(new Color(0, 0, 0)));
-		table.setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
-		table.setBounds(0, 36, 340, 381);
-		selectedReceiptPanel.add(table);
 		
 		JPanel panel_6 = new JPanel();
 		panel_6.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -531,6 +469,10 @@ public class CustomerTabView extends JPanel {
 		panel_6.setBounds(0, 415, 340, 38);
 		selectedReceiptPanel.add(panel_6);
 		panel_6.setLayout(new BorderLayout(0, 0));
+		
+		
+		itemsTable = makeItemsTable();
+		selectedReceiptPanel.add(itemsTable);
 		
 		JLabel label_2 = new JLabel("1/2");
 		label_2.setVerticalAlignment(SwingConstants.BOTTOM);
@@ -571,5 +513,188 @@ public class CustomerTabView extends JPanel {
 		lblReceipts.setBounds(12, 0, 185, 20);
 		panel_1.add(lblReceipts);
 
+	}
+	
+	public void addOrdersToTable(JTable table){
+
+		double totalPrice = 0;
+		List<Order> orderList = iMat.getOrders();
+		
+		System.out.println(orderList.size());
+		for(int i = 0; i  < orderList.size(); i++){
+			Date date = orderList.get(i).getDate();
+			int totalItems = orderList.get(i).getItems().size();
+			
+			List<ShoppingItem> items = orderList.get(i).getItems();
+			
+			for (ShoppingItem item : items) {
+				totalPrice = totalPrice + item.getTotal();
+			}
+			table.getModel().setValueAt(date, orderRow, 0);
+			table.getModel().setValueAt(totalItems + " pcs", orderRow, 1);
+			table.getModel().setValueAt(totalPrice + " sek", orderRow, 2);
+			orderRow++;
+			
+		
+		}
+		
+	}
+	
+	public void addItemsToTable(JTable table, List<ShoppingItem> items){
+		
+		for(int i = 0; i < items.size(); i++){
+			String name = items.get(i).getProduct().getName();
+			double amount = items.get(i).getAmount();
+			double price = amount * items.get(i).getProduct().getPrice();
+			
+			
+			if(itemsRow > 22){
+				tableList.add(table);
+				table = makeItemsTable();
+				itemsRow = 0;
+			}
+			table.getModel().setValueAt(name, itemsRow, 0);
+			table.getModel().setValueAt(amount + " pcs", itemsRow, 1);
+			table.getModel().setValueAt(price + " sek", itemsRow, 2);
+			itemsRow++;
+			
+		}
+	}
+	
+	public JTable makeReceiptTable(){
+		
+		receiptTable = new JTable();
+		receiptTable.setShowVerticalLines(false);
+		receiptTable.setBorder(new LineBorder(new Color(0, 0, 0)));
+		receiptTable.setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
+		receiptTable.setModel(new DefaultTableModel(
+				new Object[][] {
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+				},
+				new String[] {
+						"Date", "Amount", "Sum"
+				}
+				) {
+			boolean[] columnEditables = new boolean[] {
+					false, true, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		receiptTable.getColumnModel().getColumn(0).setResizable(false);
+		receiptTable.getColumnModel().getColumn(0).setPreferredWidth(100);
+		receiptTable.getColumnModel().getColumn(1).setResizable(false);
+		receiptTable.getColumnModel().getColumn(1).setPreferredWidth(15);
+		receiptTable.getColumnModel().getColumn(2).setResizable(false);
+		receiptTable.getColumnModel().getColumn(2).setPreferredWidth(40);
+		receiptTable.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		
+		receiptTable.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		receiptTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+
+				if ( !e.getValueIsAdjusting() ){
+					selectedReceiptPanel.remove(2);
+					itemsRow = 0;
+					 
+					int index = e.getFirstIndex();
+					List<ShoppingItem> items = iMat.getOrders().get(index).getItems();
+					
+					selectedReceiptPanel.add(makeItemsTable());
+					addItemsToTable(itemsTable, items);
+					selectedReceiptPanel.validate();
+			    }
+				
+			}
+		});
+
+		addOrdersToTable(receiptTable);
+		
+		return receiptTable;
+	}
+	
+	public JTable makeItemsTable(){
+			
+		itemsTable = new JTable();
+		itemsTable.setRowSelectionAllowed(false);
+		itemsTable.setShowVerticalLines(false);
+		itemsTable.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+			},
+			new String[] {
+				"Product", "Amount", "Sum"
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		itemsTable.getColumnModel().getColumn(0).setResizable(false);
+		itemsTable.getColumnModel().getColumn(0).setPreferredWidth(160);
+		itemsTable.getColumnModel().getColumn(1).setResizable(false);
+		itemsTable.getColumnModel().getColumn(1).setPreferredWidth(30);
+		itemsTable.getColumnModel().getColumn(2).setResizable(false);
+		itemsTable.getColumnModel().getColumn(2).setPreferredWidth(50);
+		itemsTable.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		itemsTable.setBorder(new LineBorder(new Color(0, 0, 0)));
+		itemsTable.setBackground(UIManager.getColor("Button.disabledToolBarBorderBackground"));
+		itemsTable.setBounds(0, 36, 340, 381);
+		
+		
+		return itemsTable;
 	}
 }
