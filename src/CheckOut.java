@@ -26,6 +26,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+
 
 public class CheckOut extends JPanel {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -39,6 +41,7 @@ public class CheckOut extends JPanel {
 	private JTextField signEmailTextField;
 	
 	private RegisterController reg = RegisterController.getInstance();
+	private IMatDataHandler iMat = IMatDataHandler.getInstance();
 	
 	/**
 	 * Create the panel.
@@ -235,7 +238,7 @@ public class CheckOut extends JPanel {
 		panel_6.setBounds(120, 12, 221, 188);
 		panel_4.add(panel_6);
 		
-		fNameTextField = new JTextField();
+		fNameTextField = new JTextField(iMat.getCustomer().getFirstName());
 		fNameTextField.addFocusListener(reg);
 		fNameTextField.setName("fNameTextField");
 		fNameTextField.setFont(new Font("HelvLight", Font.PLAIN, 12));
@@ -243,7 +246,7 @@ public class CheckOut extends JPanel {
 		fNameTextField.setBounds(0, 0, 195, 19);
 		panel_6.add(fNameTextField);
 		
-		lNameTextField = new JTextField();
+		lNameTextField = new JTextField(iMat.getCustomer().getLastName());
 		lNameTextField.addFocusListener(reg);
 		lNameTextField.setName("lNameTextField");
 		lNameTextField.setFont(new Font("HelvLight", Font.PLAIN, 12));
@@ -251,7 +254,7 @@ public class CheckOut extends JPanel {
 		lNameTextField.setBounds(0, 26, 195, 19);
 		panel_6.add(lNameTextField);
 		
-		addressTextField = new JTextField();
+		addressTextField = new JTextField(iMat.getCustomer().getAddress());
 		addressTextField.addFocusListener(reg);
 		addressTextField.setName("addressTextField");
 		addressTextField.setFont(new Font("HelvLight", Font.PLAIN, 12));
@@ -259,7 +262,7 @@ public class CheckOut extends JPanel {
 		addressTextField.setBounds(0, 50, 195, 19);
 		panel_6.add(addressTextField);
 		
-		zipTextField = new JTextField();
+		zipTextField = new JTextField(iMat.getCustomer().getPostCode());
 		zipTextField.addFocusListener(reg);
 		zipTextField.setName("zipTextField");
 		zipTextField.setToolTipText("Postnummer");
@@ -268,7 +271,7 @@ public class CheckOut extends JPanel {
 		zipTextField.setBounds(0, 75, 54, 19);
 		panel_6.add(zipTextField);
 		
-		cityTextField = new JTextField();
+		cityTextField = new JTextField(iMat.getCustomer().getPostAddress());
 		cityTextField.addFocusListener(reg);
 		cityTextField.setName("cityTextField");
 		cityTextField.setFont(new Font("HelvLight", Font.PLAIN, 12));
@@ -276,7 +279,7 @@ public class CheckOut extends JPanel {
 		cityTextField.setBounds(66, 75, 129, 19);
 		panel_6.add(cityTextField);
 		
-		emailTextField = new JTextField();
+		emailTextField = new JTextField(iMat.getCustomer().getEmail());
 		emailTextField.addFocusListener(reg);
 		emailTextField.setName("emailTextField");
 		emailTextField.setFont(new Font("HelvLight", Font.PLAIN, 12));

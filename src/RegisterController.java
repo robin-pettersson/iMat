@@ -27,12 +27,14 @@ import se.chalmers.ait.dat215.project.User;
 public class RegisterController implements FocusListener, MouseListener {
 
 	private static RegisterController regController = null;
-	private String fName = "";
-	private String lName = "";
-	private String address = "";
-	private String zip = "";
-	private String city = "";
-	private String email = "";
+	IMatDataHandler iMat = IMatDataHandler.getInstance();
+	
+	private String fName = iMat.getCustomer().getFirstName();
+	private String lName = iMat.getCustomer().getLastName();
+	private String address = iMat.getCustomer().getAddress();
+	private String zip = iMat.getCustomer().getPostCode();
+	private String city = iMat.getCustomer().getPostAddress();
+	private String email = iMat.getCustomer().getEmail();
 	private String signEmail = "";
 	private String password = "";
 	private String verifyPassword = "";
@@ -53,7 +55,6 @@ public class RegisterController implements FocusListener, MouseListener {
 	CartView cart;
 
 	CheckOutController checkOutController = CheckOutController.getInstance();
-	IMatDataHandler iMat = IMatDataHandler.getInstance();
 	RightShoppingCart rCart = RightShoppingCart.getInstance();
 	//CartView cartView = CartView.getInstance();
 	RegisterPopUp regPop = null;
@@ -137,7 +138,7 @@ public class RegisterController implements FocusListener, MouseListener {
 		
 		if(me.getComponent().getName() == "registerLabel"){
 			System.out.println("hej");
-			regPop = new RegisterPopUp(fName,lName,address,city,zip,email);
+			regPop = new RegisterPopUp(fName,lName,address,zip,city,email);
 		}
 		
 		if(me.getComponent().getName() == "registerButton"){
