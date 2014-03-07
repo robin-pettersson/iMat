@@ -21,6 +21,7 @@ public class ListView extends JPanel {
 	private JLabel priceLbl;
 	private JSpinner amountSpinner;
 	private RegisterController reg = RegisterController.getInstance();
+	private UserDataController data = UserDataController.getInstance();
 	private IMatDataHandler iMat = IMatDataHandler.getInstance();
 	private Product product;
 	JLabel pictureLbl;
@@ -68,7 +69,8 @@ public class ListView extends JPanel {
 		starLbl.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				iMat.addFavorite(product);
+				data.listFavorites();
 			}
 		});
 		starLbl.setToolTipText("Favorite mark/unmark");
