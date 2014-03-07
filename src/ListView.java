@@ -19,7 +19,7 @@ public class ListView extends JPanel {
 	private JSpinner amountSpinner;
 	JLabel pictureLbl;
 	
-	public ListView(String name, double price) {
+	public ListView(String name, double price, ImageIcon image) {
 		setBackground(Color.LIGHT_GRAY);
 		setPreferredSize(new Dimension(630, 50));
 		setLayout(null);
@@ -60,7 +60,7 @@ public class ListView extends JPanel {
 		starLbl.setBounds(599, 13, 20, 20);
 		add(starLbl);
 		
-		pictureLbl = new JLabel("pic");
+		pictureLbl = new JLabel(image);
 		pictureLbl.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		pictureLbl.setBounds(5, 5, 40, 40);
 		add(pictureLbl);
