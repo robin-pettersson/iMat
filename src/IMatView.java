@@ -70,6 +70,7 @@ public class IMatView extends JFrame {
 	private iMatToolbarController toolBarController  = iMatToolbarController.getInstance();
 	private iMatMainController    mainController     = iMatMainController.getInstance();
 	private CheckOutController    checkOutController = CheckOutController.getInstance();
+	private UserDataController    dataController     = UserDataController.getInstance();
 	private CardLayout cardLayout;
 
 	private IMatDataHandler iMat = IMatDataHandler.getInstance();

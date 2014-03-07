@@ -57,6 +57,7 @@ public class CustomerTabView extends JPanel {
 	private List<JTable> tableList = new ArrayList<JTable>();
 
 	IMatDataHandler iMat = IMatDataHandler.getInstance();
+	private UserDataController dataController = UserDataController.getInstance();
 	
 	/**
 	 * Create the panel.
@@ -379,6 +380,8 @@ public class CustomerTabView extends JPanel {
 		favouriteContentPanel.setBounds(0, 36, 624, 477);
 		favouriteTab.add(favouriteContentPanel);
 		favouriteContentPanel.setLayout(null);
+		dataController .warePanel = favouriteContentPanel;
+		dataController.listFavorites();
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setLayout(null);

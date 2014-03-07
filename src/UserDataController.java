@@ -1,15 +1,18 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JPanel;
+
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 
 
 public class UserDataController {
 	private IMatDataHandler iMat = IMatDataHandler.getInstance();
-	private UserDataController dataController = null;
+	private static UserDataController dataController = null;
 	private List<ShoppingList> shoppingLists;
 	private int size = 0;
+	public JPanel warePanel;
 	
 	public UserDataController(){
 		shoppingLists = new ArrayList<ShoppingList>();
@@ -30,7 +33,7 @@ public class UserDataController {
 		dataController.addList(sList2);
 	}
 	
-	public UserDataController getInstance(){
+	public static UserDataController getInstance(){
 		if(dataController != null)
 			return dataController;
 		else{
@@ -50,5 +53,9 @@ public class UserDataController {
 	
 	public int size(){
 		return size;
+	}
+
+	public void listFavorites() {
+		
 	}
 }
