@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="lib"/>
 	<classpathentry kind="lib" path="lib/iconz.jar"/>
 	<classpathentry kind="lib" path="lib/Pics.jar"/>
+	<classpathentry kind="lib" path="stars20.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

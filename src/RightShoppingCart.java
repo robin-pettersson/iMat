@@ -70,25 +70,25 @@ public class RightShoppingCart extends JPanel {
 		lblTotaly.setFont(new Font("HelvLight", Font.PLAIN, 16));
 		panel_1.add(lblTotaly, BorderLayout.SOUTH);
 		
-		JButton btnCheckOut = new JButton("Check out");
-		btnCheckOut.addMouseListener(new MouseAdapter() {
+		JButton btnClear = new JButton("Clear");
+		btnClear.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				JPanel p = (JPanel) panel.getParent().getParent().getComponent(1);
 				mainController.gotoCard(p , "checkOutPanel");
 				checkOutController.gotoCheckOut(p);
 			}
-		});		btnCheckOut.setName("btnCheckOut");
-		btnCheckOut.setToolTipText("Proceed to check out");
-		btnCheckOut.setForeground(Color.DARK_GRAY);
-		btnCheckOut.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		btnCheckOut.setBackground(SystemColor.window);
-		btnCheckOut.setBounds(75, 494, 105, 27);
-		panel.add(btnCheckOut);
+		});		btnClear.setName("btnCheckOut");
+		btnClear.setToolTipText("Clears the cart");
+		btnClear.setForeground(Color.DARK_GRAY);
+		btnClear.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		btnClear.setBackground(SystemColor.window);
+		btnClear.setBounds(101, 494, 79, 27);
+		panel.add(btnClear);
 		
-		JButton btnEdit = new JButton("Edit");
-		btnEdit.setName("btnEdit");
-		btnEdit.addMouseListener(new MouseAdapter() {
+		JButton btnSave = new JButton("Save");
+		btnSave.setName("btnEdit");
+		btnSave.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				JPanel p = (JPanel) panel.getParent().getParent().getComponent(1);
@@ -96,12 +96,12 @@ public class RightShoppingCart extends JPanel {
 				mainController.gotoCard(p , "checkOutPanel");
 			}
 		});
-		btnEdit.setToolTipText("Edit shopping cart");
-		btnEdit.setForeground(Color.DARK_GRAY);
-		btnEdit.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		btnEdit.setBackground(SystemColor.window);
-		btnEdit.setBounds(12, 494, 59, 27);
-		panel.add(btnEdit);
+		btnSave.setToolTipText("Save shoppingcart as a list");
+		btnSave.setForeground(Color.DARK_GRAY);
+		btnSave.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		btnSave.setBackground(SystemColor.window);
+		btnSave.setBounds(12, 494, 79, 27);
+		panel.add(btnSave);
 		
 		final JPanel panel_2 = new JPanel();
 		panel_2.setPreferredSize(new Dimension(635, 35));

@@ -21,10 +21,11 @@ public class GridView extends JPanel {
 	JLabel pictureLbl;
 	
 	private RegisterController reg = RegisterController.getInstance();
+	private JLabel starLbl;
 	
 	public GridView(String name, double pris, ImageIcon image) {
 		
-		setBackground(Color.GRAY);
+		setBackground(Color.LIGHT_GRAY);
 		setPreferredSize(new Dimension(150, 150));
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setLayout(null);
@@ -33,7 +34,7 @@ public class GridView extends JPanel {
 		productNameLbl.setForeground(Color.WHITE);
 		productNameLbl.setName("productNameLbl");
 		productNameLbl.setFont(new Font("HelvLight", Font.BOLD, 18));
-		productNameLbl.setHorizontalAlignment(SwingConstants.CENTER);
+		productNameLbl.setHorizontalAlignment(SwingConstants.LEFT);
 		productNameLbl.setBounds(5, 5, 144, 22);
 		add(productNameLbl);
 		
@@ -61,6 +62,11 @@ public class GridView extends JPanel {
 		pictureLbl.setBackground(Color.WHITE);
 		pictureLbl.setBounds(5, 5, 140, 140);
 		add(pictureLbl);
+		
+		starLbl = new JLabel("");
+		starLbl.setIcon(new ImageIcon(GridView.class.getResource("/stars20/omarkerad20.png")));
+		starLbl.setBounds(125, 5, 21, 20);
+		add(starLbl);
 		repaint();
 		
 	}

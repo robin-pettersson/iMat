@@ -17,31 +17,31 @@ public class ListView extends JPanel {
 	private JLabel productNameLbl;
 	private JLabel priceLbl;
 	private JSpinner amountSpinner;
+	JLabel pictureLbl;
 	
 	public ListView(String name, double price) {
 		setBackground(Color.LIGHT_GRAY);
-		setPreferredSize(new Dimension(635, 45));
-		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+		setPreferredSize(new Dimension(630, 50));
 		setLayout(null);
 		
 		productNameLbl = new JLabel(name);
 		productNameLbl.setToolTipText("Show additional information");
-		productNameLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		productNameLbl.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		productNameLbl.setForeground(Color.WHITE);
 		productNameLbl.setFont(new Font("HelvLight", Font.BOLD, 18));
-		productNameLbl.setBounds(10, 11, 198, 26);
+		productNameLbl.setBounds(67, 11, 198, 26);
 		add(productNameLbl);
 		
 		priceLbl = new JLabel(price + " kr");
 		priceLbl.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		priceLbl.setBounds(556, 11, 67, 26);
+		priceLbl.setBounds(532, 11, 67, 26);
 		add(priceLbl);
 		
 		amountSpinner = new JSpinner();
 		amountSpinner.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		amountSpinner.setToolTipText("Number of pieces");
 		amountSpinner.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		amountSpinner.setBounds(347, 11, 55, 26);
+		amountSpinner.setBounds(340, 11, 55, 26);
 		add(amountSpinner);
 		
 		JButton addToCartButton = new JButton("Add to cart");
@@ -49,8 +49,20 @@ public class ListView extends JPanel {
 		addToCartButton.setForeground(Color.DARK_GRAY);
 		addToCartButton.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		addToCartButton.setBackground(SystemColor.window);
-		addToCartButton.setBounds(424, 11, 122, 27);
+		addToCartButton.setBounds(400, 11, 122, 27);
 		add(addToCartButton);
+		
+		JLabel starLbl = new JLabel("");
+		starLbl.setToolTipText("Favorite mark/unmark");
+		starLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		starLbl.setIcon(new ImageIcon(ListView.class.getResource("/stars20/omarkerad20.png")));
+		starLbl.setBounds(599, 13, 20, 20);
+		add(starLbl);
+		
+		pictureLbl = new JLabel("pic");
+		pictureLbl.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+		pictureLbl.setBounds(5, 5, 40, 40);
+		add(pictureLbl);
 		
 	}
 	
@@ -71,4 +83,10 @@ public class ListView extends JPanel {
 		priceLbl.setText(product.getPrice() + "");
 		priceLbl.repaint();
 	}
+	
+	public void setImage (Icon pic){
+		pictureLbl.setIcon(pic);
+	}
+	
+	
 }
