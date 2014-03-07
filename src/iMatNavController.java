@@ -32,7 +32,8 @@ public class iMatNavController implements TreeSelectionListener {
 	public static iMatNavController getInstance(){
 		if(navController != null)
 			return navController;
-		return new iMatNavController();
+		navController = new iMatNavController();
+		return navController;
 	}
 
 	@Override
@@ -64,7 +65,7 @@ public class iMatNavController implements TreeSelectionListener {
 			maxPage = products.size() / 12;
 			for (int i = (12*currentPage) ; i < (12*currentPage + 12) && i < products.size() ; i++) {
 				Product pro = products.get(i);
-				GridView card = new GridView(pro.getName(), pro.getPrice(), iMat.getImageIcon(pro));
+				GridView card = new GridView(pro.getName(), pro.getPrice(), iMat.getImageIcon(pro, 150, 150));
 				wareContainer.add(card);
 			}
 		}
