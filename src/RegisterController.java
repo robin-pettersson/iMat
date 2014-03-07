@@ -183,7 +183,6 @@ public class RegisterController implements FocusListener, MouseListener {
 		if(me.getComponent().getName() == "btnPreview"){
 			previewPrep();
 		}
-		
 	}
 	
 	public void previewPrep(){

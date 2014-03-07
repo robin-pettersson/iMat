@@ -12,11 +12,14 @@ import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.SystemColor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ListView extends JPanel {
 	private JLabel productNameLbl;
 	private JLabel priceLbl;
 	private JSpinner amountSpinner;
+	private RegisterController reg = RegisterController.getInstance();
 	JLabel pictureLbl;
 	
 	public ListView(String name, double price, ImageIcon image) {
@@ -25,6 +28,7 @@ public class ListView extends JPanel {
 		setLayout(null);
 		
 		productNameLbl = new JLabel(name);
+		productNameLbl.setName("productNameLbl");
 		productNameLbl.setToolTipText("Show additional information");
 		productNameLbl.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		productNameLbl.setForeground(Color.WHITE);
@@ -38,6 +42,7 @@ public class ListView extends JPanel {
 		add(priceLbl);
 		
 		amountSpinner = new JSpinner();
+		amountSpinner.setName("amountSpinner");
 		amountSpinner.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		amountSpinner.setToolTipText("Number of pieces");
 		amountSpinner.setFont(new Font("HelvLight", Font.PLAIN, 14));
@@ -45,7 +50,8 @@ public class ListView extends JPanel {
 		add(amountSpinner);
 		
 		JButton addToCartButton = new JButton("Add to cart");
-		addToCartButton.setName("buyBtn");
+		addToCartButton.setName("listBuyBtn");
+		addToCartButton.addMouseListener(reg);
 		addToCartButton.setToolTipText("Add this item to cart");
 		addToCartButton.setForeground(Color.DARK_GRAY);
 		addToCartButton.setFont(new Font("HelvLight", Font.PLAIN, 14));
