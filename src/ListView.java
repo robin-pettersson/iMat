@@ -45,6 +45,7 @@ public class ListView extends JPanel {
 		add(amountSpinner);
 		
 		JButton addToCartButton = new JButton("Add to cart");
+		addToCartButton.setName("buyBtn");
 		addToCartButton.setToolTipText("Add this item to cart");
 		addToCartButton.setForeground(Color.DARK_GRAY);
 		addToCartButton.setFont(new Font("HelvLight", Font.PLAIN, 14));

@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import se.chalmers.ait.dat215.project.Product;
 
 import java.awt.Color;
+import java.awt.SystemColor;
 
 
 public class GridView extends JPanel {
@@ -52,6 +53,9 @@ public class GridView extends JPanel {
 		add(amountSpinner);
 		
 		buyBtn = new JButton("Add");
+		buyBtn.setToolTipText("Add this item to cart");
+		buyBtn.setForeground(Color.DARK_GRAY);
+		buyBtn.setBackground(SystemColor.window);
 		buyBtn.addMouseListener(reg);
 		buyBtn.setName("buyBtn");
 		buyBtn.setFont(new Font("HelvLight", Font.PLAIN, 12));

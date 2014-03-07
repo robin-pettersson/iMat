@@ -11,6 +11,7 @@ import se.chalmers.ait.dat215.project.Product;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Rectangle;
+import javax.swing.border.LineBorder;
 
 public class CartListView extends JPanel {
 
@@ -21,12 +22,12 @@ public class CartListView extends JPanel {
 	
 	
 	public CartListView(String product, String price, double amount) {
-		setBounds(new Rectangle(0, 0, 630, 45));
+		setBounds(new Rectangle(0, 0, 625, 45));
 		setSize(new Dimension(630, 40));
 		
 		setBackground(Color.LIGHT_GRAY);
-		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
-		setPreferredSize(new Dimension(630, 45));
+		setBorder(null);
+		setPreferredSize(new Dimension(625, 45));
 		setLayout(null);
 		
 		amountSpinner = new JSpinner();

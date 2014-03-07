@@ -196,7 +196,7 @@ public class CartView extends JPanel {
 				layout.next(thisPanel.getParent().getParent());
 			}
 		});
-		btnCheckOut.setToolTipText("Cancel purchase");
+		btnCheckOut.setToolTipText("Continue to Check out");
 		btnCheckOut.setForeground(Color.DARK_GRAY);
 		btnCheckOut.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		btnCheckOut.setBackground(Color.WHITE);
