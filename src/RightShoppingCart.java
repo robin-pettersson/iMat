@@ -10,6 +10,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import java.awt.SystemColor;
 import javax.swing.SwingConstants;
+
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -34,6 +37,8 @@ public class RightShoppingCart extends JPanel {
 	CartController cartController = CartController.getInstance();
 	iMatMainController mainController = iMatMainController.getInstance();
 	CheckOutController checkOutController = CheckOutController.getInstance();
+	
+	IMatDataHandler iMat = IMatDataHandler.getInstance();
 	
 
 	/**
@@ -74,11 +79,26 @@ public class RightShoppingCart extends JPanel {
 		btnClear.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JPanel p = (JPanel) panel.getParent().getParent().getComponent(1);
-				mainController.gotoCard(p , "checkOutPanel");
-				checkOutController.gotoCheckOut(p);
+				iMat.getShoppingCart().clear();
+				RegisterController.tablesList.clear();
+				RegisterController.cartItems.clear();
+
+
+				if(CheckOutView.cartPanel.getComponentCount() > 0){
+					System.out.println("remove all");
+					CheckOutView.cartPanel.removeAll();
+				}
+					
+				panel_1.remove(table);
+				table = makeTable();
+				
+				panel_1.add(table);
+				panel_1.revalidate();
+				panel_1.repaint();
+				
 			}
-		});		btnClear.setName("btnCheckOut");
+		});		
+		btnClear.setName("btnCheckOut");
 		btnClear.setToolTipText("Clears the cart");
 		btnClear.setForeground(Color.DARK_GRAY);
 		btnClear.setFont(new Font("HelvLight", Font.PLAIN, 14));

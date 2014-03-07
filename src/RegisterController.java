@@ -49,10 +49,10 @@ public class RegisterController implements FocusListener, MouseListener {
 	JTable table;
 	JTable previewTable;
 	List<ShoppingItem> items;
-	List<CartListView> cartItems = new ArrayList<CartListView>();
+	public static List<CartListView> cartItems = new ArrayList<CartListView>();
 	public static List<JTable> tablesList = new ArrayList<JTable>();
 
-	CartView cart;
+	public static CartView cart;
 	JPanel tempPanel;
 
 	CheckOutController checkOutController = CheckOutController.getInstance();
@@ -212,7 +212,7 @@ public class RegisterController implements FocusListener, MouseListener {
 			));
 		reformTable(previewTable);
 		String total = iMat.getShoppingCart().getTotal() + "";
-		preview = new Preview(fName, lName, address, zip, city, email, date, total, previewTable);
+		preview = new Preview(fName, lName, address, zip, city, email, date, total);
 		if (CheckOutView.previewPanel.getComponentCount() > 0){
 			CheckOutView.previewPanel.remove(0);
 		}
@@ -295,9 +295,11 @@ public class RegisterController implements FocusListener, MouseListener {
 		cartItems.add(view);
 		
 		if(CheckOutView.cartPanel.getComponentCount() > 0){
+			System.out.println("remove all");
 			CheckOutView.cartPanel.removeAll();
 		}
 		cart = new CartView(cartItems);
+		System.out.println(cartItems.size());
 		CheckOutView.cartPanel.add(cart);
 		cart = null;
 		

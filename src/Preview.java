@@ -33,6 +33,7 @@ import javax.swing.BoxLayout;
 
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Order;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 
 import java.awt.CardLayout;
 import java.awt.GridLayout;
@@ -41,14 +42,24 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class Preview extends JPanel {
 	IMatDataHandler iMat = IMatDataHandler.getInstance();
 	private JPanel thisPanel = this;
+	private JTable previewTable;
 	
-	public Preview(String fName, String lName, String address, String zip, String city, String email, String date, String total, JTable table) {
+	private JLabel pageLabel;
+	
+	private List<ShoppingItem> items;
+	private List<JTable> tablesList = new ArrayList<JTable>();
+	
+	private int index = 0;
+	private int currentPage = 0;
+	
+	public Preview(String fName, String lName, String address, String zip, String city, String email, String date, String total) {
 		setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setPreferredSize(new Dimension(635, 550));
 		setLayout(new BorderLayout(0, 0));
@@ -97,7 +108,7 @@ public class Preview extends JPanel {
 		lblDeliveryInformaiton.setBounds(12, 0, 171, 20);
 		panel_1.add(lblDeliveryInformaiton);
 		
-		JPanel productsPanel = new JPanel();
+		final JPanel productsPanel = new JPanel();
 		productsPanel.setLayout(null);
 		productsPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		productsPanel.setBackground(Color.LIGHT_GRAY);
@@ -138,18 +149,10 @@ public class Preview extends JPanel {
 		lblSumKr.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSumKr.setForeground(Color.DARK_GRAY);
 		lblSumKr.setFont(new Font("HelvLight", Font.PLAIN, 18));
-		lblSumKr.setBounds(430, 229, 187, 17);
+		lblSumKr.setBounds(430, 237, 187, 17);
 		productsPanel.add(lblSumKr);
 		
-		table.getColumnModel().getColumn(0).setPreferredWidth(400);
-		table.getColumnModel().getColumn(1).setPreferredWidth(15);
-		table.getColumnModel().getColumn(2).setPreferredWidth(15);
-		table.setRowSelectionAllowed(false);
-		table.setFont(new Font("HelvLight", Font.PLAIN, 16));
-		table.setBorder(new LineBorder(new Color(0, 0, 0)));
-		table.setBackground(Color.LIGHT_GRAY);
-		table.setBounds(12, 12, 605, 200);
-		productsPanel.add(table);
+		
 		
 		JButton backButton = new JButton("Back to check out");
 		backButton.addMouseListener(new MouseAdapter() {
@@ -169,38 +172,80 @@ public class Preview extends JPanel {
 		JPanel panel_6 = new JPanel();
 		panel_6.setPreferredSize(new Dimension(635, 35));
 		panel_6.setBackground(Color.LIGHT_GRAY);
-		panel_6.setBounds(12, 217, 149, 29);
+		panel_6.setBounds(12, 208, 605, 24);
 		productsPanel.add(panel_6);
 		panel_6.setLayout(null);
 		
-		JLabel label_7 = new JLabel("<<");
-		label_7.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		label_7.setBounds(6, 4, 20, 18);
-		label_7.setVerticalAlignment(SwingConstants.BOTTOM);
-		label_7.setToolTipText("Back");
-		label_7.setHorizontalAlignment(SwingConstants.LEFT);
-		label_7.setForeground(Color.GRAY);
-		label_7.setFont(new Font("HelvLight", Font.BOLD, 14));
-		panel_6.add(label_7);
+		JLabel backLabel = new JLabel("<<");
+		backLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				if(currentPage > 0){
+					currentPage--;
+					
+					
+					System.out.println("in back loop");
+					JTable newTable = tablesList.get(currentPage);
+					
+					productsPanel.remove(previewTable);
+					previewTable = newTable;
+					productsPanel.add(previewTable);
+					productsPanel.revalidate();
+					productsPanel.repaint();
+					
+
+				}
+			}
+		});
+		backLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		backLabel.setBounds(6, 4, 20, 18);
+		backLabel.setVerticalAlignment(SwingConstants.BOTTOM);
+		backLabel.setToolTipText("Back");
+		backLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		backLabel.setForeground(Color.GRAY);
+		backLabel.setFont(new Font("HelvLight", Font.BOLD, 14));
+		panel_6.add(backLabel);
 		
-		JLabel label_8 = new JLabel("1/1");
-		label_8.setBounds(61, 4, 23, 18);
-		label_8.setVerticalAlignment(SwingConstants.BOTTOM);
-		label_8.setToolTipText("Current page");
-		label_8.setHorizontalAlignment(SwingConstants.CENTER);
-		label_8.setForeground(Color.GRAY);
-		label_8.setFont(new Font("HelvLight", Font.BOLD, 14));
-		panel_6.add(label_8);
+		pageLabel = new JLabel(currentPage + "/" + tablesList.size());
+		pageLabel.setBounds(279, 4, 23, 18);
+		pageLabel.setVerticalAlignment(SwingConstants.BOTTOM);
+		pageLabel.setToolTipText("Current page");
+		pageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		pageLabel.setForeground(Color.GRAY);
+		pageLabel.setFont(new Font("HelvLight", Font.BOLD, 14));
+		panel_6.add(pageLabel);
 		
-		JLabel label_9 = new JLabel(">>");
-		label_9.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		label_9.setBounds(119, 4, 20, 18);
-		label_9.setVerticalAlignment(SwingConstants.BOTTOM);
-		label_9.setToolTipText("Next");
-		label_9.setHorizontalAlignment(SwingConstants.RIGHT);
-		label_9.setForeground(Color.DARK_GRAY);
-		label_9.setFont(new Font("HelvLight", Font.BOLD, 14));
-		panel_6.add(label_9);
+		JLabel forwardLabel = new JLabel(">>");
+
+		
+		forwardLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				if(tablesList.size() > 1 && (currentPage + 1) < tablesList.size()){
+					currentPage++;
+					
+					
+					System.out.println("in table loop");
+					JTable newTable = tablesList.get(currentPage);
+					
+					productsPanel.remove(previewTable);
+					previewTable = newTable;
+					productsPanel.add(previewTable);
+					productsPanel.revalidate();
+					productsPanel.repaint();
+					
+					
+				}
+			}
+		});
+		forwardLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		forwardLabel.setBounds(575, 4, 20, 18);
+		forwardLabel.setVerticalAlignment(SwingConstants.BOTTOM);
+		forwardLabel.setToolTipText("Next");
+		forwardLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		forwardLabel.setForeground(Color.DARK_GRAY);
+		forwardLabel.setFont(new Font("HelvLight", Font.BOLD, 14));
+		panel_6.add(forwardLabel);
 		
 		JLabel label_3 = new JLabel("> Check out");
 		label_3.addMouseListener(new MouseAdapter() {
@@ -284,5 +329,88 @@ public class Preview extends JPanel {
 		label_6.setFont(new Font("HelvLight", Font.PLAIN, 14));
 		panel_5.add(label_6);
 
+		previewTable = makeTable();
+		fillFirstTable(previewTable);
+		productsPanel.add(previewTable);
+		fillTable(previewTable);
+	}
+	
+	public void fillFirstTable(JTable table){
+		items = iMat.getShoppingCart().getItems();
+		int currentRow = 0;
+		for (int i = 0; i < 12 && index < items.size(); i++) {
+
+			ShoppingItem item = items.get(index);
+			table.getModel().setValueAt(item.getProduct().getName(), currentRow, 0);
+			table.getModel().setValueAt(item.getAmount() + " pcs", currentRow, 1);
+			table.getModel().setValueAt(item.getProduct().getPrice() + " sek", currentRow, 2);
+
+			index++;
+			currentRow++;
+		}
+
+		currentRow = 0;
+		tablesList.add(table);
+
+	}
+	
+	public void fillTable(JTable table){
+		
+		items = iMat.getShoppingCart().getItems();
+		int currentRow = 0;
+		while(items.size() > index){
+
+			for (int i = 0; i < 12 && index < items.size(); i++) {
+
+					ShoppingItem item = items.get(index);
+					table.getModel().setValueAt(item.getProduct().getName(), currentRow, 0);
+					table.getModel().setValueAt(item.getAmount() + " pcs", currentRow, 1);
+					table.getModel().setValueAt(item.getProduct().getPrice() + " sek", currentRow, 2);
+
+					index++;
+					currentRow++;
+			}
+			currentRow = 0;
+			tablesList.add(table);
+
+		}
+		index = 0;
+	}
+	
+	public JTable makeTable(){
+		
+		
+		previewTable = new JTable();
+		previewTable.setModel(new DefaultTableModel(
+				new Object[][] {
+					{null, null, null},
+					{null, null, null},
+					{null, null, null},
+					{null, null, null},
+					{null, null, null},
+					{null, null, null},
+					{null, null, null},
+					{null, null, null},
+					{null, null, null},
+					{null, null, null},
+					{null, null, null},
+					{null, null, null},
+				},
+				new String[] {
+					"New column", "New column", "New column"
+				}
+			));
+		
+		
+		previewTable.getColumnModel().getColumn(0).setPreferredWidth(400);
+		previewTable.getColumnModel().getColumn(1).setPreferredWidth(15);
+		previewTable.getColumnModel().getColumn(2).setPreferredWidth(15);
+		previewTable.setRowSelectionAllowed(false);
+		previewTable.setFont(new Font("HelvLight", Font.PLAIN, 16));
+		previewTable.setBorder(new LineBorder(new Color(0, 0, 0)));
+		previewTable.setBackground(Color.LIGHT_GRAY);
+		previewTable.setBounds(12, 12, 605, 192);
+		
+		return previewTable;
 	}
 }
