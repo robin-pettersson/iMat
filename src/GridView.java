@@ -62,15 +62,15 @@ public class GridView extends JPanel {
 		buyBtn.setBounds(87, 119, 58, 20);
 		add(buyBtn);
 		
-		pictureLbl = new JLabel(image);
-		pictureLbl.setBackground(Color.WHITE);
-		pictureLbl.setBounds(5, 5, 140, 140);
-		add(pictureLbl);
-		
 		starLbl = new JLabel("");
 		starLbl.setIcon(new ImageIcon(GridView.class.getResource("/stars20/omarkerad20.png")));
 		starLbl.setBounds(125, 5, 21, 20);
 		add(starLbl);
+		
+		pictureLbl = new JLabel(image);
+		pictureLbl.setBackground(Color.WHITE);
+		pictureLbl.setBounds(5, 5, 140, 140);
+		add(pictureLbl);
 		repaint();
 		
 	}
