@@ -49,15 +49,15 @@ public class ListView extends JPanel {
 		amountSpinner.setBounds(340, 11, 55, 26);
 		add(amountSpinner);
 		
-		JButton addToCartButton = new JButton("Add to cart");
-		addToCartButton.setName("listBuyBtn");
-		addToCartButton.addMouseListener(reg);
-		addToCartButton.setToolTipText("Add this item to cart");
-		addToCartButton.setForeground(Color.DARK_GRAY);
-		addToCartButton.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		addToCartButton.setBackground(SystemColor.window);
-		addToCartButton.setBounds(400, 11, 122, 27);
-		add(addToCartButton);
+		JButton buyBtn = new JButton("Add to cart");
+		buyBtn.setToolTipText("Add this item to cart");
+		buyBtn.setForeground(Color.DARK_GRAY);
+		buyBtn.setFont(new Font("HelvLight", Font.PLAIN, 14));
+		buyBtn.setBackground(SystemColor.window);
+		buyBtn.addMouseListener(reg);
+		buyBtn.setName("buyBtn");
+		buyBtn.setBounds(400, 11, 122, 27);
+		add(buyBtn);
 		
 		JLabel starLbl = new JLabel("");
 		starLbl.setToolTipText("Favorite mark/unmark");
