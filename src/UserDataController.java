@@ -29,8 +29,8 @@ public class UserDataController {
 		list2.add(iMat.getProduct(2));
 		ShoppingList sList1 = new ShoppingList("Picnic", list1);
 		ShoppingList sList2 = new ShoppingList("Random", list2);
-		dataController.addList(sList1);
-		dataController.addList(sList2);
+		//dataController.addList(sList1);
+		//dataController.addList(sList2);
 	}
 	
 	public static UserDataController getInstance(){
