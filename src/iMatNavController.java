@@ -73,7 +73,7 @@ public class iMatNavController implements TreeSelectionListener {
 			maxPage = products.size() / 9;
 			for (int i = (9*currentPage); i < (9*currentPage + 9) && i < products.size(); i++){
 				Product pro = products.get(i);
-				ListView item = new ListView(pro.getName(), pro.getPrice(), iMat.getImageIcon(pro, 40, 40));
+				ListView item = new ListView(pro);
 				wareContainer.add(item);
 			}
 		}
