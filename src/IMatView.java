@@ -24,6 +24,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JTree;
 import javax.swing.ImageIcon;
@@ -279,13 +280,43 @@ public class IMatView extends JFrame {
 		butconPanel.setLayout(null);
 
 		JLabel shoppingListButcon = new JLabel("");
+		shoppingListButcon.addMouseListener(new MouseAdapter() {
+
+			/**
+			 * List butcon clicked
+			 */
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(registerLbl.getText() == "Stefan"){
+					JPanel p = (JPanel)toolBar.getParent().getComponent(1);
+					CardLayout layout = (CardLayout) p.getLayout();
+					layout.show(p, "customerPanel");
+					((JTabbedPane) ((JPanel)p.getComponent(3)).getComponent(0)).setSelectedIndex(0);
+				} else {
+					JOptionPane.showMessageDialog(null, "You need to be signed in for this feature!", "iMat", EXIT_ON_CLOSE);
+				}
+			}
+		});
 		shoppingListButcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		shoppingListButcon.setToolTipText("Shopping Lists");
 		shoppingListButcon.setBounds(0, 0, 32, 32);
 		butconPanel.add(shoppingListButcon);
 		shoppingListButcon.setIcon(new ImageIcon(IMatView.class.getResource("/iconz/list-icon2.png")));
-
+		
 		JLabel favouriteButcon = new JLabel("");
+		favouriteButcon.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(registerLbl.getText() == "Stefan"){
+					JPanel p = (JPanel)toolBar.getParent().getComponent(1);
+					CardLayout layout = (CardLayout) p.getLayout();
+					layout.show(p, "customerPanel");
+					((JTabbedPane) ((JPanel)p.getComponent(3)).getComponent(0)).setSelectedIndex(0);
+				} else {
+					JOptionPane.showMessageDialog(null, "You need to be signed in for this feature!", "iMat", EXIT_ON_CLOSE);
+				}
+			}
+		});
 		favouriteButcon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		favouriteButcon.setIcon(new ImageIcon(IMatView.class.getResource("/iconz/star-icon.png")));
 		favouriteButcon.setToolTipText("Favourite items");
