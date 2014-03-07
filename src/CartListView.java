@@ -21,37 +21,38 @@ public class CartListView extends JPanel {
 	JLabel pictureLbl;
 	
 	
-	public CartListView(String product, String price, double amount) {
-		setBounds(new Rectangle(0, 0, 625, 45));
+	public CartListView(String product, String price, double amount, Icon icon) {
+		setBounds(new Rectangle(0, 0, 625, 50));
 		setSize(new Dimension(630, 40));
 		
 		setBackground(Color.LIGHT_GRAY);
 		setBorder(null);
-		setPreferredSize(new Dimension(625, 45));
+		setPreferredSize(new Dimension(625, 50));
 		setLayout(null);
 		
 		amountSpinner = new JSpinner();
 		amountSpinner.setToolTipText("Number of pieces");
 		amountSpinner.setModel(new SpinnerNumberModel(amount, new Double(1), null, new Double(1)));
 		amountSpinner.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		amountSpinner.setBounds(424, 19, 57, 20);
+		amountSpinner.setBounds(424, 11, 55, 26);
 		add(amountSpinner);
 		
-		priceLbl = new JLabel(price + " sek");
+		priceLbl = new JLabel(price + " kr");
 		priceLbl.setFont(new Font("HelvLight", Font.PLAIN, 14));
-		priceLbl.setBounds(502, 19, 63, 20);
+		priceLbl.setBounds(502, 11, 67, 26);
 		add(priceLbl);
 		
 		productNameLbl = new JLabel(product);
 		productNameLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		productNameLbl.setForeground(Color.WHITE);
 		productNameLbl.setFont(new Font("HelvLight", Font.BOLD, 18));
-		productNameLbl.setBounds(75, 15, 198, 26);
+		productNameLbl.setBounds(67, 11, 198, 26);
 		add(productNameLbl);
 		
-		pictureLbl = new JLabel("pic");
+		pictureLbl = new JLabel("");
 		pictureLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		pictureLbl.setBounds(5, 5, 60, 37);
+		pictureLbl.setIcon(icon);;
+		pictureLbl.setBounds(5, 5, 40, 40);
 		add(pictureLbl);
 		
 		JLabel label = new JLabel("X");
@@ -59,7 +60,7 @@ public class CartListView extends JPanel {
 		label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		label.setForeground(Color.RED);
 		label.setFont(new Font("Dialog", Font.BOLD, 24));
-		label.setBounds(599, 19, 24, 26);
+		label.setBounds(599, 11, 24, 26);
 		add(label);
 		// TODO Auto-generated constructor stub
 	}

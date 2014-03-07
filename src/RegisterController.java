@@ -291,7 +291,7 @@ public class RegisterController implements FocusListener, MouseListener {
 		iMat.getShoppingCart().addItem(item);
 		String cost = product.getPrice() * amount + "";
 		
-		CartListView view = new CartListView(product.getName(), cost, amount);
+		CartListView view = new CartListView(product.getName(), cost, amount, iMat.getImageIcon(product, 40, 40));
 		cartItems.add(view);
 		
 		if(CheckOutView.cartPanel.getComponentCount() > 0){
